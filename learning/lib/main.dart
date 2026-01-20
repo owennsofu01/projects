@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'controllers/auth_controller.dart';
 import 'firebase_options.dart';
+import 'home.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/dashboard_screen.dart';
@@ -12,7 +13,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  Get.put(AuthController());
+  // 🔐 Inject AuthController once
+  Get.put(AuthController(), permanent: true);
 
   runApp(const MyApp());
 }
@@ -26,10 +28,14 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: auth.isLoggedIn ? '/dashboard' : '/login',
+
+      // 🧭 Start app based on auth state
+      initialRoute: auth.isLoggedIn ? '/home' : '/login',
+
       getPages: [
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/register', page: () => RegisterScreen()),
+        GetPage(name: '/home', page: () => const HomeScreen()),
         GetPage(name: '/dashboard', page: () => DashboardScreen()),
       ],
     );
