@@ -18,6 +18,8 @@ class OrDivider extends StatelessWidget {
               'OR',
               style: Theme.of(context).textTheme.labelMedium?.copyWith(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
+                letterSpacing: 1,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),

@@ -1,4 +1,4 @@
-package com.example.learning
+package com.owenito.profitpulse
 
 import io.flutter.embedding.android.FlutterActivity
 

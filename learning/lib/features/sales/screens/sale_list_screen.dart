@@ -18,6 +18,7 @@ class SaleListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Sales')),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'sales-fab',
         onPressed: () => Get.to(() => const RecordSaleScreen()),
         child: const Icon(Icons.add),
       ),
@@ -48,26 +49,30 @@ class SaleListScreen extends StatelessWidget {
                 child: ListTile(
                   leading: const Icon(Icons.point_of_sale),
                   title: Text(sale.productName),
-                  subtitle: Text(
-                    '${sale.quantity} × ${AppFormatter.currency(sale.sellingPrice)}'
-                    '  •  ${AppFormatter.date(sale.date)}',
+                  subtitle: Obx(
+                    () => Text(
+                      '${sale.quantity} × ${AppFormatter.currency(sale.sellingPrice)}'
+                      '  •  ${AppFormatter.date(sale.date)}',
+                    ),
                   ),
-                  trailing: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        AppFormatter.currency(sale.totalAmount),
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        '+${AppFormatter.currency(sale.profit)}',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: AppColors.income,
+                  trailing: Obx(
+                    () => Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          AppFormatter.currency(sale.totalAmount),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                      ),
-                    ],
+                        Text(
+                          '+${AppFormatter.currency(sale.profit)}',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: AppColors.income,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );

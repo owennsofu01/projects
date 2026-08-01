@@ -17,6 +17,7 @@ class ExpenseListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Expenses')),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'expenses-fab',
         onPressed: () => Get.to(() => AddExpenseScreen()),
         child: const Icon(Icons.add),
       ),
@@ -50,11 +51,13 @@ class ExpenseListScreen extends StatelessWidget {
                   subtitle: Text(
                     '${expense.category}  •  ${AppFormatter.date(expense.date)}',
                   ),
-                  trailing: Text(
-                    AppFormatter.currency(expense.amount),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
+                  trailing: Obx(
+                    () => Text(
+                      AppFormatter.currency(expense.amount),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                 ),

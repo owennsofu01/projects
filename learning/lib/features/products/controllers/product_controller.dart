@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../../core/utils/app_snackbars.dart';
 import '../models/product_model.dart';
+import '../models/stock_batch_model.dart';
 import '../services/product_service.dart';
 
 class ProductController extends GetxController {
@@ -44,6 +45,26 @@ class ProductController extends GetxController {
       isSaving.value = false;
     }
   }
+
+  Future<bool> restockProduct(
+    String productId,
+    int quantity,
+    double costPrice,
+  ) async {
+    try {
+      isSaving.value = true;
+      await _service.restockProduct(userId, productId, quantity, costPrice);
+      return true;
+    } catch (e) {
+      showErrorSnackbar('Could not update stock. Please try again.');
+      return false;
+    } finally {
+      isSaving.value = false;
+    }
+  }
+
+  Stream<List<StockBatchModel>> batchesFor(String productId) =>
+      _service.getBatches(userId, productId);
 
   Future<bool> deleteProduct(String productId) async {
     try {

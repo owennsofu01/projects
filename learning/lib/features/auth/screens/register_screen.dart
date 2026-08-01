@@ -34,61 +34,98 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 420),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const AuthHeader(subtitle: 'Create your account'),
-                    AppTextField(
-                      controller: nameCtrl,
-                      label: 'Full Name',
-                      icon: Icons.person_outline,
-                    ),
-                    AppTextField(
-                      controller: emailCtrl,
-                      label: 'Email',
-                      icon: Icons.email_outlined,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: FormValidators.email,
-                    ),
-                    AppTextField(
-                      controller: passCtrl,
-                      label: 'Password',
-                      icon: Icons.lock_outline,
-                      obscureText: true,
-                    ),
-                    const SizedBox(height: 8),
-                    Obx(
-                      () => AppPrimaryButton(
-                        label: 'CREATE ACCOUNT',
-                        isLoading: auth.isLoading.value,
-                        onPressed: _register,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              colorScheme.primary.withValues(alpha: 0.05),
+              colorScheme.surface,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 32,
+              ),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 420),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const AuthHeader(
+                        title: 'Create your account',
+                        subtitle: 'Start tracking profit in minutes',
                       ),
-                    ),
-                    if (supportsAppleSignIn) ...[
-                      const OrDivider(),
+                      AppTextField(
+                        controller: nameCtrl,
+                        label: 'Full Name',
+                        icon: Icons.person_outline,
+                      ),
+                      AppTextField(
+                        controller: emailCtrl,
+                        label: 'Email',
+                        icon: Icons.email_outlined,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: FormValidators.email,
+                      ),
+                      AppTextField(
+                        controller: passCtrl,
+                        label: 'Password',
+                        icon: Icons.lock_outline,
+                        obscureText: true,
+                      ),
+                      const SizedBox(height: 8),
                       Obx(
-                        () => SignInWithAppleButton(
-                          onPressed: auth.isLoading.value
-                              ? null
-                              : auth.signInWithApple,
+                        () => AppPrimaryButton(
+                          label: 'CREATE ACCOUNT',
+                          isLoading: auth.isLoading.value,
+                          onPressed: _register,
+                        ),
+                      ),
+                      if (supportsAppleSignIn) ...[
+                        const OrDivider(),
+                        Obx(
+                          () => SignInWithAppleButton(
+                            onPressed: auth.isLoading.value
+                                ? null
+                                : auth.signInWithApple,
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () => Get.toNamed(AppRoutes.login),
+                        child: RichText(
+                          text: TextSpan(
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  color: colorScheme.onSurfaceVariant,
+                                ),
+                            children: [
+                              const TextSpan(text: 'Already have an account? '),
+                              TextSpan(
+                                text: 'Login',
+                                style: TextStyle(
+                                  color: colorScheme.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
-                    const SizedBox(height: 16),
-                    TextButton(
-                      onPressed: () => Get.toNamed(AppRoutes.login),
-                      child: const Text('Already have an account? Login'),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),

@@ -23,10 +23,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -58,10 +55,19 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD65l73RRHYcJR48fPbFTuYdS-mPcWNXlo',
-    appId: '1:211178179169:android:074c442a9a67f4ab6d7820',
+    appId: '1:211178179169:android:116e651a9f50d7bf6d7820',
     messagingSenderId: '211178179169',
     projectId: 'sales-expense-tracker-b8d53',
     storageBucket: 'sales-expense-tracker-b8d53.firebasestorage.app',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyC-skxVAF3wDUeob1ga_kxScELssh6Wx4s',
+    appId: '1:211178179169:ios:72b5c15f5cae4a286d7820',
+    messagingSenderId: '211178179169',
+    projectId: 'sales-expense-tracker-b8d53',
+    storageBucket: 'sales-expense-tracker-b8d53.firebasestorage.app',
+    iosBundleId: 'com.owenito.profitpulse',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

@@ -1,6 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductModel {
+  /// Stock at or below this (but above zero) is flagged "low" throughout
+  /// the app — product cards, dashboard alerts, and Stock Intelligence all
+  /// key off this one constant so the threshold stays consistent.
+  static const lowStockThreshold = 5;
+
   final String id;
   final String name;
   final double costPrice;
@@ -18,6 +23,10 @@ class ProductModel {
     required this.createdAt,
     required this.updatedAt,
   });
+
+  bool get isOutOfStock => stock <= 0;
+  bool get isLowStock => stock > 0 && stock <= lowStockThreshold;
+  bool get needsAttention => isOutOfStock || isLowStock;
 
   // Convert Firestore → Dart
   factory ProductModel.fromFirestore(

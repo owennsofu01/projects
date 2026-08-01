@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_snackbars.dart';
+import '../../../core/utils/formatters.dart';
 import '../../../core/utils/validators.dart';
 import '../../../core/widgets/app_primary_button.dart';
 import '../../products/controllers/product_controller.dart';
@@ -94,8 +95,13 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _row('Selling Price', selectedProduct!.sellingPrice),
-                        _row('Available Stock', selectedProduct!.stock),
+                        Obx(
+                          () => _row(
+                            'Selling Price',
+                            AppFormatter.currency(selectedProduct!.sellingPrice),
+                          ),
+                        ),
+                        _row('Available Stock', '${selectedProduct!.stock}'),
                       ],
                     ),
                   ),
@@ -117,17 +123,14 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
     );
   }
 
-  Widget _row(String label, dynamic value) {
+  Widget _row(String label, String value) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(label),
-          Text(
-            value.toString(),
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
+          Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../utils/formatters.dart';
 
@@ -23,12 +24,14 @@ class StatCard extends StatelessWidget {
           children: [
             Text(label, style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 8),
-            Text(
-              AppFormatter.currency(value),
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: color,
+            Obx(
+              () => Text(
+                AppFormatter.currency(value),
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: color,
+                ),
               ),
             ),
           ],

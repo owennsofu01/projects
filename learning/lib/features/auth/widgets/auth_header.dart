@@ -1,39 +1,32 @@
 import 'package:flutter/material.dart';
 
-class AuthHeader extends StatelessWidget {
-  const AuthHeader({super.key, required this.subtitle});
+import '../../../core/widgets/brand_mark.dart';
 
+class AuthHeader extends StatelessWidget {
+  const AuthHeader({super.key, required this.title, required this.subtitle});
+
+  final String title;
   final String subtitle;
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return Column(
       children: [
-        CircleAvatar(
-          radius: 32,
-          backgroundColor: colorScheme.primaryContainer,
-          child: Icon(
-            Icons.account_balance_wallet_outlined,
-            size: 32,
-            color: colorScheme.onPrimaryContainer,
-          ),
-        ),
-        const SizedBox(height: 16),
+        const BrandMark(compact: true),
+        const SizedBox(height: 28),
         Text(
-          'Expense & Sales Tracker',
+          title,
           textAlign: TextAlign.center,
-          style: Theme.of(
-            context,
-          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+          style: textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 6),
         Text(
           subtitle,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: colorScheme.onSurfaceVariant,
+          style: textTheme.bodyMedium?.copyWith(
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
           ),
         ),
         const SizedBox(height: 32),

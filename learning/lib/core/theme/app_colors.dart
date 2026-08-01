@@ -10,4 +10,8 @@ class AppColors {
   static const income = Color(0xFF16A34A);
   static const expense = Color(0xFFDC2626);
   static const profit = Color(0xFF2563EB);
+  static const warning = Color(0xFFF59E0B);
+
+  /// Gradient used for primary CTAs and brand accents (splash, auth).
+  static const brandGradient = [Color(0xFF2563EB), Color(0xFF4F46E5)];
 }
