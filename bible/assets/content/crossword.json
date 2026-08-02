@@ -1,0 +1,5 @@
+[
+  { "id": "cw_001", "clue": "First man, formed from dust", "answer": "ADAM", "direction": "across", "startRow": 0, "startCol": 0 },
+  { "id": "cw_002", "clue": "Garden where Adam and Eve lived", "answer": "EDEN", "direction": "down", "startRow": 0, "startCol": 0 },
+  { "id": "cw_003", "clue": "He built an ark", "answer": "NOAH", "direction": "across", "startRow": 2, "startCol": 1 }
+]

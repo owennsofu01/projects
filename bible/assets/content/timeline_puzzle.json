@@ -1,0 +1,8 @@
+[
+  { "id": "tl_001", "event": "Creation", "era": "Beginnings", "order": 1 },
+  { "id": "tl_002", "event": "The Exodus from Egypt", "era": "Beginnings", "order": 2 },
+  { "id": "tl_003", "event": "Reign of King David", "era": "Kings", "order": 3 },
+  { "id": "tl_004", "event": "Babylonian Exile", "era": "Exile", "order": 4 },
+  { "id": "tl_005", "event": "Birth of Jesus", "era": "Gospels", "order": 5 },
+  { "id": "tl_006", "event": "Pentecost and the early church", "era": "Acts", "order": 6 }
+]

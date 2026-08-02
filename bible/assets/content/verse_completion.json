@@ -1,0 +1,362 @@
+[
+  {
+    "id": "verse_001",
+    "difficulty": "kids",
+    "reference": "John 3:16",
+    "translation": "KJV",
+    "template": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have ____.",
+    "answer": "everlasting life",
+    "wordBank": ["everlasting life", "eternal peace", "great joy", "lasting hope"]
+  },
+  {
+    "id": "verse_002",
+    "difficulty": "kids",
+    "reference": "Psalm 23:1",
+    "translation": "KJV",
+    "template": "The Lord is my ____; I shall not want.",
+    "answer": "shepherd",
+    "wordBank": ["shepherd", "guide", "helper", "friend"]
+  },
+  {
+    "id": "verse_003",
+    "difficulty": "kids",
+    "reference": "1 John 4:8",
+    "translation": "KJV",
+    "template": "God is ____.",
+    "answer": "love",
+    "wordBank": ["love", "light", "good", "great"]
+  },
+  {
+    "id": "verse_004",
+    "difficulty": "teen",
+    "reference": "Philippians 4:13",
+    "translation": "KJV",
+    "template": "I can do all things through ____ which strengtheneth me.",
+    "answer": "Christ",
+    "wordBank": ["Christ", "faith", "prayer", "the Spirit"]
+  },
+  {
+    "id": "verse_005",
+    "difficulty": "teen",
+    "reference": "Proverbs 3:5",
+    "translation": "KJV",
+    "template": "Trust in the Lord with all thine heart; and lean not unto thine own ____.",
+    "answer": "understanding",
+    "wordBank": ["understanding", "wisdom", "knowledge", "strength"]
+  },
+  {
+    "id": "verse_006",
+    "difficulty": "teen",
+    "reference": "Joshua 1:9",
+    "translation": "KJV",
+    "template": "Be strong and of a good courage; be not afraid, neither be thou ____.",
+    "answer": "dismayed",
+    "wordBank": ["dismayed", "troubled", "worried", "shaken"]
+  },
+  {
+    "id": "verse_007",
+    "difficulty": "adult",
+    "reference": "Romans 8:28",
+    "translation": "KJV",
+    "template": "And we know that all things work together for good to them that ____ God.",
+    "answer": "love",
+    "wordBank": ["love", "serve", "obey", "trust"]
+  },
+  {
+    "id": "verse_008",
+    "difficulty": "adult",
+    "reference": "Isaiah 41:10",
+    "translation": "KJV",
+    "template": "Fear thou not; for I am with thee: be not dismayed; for I am thy ____.",
+    "answer": "God",
+    "wordBank": ["God", "Lord", "Rock", "Savior"]
+  },
+  {
+    "id": "verse_009",
+    "difficulty": "adult",
+    "reference": "Galatians 5:22-23",
+    "translation": "KJV",
+    "template": "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, ____.",
+    "answer": "temperance",
+    "wordBank": ["temperance", "patience", "humility", "kindness"]
+  },
+  {
+    "id": "verse_010",
+    "difficulty": "adult",
+    "reference": "Ephesians 2:8",
+    "translation": "KJV",
+    "template": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of ____.",
+    "answer": "God",
+    "wordBank": ["God", "Christ", "grace", "the Spirit"]
+  },
+  {
+    "id": "verse_011",
+    "difficulty": "adult",
+    "reference": "Micah 6:8",
+    "translation": "KJV",
+    "template": "He hath shewed thee, O man, what is good; and what doth the Lord require of thee, but to do justly, and to love mercy, and to walk ____ with thy God?",
+    "answer": "humbly",
+    "wordBank": ["humbly", "faithfully", "boldly", "quietly"]
+  },
+  {
+    "id": "verse_012",
+    "difficulty": "scholar",
+    "reference": "Hebrews 11:1",
+    "translation": "KJV",
+    "template": "Now faith is the substance of things hoped for, the evidence of things ____.",
+    "answer": "not seen",
+    "wordBank": ["not seen", "unknown", "yet to come", "unseen by man"]
+  },
+  {
+    "id": "verse_013",
+    "difficulty": "scholar",
+    "reference": "2 Timothy 3:16",
+    "translation": "KJV",
+    "template": "All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in ____.",
+    "answer": "righteousness",
+    "wordBank": ["righteousness", "holiness", "obedience", "faithfulness"]
+  },
+  {
+    "id": "verse_014",
+    "difficulty": "scholar",
+    "reference": "Romans 12:2",
+    "translation": "KJV",
+    "template": "And be not conformed to this world: but be ye transformed by the renewing of your ____.",
+    "answer": "mind",
+    "wordBank": ["mind", "heart", "spirit", "soul"]
+  },
+  {
+    "id": "verse_015",
+    "difficulty": "adult",
+    "reference": "Psalm 46:1",
+    "translation": "WEB",
+    "template": "God is our refuge and strength, a very present help in ____.",
+    "answer": "trouble",
+    "wordBank": ["trouble", "sorrow", "danger", "darkness"]
+  },
+  {
+    "id": "verse_016",
+    "difficulty": "kids",
+    "reference": "Matthew 5:16",
+    "translation": "WEB",
+    "template": "Even so, let your light shine before men; that they may see your good works, and glorify your Father who is in ____.",
+    "answer": "heaven",
+    "wordBank": ["heaven", "glory", "the sky", "light"]
+  },
+  {
+    "id": "verse_017",
+    "difficulty": "kids",
+    "reference": "Genesis 1:1",
+    "translation": "KJV",
+    "template": "In the beginning God created the ____ and the earth.",
+    "answer": "heaven",
+    "wordBank": ["heaven", "heavens", "sky", "stars"]
+  },
+  {
+    "id": "verse_018",
+    "difficulty": "kids",
+    "reference": "Exodus 20:12",
+    "translation": "KJV",
+    "template": "Honour thy father and thy ____.",
+    "answer": "mother",
+    "wordBank": ["mother", "family", "brother", "sister"]
+  },
+  {
+    "id": "verse_019",
+    "difficulty": "kids",
+    "reference": "Psalm 118:1",
+    "translation": "KJV",
+    "template": "O give thanks unto the Lord; for he is ____.",
+    "answer": "good",
+    "wordBank": ["good", "great", "holy", "kind"]
+  },
+  {
+    "id": "verse_020",
+    "difficulty": "kids",
+    "reference": "Proverbs 22:6",
+    "translation": "KJV",
+    "template": "Train up a child in the way he should go: and when he is ____, he will not depart from it.",
+    "answer": "old",
+    "wordBank": ["old", "grown", "tall", "wise"]
+  },
+  {
+    "id": "verse_021",
+    "difficulty": "kids",
+    "reference": "Matthew 19:14",
+    "translation": "KJV",
+    "template": "Suffer the little children to come unto me: for of such is the kingdom of ____.",
+    "answer": "heaven",
+    "wordBank": ["heaven", "God", "glory", "light"]
+  },
+  {
+    "id": "verse_022",
+    "difficulty": "kids",
+    "reference": "Psalm 100:3",
+    "translation": "KJV",
+    "template": "Know ye that the Lord he is ____: it is he that hath made us.",
+    "answer": "God",
+    "wordBank": ["God", "King", "Lord", "Savior"]
+  },
+  {
+    "id": "verse_023",
+    "difficulty": "teen",
+    "reference": "Matthew 6:33",
+    "translation": "KJV",
+    "template": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto ____.",
+    "answer": "you",
+    "wordBank": ["you", "them", "us", "all"]
+  },
+  {
+    "id": "verse_024",
+    "difficulty": "teen",
+    "reference": "Jeremiah 29:11",
+    "translation": "KJV",
+    "template": "For I know the thoughts that I think toward you, saith the Lord, thoughts of ____, and not of evil.",
+    "answer": "peace",
+    "wordBank": ["peace", "joy", "hope", "grace"]
+  },
+  {
+    "id": "verse_025",
+    "difficulty": "teen",
+    "reference": "Romans 10:9",
+    "translation": "KJV",
+    "template": "That if thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be ____.",
+    "answer": "saved",
+    "wordBank": ["saved", "blessed", "forgiven", "redeemed"]
+  },
+  {
+    "id": "verse_026",
+    "difficulty": "teen",
+    "reference": "Psalm 119:105",
+    "translation": "KJV",
+    "template": "Thy word is a lamp unto my feet, and a light unto my ____.",
+    "answer": "path",
+    "wordBank": ["path", "way", "steps", "journey"]
+  },
+  {
+    "id": "verse_027",
+    "difficulty": "teen",
+    "reference": "1 Thessalonians 5:16-18",
+    "translation": "KJV",
+    "template": "Rejoice evermore. Pray without ceasing. In every thing give ____.",
+    "answer": "thanks",
+    "wordBank": ["thanks", "praise", "glory", "honor"]
+  },
+  {
+    "id": "verse_028",
+    "difficulty": "teen",
+    "reference": "Ephesians 6:1",
+    "translation": "KJV",
+    "template": "Children, obey your parents in the Lord: for this is ____.",
+    "answer": "right",
+    "wordBank": ["right", "good", "wise", "holy"]
+  },
+  {
+    "id": "verse_029",
+    "difficulty": "teen",
+    "reference": "Matthew 5:9",
+    "translation": "KJV",
+    "template": "Blessed are the peacemakers: for they shall be called the children of ____.",
+    "answer": "God",
+    "wordBank": ["God", "light", "peace", "heaven"]
+  },
+  {
+    "id": "verse_030",
+    "difficulty": "adult",
+    "reference": "2 Corinthians 5:17",
+    "translation": "KJV",
+    "template": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become ____.",
+    "answer": "new",
+    "wordBank": ["new", "clean", "right", "whole"]
+  },
+  {
+    "id": "verse_031",
+    "difficulty": "adult",
+    "reference": "James 1:2-3",
+    "translation": "KJV",
+    "template": "My brethren, count it all joy when ye fall into divers temptations; Knowing this, that the trying of your faith worketh ____.",
+    "answer": "patience",
+    "wordBank": ["patience", "strength", "wisdom", "hope"]
+  },
+  {
+    "id": "verse_032",
+    "difficulty": "adult",
+    "reference": "Proverbs 27:17",
+    "translation": "KJV",
+    "template": "Iron sharpeneth iron; so a man sharpeneth the countenance of his ____.",
+    "answer": "friend",
+    "wordBank": ["friend", "brother", "neighbor", "enemy"]
+  },
+  {
+    "id": "verse_033",
+    "difficulty": "adult",
+    "reference": "Psalm 51:10",
+    "translation": "KJV",
+    "template": "Create in me a clean heart, O God; and renew a right ____ within me.",
+    "answer": "spirit",
+    "wordBank": ["spirit", "mind", "heart", "soul"]
+  },
+  {
+    "id": "verse_034",
+    "difficulty": "adult",
+    "reference": "Matthew 28:19",
+    "translation": "KJV",
+    "template": "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the ____.",
+    "answer": "Holy Ghost",
+    "wordBank": ["Holy Ghost", "Holy Spirit", "Almighty", "Most High"]
+  },
+  {
+    "id": "verse_035",
+    "difficulty": "adult",
+    "reference": "1 Peter 5:7",
+    "translation": "KJV",
+    "template": "Casting all your care upon him; for he careth for ____.",
+    "answer": "you",
+    "wordBank": ["you", "us", "all", "them"]
+  },
+  {
+    "id": "verse_036",
+    "difficulty": "scholar",
+    "reference": "Colossians 1:17",
+    "translation": "KJV",
+    "template": "And he is before all things, and by him all things ____.",
+    "answer": "consist",
+    "wordBank": ["consist", "exist", "are made", "hold together"]
+  },
+  {
+    "id": "verse_037",
+    "difficulty": "scholar",
+    "reference": "John 1:1",
+    "translation": "KJV",
+    "template": "In the beginning was the Word, and the Word was with God, and the Word was ____.",
+    "answer": "God",
+    "wordBank": ["God", "holy", "light", "truth"]
+  },
+  {
+    "id": "verse_038",
+    "difficulty": "scholar",
+    "reference": "Romans 3:23",
+    "translation": "KJV",
+    "template": "For all have sinned, and come short of the ____ of God.",
+    "answer": "glory",
+    "wordBank": ["glory", "grace", "presence", "kingdom"]
+  },
+  {
+    "id": "verse_039",
+    "difficulty": "scholar",
+    "reference": "Hebrews 4:12",
+    "translation": "KJV",
+    "template": "For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and ____.",
+    "answer": "marrow",
+    "wordBank": ["marrow", "bone", "flesh", "sinew"]
+  },
+  {
+    "id": "verse_040",
+    "difficulty": "scholar",
+    "reference": "2 Timothy 1:7",
+    "translation": "KJV",
+    "template": "For God hath not given us the spirit of fear; but of power, and of love, and of a sound ____.",
+    "answer": "mind",
+    "wordBank": ["mind", "heart", "spirit", "will"]
+  }
+]

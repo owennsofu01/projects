@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "42565317458",
+    "project_id": "bible-gamehive",
+    "storage_bucket": "bible-gamehive.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42565317458:android:c2c400c0f62c479108408b",
+        "android_client_info": {
+          "package_name": "com.owennsofu.bible_gamehive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42565317458-t566rgpo4jtao4hj9qtf2mvatfoc5akq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-OZeakZqmm3v3gisM_nKWFHBtunwIOuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42565317458-t566rgpo4jtao4hj9qtf2mvatfoc5akq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "42565317458-ek8okdk4ejnam7b2fdk1223jrg1rlc59.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.owennsofu.bibleGamehive"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

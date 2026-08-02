@@ -1,0 +1,4 @@
+[
+  { "id": "jig_001", "sceneName": "Noah's Ark", "imageAsset": "assets/images/jigsaw/noahs_ark.png", "pieceCount": 24, "difficulty": "kids" },
+  { "id": "jig_002", "sceneName": "The Nativity", "imageAsset": "assets/images/jigsaw/nativity.png", "pieceCount": 48, "difficulty": "adult" }
+]

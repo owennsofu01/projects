@@ -1,0 +1,5 @@
+[
+  { "id": "hm_001", "word": "Nazareth", "category": "Places", "difficulty": "teen", "hint": "Jesus grew up here." },
+  { "id": "hm_002", "word": "Goliath", "category": "Names", "difficulty": "kids", "hint": "A giant defeated by David." },
+  { "id": "hm_003", "word": "Bethlehem", "category": "Places", "difficulty": "adult", "hint": "City of David, birthplace of Jesus." }
+]

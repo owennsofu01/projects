@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ws_creation",
+    "theme": "Creation",
+    "difficulty": "kids",
+    "words": ["LIGHT", "HEAVEN", "EARTH", "WATERS", "GARDEN", "ADAM", "EVE", "SEVENTH", "SERPENT", "TREE", "ANIMALS", "STARS"]
+  },
+  {
+    "id": "ws_exodus",
+    "theme": "The Exodus",
+    "difficulty": "teen",
+    "words": ["MOSES", "PHARAOH", "PLAGUES", "REDSEA", "MANNA", "SINAI", "COVENANT", "AARON", "BURNING BUSH", "WILDERNESS", "TABLETS", "ISRAELITES"]
+  },
+  {
+    "id": "ws_christmas",
+    "theme": "Christmas",
+    "difficulty": "kids",
+    "words": ["MARY", "JOSEPH", "BETHLEHEM", "SHEPHERDS", "MANGER", "ANGEL", "STAR", "MAGI", "GABRIEL", "SAVIOR", "NAZARETH", "INN"]
+  },
+  {
+    "id": "ws_easter",
+    "theme": "Easter",
+    "difficulty": "teen",
+    "words": ["CROSS", "TOMB", "RISEN", "MARY", "DISCIPLES", "EMMAUS", "ASCENSION", "HOPE", "CALVARY", "RESURRECTION", "GOLGOTHA"]
+  },
+  {
+    "id": "ws_kings",
+    "theme": "Kings of Israel",
+    "difficulty": "adult",
+    "words": ["SAUL", "DAVID", "SOLOMON", "REHOBOAM", "JEROBOAM", "HEZEKIAH", "JOSIAH", "AHAB", "JEHOSHAPHAT", "MANASSEH", "UZZIAH", "JEHU"]
+  },
+  {
+    "id": "ws_apostles",
+    "theme": "The Apostles",
+    "difficulty": "adult",
+    "words": ["PETER", "ANDREW", "JAMES", "JOHN", "PHILIP", "THOMAS", "MATTHEW", "BARTHOLOMEW", "SIMON", "THADDAEUS", "JUDAS", "ZEALOT"]
+  },
+  {
+    "id": "ws_fruit_of_spirit",
+    "theme": "Fruit of the Spirit",
+    "difficulty": "teen",
+    "words": ["LOVE", "JOY", "PEACE", "PATIENCE", "KINDNESS", "GOODNESS", "FAITH", "GENTLENESS", "TEMPERANCE", "SPIRIT", "FRUIT", "MEEKNESS"]
+  },
+  {
+    "id": "ws_miracles",
+    "theme": "Miracles of Jesus",
+    "difficulty": "adult",
+    "words": ["WATER", "WINE", "LOAVES", "FISHES", "LAZARUS", "BLIND", "LEPER", "STORM", "HEALING", "CENTURION", "PARALYTIC", "DEMONIAC"]
+  },
+  {
+    "id": "ws_parables",
+    "theme": "Parables",
+    "difficulty": "adult",
+    "words": ["SOWER", "SAMARITAN", "PRODIGAL", "TALENTS", "MUSTARD", "LOST SHEEP", "VINEYARD", "PEARL", "LEAVEN", "SEED", "STEWARD", "WEDDING"]
+  },
+  {
+    "id": "ws_women",
+    "theme": "Women of the Bible",
+    "difficulty": "scholar",
+    "words": ["SARAH", "RUTH", "ESTHER", "DEBORAH", "RACHEL", "HANNAH", "MIRIAM", "LYDIA", "NAOMI", "ABIGAIL", "DELILAH", "PRISCILLA"]
+  },
+  {
+    "id": "ws_wilderness",
+    "theme": "Wilderness Wandering",
+    "difficulty": "teen",
+    "words": ["MANNA", "QUAIL", "WILDERNESS", "TABERNACLE", "GOLDEN CALF", "JOSHUA", "CALEB", "FORTY YEARS", "MURMURING", "SERPENT"]
+  },
+  {
+    "id": "ws_ruth",
+    "theme": "Ruth & Naomi",
+    "difficulty": "teen",
+    "words": ["RUTH", "NAOMI", "BOAZ", "MOAB", "BETHLEHEM", "HARVEST", "KINSMAN", "LOYALTY", "BARLEY", "OBED"]
+  },
+  {
+    "id": "ws_david_goliath",
+    "theme": "David & Goliath",
+    "difficulty": "kids",
+    "words": ["DAVID", "GOLIATH", "SLING", "STONES", "SHEPHERD", "PHILISTINE", "ARMOR", "COURAGE", "GIANT", "VICTORY"]
+  },
+  {
+    "id": "ws_daniel",
+    "theme": "Daniel",
+    "difficulty": "adult",
+    "words": ["DANIEL", "LIONS", "BABYLON", "FURNACE", "SHADRACH", "MESHACH", "ABEDNEGO", "PRAYER", "FAITHFUL", "DREAM"]
+  },
+  {
+    "id": "ws_last_supper",
+    "theme": "The Last Supper",
+    "difficulty": "adult",
+    "words": ["BREAD", "WINE", "UPPER ROOM", "BETRAYAL", "PASSOVER", "DISCIPLES", "FOOT WASHING", "COMMUNION", "COVENANT", "REMEMBRANCE"]
+  },
+  {
+    "id": "ws_holy_spirit",
+    "theme": "The Holy Spirit",
+    "difficulty": "adult",
+    "words": ["PENTECOST", "TONGUES", "FIRE", "WIND", "COMFORTER", "GIFTS", "POWER", "BOLDNESS", "BAPTISM", "FILLED"]
+  },
+  {
+    "id": "ws_armor_of_god",
+    "theme": "Armor of God",
+    "difficulty": "teen",
+    "words": ["TRUTH", "BREASTPLATE", "SHIELD", "FAITH", "HELMET", "SALVATION", "SWORD", "SPIRIT", "PEACE", "GOSPEL", "STAND"]
+  },
+  {
+    "id": "ws_ten_commandments",
+    "theme": "Ten Commandments",
+    "difficulty": "teen",
+    "words": ["COMMANDMENTS", "STONE", "TABLETS", "SINAI", "IDOLS", "SABBATH", "HONOR", "COVET", "MURDER", "STEAL"]
+  },
+  {
+    "id": "ws_paul_journeys",
+    "theme": "Paul's Missionary Journeys",
+    "difficulty": "scholar",
+    "words": ["PAUL", "SILAS", "TIMOTHY", "ANTIOCH", "PHILIPPI", "CORINTH", "EPHESUS", "ATHENS", "MACEDONIA", "SHIPWRECK"]
+  },
+  {
+    "id": "ws_revelation",
+    "theme": "Revelation",
+    "difficulty": "scholar",
+    "words": ["PATMOS", "JOHN", "THRONE", "LAMB", "SCROLL", "TRUMPETS", "SEALS", "ELDERS", "NEW JERUSALEM", "ALPHA"]
+  }
+]

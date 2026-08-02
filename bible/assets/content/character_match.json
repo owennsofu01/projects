@@ -1,0 +1,5 @@
+[
+  { "id": "cm_001", "name": "Moses", "description": "Led Israel out of Egypt", "keyAct": "Parted the Red Sea" },
+  { "id": "cm_002", "name": "David", "description": "Shepherd who became king", "keyAct": "Defeated Goliath" },
+  { "id": "cm_003", "name": "Esther", "description": "Queen who saved her people", "keyAct": "Exposed Haman's plot" }
+]

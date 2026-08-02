@@ -1,0 +1,54 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    // users/{uid} — profile, settings, streak, badges, per-book progress.
+    // Only the owning account (including anonymous/guest accounts) may read or write it.
+    match /users/{uid} {
+      allow read, write: if isOwner(uid);
+
+      match /progress/{progressId} {
+        allow read, write: if isOwner(uid);
+      }
+
+      match /gameResults/{resultId} {
+        allow read, write: if isOwner(uid);
+      }
+    }
+
+    // leaderboards/{gameMode}/entries/{uid} — one score doc per user per game mode.
+    // Anyone signed in can read the board; a user may only write their own entry, and only
+    // to raise their score (client-side write; a Cloud Function should validate scores server-side
+    // before this is used for a real competitive leaderboard — see project follow-ups).
+    match /leaderboards/{gameMode}/entries/{uid} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid)
+        && request.resource.data.score is int
+        && request.resource.data.score >= resource.data.score;
+      allow delete: if false;
+    }
+
+    // content/{...} — server-hosted game content (question packs, seasonal packs).
+    // Read-only for all signed-in clients; writes happen only from the Firebase console
+    // or an admin tool, never from the app.
+    match /content/{document=**} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
+
+    // Default deny for anything not explicitly matched above.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

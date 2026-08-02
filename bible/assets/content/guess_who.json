@@ -1,0 +1,26 @@
+[
+  {
+    "id": "gw_001",
+    "characterName": "Jonah",
+    "difficulty": "teen",
+    "clues": [
+      "I tried to run away from what God asked me to do.",
+      "I boarded a ship heading the opposite direction.",
+      "A great storm arose because of me.",
+      "I spent three days and nights inside a great fish.",
+      "I eventually preached to Nineveh."
+    ]
+  },
+  {
+    "id": "gw_002",
+    "characterName": "Ruth",
+    "difficulty": "adult",
+    "clues": [
+      "I was not born an Israelite.",
+      "I refused to leave my mother-in-law's side.",
+      "I gleaned grain in the fields of Bethlehem.",
+      "I married a man named Boaz.",
+      "I became an ancestor of King David."
+    ]
+  }
+]

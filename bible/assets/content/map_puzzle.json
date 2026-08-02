@@ -1,0 +1,5 @@
+[
+  { "id": "map_001", "name": "Jerusalem", "description": "The holy city, site of the Temple", "xPercent": 0.52, "yPercent": 0.41 },
+  { "id": "map_002", "name": "Bethlehem", "description": "Birthplace of Jesus and King David", "xPercent": 0.51, "yPercent": 0.44 },
+  { "id": "map_003", "name": "Egypt", "description": "Where Israel was enslaved, then delivered", "xPercent": 0.25, "yPercent": 0.55 }
+]
