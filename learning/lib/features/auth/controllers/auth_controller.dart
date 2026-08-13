@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../core/constants/app_routes.dart';
@@ -14,6 +15,11 @@ class AuthController extends GetxController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   RxBool isLoading = false.obs;
+
+  /// `GoogleSignIn.instance.initialize()` must be awaited exactly once
+  /// before any other call on the singleton; this guards against
+  /// re-initializing if the user signs in with Google more than once.
+  bool _googleSignInInitialized = false;
 
   String get userId => _auth.currentUser!.uid;
   bool get isLoggedIn => _auth.currentUser != null;
@@ -123,6 +129,48 @@ class AuthController extends GetxController {
       Get.offAllNamed(AppRoutes.home);
     } on SignInWithAppleAuthorizationException catch (e) {
       if (e.code != AuthorizationErrorCode.canceled) {
+        showErrorSnackbar(mapAuthError(e));
+      }
+    } catch (e) {
+      showErrorSnackbar(mapAuthError(e));
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> signInWithGoogle() async {
+    try {
+      isLoading.value = true;
+
+      if (!_googleSignInInitialized) {
+        await GoogleSignIn.instance.initialize();
+        _googleSignInInitialized = true;
+      }
+
+      final googleAccount = await GoogleSignIn.instance.authenticate();
+      final idToken = googleAccount.authentication.idToken;
+
+      final oauthCredential = GoogleAuthProvider.credential(idToken: idToken);
+
+      final userCredential = await _auth.signInWithCredential(oauthCredential);
+      final user = userCredential.user!;
+
+      final userDocRef = _db.collection(FirestoreCollections.users).doc(user.uid);
+      if (!(await userDocRef.get()).exists) {
+        await userDocRef.set(
+          UserModel(
+            uid: user.uid,
+            name: user.displayName ?? googleAccount.displayName ?? 'Google User',
+            email: user.email ?? googleAccount.email,
+            createdAt: DateTime.now(),
+          ).toFirestore(),
+        );
+      }
+
+      showSuccessSnackbar('Signed in with Google');
+      Get.offAllNamed(AppRoutes.home);
+    } on GoogleSignInException catch (e) {
+      if (e.code != GoogleSignInExceptionCode.canceled) {
         showErrorSnackbar(mapAuthError(e));
       }
     } catch (e) {

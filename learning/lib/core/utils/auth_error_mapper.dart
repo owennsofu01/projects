@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 /// Maps a thrown auth error into a short, user-facing message instead of
@@ -24,6 +25,9 @@ String mapAuthError(Object error) {
   }
   if (error is SignInWithAppleAuthorizationException) {
     return 'Sign in with Apple failed. Please try again.';
+  }
+  if (error is GoogleSignInException) {
+    return 'Sign in with Google failed. Please try again.';
   }
   return 'Something went wrong. Please try again.';
 }

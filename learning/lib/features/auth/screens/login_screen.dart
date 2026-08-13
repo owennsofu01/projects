@@ -10,6 +10,7 @@ import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/app_text_field.dart';
 import '../controllers/auth_controller.dart';
 import '../widgets/auth_header.dart';
+import '../widgets/google_sign_in_button.dart';
 import '../widgets/or_divider.dart';
 import 'forgot_password_screen.dart';
 
@@ -91,15 +92,26 @@ class LoginScreen extends StatelessWidget {
                           onPressed: _login,
                         ),
                       ),
-                      if (supportsAppleSignIn) ...[
+                      if (supportsAppleSignIn || supportsGoogleSignIn) ...[
                         const OrDivider(),
-                        Obx(
-                          () => SignInWithAppleButton(
-                            onPressed: auth.isLoading.value
-                                ? null
-                                : auth.signInWithApple,
+                        if (supportsGoogleSignIn) ...[
+                          Obx(
+                            () => GoogleSignInButton(
+                              onPressed: auth.isLoading.value
+                                  ? null
+                                  : auth.signInWithGoogle,
+                            ),
                           ),
-                        ),
+                          if (supportsAppleSignIn) const SizedBox(height: 12),
+                        ],
+                        if (supportsAppleSignIn)
+                          Obx(
+                            () => SignInWithAppleButton(
+                              onPressed: auth.isLoading.value
+                                  ? null
+                                  : auth.signInWithApple,
+                            ),
+                          ),
                       ],
                       const SizedBox(height: 20),
                       TextButton(
