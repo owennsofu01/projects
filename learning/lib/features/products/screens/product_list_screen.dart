@@ -33,71 +33,58 @@ class ProductListScreen extends StatelessWidget {
           );
         }
 
-        return ListView.separated(
-          padding: const EdgeInsets.all(16),
-          itemCount: controller.products.length,
-          separatorBuilder: (_, _) => const SizedBox(height: 12),
-          itemBuilder: (context, index) {
-            final ProductModel product = controller.products[index];
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            // A catalog of self-contained cards makes good use of extra
+            // width, unlike a chronological list — so widen into columns
+            // on tablet/desktop instead of just capping the line length.
+            final columns = constraints.maxWidth >= 1100
+                ? 3
+                : (constraints.maxWidth >= 700 ? 2 : 1);
+            final horizontalPadding = constraints.maxWidth >= 600
+                ? 24.0
+                : 16.0;
 
-            return Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            product.name,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () => showPurchaseHistorySheet(
-                            context,
-                            controller,
-                            product,
-                          ),
-                          icon: const Icon(Icons.history),
-                          tooltip: 'Purchase history',
-                          visualDensity: VisualDensity.compact,
-                        ),
-                        IconButton.filledTonal(
-                          onPressed: () =>
-                              _showRestockDialog(context, controller, product),
-                          icon: const Icon(Icons.add_box_outlined),
-                          tooltip: 'Restock',
-                          visualDensity: VisualDensity.compact,
-                        ),
-                      ],
-                    ),
-                    if (product.needsAttention) ...[
-                      const SizedBox(height: 4),
-                      _StockStatusChip(product: product),
-                    ],
-                    const SizedBox(height: 8),
-                    Obx(
-                      () => Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            final products = controller.products;
+            final rowCount = (products.length / columns).ceil();
+
+            return Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 1200),
+                child: ListView.separated(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: horizontalPadding,
+                    vertical: 16,
+                  ),
+                  itemCount: rowCount,
+                  separatorBuilder: (_, _) => const SizedBox(height: 12),
+                  itemBuilder: (context, rowIndex) {
+                    final start = rowIndex * columns;
+                    final rowProducts = products.skip(start).take(columns);
+
+                    if (columns == 1) {
+                      return _productCard(context, rowProducts.first);
+                    }
+
+                    // IntrinsicHeight + stretch so every card in the row
+                    // shares the tallest card's height (e.g. one with a
+                    // low-stock chip and one without), matching how a
+                    // real grid lays out unevenly-tall cells.
+                    return IntrinsicHeight(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          _info(
-                            'Latest Cost',
-                            AppFormatter.currency(product.costPrice),
-                          ),
-                          _info(
-                            'Selling',
-                            AppFormatter.currency(product.sellingPrice),
-                          ),
-                          _info('Stock', product.stock.toString()),
+                          for (final product in rowProducts) ...[
+                            if (product != rowProducts.first)
+                              const SizedBox(width: 12),
+                            Expanded(child: _productCard(context, product)),
+                          ],
+                          for (var i = rowProducts.length; i < columns; i++)
+                            const Expanded(child: SizedBox.shrink()),
                         ],
                       ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
             );
@@ -184,6 +171,64 @@ class ProductListScreen extends StatelessWidget {
     if (success) {
       showSuccessSnackbar('Added $quantity to ${product.name}\'s stock');
     }
+  }
+
+  Widget _productCard(BuildContext context, ProductModel product) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    product.name,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () =>
+                      showPurchaseHistorySheet(context, controller, product),
+                  icon: const Icon(Icons.history),
+                  tooltip: 'Purchase history',
+                  visualDensity: VisualDensity.compact,
+                ),
+                IconButton.filledTonal(
+                  onPressed: () =>
+                      _showRestockDialog(context, controller, product),
+                  icon: const Icon(Icons.add_box_outlined),
+                  tooltip: 'Restock',
+                  visualDensity: VisualDensity.compact,
+                ),
+              ],
+            ),
+            if (product.needsAttention) ...[
+              const SizedBox(height: 4),
+              _StockStatusChip(product: product),
+            ],
+            const SizedBox(height: 8),
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _info('Latest Cost', AppFormatter.currency(product.costPrice)),
+                  _info(
+                    'Selling',
+                    AppFormatter.currency(product.sellingPrice),
+                  ),
+                  _info('Stock', product.stock.toString()),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _info(String label, String value) {

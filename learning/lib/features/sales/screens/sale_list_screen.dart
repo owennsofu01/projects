@@ -38,41 +38,62 @@ class SaleListScreen extends StatelessWidget {
             );
           }
 
-          return ListView.separated(
-            padding: const EdgeInsets.all(16),
-            itemCount: sales.length,
-            separatorBuilder: (_, _) => const SizedBox(height: 12),
-            itemBuilder: (context, index) {
-              final sale = sales[index];
+          return LayoutBuilder(
+            builder: (context, constraints) {
+              final horizontalPadding = constraints.maxWidth >= 600
+                  ? 24.0
+                  : 16.0;
 
-              return Card(
-                child: ListTile(
-                  leading: const Icon(Icons.point_of_sale),
-                  title: Text(sale.productName),
-                  subtitle: Obx(
-                    () => Text(
-                      '${sale.quantity} × ${AppFormatter.currency(sale.sellingPrice)}'
-                      '  •  ${AppFormatter.date(sale.date)}',
+              return Center(
+                child: ConstrainedBox(
+                  // A transaction log reads best as one column even on
+                  // wide screens — cap the width instead of turning it
+                  // into a grid, and just give it more breathing room.
+                  constraints: const BoxConstraints(maxWidth: 720),
+                  child: ListView.separated(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: horizontalPadding,
+                      vertical: 16,
                     ),
-                  ),
-                  trailing: Obx(
-                    () => Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          AppFormatter.currency(sale.totalAmount),
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          '+${AppFormatter.currency(sale.profit)}',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: AppColors.income,
+                    itemCount: sales.length,
+                    separatorBuilder: (_, _) => const SizedBox(height: 12),
+                    itemBuilder: (context, index) {
+                      final sale = sales[index];
+
+                      return Card(
+                        child: ListTile(
+                          leading: const Icon(Icons.point_of_sale),
+                          title: Text(sale.productName),
+                          subtitle: Obx(
+                            () => Text(
+                              '${sale.quantity} × ${AppFormatter.currency(sale.sellingPrice)}'
+                              '  •  ${AppFormatter.date(sale.date)}',
+                            ),
+                          ),
+                          trailing: Obx(
+                            () => Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  AppFormatter.currency(sale.totalAmount),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  '+${AppFormatter.currency(sale.profit)}',
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: AppColors.income,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                 ),
               );

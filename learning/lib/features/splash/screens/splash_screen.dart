@@ -23,9 +23,10 @@ class _SplashScreenState extends State<SplashScreen>
     parent: _controller,
     curve: Curves.easeOut,
   );
-  late final Animation<double> _scale = Tween(begin: 0.92, end: 1.0).animate(
-    CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
-  );
+  late final Animation<double> _scale = Tween(
+    begin: 0.92,
+    end: 1.0,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
   @override
   void initState() {

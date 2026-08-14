@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../dashboard/screens/dashboard_screen.dart';
 import '../../expenses/screens/expense_list_screen.dart';
 import '../../products/screens/product_list_screen.dart';
+import '../../reports/screens/report_screen.dart';
 import '../../sales/screens/sale_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ProductListScreen(),
     SaleListScreen(),
     ExpenseListScreen(),
+    ReportScreen(),
   ];
 
   @override
@@ -49,6 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.receipt_long_outlined),
             selectedIcon: Icon(Icons.receipt_long),
             label: 'Expenses',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.bar_chart_outlined),
+            selectedIcon: Icon(Icons.bar_chart),
+            label: 'Reports',
           ),
         ],
       ),

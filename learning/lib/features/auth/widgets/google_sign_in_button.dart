@@ -22,7 +22,10 @@ class GoogleSignInButton extends StatelessWidget {
           disabledBackgroundColor: Colors.white.withValues(alpha: 0.6),
           side: const BorderSide(color: _borderColor),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            // Matches the app's 14px corner radius (buttons/cards/inputs)
+            // rather than Google's default 8px, so it doesn't look like a
+            // mismatched third-party widget dropped into the form.
+            borderRadius: BorderRadius.circular(14),
           ),
         ),
         child: Row(

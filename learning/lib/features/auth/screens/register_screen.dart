@@ -8,6 +8,7 @@ import '../../../core/utils/validators.dart';
 import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/app_text_field.dart';
 import '../controllers/auth_controller.dart';
+import '../widgets/auth_card.dart';
 import '../widgets/auth_header.dart';
 import '../widgets/google_sign_in_button.dart';
 import '../widgets/or_divider.dart';
@@ -20,6 +21,7 @@ class RegisterScreen extends StatelessWidget {
   final nameCtrl = TextEditingController();
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
+  final confirmPassCtrl = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
 
@@ -31,6 +33,12 @@ class RegisterScreen extends StatelessWidget {
       email: emailCtrl.text.trim(),
       password: passCtrl.text.trim(),
     );
+  }
+
+  String? _validateConfirmPassword(String? value) {
+    if (value == null || value.isEmpty) return 'Required';
+    if (value != passCtrl.text) return 'Passwords don\'t match';
+    return null;
   }
 
   @override
@@ -58,86 +66,103 @@ class RegisterScreen extends StatelessWidget {
               ),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 420),
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const AuthHeader(
-                        title: 'Create your account',
-                        subtitle: 'Start tracking profit in minutes',
-                      ),
-                      AppTextField(
-                        controller: nameCtrl,
-                        label: 'Full Name',
-                        icon: Icons.person_outline,
-                      ),
-                      AppTextField(
-                        controller: emailCtrl,
-                        label: 'Email',
-                        icon: Icons.email_outlined,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: FormValidators.email,
-                      ),
-                      AppTextField(
-                        controller: passCtrl,
-                        label: 'Password',
-                        icon: Icons.lock_outline,
-                        obscureText: true,
-                      ),
-                      const SizedBox(height: 8),
-                      Obx(
-                        () => AppPrimaryButton(
-                          label: 'CREATE ACCOUNT',
-                          isLoading: auth.isLoading.value,
-                          onPressed: _register,
-                        ),
-                      ),
-                      if (supportsAppleSignIn || supportsGoogleSignIn) ...[
-                        const OrDivider(),
-                        if (supportsGoogleSignIn) ...[
-                          Obx(
-                            () => GoogleSignInButton(
-                              onPressed: auth.isLoading.value
-                                  ? null
-                                  : auth.signInWithGoogle,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const AuthHeader(
+                      title: 'Create your account',
+                      subtitle: 'Start tracking profit in minutes',
+                    ),
+                    Form(
+                      key: formKey,
+                      child: AuthCard(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            AppTextField(
+                              controller: nameCtrl,
+                              label: 'Full Name',
+                              icon: Icons.person_outline,
                             ),
-                          ),
-                          if (supportsAppleSignIn) const SizedBox(height: 12),
-                        ],
-                        if (supportsAppleSignIn)
-                          Obx(
-                            () => SignInWithAppleButton(
-                              onPressed: auth.isLoading.value
-                                  ? null
-                                  : auth.signInWithApple,
+                            AppTextField(
+                              controller: emailCtrl,
+                              label: 'Email',
+                              icon: Icons.email_outlined,
+                              keyboardType: TextInputType.emailAddress,
+                              validator: FormValidators.email,
                             ),
-                          ),
-                      ],
-                      const SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () => Get.toNamed(AppRoutes.login),
-                        child: RichText(
-                          text: TextSpan(
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  color: colorScheme.onSurfaceVariant,
-                                ),
-                            children: [
-                              const TextSpan(text: 'Already have an account? '),
-                              TextSpan(
-                                text: 'Login',
-                                style: TextStyle(
-                                  color: colorScheme.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                            AppTextField(
+                              controller: passCtrl,
+                              label: 'Password',
+                              icon: Icons.lock_outline,
+                              obscureText: true,
+                            ),
+                            AppTextField(
+                              controller: confirmPassCtrl,
+                              label: 'Confirm Password',
+                              icon: Icons.lock_outline,
+                              obscureText: true,
+                              validator: _validateConfirmPassword,
+                            ),
+                            const SizedBox(height: 4),
+                            Obx(
+                              () => AppPrimaryButton(
+                                label: 'CREATE ACCOUNT',
+                                isLoading: auth.isLoading.value,
+                                onPressed: _register,
                               ),
+                            ),
+                            if (supportsAppleSignIn ||
+                                supportsGoogleSignIn) ...[
+                              const OrDivider(),
+                              if (supportsGoogleSignIn) ...[
+                                Obx(
+                                  () => GoogleSignInButton(
+                                    onPressed: auth.isLoading.value
+                                        ? null
+                                        : auth.signInWithGoogle,
+                                  ),
+                                ),
+                                if (supportsAppleSignIn)
+                                  const SizedBox(height: 12),
+                              ],
+                              if (supportsAppleSignIn)
+                                Obx(
+                                  () => SignInWithAppleButton(
+                                    borderRadius: BorderRadius.circular(14),
+                                    onPressed: auth.isLoading.value
+                                        ? null
+                                        : auth.signInWithApple,
+                                  ),
+                                ),
                             ],
-                          ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 24),
+                    TextButton(
+                      onPressed: () => Get.toNamed(AppRoutes.login),
+                      child: RichText(
+                        text: TextSpan(
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: colorScheme.onSurfaceVariant),
+                          children: [
+                            const TextSpan(
+                              text: 'Already have an account? ',
+                            ),
+                            TextSpan(
+                              text: 'Login',
+                              style: TextStyle(
+                                color: colorScheme.primary,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

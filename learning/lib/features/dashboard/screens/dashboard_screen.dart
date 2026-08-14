@@ -51,29 +51,67 @@ class DashboardScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ListView(
-          children: [
-            const SectionHeader('Today'),
-            const SizedBox(height: 12),
-            _summaryRow(controller.todaySales, controller.todayExpenses),
-            const SizedBox(height: 24),
-            const SectionHeader('This Month'),
-            const SizedBox(height: 12),
-            _summaryRow(controller.monthSales, controller.monthExpenses),
-            const SizedBox(height: 24),
-            const SectionHeader('Analytics'),
-            const SizedBox(height: 12),
-            SalesTrendChart(controller: controller),
-            const SizedBox(height: 16),
-            ExpenseBreakdownChart(controller: controller),
-            const SizedBox(height: 24),
-            const SectionHeader('Recommendations'),
-            const SizedBox(height: 12),
-            StockIntelligenceCard(controller: insightController),
-          ],
-        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          // Material's compact/medium/expanded breakpoints: below 600 is a
+          // phone, so charts stay stacked; at/above it there's room to run
+          // the two analytics cards side by side instead of one long
+          // scrolling column.
+          final isWide = constraints.maxWidth >= 700;
+          final horizontalPadding = constraints.maxWidth >= 600 ? 24.0 : 16.0;
+
+          return Center(
+            child: ConstrainedBox(
+              // Caps line length / card width on tablet, desktop and web so
+              // content doesn't stretch edge-to-edge and become hard to scan.
+              constraints: const BoxConstraints(maxWidth: 900),
+              child: ListView(
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalPadding,
+                  vertical: 16,
+                ),
+                children: [
+                  const SectionHeader('Today'),
+                  const SizedBox(height: 12),
+                  _summaryRow(controller.todaySales, controller.todayExpenses),
+                  const SizedBox(height: 24),
+                  const SectionHeader('This Month'),
+                  const SizedBox(height: 12),
+                  _summaryRow(controller.monthSales, controller.monthExpenses),
+                  const SizedBox(height: 24),
+                  const SectionHeader('Analytics'),
+                  const SizedBox(height: 12),
+                  if (isWide)
+                    IntrinsicHeight(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            child: SalesTrendChart(controller: controller),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: ExpenseBreakdownChart(
+                              controller: controller,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  else ...[
+                    SalesTrendChart(controller: controller),
+                    const SizedBox(height: 16),
+                    ExpenseBreakdownChart(controller: controller),
+                  ],
+                  const SizedBox(height: 24),
+                  const SectionHeader('Recommendations'),
+                  const SizedBox(height: 12),
+                  StockIntelligenceCard(controller: insightController),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

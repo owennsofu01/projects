@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "211178179169-434mgn726j2126lcmrhkcjm9bu1b8dsc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.owenito.profitpulse",
+            "certificate_hash": "d3e5be7730a1ce39bd41812aa3912bdfed72d1d8"
+          }
+        },
+        {
           "client_id": "211178179169-c5l63g6jkl6gsia7l47qi1m3gketnmr8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
