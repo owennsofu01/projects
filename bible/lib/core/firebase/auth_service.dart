@@ -46,10 +46,7 @@ class AuthService {
     final googleUser = await GoogleSignIn().signIn();
     if (googleUser == null) return null;
     final googleAuth = await googleUser.authentication;
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
+    final credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
     final current = _auth.currentUser;
     if (current != null && current.isAnonymous) {
       final result = await current.linkWithCredential(credential);
@@ -65,10 +62,9 @@ class AuthService {
     final appleCredential = await SignInWithApple.getAppleIDCredential(
       scopes: [AppleIDAuthorizationScopes.email, AppleIDAuthorizationScopes.fullName],
     );
-    final oauthCredential = OAuthProvider('apple.com').credential(
-      idToken: appleCredential.identityToken,
-      accessToken: appleCredential.authorizationCode,
-    );
+    final oauthCredential = OAuthProvider(
+      'apple.com',
+    ).credential(idToken: appleCredential.identityToken, accessToken: appleCredential.authorizationCode);
     final current = _auth.currentUser;
     if (current != null && current.isAnonymous) {
       final result = await current.linkWithCredential(oauthCredential);

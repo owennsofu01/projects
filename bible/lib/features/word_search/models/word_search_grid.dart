@@ -22,7 +22,9 @@ class WordSearchGrid {
   final List<List<String>> letters;
   final List<WordPlacement> placements;
 
-  static const _directions = <Cell>[
+  /// Directions in order of difficulty: the first 2 read forwards, the next
+  /// 2 add forward diagonals, then backwards, then backwards diagonals.
+  static const allDirections = <Cell>[
     (0, 1), // right
     (1, 0), // down
     (1, 1), // diagonal down-right
@@ -33,7 +35,32 @@ class WordSearchGrid {
     (1, -1), // diagonal down-left
   ];
 
-  static WordSearchGrid generate(WordSearchPuzzle puzzle, {int size = 12, int? seed}) {
+  /// Like [generate], but retries (and finally grows the grid) until every
+  /// word is placed, so no word silently goes missing.
+  static WordSearchGrid generateComplete(
+    WordSearchPuzzle puzzle, {
+    required int size,
+    List<Cell> directions = allDirections,
+    int? seed,
+  }) {
+    final random = Random(seed);
+    final longest = puzzle.words.map((w) => w.replaceAll(' ', '').length).fold(0, max);
+    var gridSize = max(size, longest);
+    while (true) {
+      for (var attempt = 0; attempt < 40; attempt++) {
+        final grid = generate(puzzle, size: gridSize, directions: directions, seed: random.nextInt(1 << 31));
+        if (grid.placements.length == puzzle.words.length) return grid;
+      }
+      gridSize++;
+    }
+  }
+
+  static WordSearchGrid generate(
+    WordSearchPuzzle puzzle, {
+    int size = 12,
+    List<Cell> directions = allDirections,
+    int? seed,
+  }) {
     final random = Random(seed);
     final grid = List.generate(size, (_) => List.filled(size, ''));
     final placements = <WordPlacement>[];
@@ -44,7 +71,7 @@ class WordSearchGrid {
 
       var placed = false;
       for (var attempt = 0; attempt < 60 && !placed; attempt++) {
-        final direction = _directions[random.nextInt(_directions.length)];
+        final direction = directions[random.nextInt(directions.length)];
         final startRow = random.nextInt(size);
         final startCol = random.nextInt(size);
 

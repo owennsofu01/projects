@@ -5,6 +5,9 @@ import 'package:go_router/go_router.dart';
 import '../../../core/progress/progress_providers.dart';
 import '../../../core/router/route_paths.dart';
 import '../../../core/theme/settings_providers.dart';
+import '../../../core/widgets/how_to_play_button.dart';
+import '../../../core/widgets/level_card.dart';
+import '../../../core/widgets/level_stars.dart';
 import '../data/trivia_content_loader.dart';
 import '../models/trivia_question.dart';
 import 'trivia_play_screen.dart';
@@ -28,15 +31,22 @@ class TriviaLevelSelectScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final kidMode = ref.watch(settingsProvider).kidMode;
-    final unlockedLevel = ref.watch(userProfileProvider)?.triviaUnlockedLevel ?? 1;
+    final profile = ref.watch(userProfileProvider);
+    final unlockedLevel = profile?.unlockedLevel('trivia') ?? 1;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bible Trivia'),
         actions: [
-          TextButton(
-            onPressed: () => context.push(RoutePaths.trivia),
-            child: const Text('Free Play'),
+          if (profile != null) StarTotalChip(earned: profile.totalStars('trivia'), levelCount: 10),
+          TextButton(onPressed: () => context.push(RoutePaths.trivia), child: const Text('Free Play')),
+          const HowToPlayButton(
+            title: 'Bible Trivia',
+            steps: [
+              'Pick a level to answer 10 multiple-choice questions, or use Free Play to choose your own category and difficulty.',
+              'Tap the answer you think is correct before time runs out.',
+              'Get 60% right to earn a star and unlock the next level. 80% earns 2 stars, a perfect round earns 3.',
+            ],
           ),
         ],
       ),
@@ -62,7 +72,7 @@ class TriviaLevelSelectScreen extends ConsumerWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 14,
               crossAxisSpacing: 14,
-              childAspectRatio: 1.05,
+              childAspectRatio: 0.95,
             ),
             itemCount: levels.length,
             itemBuilder: (context, index) {
@@ -70,64 +80,27 @@ class TriviaLevelSelectScreen extends ConsumerWidget {
               final levelQuestions = byLevel[level]!;
               final title = level <= _levelTitles.length ? _levelTitles[level - 1] : 'Level $level';
               final locked = level > unlockedLevel;
-              final cleared = level < unlockedLevel;
+              final stars = profile?.starsFor('trivia', level) ?? 0;
 
-              return Card(
-                clipBehavior: Clip.antiAlias,
-                child: InkWell(
-                  onTap: locked
-                      ? () => ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Clear the previous level to unlock this one.')),
-                          )
-                      : () => context.push(
-                            RoutePaths.triviaPlay,
-                            extra: TriviaPlayArgs(
-                              category: 'All',
-                              difficulty: levelQuestions.first.difficulty,
-                              kidMode: kidMode,
-                              level: level,
-                            ),
-                          ),
-                  child: Opacity(
-                    opacity: locked ? 0.5 : 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.15),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  locked
-                                      ? Icons.lock_outline
-                                      : cleared
-                                          ? Icons.check_circle_outline
-                                          : Icons.play_circle_outline,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                              ),
-                              Text('Lvl $level', style: Theme.of(context).textTheme.labelLarge),
-                            ],
-                          ),
-                          const SizedBox(height: 12),
-                          Text(title, style: Theme.of(context).textTheme.titleMedium),
-                          const SizedBox(height: 4),
-                          Text(
-                            '${levelQuestions.length} questions · ${levelQuestions.first.difficulty.label}',
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
+              return LevelCard(
+                level: level,
+                title: title,
+                subtitle: '${levelQuestions.length} questions · ${levelQuestions.first.difficulty.label}',
+                locked: locked,
+                stars: stars,
+                onTap: locked
+                    ? () => ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(const SnackBar(content: Text('Clear the previous level to unlock this one.')))
+                    : () => context.push(
+                        RoutePaths.triviaPlay,
+                        extra: TriviaPlayArgs(
+                          category: 'All',
+                          difficulty: levelQuestions.first.difficulty,
+                          kidMode: kidMode,
+                          level: level,
+                        ),
                       ),
-                    ),
-                  ),
-                ),
               );
             },
           );

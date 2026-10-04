@@ -7,7 +7,16 @@ import '../../../core/router/route_paths.dart';
 import '../../../core/theme/settings_providers.dart';
 import 'trivia_play_screen.dart';
 
-const _categories = ['All', 'Old Testament', 'New Testament', 'Miracles', 'Parables', 'Prophets', 'Kings', 'Women of the Bible'];
+const _categories = [
+  'All',
+  'Old Testament',
+  'New Testament',
+  'Miracles',
+  'Parables',
+  'Prophets',
+  'Kings',
+  'Women of the Bible',
+];
 
 class TriviaSetupScreen extends ConsumerStatefulWidget {
   const TriviaSetupScreen({super.key});
@@ -34,11 +43,13 @@ class _TriviaSetupScreenState extends ConsumerState<TriviaSetupScreen> {
             spacing: 8,
             runSpacing: 8,
             children: _categories
-                .map((c) => ChoiceChip(
-                      label: Text(c),
-                      selected: _category == c,
-                      onSelected: (_) => setState(() => _category = c),
-                    ))
+                .map(
+                  (c) => ChoiceChip(
+                    label: Text(c),
+                    selected: _category == c,
+                    onSelected: (_) => setState(() => _category = c),
+                  ),
+                )
                 .toList(),
           ),
           const SizedBox(height: 24),
@@ -47,11 +58,13 @@ class _TriviaSetupScreenState extends ConsumerState<TriviaSetupScreen> {
           Wrap(
             spacing: 8,
             children: Difficulty.values
-                .map((d) => ChoiceChip(
-                      label: Text(d.label),
-                      selected: _difficulty == d,
-                      onSelected: (_) => setState(() => _difficulty = d),
-                    ))
+                .map(
+                  (d) => ChoiceChip(
+                    label: Text(d.label),
+                    selected: _difficulty == d,
+                    onSelected: (_) => setState(() => _difficulty = d),
+                  ),
+                )
                 .toList(),
           ),
           const SizedBox(height: 32),

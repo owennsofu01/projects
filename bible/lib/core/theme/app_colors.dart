@@ -22,6 +22,7 @@ class AppColors {
   static const warning = Color(0xFFC96A4C);
 
   static const Map<String, Color> gameAccents = {
+    'bible_reader': Color(0xFF3E6B5B),
     'trivia': Color(0xFF5B7A9D),
     'verse_completion': Color(0xFFC79A3E),
     'word_search': Color(0xFF6B9080),

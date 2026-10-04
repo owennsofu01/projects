@@ -16,8 +16,6 @@ enum BibleTranslation {
   final String fullName;
   final bool available;
 
-  static BibleTranslation fromCode(String code) => BibleTranslation.values.firstWhere(
-        (t) => t.code == code,
-        orElse: () => BibleTranslation.kjv,
-      );
+  static BibleTranslation fromCode(String code) =>
+      BibleTranslation.values.firstWhere((t) => t.code == code, orElse: () => BibleTranslation.kjv);
 }

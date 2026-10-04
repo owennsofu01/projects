@@ -2,6 +2,7 @@ import '../models/badge_model.dart';
 import '../models/game_result.dart';
 import '../models/user_profile.dart';
 import '../storage/local_cache_service.dart';
+import 'level_rules.dart';
 
 /// Local-first progress store. Every write lands in Hive immediately and is
 /// safe to call fully offline; [SyncService] is responsible for pushing
@@ -18,7 +19,17 @@ class ProgressRepository {
       saveProfile(fresh);
       return fresh;
     }
-    final profile = UserProfile.fromJson(Map<String, dynamic>.from(raw as Map));
+    final json = Map<String, dynamic>.from(raw as Map);
+    var profile = UserProfile.fromJson(json);
+    if (!json.containsKey('totalPoints')) {
+      // Profiles saved before totalPoints existed: backfill from the local
+      // result history so long-time players don't start the leaderboard at 0.
+      final total = LocalCacheService.gameResultsBox.values
+          .map((r) => (r as Map)['score'] as int? ?? 0)
+          .fold<int>(0, (sum, score) => sum + score);
+      profile = profile.copyWith(totalPoints: total);
+      saveProfile(profile);
+    }
     if (profile.uid != uid) {
       // A different account signed in (e.g. guest -> linked account keeps the
       // same uid via linkWithCredential, but a fresh sign-in on a shared
@@ -52,14 +63,13 @@ class ProgressRepository {
   /// bumps per-mode completion counts, marks the book complete if provided,
   /// and evaluates badge rules. Returns the updated profile and any newly
   /// earned badges so the UI can show a celebration.
-  ({UserProfile profile, List<BadgeModel> newBadges}) recordGameResult(
-    String uid,
-    GameResult result,
-  ) {
+  ({UserProfile profile, List<BadgeModel> newBadges}) recordGameResult(String uid, GameResult result) {
     LocalCacheService.gameResultsBox.put(result.id, result.toJson());
 
     var profile = loadProfile(uid);
     profile = _applyStreak(profile);
+
+    profile = profile.copyWith(totalPoints: profile.totalPoints + result.score);
 
     final modeCounts = Map<String, int>.from(profile.gamesCompletedByMode);
     modeCounts[result.gameModeId] = (modeCounts[result.gameModeId] ?? 0) + 1;
@@ -80,13 +90,28 @@ class ProgressRepository {
     return (profile: profile, newBadges: newBadges);
   }
 
-  /// Unlocks the level after [clearedLevel] if that's the current frontier
-  /// (i.e. the user just passed the highest level they had access to).
-  void unlockTriviaLevel(String uid, int clearedLevel) {
+  /// Saves the best star rating for [level] of [gameModeId] and reports
+  /// whether it was a new best and whether it opened the next level.
+  LevelOutcome recordLevel(String uid, {required String gameModeId, required int level, required int stars}) {
     final profile = loadProfile(uid);
-    if (clearedLevel >= profile.triviaUnlockedLevel) {
-      saveProfile(profile.copyWith(triviaUnlockedLevel: clearedLevel + 1));
+    final previousBest = profile.starsFor(gameModeId, level);
+    final unlockedBefore = profile.unlockedLevel(gameModeId);
+
+    var updated = profile;
+    if (stars > previousBest) {
+      final allStars = {for (final e in profile.levelStars.entries) e.key: Map<int, int>.from(e.value)};
+      allStars.putIfAbsent(gameModeId, () => {})[level] = stars;
+      updated = profile.copyWith(levelStars: allStars);
+      saveProfile(updated);
     }
+
+    final unlockedAfter = updated.unlockedLevel(gameModeId);
+    return LevelOutcome(
+      level: level,
+      stars: stars,
+      previousBest: previousBest,
+      unlockedLevel: unlockedAfter > unlockedBefore ? unlockedAfter : null,
+    );
   }
 
   UserProfile _applyStreak(UserProfile profile) {

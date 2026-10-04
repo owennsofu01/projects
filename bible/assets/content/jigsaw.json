@@ -1,4 +1,22 @@
 [
-  { "id": "jig_001", "sceneName": "Noah's Ark", "imageAsset": "assets/images/jigsaw/noahs_ark.png", "pieceCount": 24, "difficulty": "kids" },
-  { "id": "jig_002", "sceneName": "The Nativity", "imageAsset": "assets/images/jigsaw/nativity.png", "pieceCount": 48, "difficulty": "adult" }
+  {"id": "jig_001", "level": 1, "sceneName": "Creation", "scene": "creation", "pieceCount": 9, "reference": "Genesis 1:1"},
+  {"id": "jig_002", "level": 2, "sceneName": "Noah's Ark", "scene": "noahsArk", "pieceCount": 12, "reference": "Genesis 9:13"},
+  {"id": "jig_003", "level": 3, "sceneName": "Parting of the Red Sea", "scene": "redSea", "pieceCount": 12, "reference": "Exodus 14:21-22"},
+  {"id": "jig_004", "level": 4, "sceneName": "David and Goliath", "scene": "davidAndGoliath", "pieceCount": 16, "reference": "1 Samuel 17:49"},
+  {"id": "jig_005", "level": 5, "sceneName": "Jonah and the Great Fish", "scene": "jonah", "pieceCount": 16, "reference": "Jonah 1:17"},
+  {"id": "jig_006", "level": 6, "sceneName": "Daniel in the Lions' Den", "scene": "danielLions", "pieceCount": 20, "reference": "Daniel 6:22"},
+  {"id": "jig_007", "level": 7, "sceneName": "The Nativity", "scene": "nativity", "pieceCount": 20, "reference": "Luke 2:7"},
+  {"id": "jig_008", "level": 8, "sceneName": "Jesus Calms the Storm", "scene": "calmingStorm", "pieceCount": 24, "reference": "Mark 4:39"},
+  {"id": "jig_009", "level": 9, "sceneName": "Feeding the Five Thousand", "scene": "feedingFiveThousand", "pieceCount": 24, "reference": "John 6:9-11"},
+  {"id": "jig_010", "level": 10, "sceneName": "The Empty Tomb", "scene": "emptyTomb", "pieceCount": 30, "reference": "Matthew 28:6"},
+  {"id": "jig_011", "level": 11, "sceneName": "Creation", "scene": "creation", "pieceCount": 30, "reference": "Genesis 1:1"},
+  {"id": "jig_012", "level": 12, "sceneName": "Noah's Ark", "scene": "noahsArk", "pieceCount": 36, "reference": "Genesis 9:13"},
+  {"id": "jig_013", "level": 13, "sceneName": "Parting of the Red Sea", "scene": "redSea", "pieceCount": 36, "reference": "Exodus 14:21-22"},
+  {"id": "jig_014", "level": 14, "sceneName": "David and Goliath", "scene": "davidAndGoliath", "pieceCount": 42, "reference": "1 Samuel 17:49"},
+  {"id": "jig_015", "level": 15, "sceneName": "Jonah and the Great Fish", "scene": "jonah", "pieceCount": 42, "reference": "Jonah 1:17"},
+  {"id": "jig_016", "level": 16, "sceneName": "Daniel in the Lions' Den", "scene": "danielLions", "pieceCount": 48, "reference": "Daniel 6:22"},
+  {"id": "jig_017", "level": 17, "sceneName": "The Nativity", "scene": "nativity", "pieceCount": 48, "reference": "Luke 2:7"},
+  {"id": "jig_018", "level": 18, "sceneName": "Jesus Calms the Storm", "scene": "calmingStorm", "pieceCount": 56, "reference": "Mark 4:39"},
+  {"id": "jig_019", "level": 19, "sceneName": "Feeding the Five Thousand", "scene": "feedingFiveThousand", "pieceCount": 56, "reference": "John 6:9-11"},
+  {"id": "jig_020", "level": 20, "sceneName": "The Empty Tomb", "scene": "emptyTomb", "pieceCount": 64, "reference": "Matthew 28:6"}
 ]

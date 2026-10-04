@@ -2,11 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/models/difficulty.dart';
+import '../../compete/models/compete_models.dart';
 import '../providers/trivia_session_provider.dart';
 import 'trivia_result_screen.dart';
 
 class TriviaPlayArgs {
-  const TriviaPlayArgs({required this.category, required this.difficulty, required this.kidMode, this.level});
+  const TriviaPlayArgs({
+    required this.category,
+    required this.difficulty,
+    required this.kidMode,
+    this.level,
+    this.competition,
+  });
+
+  /// A daily or friend challenge round with a fixed, shared question set.
+  const TriviaPlayArgs.competition(CompetitionContext this.competition)
+    : category = 'All',
+      difficulty = Difficulty.adult,
+      kidMode = false,
+      level = null;
 
   final String category;
   final Difficulty difficulty;
@@ -14,6 +28,8 @@ class TriviaPlayArgs {
 
   /// Set when launched from the Level Select screen; see [TriviaConfig.level].
   final int? level;
+
+  final CompetitionContext? competition;
 }
 
 class TriviaPlayScreen extends ConsumerWidget {
@@ -28,6 +44,7 @@ class TriviaPlayScreen extends ConsumerWidget {
       difficulty: args.difficulty,
       kidMode: args.kidMode,
       level: args.level,
+      seed: args.competition?.seed,
     );
     final state = ref.watch(triviaSessionProvider(config));
     final notifier = ref.read(triviaSessionProvider(config).notifier);
@@ -44,7 +61,7 @@ class TriviaPlayScreen extends ConsumerWidget {
     }
 
     if (state.status == TriviaStatus.finished) {
-      return TriviaResultScreen(state: state, level: args.level);
+      return TriviaResultScreen(state: state, level: args.level, competition: args.competition);
     }
 
     final question = state.currentQuestion!;
@@ -66,13 +83,14 @@ class TriviaPlayScreen extends ConsumerWidget {
           children: [
             LinearProgressIndicator(value: (state.currentIndex + 1) / state.totalCount),
             const SizedBox(height: 8),
-            Text('Score: ${state.score}${state.streak >= 3 ? '  🔥 x${state.streak}' : ''}',
-                style: Theme.of(context).textTheme.labelLarge),
+            Text(
+              'Score: ${state.score}${state.streak >= 3 ? '  🔥 x${state.streak}' : ''}',
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
             const SizedBox(height: 24),
             Text(question.question, style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 8),
-            Text('${question.category} · ${question.subcategory}',
-                style: Theme.of(context).textTheme.bodySmall),
+            Text('${question.category} · ${question.subcategory}', style: Theme.of(context).textTheme.bodySmall),
             const SizedBox(height: 24),
             ...question.options.map((option) {
               final isSelected = state.selectedAnswer == option;
@@ -106,8 +124,10 @@ class TriviaPlayScreen extends ConsumerWidget {
             }),
             if (state.status == TriviaStatus.answered) ...[
               const SizedBox(height: 8),
-              Text('Reference: ${question.reference} (${question.translation})',
-                  style: Theme.of(context).textTheme.bodySmall),
+              Text(
+                'Reference: ${question.reference} (${question.translation})',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
               const Spacer(),
               FilledButton(
                 onPressed: notifier.nextQuestion,

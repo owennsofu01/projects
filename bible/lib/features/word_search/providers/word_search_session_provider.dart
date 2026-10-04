@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/audio/sound_service.dart';
 import '../data/word_search_content_loader.dart';
+import '../data/word_search_levels.dart';
 import '../models/word_search_grid.dart';
 import '../models/word_search_puzzle.dart';
 
@@ -13,6 +15,8 @@ class WordSearchState {
     this.grid,
     this.foundWords = const {},
     this.selection = const [],
+    this.startedAt,
+    this.elapsed = Duration.zero,
   });
 
   final WordSearchStatus status;
@@ -20,6 +24,10 @@ class WordSearchState {
   final WordSearchGrid? grid;
   final Set<String> foundWords;
   final List<Cell> selection;
+  final DateTime? startedAt;
+
+  /// Time taken, set when the puzzle is finished.
+  final Duration elapsed;
 
   bool get isComplete => grid != null && foundWords.length == grid!.placements.length;
 
@@ -29,28 +37,40 @@ class WordSearchState {
     WordSearchGrid? grid,
     Set<String>? foundWords,
     List<Cell>? selection,
-  }) =>
-      WordSearchState(
-        status: status ?? this.status,
-        puzzle: puzzle ?? this.puzzle,
-        grid: grid ?? this.grid,
-        foundWords: foundWords ?? this.foundWords,
-        selection: selection ?? this.selection,
-      );
+    DateTime? startedAt,
+    Duration? elapsed,
+  }) => WordSearchState(
+    status: status ?? this.status,
+    puzzle: puzzle ?? this.puzzle,
+    grid: grid ?? this.grid,
+    foundWords: foundWords ?? this.foundWords,
+    selection: selection ?? this.selection,
+    startedAt: startedAt ?? this.startedAt,
+    elapsed: elapsed ?? this.elapsed,
+  );
 }
 
+/// One play-through of a level. [attempt] keeps a replay from reusing the
+/// previous round's (finished) provider instance.
+typedef WordSearchRound = ({int level, int attempt});
+
 class WordSearchSessionNotifier extends StateNotifier<WordSearchState> {
-  WordSearchSessionNotifier(this.puzzleId) : super(const WordSearchState()) {
+  WordSearchSessionNotifier(this.round) : super(const WordSearchState()) {
     _init();
   }
 
-  final String puzzleId;
+  final WordSearchRound round;
 
   Future<void> _init() async {
-    final all = await WordSearchContentLoader.load();
-    final puzzle = all.firstWhere((p) => p.id == puzzleId, orElse: () => all.first);
-    final grid = WordSearchGrid.generate(puzzle);
-    state = state.copyWith(status: WordSearchStatus.playing, puzzle: puzzle, grid: grid);
+    final puzzles = WordSearchLevels.ordered(await WordSearchContentLoader.load());
+    final puzzle = puzzles[(round.level - 1).clamp(0, puzzles.length - 1)];
+    final grid = WordSearchGrid.generateComplete(
+      puzzle,
+      size: WordSearchLevels.gridSizeFor(round.level),
+      directions: WordSearchLevels.directionsFor(round.level),
+    );
+    if (!mounted) return;
+    state = state.copyWith(status: WordSearchStatus.playing, puzzle: puzzle, grid: grid, startedAt: DateTime.now());
   }
 
   void updateSelection(Cell start, Cell end) {
@@ -72,7 +92,13 @@ class WordSearchSessionNotifier extends StateNotifier<WordSearchState> {
         final found = {...state.foundWords, placement.word};
         state = state.copyWith(foundWords: found, selection: []);
         if (found.length == grid.placements.length) {
-          state = state.copyWith(status: WordSearchStatus.finished);
+          SoundService.play(SfxSound.complete);
+          state = state.copyWith(
+            status: WordSearchStatus.finished,
+            elapsed: DateTime.now().difference(state.startedAt ?? DateTime.now()),
+          );
+        } else {
+          SoundService.play(SfxSound.correct);
         }
         return;
       }
@@ -110,6 +136,6 @@ class WordSearchSessionNotifier extends StateNotifier<WordSearchState> {
 }
 
 final wordSearchSessionProvider = StateNotifierProvider.autoDispose
-    .family<WordSearchSessionNotifier, WordSearchState, String>(
-  (ref, puzzleId) => WordSearchSessionNotifier(puzzleId),
-);
+    .family<WordSearchSessionNotifier, WordSearchState, WordSearchRound>(
+      (ref, round) => WordSearchSessionNotifier(round),
+    );

@@ -1,5 +1,164 @@
-[
-  { "id": "map_001", "name": "Jerusalem", "description": "The holy city, site of the Temple", "xPercent": 0.52, "yPercent": 0.41 },
-  { "id": "map_002", "name": "Bethlehem", "description": "Birthplace of Jesus and King David", "xPercent": 0.51, "yPercent": 0.44 },
-  { "id": "map_003", "name": "Egypt", "description": "Where Israel was enslaved, then delivered", "xPercent": 0.25, "yPercent": 0.55 }
-]
+{
+  "levels": [
+    {
+      "level": 1, "title": "The Big Picture",
+      "region": { "west": 10, "east": 52, "south": 22, "north": 44 },
+      "locations": [
+        { "id": "map_001", "name": "Rome", "description": "Capital of the empire; Paul wrote a letter to the believers here", "reference": "Romans 1:7", "lat": 41.89, "lon": 12.49 },
+        { "id": "map_002", "name": "Athens", "description": "Paul preached about the 'unknown god' here", "reference": "Acts 17:22-23", "lat": 37.98, "lon": 23.73 },
+        { "id": "map_003", "name": "Crete", "description": "Island where Paul left Titus to appoint elders", "reference": "Titus 1:5", "lat": 35.24, "lon": 24.9 },
+        { "id": "map_004", "name": "Ephesus", "description": "Paul taught here for two years", "reference": "Acts 19:10", "lat": 37.94, "lon": 27.34 },
+        { "id": "map_005", "name": "Egypt", "description": "Where Joseph ruled and Israel was later enslaved", "reference": "Genesis 41:41", "lat": 29.85, "lon": 31.25 },
+        { "id": "map_006", "name": "Mount Sinai", "description": "Moses received the Law here (traditional site)", "reference": "Exodus 19:20", "lat": 28.54, "lon": 33.98 },
+        { "id": "map_007", "name": "Jerusalem", "description": "The city of David, where the Temple stood", "reference": "2 Chronicles 3:1", "lat": 31.78, "lon": 35.23 },
+        { "id": "map_008", "name": "Nineveh", "description": "The great city Jonah was sent to warn", "reference": "Jonah 3:3", "lat": 36.36, "lon": 43.15 },
+        { "id": "map_009", "name": "Babylon", "description": "Daniel was carried here into exile", "reference": "Daniel 1:1-2", "lat": 32.54, "lon": 44.42 },
+        { "id": "map_010", "name": "Shushan (Susa)", "description": "Persian royal city where Esther became queen", "reference": "Esther 2:16-17", "lat": 32.19, "lon": 48.26 }
+      ]
+    },
+    {
+      "level": 2, "title": "Holy Land Landmarks",
+      "region": { "west": 34.1, "east": 36.4, "south": 30.9, "north": 33.6 },
+      "locations": [
+        { "id": "map_011", "name": "Jerusalem", "description": "Solomon built the Temple on Mount Moriah here", "reference": "2 Chronicles 3:1", "lat": 31.78, "lon": 35.23 },
+        { "id": "map_012", "name": "Sea of Galilee", "description": "Jesus called fishermen from its shores", "reference": "Matthew 4:18", "lat": 32.82, "lon": 35.59 },
+        { "id": "map_013", "name": "Dead Sea", "description": "Called 'the salt sea' in Scripture", "reference": "Genesis 14:3", "lat": 31.5, "lon": 35.48 },
+        { "id": "map_014", "name": "Mount Carmel", "description": "Elijah faced the prophets of Baal here", "reference": "1 Kings 18:19-20", "lat": 32.73, "lon": 35.05 },
+        { "id": "map_015", "name": "Mount Hermon", "description": "Its dew is a picture of unity among brothers", "reference": "Psalms 133:3", "lat": 33.42, "lon": 35.86 },
+        { "id": "map_016", "name": "Beersheba", "description": "Abraham dug a well and made a covenant here", "reference": "Genesis 21:31", "lat": 31.25, "lon": 34.79 },
+        { "id": "map_017", "name": "Jordan River", "description": "Israel crossed it on dry ground", "reference": "Joshua 3:17", "lat": 32.3, "lon": 35.56 },
+        { "id": "map_018", "name": "Joppa", "description": "Jonah boarded a ship here to flee from God", "reference": "Jonah 1:3", "lat": 32.05, "lon": 34.75 },
+        { "id": "map_019", "name": "Gaza", "description": "Samson was imprisoned here", "reference": "Judges 16:21", "lat": 31.5, "lon": 34.47 },
+        { "id": "map_020", "name": "Mount Tabor", "description": "Deborah sent Barak here to gather his army", "reference": "Judges 4:6", "lat": 32.69, "lon": 35.39 }
+      ]
+    },
+    {
+      "level": 3, "title": "Life of Jesus",
+      "region": { "west": 34.6, "east": 36.1, "south": 31.4, "north": 33.7 },
+      "locations": [
+        { "id": "map_021", "name": "Nazareth", "description": "Jesus grew up here and read in its synagogue", "reference": "Luke 4:16", "lat": 32.7, "lon": 35.3 },
+        { "id": "map_022", "name": "Capernaum", "description": "Jesus' home base by the Sea of Galilee", "reference": "Matthew 4:13", "lat": 32.88, "lon": 35.57 },
+        { "id": "map_023", "name": "Bethlehem", "description": "Jesus was born in the city of David", "reference": "Luke 2:4-7", "lat": 31.7, "lon": 35.2 },
+        { "id": "map_024", "name": "Jericho", "description": "Zacchaeus climbed a tree here to see Jesus", "reference": "Luke 19:1-4", "lat": 31.87, "lon": 35.44 },
+        { "id": "map_025", "name": "Caesarea Philippi", "description": "Peter confessed, 'Thou art the Christ'", "reference": "Matthew 16:13-16", "lat": 33.25, "lon": 35.69 },
+        { "id": "map_026", "name": "Sychar", "description": "Jesus met a Samaritan woman at Jacob's well", "reference": "John 4:5-7", "lat": 32.21, "lon": 35.28 },
+        { "id": "map_027", "name": "Gadara", "description": "Jesus sent demons into a herd of swine nearby", "reference": "Matthew 8:28-32", "lat": 32.65, "lon": 35.68 },
+        { "id": "map_028", "name": "Tyre", "description": "A Canaanite woman begged Jesus to heal her daughter near here", "reference": "Matthew 15:21-22", "lat": 33.27, "lon": 35.2 },
+        { "id": "map_029", "name": "Sidon", "description": "Jesus passed through on His way back to Galilee", "reference": "Mark 7:31", "lat": 33.56, "lon": 35.37 },
+        { "id": "map_030", "name": "Emmaus", "description": "The risen Jesus walked with two disciples on the road here", "reference": "Luke 24:13-15", "lat": 31.84, "lon": 34.99 }
+      ]
+    },
+    {
+      "level": 4, "title": "Abraham & the Patriarchs",
+      "region": { "west": 29, "east": 48, "south": 27.5, "north": 41 },
+      "locations": [
+        { "id": "map_031", "name": "Ur of the Chaldees", "description": "Abram's family set out from here", "reference": "Genesis 11:31", "lat": 30.96, "lon": 46.1 },
+        { "id": "map_032", "name": "Haran", "description": "Abram lived here until God called him onward", "reference": "Genesis 12:4", "lat": 36.87, "lon": 39.03 },
+        { "id": "map_033", "name": "Babel", "description": "People built a tower here and their language was confused", "reference": "Genesis 11:4-9", "lat": 32.54, "lon": 44.42 },
+        { "id": "map_034", "name": "Mount Ararat", "description": "The ark came to rest on these mountains", "reference": "Genesis 8:4", "lat": 39.7, "lon": 44.3 },
+        { "id": "map_035", "name": "Shechem", "description": "God first promised the land to Abram here", "reference": "Genesis 12:6-7", "lat": 32.21, "lon": 35.28 },
+        { "id": "map_036", "name": "Hebron", "description": "Abraham buried Sarah in the cave of Machpelah", "reference": "Genesis 23:19", "lat": 31.53, "lon": 35.1 },
+        { "id": "map_037", "name": "Egypt", "description": "Abram went down here during a famine", "reference": "Genesis 12:10", "lat": 29.85, "lon": 31.25 },
+        { "id": "map_038", "name": "Goshen", "description": "Jacob's family settled in this part of Egypt", "reference": "Genesis 47:27", "lat": 30.75, "lon": 31.85 },
+        { "id": "map_039", "name": "Damascus", "description": "Home of Eliezer, Abram's steward", "reference": "Genesis 15:2", "lat": 33.51, "lon": 36.29 },
+        { "id": "map_040", "name": "Mount Seir", "description": "Esau settled in these hills of Edom", "reference": "Genesis 36:8", "lat": 30.5, "lon": 35.6 }
+      ]
+    },
+    {
+      "level": 5, "title": "The Exodus",
+      "region": { "west": 30.5, "east": 37, "south": 27.5, "north": 32.5 },
+      "locations": [
+        { "id": "map_041", "name": "Rameses", "description": "Israel set out from here on the night of the Passover", "reference": "Exodus 12:37", "lat": 30.8, "lon": 31.83 },
+        { "id": "map_042", "name": "Succoth", "description": "Israel's first camp after leaving Rameses", "reference": "Numbers 33:5", "lat": 30.55, "lon": 32.1 },
+        { "id": "map_043", "name": "Red Sea crossing", "description": "The waters parted for Israel (traditional site)", "reference": "Exodus 14:21-22", "lat": 29.95, "lon": 32.55 },
+        { "id": "map_044", "name": "Mount Sinai", "description": "God gave the Ten Commandments (traditional site)", "reference": "Exodus 20:1-3", "lat": 28.54, "lon": 33.98 },
+        { "id": "map_045", "name": "Ezion-geber", "description": "A camp at the head of the gulf", "reference": "Numbers 33:35", "lat": 29.55, "lon": 34.95 },
+        { "id": "map_046", "name": "Kadesh-barnea", "description": "The twelve spies reported back here", "reference": "Numbers 13:26", "lat": 30.65, "lon": 34.42 },
+        { "id": "map_047", "name": "Mount Hor", "description": "Aaron died on top of this mountain", "reference": "Numbers 20:28", "lat": 30.32, "lon": 35.41 },
+        { "id": "map_048", "name": "Edom", "description": "Its king refused to let Israel pass through", "reference": "Numbers 20:14-21", "lat": 30.73, "lon": 35.61 },
+        { "id": "map_049", "name": "Mount Nebo", "description": "Moses viewed the promised land before he died", "reference": "Deuteronomy 34:1", "lat": 31.77, "lon": 35.73 },
+        { "id": "map_050", "name": "Jericho", "description": "The walls fell after Israel marched around them", "reference": "Joshua 6:20", "lat": 31.87, "lon": 35.44 }
+      ]
+    },
+    {
+      "level": 6, "title": "Kings & Kingdoms",
+      "region": { "west": 34.3, "east": 36.3, "south": 31.2, "north": 33.5 },
+      "locations": [
+        { "id": "map_051", "name": "Samaria", "description": "Omri built it as the capital of the northern kingdom", "reference": "1 Kings 16:24", "lat": 32.28, "lon": 35.19 },
+        { "id": "map_052", "name": "Jezreel", "description": "Naboth's vineyard was here, beside Ahab's palace", "reference": "1 Kings 21:1", "lat": 32.56, "lon": 35.33 },
+        { "id": "map_053", "name": "Dan", "description": "Jeroboam set up a golden calf at the northern border", "reference": "1 Kings 12:29", "lat": 33.25, "lon": 35.65 },
+        { "id": "map_054", "name": "Bethel", "description": "Jeroboam set up the other golden calf here", "reference": "1 Kings 12:29", "lat": 31.93, "lon": 35.24 },
+        { "id": "map_055", "name": "Hebron", "description": "David reigned over Judah here for seven years", "reference": "2 Samuel 2:11", "lat": 31.53, "lon": 35.1 },
+        { "id": "map_056", "name": "Gath", "description": "Goliath's home city", "reference": "1 Samuel 17:4", "lat": 31.7, "lon": 34.85 },
+        { "id": "map_057", "name": "Lachish", "description": "Hezekiah sent tribute to the king of Assyria here", "reference": "2 Kings 18:14", "lat": 31.56, "lon": 34.85 },
+        { "id": "map_058", "name": "Rabbah", "description": "Joab besieged this Ammonite city", "reference": "2 Samuel 12:26", "lat": 31.95, "lon": 35.93 },
+        { "id": "map_059", "name": "Megiddo", "description": "King Josiah was killed here in battle", "reference": "2 Kings 23:29", "lat": 32.58, "lon": 35.18 },
+        { "id": "map_060", "name": "Mount Gilboa", "description": "Saul and Jonathan fell here", "reference": "1 Samuel 31:1-2", "lat": 32.45, "lon": 35.42 }
+      ]
+    },
+    {
+      "level": 7, "title": "Prophets of Israel",
+      "region": { "west": 34.5, "east": 36.8, "south": 31.3, "north": 33.8 },
+      "locations": [
+        { "id": "map_061", "name": "Mount Carmel", "description": "Fire fell from heaven on Elijah's altar", "reference": "1 Kings 18:38", "lat": 32.67, "lon": 35.08 },
+        { "id": "map_062", "name": "Zarephath", "description": "A widow's flour and oil never ran out", "reference": "1 Kings 17:9-16", "lat": 33.46, "lon": 35.3 },
+        { "id": "map_063", "name": "Anathoth", "description": "Jeremiah's hometown", "reference": "Jeremiah 1:1", "lat": 31.81, "lon": 35.26 },
+        { "id": "map_064", "name": "Tekoa", "description": "Amos tended flocks here before he prophesied", "reference": "Amos 1:1", "lat": 31.64, "lon": 35.24 },
+        { "id": "map_065", "name": "Shunem", "description": "Elisha raised a woman's son to life here", "reference": "2 Kings 4:8", "lat": 32.61, "lon": 35.33 },
+        { "id": "map_066", "name": "Dothan", "description": "Elisha's servant saw horses and chariots of fire", "reference": "2 Kings 6:13-17", "lat": 32.42, "lon": 35.24 },
+        { "id": "map_067", "name": "Moresheth-gath", "description": "Micah's hometown", "reference": "Micah 1:1", "lat": 31.62, "lon": 34.9 },
+        { "id": "map_068", "name": "Gath-hepher", "description": "Jonah's hometown", "reference": "2 Kings 14:25", "lat": 32.74, "lon": 35.32 },
+        { "id": "map_069", "name": "Jericho", "description": "Elisha healed the city's bad water", "reference": "2 Kings 2:19-22", "lat": 31.87, "lon": 35.44 },
+        { "id": "map_070", "name": "Damascus", "description": "Elisha foretold Hazael's kingship here", "reference": "2 Kings 8:7-13", "lat": 33.51, "lon": 36.29 }
+      ]
+    },
+    {
+      "level": 8, "title": "Exile & Empires",
+      "region": { "west": 30, "east": 54, "south": 27, "north": 40 },
+      "locations": [
+        { "id": "map_071", "name": "Nineveh", "description": "Capital of Assyria", "reference": "Jonah 1:2", "lat": 36.36, "lon": 43.15 },
+        { "id": "map_072", "name": "Babylon", "description": "Judah was carried away captive here", "reference": "2 Kings 24:15", "lat": 32.54, "lon": 44.42 },
+        { "id": "map_073", "name": "Shushan (Susa)", "description": "Nehemiah served the Persian king here", "reference": "Nehemiah 1:1", "lat": 32.19, "lon": 48.26 },
+        { "id": "map_074", "name": "Achmetha (Ecbatana)", "description": "Cyrus's decree to rebuild the Temple was found here", "reference": "Ezra 6:2-3", "lat": 34.8, "lon": 48.52 },
+        { "id": "map_075", "name": "River Chebar", "description": "Ezekiel saw visions of God among the exiles here", "reference": "Ezekiel 1:1", "lat": 32.13, "lon": 45.23 },
+        { "id": "map_076", "name": "Carchemish", "description": "Nebuchadnezzar defeated Pharaoh Necho here", "reference": "Jeremiah 46:2", "lat": 36.83, "lon": 38.01 },
+        { "id": "map_077", "name": "Riblah", "description": "Zedekiah was brought before the king of Babylon here", "reference": "2 Kings 25:6", "lat": 34.47, "lon": 36.56 },
+        { "id": "map_078", "name": "Jerusalem", "description": "The Temple was burned by Nebuzaradan", "reference": "2 Kings 25:9", "lat": 31.78, "lon": 35.23 },
+        { "id": "map_079", "name": "Tahpanhes", "description": "Jeremiah was taken here in Egypt", "reference": "Jeremiah 43:7", "lat": 30.87, "lon": 32.17 },
+        { "id": "map_080", "name": "Tyre", "description": "Ezekiel prophesied against this proud sea city", "reference": "Ezekiel 26:3", "lat": 33.27, "lon": 35.2 }
+      ]
+    },
+    {
+      "level": 9, "title": "Paul's Missionary Journeys",
+      "region": { "west": 19, "east": 38, "south": 30.5, "north": 42.5 },
+      "locations": [
+        { "id": "map_081", "name": "Tarsus", "description": "Paul's birthplace in Cilicia", "reference": "Acts 22:3", "lat": 36.92, "lon": 34.89 },
+        { "id": "map_082", "name": "Antioch in Syria", "description": "Disciples were first called Christians here", "reference": "Acts 11:26", "lat": 36.2, "lon": 36.16 },
+        { "id": "map_083", "name": "Salamis, Cyprus", "description": "Paul and Barnabas first preached on this island", "reference": "Acts 13:4-5", "lat": 35.18, "lon": 33.9 },
+        { "id": "map_084", "name": "Antioch in Pisidia", "description": "Paul preached a long sermon in the synagogue here", "reference": "Acts 13:14-16", "lat": 38.31, "lon": 31.19 },
+        { "id": "map_085", "name": "Lystra", "description": "Paul was stoned and left for dead here", "reference": "Acts 14:8-19", "lat": 37.58, "lon": 32.45 },
+        { "id": "map_086", "name": "Philippi", "description": "Lydia believed and a jailer was converted", "reference": "Acts 16:12-14", "lat": 41.01, "lon": 24.29 },
+        { "id": "map_087", "name": "Athens", "description": "Paul spoke on Mars' hill", "reference": "Acts 17:22", "lat": 37.98, "lon": 23.73 },
+        { "id": "map_088", "name": "Corinth", "description": "Paul made tents with Aquila and Priscilla", "reference": "Acts 18:1-3", "lat": 37.91, "lon": 22.88 },
+        { "id": "map_089", "name": "Ephesus", "description": "A riot broke out over the goddess Diana", "reference": "Acts 19:28-29", "lat": 37.94, "lon": 27.34 },
+        { "id": "map_090", "name": "Damascus", "description": "Saul was blinded on the road to this city", "reference": "Acts 9:3-8", "lat": 33.51, "lon": 36.29 }
+      ]
+    },
+    {
+      "level": 10, "title": "Voyage to Rome & the Seven Churches",
+      "region": { "west": 11, "east": 37.5, "south": 31, "north": 43 },
+      "locations": [
+        { "id": "map_091", "name": "Rome", "description": "Paul lived here under guard, preaching boldly", "reference": "Acts 28:16", "lat": 41.89, "lon": 12.49 },
+        { "id": "map_092", "name": "Melita (Malta)", "description": "Paul was shipwrecked and bitten by a viper here", "reference": "Acts 28:1-3", "lat": 35.9, "lon": 14.45 },
+        { "id": "map_093", "name": "Syracuse", "description": "Paul's ship stayed here three days", "reference": "Acts 28:12", "lat": 37.08, "lon": 15.29 },
+        { "id": "map_094", "name": "Puteoli", "description": "Paul found believers here and stayed seven days", "reference": "Acts 28:13-14", "lat": 40.82, "lon": 14.12 },
+        { "id": "map_095", "name": "Fair Havens, Crete", "description": "Paul warned the voyage would bring disaster", "reference": "Acts 27:8-10", "lat": 34.93, "lon": 24.8 },
+        { "id": "map_096", "name": "Caesarea", "description": "Paul was kept prisoner here before sailing for Rome", "reference": "Acts 25:4", "lat": 32.5, "lon": 34.89 },
+        { "id": "map_097", "name": "Myra", "description": "Paul changed ships here to an Alexandrian vessel", "reference": "Acts 27:5-6", "lat": 36.26, "lon": 29.98 },
+        { "id": "map_098", "name": "Patmos", "description": "John received the Revelation on this island", "reference": "Revelation 1:9", "lat": 37.31, "lon": 26.55 },
+        { "id": "map_099", "name": "Laodicea", "description": "The lukewarm church", "reference": "Revelation 3:14-16", "lat": 37.84, "lon": 29.11 },
+        { "id": "map_100", "name": "Smyrna", "description": "The church told to be faithful unto death", "reference": "Revelation 2:8-10", "lat": 38.42, "lon": 27.14 }
+      ]
+    }
+  ]
+}

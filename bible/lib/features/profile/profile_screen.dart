@@ -27,7 +27,11 @@ class ProfileScreen extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              StatPill(icon: Icons.local_fire_department_outlined, label: 'Current streak', value: '${profile.currentStreak}'),
+              StatPill(
+                icon: Icons.local_fire_department_outlined,
+                label: 'Current streak',
+                value: '${profile.currentStreak}',
+              ),
               StatPill(icon: Icons.military_tech_outlined, label: 'Longest streak', value: '${profile.longestStreak}'),
               StatPill(icon: Icons.emoji_events_outlined, label: 'Badges', value: '${profile.badges.length}'),
             ],
@@ -54,9 +58,17 @@ class ProfileScreen extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 12),
-          _BookSection(title: 'Old Testament', books: BibleBooks.oldTestament, completed: profile.completedBooks),
+          _BookSection(
+            title: 'Old Testament',
+            books: BibleBooks.oldTestament.map((b) => b.name).toList(),
+            completed: profile.completedBooks,
+          ),
           const SizedBox(height: 16),
-          _BookSection(title: 'New Testament', books: BibleBooks.newTestament, completed: profile.completedBooks),
+          _BookSection(
+            title: 'New Testament',
+            books: BibleBooks.newTestament.map((b) => b.name).toList(),
+            completed: profile.completedBooks,
+          ),
         ],
       ),
     );

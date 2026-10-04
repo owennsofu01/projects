@@ -38,6 +38,79 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // ---------------------------------------------------------------- Compete
+    // Scores below are client-reported. The rules bound them and stop replays,
+    // but a Cloud Function is still needed to make cheating impossible — see
+    // project follow-ups.
+
+    function validName(name) {
+      return name is string && name.size() >= 1 && name.size() <= 20;
+    }
+
+    // Max trivia score for one competition round: 10 questions x 15 points.
+    function validRoundScore(score) {
+      return score is int && score >= 0 && score <= 150;
+    }
+
+    // players/{uid} — public leaderboard profile (name, total score, friend code).
+    match /players/{uid} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(uid)
+        && request.resource.data.uid == uid
+        && validName(request.resource.data.displayName)
+        && request.resource.data.totalScore is int
+        && request.resource.data.totalScore >= 0;
+      allow update: if isOwner(uid)
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['displayName', 'totalScore', 'dailyStreak', 'updatedAt'])
+        && validName(request.resource.data.displayName)
+        && request.resource.data.totalScore is int
+        && request.resource.data.totalScore >= resource.data.totalScore;
+      allow delete: if false;
+
+      // players/{uid}/friends/{friendUid} — adding a friend writes both sides,
+      // so a user may also create their own uid's doc in someone else's list.
+      match /friends/{friendUid} {
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid) || isOwner(friendUid);
+        allow delete: if isOwner(uid);
+        allow update: if false;
+      }
+    }
+
+    // friendCodes/{code} — maps a shareable code to a uid; claimed once, never reassigned.
+    match /friendCodes/{code} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    // daily/{dayKey}/entries/{uid} — one attempt per player per UTC day.
+    match /daily/{dayKey}/entries/{uid} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(uid)
+        && request.resource.data.uid == uid
+        && validName(request.resource.data.displayName)
+        && validRoundScore(request.resource.data.score);
+      allow update, delete: if false;
+    }
+
+    // challenges/{code} — head-to-head rounds. Anyone with the code can read it
+    // and add their own result exactly once; nothing else can change.
+    match /challenges/{code} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn()
+        && request.resource.data.createdBy == request.auth.uid
+        && request.resource.data.seed is int
+        && request.resource.data.results.size() == 0;
+      allow update: if isSignedIn()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['results'])
+        && request.resource.data.results.diff(resource.data.results).affectedKeys().hasOnly([request.auth.uid])
+        && !(request.auth.uid in resource.data.results)
+        && validRoundScore(request.resource.data.results[request.auth.uid].score);
+      allow delete: if false;
+    }
+
     // content/{...} — server-hosted game content (question packs, seasonal packs).
     // Read-only for all signed-in clients; writes happen only from the Firebase console
     // or an admin tool, never from the app.

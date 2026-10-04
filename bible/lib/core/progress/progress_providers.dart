@@ -5,6 +5,7 @@ import '../models/badge_model.dart';
 import '../models/game_result.dart';
 import '../models/user_profile.dart';
 import '../sync/sync_service.dart';
+import 'level_rules.dart';
 import 'progress_repository.dart';
 
 final progressRepositoryProvider = Provider<ProgressRepository>((ref) => ProgressRepository());
@@ -44,12 +45,41 @@ class UserProfileNotifier extends StateNotifier<UserProfile?> {
     _ref.read(syncServiceProvider).syncNow();
   }
 
-  void unlockTriviaLevel(int clearedLevel) {
+  void setDisplayName(String displayName) {
     final uid = _ref.read(currentUidProvider);
     if (uid == null) return;
-    _ref.read(progressRepositoryProvider).unlockTriviaLevel(uid, clearedLevel);
-    state = _ref.read(progressRepositoryProvider).loadProfile(uid);
+    final repo = _ref.read(progressRepositoryProvider);
+    final updated = repo.loadProfile(uid).copyWith(displayName: displayName);
+    repo.saveProfile(updated);
+    state = updated;
     _ref.read(syncServiceProvider).syncNow();
+  }
+
+  /// Records a finished level round under the shared star rules. Returns
+  /// null only if no user is signed in yet.
+  LevelOutcome? recordLevel({
+    required String gameModeId,
+    required int level,
+    required int correct,
+    required int total,
+  }) {
+    return recordLevelStars(
+      gameModeId: gameModeId,
+      level: level,
+      stars: LevelRules.starsFor(correct: correct, total: total),
+    );
+  }
+
+  /// For modes that can't be failed (puzzles that only end once solved), so
+  /// stars grade *how well* it was solved rather than accuracy.
+  LevelOutcome? recordLevelStars({required String gameModeId, required int level, required int stars}) {
+    final uid = _ref.read(currentUidProvider);
+    if (uid == null) return null;
+    final repo = _ref.read(progressRepositoryProvider);
+    final outcome = repo.recordLevel(uid, gameModeId: gameModeId, level: level, stars: stars);
+    state = repo.loadProfile(uid);
+    _ref.read(syncServiceProvider).syncNow();
+    return outcome;
   }
 }
 

@@ -1,5 +1,253 @@
 [
-  { "id": "cw_001", "clue": "First man, formed from dust", "answer": "ADAM", "direction": "across", "startRow": 0, "startCol": 0 },
-  { "id": "cw_002", "clue": "Garden where Adam and Eve lived", "answer": "EDEN", "direction": "down", "startRow": 0, "startCol": 0 },
-  { "id": "cw_003", "clue": "He built an ark", "answer": "NOAH", "direction": "across", "startRow": 2, "startCol": 1 }
+  {
+    "id": "cw_creation",
+    "theme": "Creation",
+    "difficulty": "kids",
+    "entries": [
+      { "clue": "The first man", "answer": "ADAM" },
+      { "clue": "The first woman", "answer": "EVE" },
+      { "clue": "The garden home of Adam and Eve", "answer": "EDEN" },
+      { "clue": "What God created on day one", "answer": "LIGHT" },
+      { "clue": "The planet God made", "answer": "EARTH" },
+      { "clue": "Creator of heaven and earth", "answer": "GOD" }
+    ]
+  },
+  {
+    "id": "cw_noahs_ark",
+    "theme": "Noah's Ark",
+    "difficulty": "kids",
+    "entries": [
+      { "clue": "He built a giant boat", "answer": "NOAH" },
+      { "clue": "The boat Noah built", "answer": "ARK" },
+      { "clue": "Fell for forty days and nights", "answer": "RAIN" },
+      { "clue": "Bird that brought back an olive leaf", "answer": "DOVE" },
+      { "clue": "The great water that covered the earth", "answer": "FLOOD" },
+      { "clue": "God's sign of His promise after the flood", "answer": "RAINBOW" }
+    ]
+  },
+  {
+    "id": "cw_exodus",
+    "theme": "Exodus",
+    "difficulty": "teen",
+    "entries": [
+      { "clue": "He led the Israelites out of Egypt", "answer": "MOSES" },
+      { "clue": "Land where the Israelites were enslaved", "answer": "EGYPT" },
+      { "clue": "Egyptian ruler who opposed Moses", "answer": "PHARAOH" },
+      { "clue": "Ten disasters sent upon Egypt", "answer": "PLAGUES" },
+      { "clue": "Bread from heaven in the wilderness", "answer": "MANNA" },
+      { "clue": "Body of water parted by Moses", "answer": "REDSEA" }
+    ]
+  },
+  {
+    "id": "cw_kings",
+    "theme": "Kings of Israel",
+    "difficulty": "teen",
+    "entries": [
+      { "clue": "Shepherd boy who became king", "answer": "DAVID" },
+      { "clue": "Giant Philistine warrior", "answer": "GOLIATH" },
+      { "clue": "Israel's first king", "answer": "SAUL" },
+      { "clue": "Wisest king of Israel", "answer": "SOLOMON" },
+      { "clue": "House of God built by Solomon", "answer": "TEMPLE" }
+    ]
+  },
+  {
+    "id": "cw_gospels",
+    "theme": "The Gospels",
+    "difficulty": "adult",
+    "entries": [
+      { "clue": "Son of God, born in Bethlehem", "answer": "JESUS" },
+      { "clue": "Birthplace of Jesus", "answer": "BETHLEHEM" },
+      { "clue": "Twelve followers of Jesus", "answer": "DISCIPLES" },
+      { "clue": "A wonder such as turning water to wine", "answer": "MIRACLE" },
+      { "clue": "A story with a spiritual lesson", "answer": "PARABLE" },
+      { "clue": "Jesus rising from the dead", "answer": "RESURRECTION" }
+    ]
+  },
+  {
+    "id": "cw_epistles",
+    "theme": "The Epistles",
+    "difficulty": "adult",
+    "entries": [
+      { "clue": "Apostle who wrote many New Testament letters", "answer": "PAUL" },
+      { "clue": "Region Paul wrote a letter to about faith and law", "answer": "GALATIA" },
+      { "clue": "City Paul addressed about divisions and love", "answer": "CORINTH" },
+      { "clue": "Unmerited favor from God", "answer": "GRACE" },
+      { "clue": "Belief and trust in God", "answer": "FAITH" },
+      { "clue": "Good news of Jesus Christ", "answer": "GOSPEL" }
+    ]
+  },
+  {
+    "id": "cw_prophets",
+    "theme": "The Prophets",
+    "difficulty": "scholar",
+    "entries": [
+      { "clue": "Prophet who foretold a virgin birth", "answer": "ISAIAH" },
+      { "clue": "The weeping prophet", "answer": "JEREMIAH" },
+      { "clue": "Prophet of the valley of dry bones", "answer": "EZEKIEL" },
+      { "clue": "Prophet who survived the lions' den", "answer": "DANIEL" },
+      { "clue": "A message revealing God's will", "answer": "PROPHECY" }
+    ]
+  },
+  {
+    "id": "cw_doctrine",
+    "theme": "Doctrine",
+    "difficulty": "scholar",
+    "entries": [
+      { "clue": "Father, Son, and Holy Spirit as one God", "answer": "TRINITY" },
+      { "clue": "A binding agreement between God and His people", "answer": "COVENANT" },
+      { "clue": "Being bought back from sin", "answer": "REDEMPTION" },
+      { "clue": "The process of being made holy", "answer": "SANCTIFICATION" },
+      { "clue": "Being declared righteous before God", "answer": "JUSTIFICATION" }
+    ]
+  },
+  {
+    "id": "cw_ruth",
+    "theme": "Ruth",
+    "difficulty": "kids",
+    "entries": [
+      { "clue": "Loyal daughter-in-law of Naomi", "answer": "RUTH" },
+      { "clue": "Ruth's mother-in-law", "answer": "NAOMI" },
+      { "clue": "Wealthy relative who redeemed Ruth", "answer": "BOAZ" },
+      { "clue": "Ruth's homeland", "answer": "MOAB" },
+      { "clue": "What Ruth gathered in Boaz's field", "answer": "GRAIN" }
+    ]
+  },
+  {
+    "id": "cw_judges",
+    "theme": "Judges",
+    "difficulty": "teen",
+    "entries": [
+      { "clue": "Judge and prophetess of Israel", "answer": "DEBORAH" },
+      { "clue": "Judge known for his great strength", "answer": "SAMSON" },
+      { "clue": "Judge who defeated Midian with 300 men", "answer": "GIDEON" },
+      { "clue": "Samson's deceptive love interest", "answer": "DELILAH" },
+      { "clue": "What Samson lost his strength when this was cut", "answer": "HAIR" }
+    ]
+  },
+  {
+    "id": "cw_ten_commandments",
+    "theme": "The Ten Commandments",
+    "difficulty": "teen",
+    "entries": [
+      { "clue": "Mountain where Moses received the Law", "answer": "SINAI" },
+      { "clue": "Stone slabs bearing God's commandments", "answer": "TABLETS" },
+      { "clue": "Day set apart for rest", "answer": "SABBATH" },
+      { "clue": "You shall not bear false ___", "answer": "WITNESS" },
+      { "clue": "You shall not ___ (take what isn't yours)", "answer": "STEAL" },
+      { "clue": "You shall not ___ (unlawfully take a life)", "answer": "MURDER" }
+    ]
+  },
+  {
+    "id": "cw_miracles",
+    "theme": "Miracles of Jesus",
+    "difficulty": "adult",
+    "entries": [
+      { "clue": "Jesus turned water into this at a wedding", "answer": "WINE" },
+      { "clue": "Jesus fed five thousand with loaves and these", "answer": "FISH" },
+      { "clue": "Jesus walked on this", "answer": "WATER" },
+      { "clue": "Man Jesus raised from the dead in Bethany", "answer": "LAZARUS" },
+      { "clue": "What Jesus gave a man born without it", "answer": "SIGHT" },
+      { "clue": "Jesus calmed a raging one on the sea", "answer": "STORM" }
+    ]
+  },
+  {
+    "id": "cw_revelation",
+    "theme": "Revelation",
+    "difficulty": "scholar",
+    "entries": [
+      { "clue": "Apostle who received the vision", "answer": "JOHN" },
+      { "clue": "Island of John's exile where he received the vision", "answer": "PATMOS" },
+      { "clue": "Symbolic number of completeness in the book", "answer": "SEVEN" },
+      { "clue": "Christ pictured as a sacrificial one in Revelation", "answer": "LAMB" },
+      { "clue": "Where God dwells in the final vision", "answer": "THRONE" },
+      { "clue": "God's ultimate defeated adversary", "answer": "SATAN" }
+    ]
+  },
+  {
+    "id": "cw_joseph",
+    "theme": "Joseph",
+    "difficulty": "kids",
+    "entries": [
+      { "clue": "Joseph's father", "answer": "JACOB" },
+      { "clue": "Joseph's colorful garment", "answer": "COAT" },
+      { "clue": "Land where Joseph became a ruler", "answer": "EGYPT" },
+      { "clue": "What Joseph could interpret", "answer": "DREAMS" },
+      { "clue": "Egyptian ruler Joseph served", "answer": "PHARAOH" }
+    ]
+  },
+  {
+    "id": "cw_jonah",
+    "theme": "Jonah",
+    "difficulty": "kids",
+    "entries": [
+      { "clue": "Prophet who ran from God's call", "answer": "JONAH" },
+      { "clue": "City Jonah was sent to warn", "answer": "NINEVEH" },
+      { "clue": "Great creature that swallowed Jonah", "answer": "FISH" },
+      { "clue": "Jonah tried to sail away on this", "answer": "SHIP" },
+      { "clue": "What Jonah did from inside the fish", "answer": "PRAYER" }
+    ]
+  },
+  {
+    "id": "cw_daniel",
+    "theme": "Daniel",
+    "difficulty": "teen",
+    "entries": [
+      { "clue": "Prophet who prayed despite the king's decree", "answer": "DANIEL" },
+      { "clue": "Den Daniel was thrown into", "answer": "LIONS" },
+      { "clue": "Empire Daniel served in", "answer": "BABYLON" },
+      { "clue": "King who threw three men into a fiery furnace", "answer": "NEBUCHADNEZZAR" },
+      { "clue": "Fiery place Daniel's three friends survived", "answer": "FURNACE" }
+    ]
+  },
+  {
+    "id": "cw_beatitudes",
+    "theme": "The Beatitudes",
+    "difficulty": "teen",
+    "entries": [
+      { "clue": "Jesus delivered this sermon on a ___", "answer": "MOUNT" },
+      { "clue": "Blessed are the ___ in spirit", "answer": "POOR" },
+      { "clue": "Blessed are those who ___, for they shall be comforted", "answer": "MOURN" },
+      { "clue": "Blessed are the ___, for they shall inherit the earth", "answer": "MEEK" },
+      { "clue": "Blessed are the ___ in heart, for they shall see God", "answer": "PURE" },
+      { "clue": "Blessed are the merciful, for they shall obtain ___", "answer": "MERCY" }
+    ]
+  },
+  {
+    "id": "cw_acts",
+    "theme": "Acts of the Apostles",
+    "difficulty": "adult",
+    "entries": [
+      { "clue": "Book of the early church's history", "answer": "ACTS" },
+      { "clue": "Day the Holy Spirit came upon believers", "answer": "PENTECOST" },
+      { "clue": "Apostle Paul's former name", "answer": "SAUL" },
+      { "clue": "City where Paul was blinded by a light from heaven", "answer": "DAMASCUS" },
+      { "clue": "First deacon martyred for his faith", "answer": "STEPHEN" },
+      { "clue": "City where believers were first called Christians", "answer": "ANTIOCH" }
+    ]
+  },
+  {
+    "id": "cw_armor_of_god",
+    "theme": "The Armor of God",
+    "difficulty": "scholar",
+    "entries": [
+      { "clue": "Truth wraps around the waist as this", "answer": "BELT" },
+      { "clue": "Righteousness protects the chest as this", "answer": "BREASTPLATE" },
+      { "clue": "Faith blocks the enemy's arrows as this", "answer": "SHIELD" },
+      { "clue": "Salvation protects the head as this", "answer": "HELMET" },
+      { "clue": "The word of God is described as this weapon", "answer": "SWORD" }
+    ]
+  },
+  {
+    "id": "cw_tabernacle",
+    "theme": "The Tabernacle",
+    "difficulty": "scholar",
+    "entries": [
+      { "clue": "Craftsman of Judah filled with the spirit of God to build the tabernacle", "answer": "BEZALEEL" },
+      { "clue": "Wood the ark of the covenant was made of", "answer": "SHITTIM" },
+      { "clue": "Two golden figures over the mercy seat (KJV plural)", "answer": "CHERUBIMS" },
+      { "clue": "Curtain dividing the holy place from the most holy (KJV spelling)", "answer": "VAIL" },
+      { "clue": "Brass basin where the priests washed", "answer": "LAVER" },
+      { "clue": "Bread set on the table before the LORD always", "answer": "SHEWBREAD" }
+    ]
+  }
 ]

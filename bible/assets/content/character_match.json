@@ -1,5 +1,114 @@
-[
-  { "id": "cm_001", "name": "Moses", "description": "Led Israel out of Egypt", "keyAct": "Parted the Red Sea" },
-  { "id": "cm_002", "name": "David", "description": "Shepherd who became king", "keyAct": "Defeated Goliath" },
-  { "id": "cm_003", "name": "Esther", "description": "Queen who saved her people", "keyAct": "Exposed Haman's plot" }
-]
+{
+  "levels": [
+    {
+      "level": 1, "title": "First Steps",
+      "characters": [
+        { "id": "cm_001", "name": "Moses", "description": "Led Israel out of Egypt", "keyAct": "Parted the Red Sea", "reference": "Exodus 14:21" },
+        { "id": "cm_002", "name": "David", "description": "Shepherd who became king", "keyAct": "Defeated Goliath", "reference": "1 Samuel 17:50" },
+        { "id": "cm_003", "name": "Noah", "description": "Trusted God during the flood", "keyAct": "Built a giant ark", "reference": "Genesis 6:14" },
+        { "id": "cm_004", "name": "Jonah", "description": "A prophet who ran from God", "keyAct": "Swallowed by a great fish", "reference": "Jonah 1:17" }
+      ]
+    },
+    {
+      "level": 2, "title": "In the Beginning",
+      "characters": [
+        { "id": "cm_005", "name": "Adam", "description": "The first man God created", "keyAct": "Named all the animals", "reference": "Genesis 2:20" },
+        { "id": "cm_006", "name": "Eve", "description": "The first woman God created", "keyAct": "Ate the forbidden fruit", "reference": "Genesis 3:6" },
+        { "id": "cm_007", "name": "Mary", "description": "Mother of Jesus", "keyAct": "Gave birth in Bethlehem", "reference": "Luke 2:4-7" },
+        { "id": "cm_008", "name": "Jacob", "description": "Wrestled until daybreak", "keyAct": "Received the name Israel", "reference": "Genesis 32:28" }
+      ]
+    },
+    {
+      "level": 3, "title": "Heroes of Faith",
+      "characters": [
+        { "id": "cm_009", "name": "Esther", "description": "Queen who saved her people", "keyAct": "Exposed Haman's plot", "reference": "Esther 7:6" },
+        { "id": "cm_010", "name": "Joseph", "description": "Sold into slavery by his brothers", "keyAct": "Became ruler of Egypt", "reference": "Genesis 41:41" },
+        { "id": "cm_011", "name": "Samson", "description": "Israel's strongest judge", "keyAct": "Lost his strength when his hair was cut", "reference": "Judges 16:19" },
+        { "id": "cm_012", "name": "Ruth", "description": "A loyal Moabite widow", "keyAct": "Became King David's great-grandmother", "reference": "Ruth 4:17" },
+        { "id": "cm_013", "name": "Daniel", "description": "A faithful man in a foreign land", "keyAct": "Survived a night in the lions' den", "reference": "Daniel 6:22" }
+      ]
+    },
+    {
+      "level": 4, "title": "Called by God",
+      "characters": [
+        { "id": "cm_014", "name": "Gideon", "description": "A fearful farmer turned warrior", "keyAct": "Defeated Midian with 300 men", "reference": "Judges 7:7" },
+        { "id": "cm_015", "name": "Rahab", "description": "Hid the Israelite spies", "keyAct": "Saved by a scarlet cord", "reference": "Joshua 2:18" },
+        { "id": "cm_016", "name": "Abraham", "description": "Father of many nations", "keyAct": "Willing to offer up Isaac", "reference": "Genesis 22:10" },
+        { "id": "cm_017", "name": "Peter", "description": "A fisherman turned apostle", "keyAct": "Walked on water toward Jesus", "reference": "Matthew 14:29" },
+        { "id": "cm_018", "name": "Solomon", "description": "Israel's wisest king", "keyAct": "Built the first Temple", "reference": "1 Kings 6:14" }
+      ]
+    },
+    {
+      "level": 5, "title": "Prophets & Leaders",
+      "characters": [
+        { "id": "cm_019", "name": "Elijah", "description": "A fiery prophet of Israel", "keyAct": "Called down fire on Mount Carmel", "reference": "1 Kings 18:38" },
+        { "id": "cm_020", "name": "Deborah", "description": "A judge and prophetess", "keyAct": "Sent Barak to defeat Sisera", "reference": "Judges 4:14" },
+        { "id": "cm_021", "name": "Paul", "description": "Once persecuted Christians", "keyAct": "Blinded on the road to Damascus", "reference": "Acts 9:3-8" },
+        { "id": "cm_022", "name": "Isaiah", "description": "A prophet of hope and judgment", "keyAct": "Foretold a virgin would bear a son", "reference": "Isaiah 7:14" },
+        { "id": "cm_023", "name": "Nehemiah", "description": "Cupbearer to a Persian king", "keyAct": "Rebuilt the walls of Jerusalem", "reference": "Nehemiah 6:15" },
+        { "id": "cm_024", "name": "Jephthah", "description": "A judge born an outcast", "keyAct": "Made a rash vow before battle", "reference": "Judges 11:30-31" }
+      ]
+    },
+    {
+      "level": 6, "title": "Families of Promise",
+      "characters": [
+        { "id": "cm_025", "name": "Sarah", "description": "Wife of Abraham", "keyAct": "Laughed at the promise of a son", "reference": "Genesis 18:12" },
+        { "id": "cm_026", "name": "Isaac", "description": "The long-awaited son", "keyAct": "Married Rebekah", "reference": "Genesis 24:67" },
+        { "id": "cm_027", "name": "Aaron", "description": "Moses' brother and spokesman", "keyAct": "His rod budded overnight", "reference": "Numbers 17:8" },
+        { "id": "cm_028", "name": "Joshua", "description": "Moses' successor", "keyAct": "Led the march around Jericho", "reference": "Joshua 6:16" },
+        { "id": "cm_029", "name": "Samuel", "description": "Served in the tabernacle as a boy", "keyAct": "Heard God call his name at night", "reference": "1 Samuel 3:10" },
+        { "id": "cm_030", "name": "Hannah", "description": "Prayed for a son at Shiloh", "keyAct": "Lent her son to the Lord", "reference": "1 Samuel 1:27-28" }
+      ]
+    },
+    {
+      "level": 7, "title": "Meeting Jesus",
+      "characters": [
+        { "id": "cm_031", "name": "Elisha", "description": "Elijah's successor", "keyAct": "Asked for a double portion of his spirit", "reference": "2 Kings 2:9" },
+        { "id": "cm_032", "name": "Zacchaeus", "description": "A rich chief tax collector", "keyAct": "Climbed a sycamore tree to see Jesus", "reference": "Luke 19:4" },
+        { "id": "cm_033", "name": "Lazarus", "description": "Friend of Jesus from Bethany", "keyAct": "Raised after four days in the tomb", "reference": "John 11:43-44" },
+        { "id": "cm_034", "name": "Martha", "description": "Sister of Mary and Lazarus", "keyAct": "Was busy serving while her sister listened", "reference": "Luke 10:40" },
+        { "id": "cm_035", "name": "Thomas", "description": "An apostle called Didymus", "keyAct": "Wanted to see the nail prints before believing", "reference": "John 20:25" },
+        { "id": "cm_036", "name": "John the Baptist", "description": "Wore camel's hair in the wilderness", "keyAct": "Baptized Jesus in the Jordan", "reference": "Mark 1:9" },
+        { "id": "cm_037", "name": "Mary Magdalene", "description": "Delivered from seven devils", "keyAct": "First to see the risen Jesus", "reference": "Mark 16:9" }
+      ]
+    },
+    {
+      "level": 8, "title": "Deeper Waters",
+      "characters": [
+        { "id": "cm_038", "name": "Melchizedek", "description": "A mysterious king-priest", "keyAct": "Brought bread and wine to Abram", "reference": "Genesis 14:18-19" },
+        { "id": "cm_039", "name": "Nicodemus", "description": "A Pharisee who came by night", "keyAct": "Brought spices for Jesus' burial", "reference": "John 19:39" },
+        { "id": "cm_040", "name": "Jeremiah", "description": "The weeping prophet", "keyAct": "Lowered into a muddy dungeon", "reference": "Jeremiah 38:6" },
+        { "id": "cm_041", "name": "Ezekiel", "description": "A prophet among the exiles", "keyAct": "Saw a valley of dry bones", "reference": "Ezekiel 37:1" },
+        { "id": "cm_042", "name": "Barnabas", "description": "Known as the 'son of consolation'", "keyAct": "Brought Saul to the apostles", "reference": "Acts 9:27" },
+        { "id": "cm_043", "name": "Stephen", "description": "One of the seven chosen to serve", "keyAct": "Saw heaven opened as he was stoned", "reference": "Acts 7:56-59" },
+        { "id": "cm_044", "name": "Caleb", "description": "A spy from the tribe of Judah", "keyAct": "Asked for a mountain at age 85", "reference": "Joshua 14:10-12" }
+      ]
+    },
+    {
+      "level": 9, "title": "The Early Church",
+      "characters": [
+        { "id": "cm_045", "name": "Phoebe", "description": "A servant of the church at Cenchrea", "keyAct": "Commended by Paul to the Romans", "reference": "Romans 16:1-2" },
+        { "id": "cm_046", "name": "Junia", "description": "Noted among the apostles", "keyAct": "Was in prison with Paul", "reference": "Romans 16:7" },
+        { "id": "cm_047", "name": "Tychicus", "description": "A beloved brother and faithful minister", "keyAct": "Sent to comfort the churches with news", "reference": "Colossians 4:7-8" },
+        { "id": "cm_048", "name": "Lydia", "description": "A seller of purple from Thyatira", "keyAct": "Opened her heart and her home to Paul", "reference": "Acts 16:14-15" },
+        { "id": "cm_049", "name": "Timothy", "description": "Taught the faith by his mother and grandmother", "keyAct": "Called Paul's 'own son in the faith'", "reference": "1 Timothy 1:2" },
+        { "id": "cm_050", "name": "Priscilla", "description": "A tentmaker with her husband Aquila", "keyAct": "Explained the way of God to Apollos", "reference": "Acts 18:26" },
+        { "id": "cm_051", "name": "Apollos", "description": "An eloquent man from Alexandria", "keyAct": "Watered what Paul had planted", "reference": "1 Corinthians 3:6" },
+        { "id": "cm_052", "name": "Silas", "description": "Paul's companion on his second journey", "keyAct": "Sang hymns in prison at midnight", "reference": "Acts 16:25" }
+      ]
+    },
+    {
+      "level": 10, "title": "Hidden Gems",
+      "characters": [
+        { "id": "cm_053", "name": "Methuselah", "description": "Grandfather of Noah", "keyAct": "Lived 969 years", "reference": "Genesis 5:27" },
+        { "id": "cm_054", "name": "Enoch", "description": "Father of Methuselah", "keyAct": "Walked with God and was taken", "reference": "Genesis 5:24" },
+        { "id": "cm_055", "name": "Boaz", "description": "A wealthy man of Bethlehem", "keyAct": "Married Ruth as her kinsman", "reference": "Ruth 4:13" },
+        { "id": "cm_056", "name": "Naaman", "description": "Captain of the Syrian army", "keyAct": "Healed after dipping seven times in the Jordan", "reference": "2 Kings 5:14" },
+        { "id": "cm_057", "name": "Josiah", "description": "Became king at eight years old", "keyAct": "Renewed the covenant after the Law was found", "reference": "2 Kings 23:3" },
+        { "id": "cm_058", "name": "Hezekiah", "description": "A king of Judah who trusted God", "keyAct": "Was given fifteen more years of life", "reference": "2 Kings 20:6" },
+        { "id": "cm_059", "name": "Mordecai", "description": "Esther's cousin", "keyAct": "Refused to bow to Haman", "reference": "Esther 3:2" },
+        { "id": "cm_060", "name": "Jethro", "description": "A priest of Midian", "keyAct": "Advised Moses to appoint judges", "reference": "Exodus 18:21" }
+      ]
+    }
+  ]
+}

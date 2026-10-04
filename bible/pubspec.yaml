@@ -2,7 +2,7 @@ name: bible_gamehive
 description: "Bible GameHive — free Bible trivia, quiz, and puzzle mini-games."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+4
 
 environment:
   sdk: ^3.10.7
@@ -37,29 +37,60 @@ dependencies:
   hive_flutter: ^1.1.0
   connectivity_plus: ^6.1.1
 
+  # Networking
+  http: ^1.2.2
+
   # UI / polish
   google_fonts: ^6.2.1
   flutter_animate: ^4.5.2
 
-  # Audio (wired, no bundled narration assets yet)
+  # Audio (SFX + background music; see lib/core/audio/sound_service.dart)
   just_audio: ^0.9.42
+  file_picker: ^8.1.7
+  path_provider: ^2.1.5
 
   # Utilities
   intl: ^0.19.0
   uuid: ^4.5.1
+  share_plus: ^12.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/content/
+    - assets/images/
+    - assets/audio/
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font.
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#5B7A9D"
+  adaptive_icon_foreground: "assets/images/app_icon_foreground.png"
+  remove_alpha_ios: true
+
+flutter_native_splash:
+  color: "#FBF6EC"
+  image: assets/images/splash_logo.png
+  color_dark: "#1E1B16"
+  image_dark: assets/images/splash_logo.png
+  android_12:
+    image: assets/images/splash_logo.png
+    color: "#FBF6EC"
+    image_dark: assets/images/splash_logo.png
+    color_dark: "#1E1B16"
+  web: false

@@ -1,26 +1,3832 @@
 [
   {
     "id": "gw_001",
+    "characterName": "Adam",
+    "level": 1,
+    "clues": [
+      "I was formed from the dust of the ground.",
+      "God placed me in a garden to tend and keep it.",
+      "I was given the task of naming every living creature.",
+      "My rib was taken to form my companion.",
+      "I am remembered as the very first man."
+    ],
+    "references": [
+      "Genesis 2:7",
+      "Genesis 2:15",
+      "Genesis 2:19-20",
+      "Genesis 2:21-22",
+      "1 Corinthians 15:45"
+    ]
+  },
+  {
+    "id": "gw_002",
+    "characterName": "Eve",
+    "level": 1,
+    "clues": [
+      "I was made to be a companion for the first man.",
+      "A cunning serpent spoke to me in the garden.",
+      "I was persuaded to eat fruit from a forbidden tree.",
+      "I shared that fruit with my husband.",
+      "I am called the mother of all the living."
+    ],
+    "references": [
+      "Genesis 2:18",
+      "Genesis 3:1",
+      "Genesis 3:4-6",
+      "Genesis 3:6-7",
+      "Genesis 3:20"
+    ]
+  },
+  {
+    "id": "gw_003",
+    "characterName": "Noah",
+    "level": 1,
+    "clues": [
+      "In a world grown violent and corrupt, I found favor with God.",
+      "I spent years building a massive vessel on dry land.",
+      "I brought pairs of animals aboard to survive a coming flood.",
+      "My family and I floated safely while the earth was covered in water.",
+      "God set a rainbow in the sky as a promise to me."
+    ],
+    "references": [
+      "Genesis 6:8",
+      "Genesis 6:14",
+      "Genesis 7:8-9",
+      "Genesis 7:17-18",
+      "Genesis 9:13"
+    ]
+  },
+  {
+    "id": "gw_004",
+    "characterName": "Abraham",
+    "level": 1,
+    "clues": [
+      "God called me to leave my homeland for a place I had never seen.",
+      "I was promised descendants as countless as the stars.",
+      "My wife and I waited decades for the son we were promised.",
+      "I was tested when asked to offer my son on a mountain.",
+      "I am honored as the father of many nations."
+    ],
+    "references": [
+      "Genesis 12:1",
+      "Genesis 15:5",
+      "Genesis 21:1-2",
+      "Genesis 22:2",
+      "Genesis 17:5"
+    ]
+  },
+  {
+    "id": "gw_005",
+    "characterName": "Moses",
+    "level": 1,
+    "clues": [
+      "As a baby, I was hidden in a basket among river reeds.",
+      "I fled to the desert after a violent act caught up with me.",
+      "God spoke to me from a bush that burned but was not consumed.",
+      "I confronted a powerful king and demanded freedom for my people.",
+      "I brought down two stone tablets from a mountain."
+    ],
+    "references": [
+      "Exodus 2:3",
+      "Exodus 2:15",
+      "Exodus 3:2",
+      "Exodus 5:1",
+      "Exodus 32:15"
+    ]
+  },
+  {
+    "id": "gw_006",
+    "characterName": "David",
+    "level": 1,
+    "clues": [
+      "I was the youngest of my brothers, out watching sheep.",
+      "A giant mocked my people, so I faced him with only a sling.",
+      "My music once calmed a troubled king's spirit.",
+      "I was anointed king long before I actually took the throne.",
+      "Many of the Psalms are credited to me."
+    ],
+    "references": [
+      "1 Samuel 16:11",
+      "1 Samuel 17:48-49",
+      "1 Samuel 16:23",
+      "1 Samuel 16:13",
+      "2 Samuel 23:1"
+    ]
+  },
+  {
+    "id": "gw_007",
+    "characterName": "Solomon",
+    "level": 1,
+    "clues": [
+      "Offered anything I wanted, I asked God for wisdom.",
+      "Two women once brought a disputed baby before me for judgment.",
+      "I oversaw the building of a magnificent temple.",
+      "My wealth and wisdom drew visitors from distant lands.",
+      "I was the son who inherited my father David's throne."
+    ],
+    "references": [
+      "1 Kings 3:5-9",
+      "1 Kings 3:16",
+      "1 Kings 6:14",
+      "1 Kings 4:34",
+      "1 Kings 2:12"
+    ]
+  },
+  {
+    "id": "gw_008",
+    "characterName": "Jesus",
+    "level": 1,
+    "clues": [
+      "My birth was announced by an angel before I arrived.",
+      "I began teaching and healing around the age of thirty.",
+      "I taught crowds using simple stories with deep meaning.",
+      "I was crucified, and my followers found my tomb empty three days later.",
+      "I am called the Son of God and the Savior of the world."
+    ],
+    "references": [
+      "Luke 1:31",
+      "Luke 3:23",
+      "Matthew 13:34",
+      "Mark 16:6",
+      "1 John 4:14"
+    ]
+  },
+  {
+    "id": "gw_009",
+    "characterName": "Mary",
+    "level": 1,
+    "clues": [
+      "An angel visited me with news that changed everything.",
+      "I was engaged when I learned I would bear a special son.",
+      "I gave birth far from home because there was no room for us.",
+      "I stood near a cross, watching my son suffer.",
+      "I am remembered as the mother of Jesus."
+    ],
+    "references": [
+      "Luke 1:26-28",
+      "Luke 1:31",
+      "Luke 2:7",
+      "John 19:25",
+      "Acts 1:14"
+    ]
+  },
+  {
+    "id": "gw_010",
+    "characterName": "Peter",
+    "level": 1,
+    "clues": [
+      "I left my fishing nets behind to follow a new teacher.",
+      "I once stepped out of a boat and walked on water, briefly.",
+      "I denied knowing my teacher three times in a single night.",
+      "I preached boldly on the day the Holy Spirit came in power.",
+      "I am usually named first among the twelve apostles."
+    ],
+    "references": [
+      "Matthew 4:18-20",
+      "Matthew 14:29",
+      "Matthew 26:74-75",
+      "Acts 2:14",
+      "Matthew 10:2"
+    ]
+  },
+  {
+    "id": "gw_011",
+    "characterName": "Joseph",
+    "level": 2,
+    "clues": [
+      "My brothers resented the special coat my father gave me.",
+      "I was sold into slavery by my own family.",
+      "I correctly interpreted troubling dreams for a king.",
+      "I rose from a prison cell to become second in command of Egypt.",
+      "I eventually forgave the brothers who betrayed me."
+    ],
+    "references": [
+      "Genesis 37:3-4",
+      "Genesis 37:28",
+      "Genesis 41:25",
+      "Genesis 41:40",
+      "Genesis 50:19-21"
+    ]
+  },
+  {
+    "id": "gw_012",
+    "characterName": "Jacob",
+    "level": 2,
+    "clues": [
+      "I gripped my twin brother's heel as we were born.",
+      "I tricked my father into giving me a blessing meant for my brother.",
+      "I wrestled with a mysterious figure through the night.",
+      "My name was changed after that struggle.",
+      "My twelve sons became the twelve tribes of Israel."
+    ],
+    "references": [
+      "Genesis 25:26",
+      "Genesis 27:18-19",
+      "Genesis 32:24",
+      "Genesis 32:28",
+      "Genesis 49:28"
+    ]
+  },
+  {
+    "id": "gw_013",
+    "characterName": "Isaac",
+    "level": 2,
+    "clues": [
+      "My birth to elderly parents was a fulfillment of God's promise.",
+      "As a boy, I nearly became a sacrifice on a mountain altar.",
+      "A wife was found for me through a servant's prayerful search.",
+      "My wife struggled to conceive until my prayers were answered.",
+      "I was Abraham's long-awaited son."
+    ],
+    "references": [
+      "Genesis 21:2",
+      "Genesis 22:9",
+      "Genesis 24:12",
+      "Genesis 25:21",
+      "Genesis 21:5"
+    ]
+  },
+  {
+    "id": "gw_014",
+    "characterName": "Sarah",
+    "level": 2,
+    "clues": [
+      "I laughed when I overheard a promise that seemed impossible for my old age.",
+      "I struggled for years with the pain of not having children.",
+      "I gave my servant to my husband, hoping for a child that way.",
+      "I finally gave birth to the son God had promised.",
+      "I am remembered as the mother of Isaac."
+    ],
+    "references": [
+      "Genesis 18:12",
+      "Genesis 11:30",
+      "Genesis 16:2",
+      "Genesis 21:2",
+      "Genesis 21:3"
+    ]
+  },
+  {
+    "id": "gw_015",
+    "characterName": "Samson",
+    "level": 2,
+    "clues": [
+      "My great strength was tied to a vow made before my birth.",
+      "I once tore apart a lion with my bare hands.",
+      "I fell in love with a woman who betrayed my secret.",
+      "My hair was cut, and my strength left me.",
+      "I brought down a temple with my final burst of strength."
+    ],
+    "references": [
+      "Judges 13:5",
+      "Judges 14:6",
+      "Judges 16:4-5",
+      "Judges 16:19",
+      "Judges 16:30"
+    ]
+  },
+  {
+    "id": "gw_016",
+    "characterName": "Joshua",
+    "level": 2,
+    "clues": [
+      "I was one of only two spies who trusted God's promise about the land.",
+      "I took over leadership after a great prophet's death.",
+      "I led my people across a river on dry ground.",
+      "City walls fell after my people marched around them.",
+      "I divided the promised land among the tribes."
+    ],
+    "references": [
+      "Numbers 14:6-9",
+      "Joshua 1:1-2",
+      "Joshua 3:17",
+      "Joshua 6:20",
+      "Joshua 11:23"
+    ]
+  },
+  {
+    "id": "gw_017",
+    "characterName": "Ruth",
+    "level": 2,
+    "clues": [
+      "I was not born among God's people, but I chose to stay with my mother-in-law.",
+      "I gleaned leftover grain in the fields to survive.",
+      "A kind landowner noticed my loyalty and provided for me.",
+      "I married the man who became my family's redeemer.",
+      "I became an ancestor of King David."
+    ],
+    "references": [
+      "Ruth 1:16",
+      "Ruth 2:2",
+      "Ruth 2:11",
+      "Ruth 4:13",
+      "Ruth 4:17"
+    ]
+  },
+  {
+    "id": "gw_018",
+    "characterName": "Esther",
+    "level": 2,
+    "clues": [
+      "I hid my identity when I was chosen for a royal position.",
+      "My cousin raised me and warned me of danger to our people.",
+      "I risked my life by approaching the king uninvited.",
+      "I exposed a plot to destroy my people.",
+      "A feast still celebrates the deliverance I helped bring about."
+    ],
+    "references": [
+      "Esther 2:10",
+      "Esther 2:7",
+      "Esther 4:16",
+      "Esther 7:3-6",
+      "Esther 9:26-28"
+    ]
+  },
+  {
+    "id": "gw_019",
+    "characterName": "Daniel",
+    "level": 2,
+    "clues": [
+      "I refused to eat food that would defile me at a foreign court.",
+      "I could interpret dreams and mysterious visions.",
+      "Jealous officials tricked a king into signing a law aimed at me.",
+      "I was thrown into a den of lions for my faithfulness.",
+      "I survived the night, unharmed, among the lions."
+    ],
+    "references": [
+      "Daniel 1:8",
+      "Daniel 1:17",
+      "Daniel 6:7",
+      "Daniel 6:16",
+      "Daniel 6:22"
+    ]
+  },
+  {
+    "id": "gw_020",
+    "characterName": "John the Baptist",
+    "level": 2,
+    "clues": [
+      "I lived in the wilderness, wearing camel's hair and eating wild food.",
+      "I called people to turn from wrongdoing and be washed clean.",
+      "I baptized my own cousin in a river.",
+      "I said I must decrease while he must increase.",
+      "My outspokenness against a king's marriage cost me my head."
+    ],
+    "references": [
+      "Matthew 3:4",
+      "Mark 1:4",
+      "Matthew 3:13",
+      "John 3:30",
+      "Matthew 14:3-4"
+    ]
+  },
+  {
+    "id": "gw_021",
     "characterName": "Jonah",
-    "difficulty": "teen",
+    "level": 3,
     "clues": [
       "I tried to run away from what God asked me to do.",
       "I boarded a ship heading the opposite direction.",
       "A great storm arose because of me.",
       "I spent three days and nights inside a great fish.",
-      "I eventually preached to Nineveh."
+      "I eventually preached to a city I didn't want to see saved."
+    ],
+    "references": [
+      "Jonah 1:2-3",
+      "Jonah 1:3",
+      "Jonah 1:12",
+      "Jonah 1:17",
+      "Jonah 3:4"
     ]
   },
   {
-    "id": "gw_002",
-    "characterName": "Ruth",
-    "difficulty": "adult",
+    "id": "gw_022",
+    "characterName": "Elijah",
+    "level": 3,
     "clues": [
-      "I was not born an Israelite.",
-      "I refused to leave my mother-in-law's side.",
-      "I gleaned grain in the fields of Bethlehem.",
-      "I married a man named Boaz.",
-      "I became an ancestor of King David."
+      "I challenged hundreds of false prophets to a contest of fire.",
+      "Ravens brought me food while I hid by a brook.",
+      "A widow's flour and oil never ran out while I stayed with her.",
+      "I fled in fear after a queen threatened my life.",
+      "I was taken up to heaven in a whirlwind, in a chariot of fire."
+    ],
+    "references": [
+      "1 Kings 18:22-24",
+      "1 Kings 17:6",
+      "1 Kings 17:16",
+      "1 Kings 19:2-3",
+      "2 Kings 2:11"
+    ]
+  },
+  {
+    "id": "gw_023",
+    "characterName": "Elisha",
+    "level": 3,
+    "clues": [
+      "I received a double portion of my mentor's spirit.",
+      "I watched my teacher taken up into heaven.",
+      "I helped a poor widow's jar of oil keep flowing.",
+      "I told a foreign commander to wash seven times in a river to be healed.",
+      "I succeeded a prophet who was taken up in a whirlwind."
+    ],
+    "references": [
+      "2 Kings 2:9",
+      "2 Kings 2:12",
+      "2 Kings 4:5-6",
+      "2 Kings 5:10",
+      "1 Kings 19:16"
+    ]
+  },
+  {
+    "id": "gw_024",
+    "characterName": "Gideon",
+    "level": 3,
+    "clues": [
+      "I was threshing wheat in hiding when an angel called me a mighty warrior.",
+      "I asked for signs with wool and dew before trusting my mission.",
+      "I reduced my army from thousands to just a few hundred.",
+      "My men carried torches hidden inside jars into battle.",
+      "I delivered my people from oppressors with an unusual, tiny army."
+    ],
+    "references": [
+      "Judges 6:11-12",
+      "Judges 6:37-38",
+      "Judges 7:7",
+      "Judges 7:16",
+      "Judges 8:28"
+    ]
+  },
+  {
+    "id": "gw_025",
+    "characterName": "Deborah",
+    "level": 3,
+    "clues": [
+      "I served my people as a judge, sitting under a palm tree.",
+      "I sent for a military commander and told him God's battle plan.",
+      "I went with him to the battlefield when he hesitated to go alone.",
+      "A song of victory is recorded in my honor and words.",
+      "I am remembered as a rare woman judge of Israel."
+    ],
+    "references": [
+      "Judges 4:5",
+      "Judges 4:6-7",
+      "Judges 4:8-9",
+      "Judges 5:1",
+      "Judges 4:4"
+    ]
+  },
+  {
+    "id": "gw_026",
+    "characterName": "Job",
+    "level": 3,
+    "clues": [
+      "I was described as blameless and upright, a man of great wealth.",
+      "I lost my children, my possessions, and my health in a single trial.",
+      "My friends offered explanations for my suffering that missed the truth.",
+      "I questioned God directly about my pain.",
+      "My fortunes were restored twofold after my trial ended."
+    ],
+    "references": [
+      "Job 1:1-3",
+      "Job 1:18-19",
+      "Job 42:7",
+      "Job 13:3",
+      "Job 42:10"
+    ]
+  },
+  {
+    "id": "gw_027",
+    "characterName": "Paul",
+    "level": 3,
+    "clues": [
+      "I once persecuted the very people I would later lead.",
+      "A blinding light stopped me on a road to a city called Damascus.",
+      "I traveled extensively, planting churches across the region.",
+      "I wrote many letters that became part of the New Testament.",
+      "I was once named Saul before my dramatic change of heart."
+    ],
+    "references": [
+      "Galatians 1:13",
+      "Acts 9:3",
+      "Romans 15:19-20",
+      "2 Peter 3:15-16",
+      "Acts 13:9"
+    ]
+  },
+  {
+    "id": "gw_028",
+    "characterName": "Judas Iscariot",
+    "level": 3,
+    "clues": [
+      "I carried the money bag for our group.",
+      "I struck a deal for a small sum of silver.",
+      "I identified my teacher to his enemies with a kiss.",
+      "Remorse overwhelmed me after I saw what I had done.",
+      "My name has become a byword for betrayal."
+    ],
+    "references": [
+      "John 12:6",
+      "Matthew 26:15",
+      "Matthew 26:48-49",
+      "Matthew 27:3",
+      "Luke 6:16"
+    ]
+  },
+  {
+    "id": "gw_029",
+    "characterName": "Mary Magdalene",
+    "level": 3,
+    "clues": [
+      "I was delivered from a deeply troubled past.",
+      "I followed and supported a traveling teacher and his followers.",
+      "I stood near the cross when most others had fled.",
+      "I came early to a tomb, expecting to find a body.",
+      "I was the first to see him alive again and told the others."
+    ],
+    "references": [
+      "Luke 8:2",
+      "Luke 8:3",
+      "John 19:25",
+      "John 20:1",
+      "John 20:18"
+    ]
+  },
+  {
+    "id": "gw_030",
+    "characterName": "Thomas",
+    "level": 3,
+    "clues": [
+      "I was not present the first time my risen teacher appeared to the others.",
+      "I said I would not believe without seeing the wounds myself.",
+      "I was invited to touch the very marks I doubted.",
+      "My doubt turned instantly into a confession of faith.",
+      "My name is now linked forever with skepticism."
+    ],
+    "references": [
+      "John 20:24",
+      "John 20:25",
+      "John 20:27",
+      "John 20:28",
+      "John 20:29"
+    ]
+  },
+  {
+    "id": "gw_031",
+    "characterName": "Aaron",
+    "level": 4,
+    "clues": [
+      "I served as a spokesman for a family member who struggled to speak.",
+      "I carried a staff that budded overnight as a sign of God's choosing.",
+      "I fashioned a golden idol under pressure from an impatient crowd.",
+      "I was set apart as the first high priest of my people.",
+      "I was Moses' older brother."
+    ],
+    "references": [
+      "Exodus 4:14-16",
+      "Numbers 17:8",
+      "Exodus 32:4",
+      "Exodus 28:1",
+      "Exodus 7:7"
+    ]
+  },
+  {
+    "id": "gw_032",
+    "characterName": "Miriam",
+    "level": 4,
+    "clues": [
+      "I watched over my baby brother as he floated in a basket.",
+      "I led the women in song and dance after a miraculous crossing.",
+      "I questioned my younger brother's authority alongside another sibling.",
+      "I was struck with a skin disease as a consequence.",
+      "I am remembered as a prophetess and the sister of Moses and Aaron."
+    ],
+    "references": [
+      "Exodus 2:4",
+      "Exodus 15:20-21",
+      "Numbers 12:1-2",
+      "Numbers 12:10",
+      "Numbers 26:59"
+    ]
+  },
+  {
+    "id": "gw_033",
+    "characterName": "Rebekah",
+    "level": 4,
+    "clues": [
+      "I offered water to a stranger's camels at a well, unaware it was a test.",
+      "A servant's prayer led him straight to me as a bride for his master's son.",
+      "I struggled with twins wrestling inside me before they were even born.",
+      "I favored one son and helped him deceive his father for a blessing.",
+      "I became the wife of Isaac."
+    ],
+    "references": [
+      "Genesis 24:18-19",
+      "Genesis 24:15",
+      "Genesis 25:22",
+      "Genesis 27:8-10",
+      "Genesis 24:67"
+    ]
+  },
+  {
+    "id": "gw_034",
+    "characterName": "Rahab",
+    "level": 4,
+    "clues": [
+      "I hid enemy spies on my roof under stalks of flax.",
+      "I tied a scarlet cord in my window as a sign of protection.",
+      "My household was the only one spared when the city walls fell.",
+      "I left my old life behind and joined the people of Israel.",
+      "I became an ancestor in the line leading to King David."
+    ],
+    "references": [
+      "Joshua 2:6",
+      "Joshua 2:21",
+      "Joshua 6:17",
+      "Joshua 6:25",
+      "Matthew 1:5"
+    ]
+  },
+  {
+    "id": "gw_035",
+    "characterName": "Samuel",
+    "level": 4,
+    "clues": [
+      "As a child, I heard my name called in the night and mistook it for my mentor's voice.",
+      "I served in the tabernacle from a very young age.",
+      "I anointed the first king my people ever had.",
+      "I later anointed a shepherd boy who would replace that king.",
+      "I am remembered as a judge, priest, and prophet."
+    ],
+    "references": [
+      "1 Samuel 3:4-5",
+      "1 Samuel 2:18",
+      "1 Samuel 10:1",
+      "1 Samuel 16:13",
+      "1 Samuel 3:20"
+    ]
+  },
+  {
+    "id": "gw_036",
+    "characterName": "Saul",
+    "level": 4,
+    "clues": [
+      "I stood head and shoulders above my people when chosen as their first king.",
+      "I was anointed by a prophet while searching for lost donkeys.",
+      "Jealousy over a young warrior's fame consumed me.",
+      "I hurled a spear at the very man I once loved like a son.",
+      "My reign ended in defeat on a mountain battlefield."
+    ],
+    "references": [
+      "1 Samuel 10:23",
+      "1 Samuel 10:1-2",
+      "1 Samuel 18:8-9",
+      "1 Samuel 18:10-11",
+      "1 Samuel 31:1"
+    ]
+  },
+  {
+    "id": "gw_037",
+    "characterName": "Nehemiah",
+    "level": 4,
+    "clues": [
+      "I served as a cupbearer in a foreign king's palace.",
+      "News of my homeland's broken walls brought me to tears.",
+      "I was granted permission to return and rebuild what was ruined.",
+      "I organized workers who built with a tool in one hand and a weapon in the other.",
+      "I completed the wall despite fierce opposition."
+    ],
+    "references": [
+      "Nehemiah 1:11",
+      "Nehemiah 1:3-4",
+      "Nehemiah 2:5",
+      "Nehemiah 4:17",
+      "Nehemiah 6:15"
+    ]
+  },
+  {
+    "id": "gw_038",
+    "characterName": "Ezra",
+    "level": 4,
+    "clues": [
+      "I was a scribe devoted to studying and teaching the Law.",
+      "I led a group of exiles back to my homeland.",
+      "I tore my clothes in grief over my people's unfaithfulness.",
+      "I read the Law aloud to a gathered crowd for hours.",
+      "I helped restore proper worship after the exile."
+    ],
+    "references": [
+      "Ezra 7:10",
+      "Ezra 7:6-7",
+      "Ezra 9:3",
+      "Nehemiah 8:2-3",
+      "Nehemiah 8:6"
+    ]
+  },
+  {
+    "id": "gw_039",
+    "characterName": "Nicodemus",
+    "level": 4,
+    "clues": [
+      "I was a respected religious leader among my people.",
+      "I came to speak with a teacher under cover of night.",
+      "I was told I must be born again, and I didn't understand at first.",
+      "I later defended that same teacher before hostile colleagues.",
+      "I helped prepare his body for burial with costly spices."
+    ],
+    "references": [
+      "John 3:1",
+      "John 3:2",
+      "John 3:3-4",
+      "John 7:50-51",
+      "John 19:39"
+    ]
+  },
+  {
+    "id": "gw_040",
+    "characterName": "Zacchaeus",
+    "level": 4,
+    "clues": [
+      "I collected taxes for a foreign empire, and I was not well-liked for it.",
+      "I was too short to see over the crowd.",
+      "I climbed a tree just to catch a glimpse of a passing teacher.",
+      "I was surprised to be invited down and welcomed by name.",
+      "I promised to repay anyone I had cheated four times over."
+    ],
+    "references": [
+      "Luke 19:2",
+      "Luke 19:3",
+      "Luke 19:4",
+      "Luke 19:5",
+      "Luke 19:8"
+    ]
+  },
+  {
+    "id": "gw_041",
+    "characterName": "Boaz",
+    "level": 5,
+    "clues": [
+      "I owned fields where a foreign widow came to gather leftover grain.",
+      "I instructed my workers to leave extra grain behind for her.",
+      "I noticed her loyalty and kindness to her mother-in-law.",
+      "I fulfilled the role of a family redeemer for her.",
+      "I became the great-grandfather of King David."
+    ],
+    "references": [
+      "Ruth 2:3",
+      "Ruth 2:15-16",
+      "Ruth 2:11",
+      "Ruth 4:9-10",
+      "Ruth 4:21-22"
+    ]
+  },
+  {
+    "id": "gw_042",
+    "characterName": "Naomi",
+    "level": 5,
+    "clues": [
+      "Famine drove my family from our homeland to a foreign country.",
+      "I lost my husband and both my sons while abroad.",
+      "I urged my daughters-in-law to return to their own people.",
+      "One of them refused to leave my side.",
+      "I returned home bitter, but was later comforted by a grandson."
+    ],
+    "references": [
+      "Ruth 1:1",
+      "Ruth 1:5",
+      "Ruth 1:8",
+      "Ruth 1:16",
+      "Ruth 4:14-16"
+    ]
+  },
+  {
+    "id": "gw_043",
+    "characterName": "Bathsheba",
+    "level": 5,
+    "clues": [
+      "A king saw me bathing from his rooftop.",
+      "My husband was sent to the front lines to die because of that king's desire for me.",
+      "I lost the child born from that affair.",
+      "I later became the mother of Israel's wisest king.",
+      "A prophet confronted the king over what happened to me and my husband."
+    ],
+    "references": [
+      "2 Samuel 11:2",
+      "2 Samuel 11:15",
+      "2 Samuel 12:18",
+      "2 Samuel 12:24",
+      "2 Samuel 12:7"
+    ]
+  },
+  {
+    "id": "gw_044",
+    "characterName": "Absalom",
+    "level": 5,
+    "clues": [
+      "I avenged my sister's mistreatment by killing my own brother.",
+      "I spent years in exile before being welcomed back to court.",
+      "I stood at the city gate, winning the hearts of the people.",
+      "I led a rebellion against my own father, the king.",
+      "My long hair caught in a tree branch during my final battle."
+    ],
+    "references": [
+      "2 Samuel 13:28-29",
+      "2 Samuel 13:38",
+      "2 Samuel 15:6",
+      "2 Samuel 15:10",
+      "2 Samuel 18:9"
+    ]
+  },
+  {
+    "id": "gw_045",
+    "characterName": "Jezebel",
+    "level": 5,
+    "clues": [
+      "I brought foreign gods into my husband's kingdom.",
+      "I hunted down prophets who opposed my religion.",
+      "I arranged false charges to seize a vineyard I wanted.",
+      "A prophet fled for his life after I threatened him.",
+      "My name became a symbol of wickedness and manipulation."
+    ],
+    "references": [
+      "1 Kings 16:31",
+      "1 Kings 18:4",
+      "1 Kings 21:8-10",
+      "1 Kings 19:2",
+      "Revelation 2:20"
+    ]
+  },
+  {
+    "id": "gw_046",
+    "characterName": "Isaiah",
+    "level": 5,
+    "clues": [
+      "I saw a vision of God's throne, surrounded by heavenly beings.",
+      "I cried out that I was a man of unclean lips.",
+      "A coal touched my lips to cleanse me before I was sent.",
+      "I prophesied both judgment and comfort to my people.",
+      "My writings include famous predictions about a coming servant and Messiah."
+    ],
+    "references": [
+      "Isaiah 6:1-2",
+      "Isaiah 6:5",
+      "Isaiah 6:6-7",
+      "Isaiah 40:1-2",
+      "Isaiah 53:5"
+    ]
+  },
+  {
+    "id": "gw_047",
+    "characterName": "Jeremiah",
+    "level": 5,
+    "clues": [
+      "I protested that I was too young when I was called.",
+      "I wept over the coming destruction of my beloved city.",
+      "I was thrown into a muddy cistern for my unpopular warnings.",
+      "I wrote laments mourning my nation's downfall.",
+      "I am remembered as the weeping prophet."
+    ],
+    "references": [
+      "Jeremiah 1:6",
+      "Jeremiah 9:1",
+      "Jeremiah 38:6",
+      "Lamentations 1:1",
+      "Jeremiah 13:17"
+    ]
+  },
+  {
+    "id": "gw_048",
+    "characterName": "Ezekiel",
+    "level": 5,
+    "clues": [
+      "I saw a vision of wheels within wheels and strange living creatures.",
+      "I was struck mute for a season as a sign to my people.",
+      "I acted out prophecies through strange, symbolic behavior.",
+      "I saw a valley filled with dry bones come back to life.",
+      "I prophesied to exiles far from their homeland."
+    ],
+    "references": [
+      "Ezekiel 1:16",
+      "Ezekiel 3:26",
+      "Ezekiel 4:4",
+      "Ezekiel 37:7-10",
+      "Ezekiel 3:11"
+    ]
+  },
+  {
+    "id": "gw_049",
+    "characterName": "Lazarus",
+    "level": 5,
+    "clues": [
+      "My sisters sent word that I was gravely ill.",
+      "I died before help arrived, and I was buried in a tomb.",
+      "I had been dead four days when a stone was rolled away.",
+      "A loud command called me back out, still wrapped in grave clothes.",
+      "My return to life became one of the most talked-about miracles."
+    ],
+    "references": [
+      "John 11:3",
+      "John 11:14",
+      "John 11:39",
+      "John 11:43-44",
+      "John 12:9"
+    ]
+  },
+  {
+    "id": "gw_050",
+    "characterName": "Martha",
+    "level": 5,
+    "clues": [
+      "I welcomed a traveling teacher into my home.",
+      "I busied myself with preparations while my sister sat listening.",
+      "I complained that I had been left to serve alone.",
+      "I professed my faith even while grieving my brother's death.",
+      "I was the sister of Mary and Lazarus."
+    ],
+    "references": [
+      "Luke 10:38",
+      "Luke 10:39",
+      "Luke 10:40",
+      "John 11:27",
+      "John 11:5"
+    ]
+  },
+  {
+    "id": "gw_051",
+    "characterName": "Caleb",
+    "level": 6,
+    "clues": [
+      "I was one of twelve sent to scout out a promised land.",
+      "Unlike most of my companions, I brought back a hopeful report.",
+      "I remained faithful through decades of wilderness wandering.",
+      "At eighty-five, I still asked for a mountain to conquer.",
+      "I entered the promised land alongside Joshua, unlike my generation."
+    ],
+    "references": [
+      "Numbers 13:6",
+      "Numbers 13:30",
+      "Joshua 14:8",
+      "Joshua 14:10-12",
+      "Numbers 14:30"
+    ]
+  },
+  {
+    "id": "gw_052",
+    "characterName": "Jephthah",
+    "level": 6,
+    "clues": [
+      "I was driven away by my own family because of my mother's status.",
+      "Desperate leaders eventually came asking me to lead them in battle.",
+      "I made a rash vow before going to war.",
+      "My own daughter was the first to greet me on my return.",
+      "I am remembered among the judges who delivered Israel."
+    ],
+    "references": [
+      "Judges 11:1-2",
+      "Judges 11:5-6",
+      "Judges 11:30-31",
+      "Judges 11:34",
+      "Hebrews 11:32"
+    ]
+  },
+  {
+    "id": "gw_053",
+    "characterName": "Barak",
+    "level": 6,
+    "clues": [
+      "A prophetess summoned me with a battle plan from God.",
+      "I refused to go into battle without her by my side.",
+      "Because of my hesitation, the glory of victory went to another woman instead.",
+      "I led ten thousand men down from a mountain to face an iron-chariot army.",
+      "I am listed among the judges and among the faithful in Hebrews."
+    ],
+    "references": [
+      "Judges 4:6",
+      "Judges 4:8",
+      "Judges 4:9",
+      "Judges 4:13-14",
+      "Hebrews 11:32"
+    ]
+  },
+  {
+    "id": "gw_054",
+    "characterName": "Hannah",
+    "level": 6,
+    "clues": [
+      "I was deeply troubled by my inability to have children.",
+      "A priest mistook my silent, desperate prayer for drunkenness.",
+      "I vowed to dedicate my son to God's service if given one.",
+      "I brought my young son to live at the tabernacle after he was weaned.",
+      "My song of praise echoes themes later found in Mary's own song."
+    ],
+    "references": [
+      "1 Samuel 1:10",
+      "1 Samuel 1:13",
+      "1 Samuel 1:11",
+      "1 Samuel 1:24",
+      "1 Samuel 2:1"
+    ]
+  },
+  {
+    "id": "gw_055",
+    "characterName": "Eli",
+    "level": 6,
+    "clues": [
+      "I served as high priest and judge in a troubled era.",
+      "I raised a boy who had been dedicated to serve alongside me.",
+      "My own sons dishonored their priestly duties.",
+      "I failed to restrain their wrongdoing despite warnings.",
+      "News of a lost sacred chest and my sons' deaths caused my own fatal fall."
+    ],
+    "references": [
+      "1 Samuel 1:9",
+      "1 Samuel 2:11",
+      "1 Samuel 2:12",
+      "1 Samuel 3:13",
+      "1 Samuel 4:17-18"
+    ]
+  },
+  {
+    "id": "gw_056",
+    "characterName": "Nathan",
+    "level": 6,
+    "clues": [
+      "I served as a prophet during a king's reign.",
+      "I told a king a story about a poor man's beloved lamb.",
+      "My story was a trap that exposed the king's own sin.",
+      "I declared to the king, 'You are the man.'",
+      "I later helped ensure Solomon, not a rival, took the throne."
+    ],
+    "references": [
+      "2 Samuel 7:2",
+      "2 Samuel 12:1-3",
+      "2 Samuel 12:5",
+      "2 Samuel 12:7",
+      "1 Kings 1:11-12"
+    ]
+  },
+  {
+    "id": "gw_057",
+    "characterName": "Hezekiah",
+    "level": 6,
+    "clues": [
+      "I removed idols and restored proper worship in my kingdom.",
+      "I tore my clothes upon hearing a mocking, threatening letter.",
+      "I wept and prayed when told I would soon die.",
+      "My life was extended by fifteen years after that prayer.",
+      "I commissioned a tunnel to secure my city's water supply."
+    ],
+    "references": [
+      "2 Kings 18:4",
+      "2 Kings 19:1",
+      "2 Kings 20:2-3",
+      "2 Kings 20:6",
+      "2 Kings 20:20"
+    ]
+  },
+  {
+    "id": "gw_058",
+    "characterName": "Josiah",
+    "level": 6,
+    "clues": [
+      "I became king while still just a boy.",
+      "A long-lost scroll of the Law was discovered during my reign.",
+      "I tore my robes upon hearing what it said.",
+      "I led a sweeping reform, destroying idols across the land.",
+      "I renewed my people's covenant with God."
+    ],
+    "references": [
+      "2 Kings 22:1",
+      "2 Kings 22:8",
+      "2 Kings 22:11",
+      "2 Kings 23:24",
+      "2 Kings 23:3"
+    ]
+  },
+  {
+    "id": "gw_059",
+    "characterName": "Stephen",
+    "level": 6,
+    "clues": [
+      "I was chosen to help distribute food fairly among widows.",
+      "I performed wonders and spoke with unusual wisdom.",
+      "I delivered a bold speech before a hostile religious council.",
+      "I saw a vision of heaven opened just before my death.",
+      "I became the first martyr of the early church, stoned for my faith."
+    ],
+    "references": [
+      "Acts 6:5",
+      "Acts 6:8-10",
+      "Acts 7:1-2",
+      "Acts 7:55-56",
+      "Acts 7:59-60"
+    ]
+  },
+  {
+    "id": "gw_060",
+    "characterName": "Barnabas",
+    "level": 6,
+    "clues": [
+      "My name means 'son of encouragement.'",
+      "I sold a field and gave the proceeds to the early believers.",
+      "I vouched for a former persecutor when others feared him.",
+      "I traveled alongside that same man on missionary journeys.",
+      "I later split from him over a disagreement about a young companion."
+    ],
+    "references": [
+      "Acts 4:36",
+      "Acts 4:37",
+      "Acts 9:27",
+      "Acts 13:2",
+      "Acts 15:37-39"
+    ]
+  },
+  {
+    "id": "gw_061",
+    "characterName": "Melchizedek",
+    "level": 7,
+    "clues": [
+      "I was both a king and a priest, a rare combination.",
+      "I brought out bread and wine to a returning warrior.",
+      "I blessed him, and he gave me a tenth of everything.",
+      "My priesthood is described as having no recorded beginning or end.",
+      "A New Testament book compares a greater priest to my order."
+    ],
+    "references": [
+      "Hebrews 7:1",
+      "Genesis 14:18",
+      "Genesis 14:19-20",
+      "Hebrews 7:3",
+      "Hebrews 7:17"
+    ]
+  },
+  {
+    "id": "gw_062",
+    "characterName": "Jethro",
+    "level": 7,
+    "clues": [
+      "I was a priest in a foreign land where a fugitive found refuge.",
+      "I gave my daughter in marriage to that fugitive.",
+      "I later visited him after he led a great deliverance.",
+      "I advised him to appoint capable leaders to share his burden.",
+      "I was the father-in-law of Moses."
+    ],
+    "references": [
+      "Exodus 2:15-16",
+      "Exodus 2:21",
+      "Exodus 18:5",
+      "Exodus 18:21",
+      "Exodus 3:1"
+    ]
+  },
+  {
+    "id": "gw_063",
+    "characterName": "Balaam",
+    "level": 7,
+    "clues": [
+      "A foreign king hired me to curse an approaching nation.",
+      "My own donkey saw an angel before I did.",
+      "My donkey spoke to me after I struck it in frustration.",
+      "I could only speak the blessings God put in my mouth.",
+      "Despite my failed curses, I later led that nation into sin."
+    ],
+    "references": [
+      "Numbers 22:5-6",
+      "Numbers 22:23",
+      "Numbers 22:28",
+      "Numbers 23:12",
+      "Numbers 31:16"
+    ]
+  },
+  {
+    "id": "gw_064",
+    "characterName": "Othniel",
+    "level": 7,
+    "clues": [
+      "I captured a city and won a bride as my reward.",
+      "I am named as the very first judge to deliver my people.",
+      "The Spirit came upon me before I went to war.",
+      "I brought decades of peace after my victory.",
+      "I was the nephew of Caleb."
+    ],
+    "references": [
+      "Joshua 15:16-17",
+      "Judges 3:9",
+      "Judges 3:10",
+      "Judges 3:11",
+      "Judges 1:13"
+    ]
+  },
+  {
+    "id": "gw_065",
+    "characterName": "Ehud",
+    "level": 7,
+    "clues": [
+      "I was left-handed, which helped hide my weapon.",
+      "I strapped a hidden blade to my right thigh.",
+      "I told a foreign king I had a secret message for him alone.",
+      "I delivered that message with my concealed weapon instead of words.",
+      "I delivered my people from oppression after that encounter."
+    ],
+    "references": [
+      "Judges 3:15",
+      "Judges 3:16",
+      "Judges 3:19",
+      "Judges 3:21",
+      "Judges 3:30"
+    ]
+  },
+  {
+    "id": "gw_066",
+    "characterName": "Michal",
+    "level": 7,
+    "clues": [
+      "I was a king's daughter who fell in love with a rising warrior.",
+      "I helped my husband escape through a window when my father sought his life.",
+      "I was later given to another man while my husband was in exile.",
+      "I watched my husband dance before the ark with great abandon.",
+      "I despised him for it, and we grew estranged."
+    ],
+    "references": [
+      "1 Samuel 18:20",
+      "1 Samuel 19:12",
+      "1 Samuel 25:44",
+      "2 Samuel 6:16",
+      "2 Samuel 6:20-23"
+    ]
+  },
+  {
+    "id": "gw_067",
+    "characterName": "Jonathan",
+    "level": 7,
+    "clues": [
+      "I was heir to my father's throne, yet I supported another man's rise instead.",
+      "I made a covenant of friendship with my father's rival.",
+      "I warned my friend of my father's murderous intentions.",
+      "I once attacked an enemy garrison with just my armor-bearer.",
+      "I died alongside my father in the same battle."
+    ],
+    "references": [
+      "1 Samuel 23:17",
+      "1 Samuel 18:3",
+      "1 Samuel 19:2",
+      "1 Samuel 14:1",
+      "1 Samuel 31:2"
+    ]
+  },
+  {
+    "id": "gw_068",
+    "characterName": "Uriah",
+    "level": 7,
+    "clues": [
+      "I was one of my king's mighty warriors.",
+      "My wife caught the king's eye while I was away at war.",
+      "I refused to go home and enjoy comfort while my fellow soldiers camped in the field.",
+      "I unknowingly carried the letter that sealed my own fate.",
+      "I was placed on the front line and abandoned there to die."
+    ],
+    "references": [
+      "2 Samuel 23:39",
+      "2 Samuel 11:3",
+      "2 Samuel 11:11",
+      "2 Samuel 11:14",
+      "2 Samuel 11:15"
+    ]
+  },
+  {
+    "id": "gw_069",
+    "characterName": "Mordecai",
+    "level": 7,
+    "clues": [
+      "I raised my orphaned cousin as my own daughter.",
+      "I refused to bow to an arrogant official.",
+      "That refusal led to a plot against my entire people.",
+      "I uncovered an assassination plot and reported it, unrewarded at first.",
+      "I was honored publicly by the very enemy who plotted my death."
+    ],
+    "references": [
+      "Esther 2:7",
+      "Esther 3:2",
+      "Esther 3:6",
+      "Esther 6:2-3",
+      "Esther 6:11"
+    ]
+  },
+  {
+    "id": "gw_070",
+    "characterName": "Haman",
+    "level": 7,
+    "clues": [
+      "I was promoted to the highest position in the king's court.",
+      "I was enraged when one man refused to bow to me.",
+      "I plotted to destroy an entire people over that one insult.",
+      "I built gallows intended for my enemy.",
+      "I was hanged on the very structure I built for another."
+    ],
+    "references": [
+      "Esther 3:1",
+      "Esther 3:5",
+      "Esther 3:6",
+      "Esther 5:14",
+      "Esther 7:10"
+    ]
+  },
+  {
+    "id": "gw_071",
+    "characterName": "Shimei",
+    "level": 8,
+    "clues": [
+      "I cursed a fleeing king and threw stones and dust at him.",
+      "I claimed loyalty once that same king was restored to power.",
+      "I was spared for a time despite my earlier hostility.",
+      "I was warned never to leave the city under threat of death.",
+      "I broke that condition years later and paid the price."
+    ],
+    "references": [
+      "2 Samuel 16:5-6",
+      "2 Samuel 19:19-20",
+      "2 Samuel 19:23",
+      "1 Kings 2:36-37",
+      "1 Kings 2:46"
+    ]
+  },
+  {
+    "id": "gw_072",
+    "characterName": "Ahithophel",
+    "level": 8,
+    "clues": [
+      "I was once a trusted counselor whose advice was like consulting God himself.",
+      "I abandoned my king to join a rebellion led by his own son.",
+      "My counsel was rejected in favor of a rival advisor's plan.",
+      "I saw that the rebellion would fail because of that rejection.",
+      "I put my affairs in order and ended my own life."
+    ],
+    "references": [
+      "2 Samuel 16:23",
+      "2 Samuel 15:12",
+      "2 Samuel 17:14",
+      "2 Samuel 17:23",
+      "2 Samuel 17:23"
+    ]
+  },
+  {
+    "id": "gw_073",
+    "characterName": "Tamar",
+    "level": 8,
+    "clues": [
+      "I was a king's daughter, known for my beauty.",
+      "My own half-brother deceived and violated me.",
+      "I tore my royal robe and mourned openly afterward.",
+      "My full brother avenged me two years later.",
+      "My story reveals the painful consequences within a royal family."
+    ],
+    "references": [
+      "2 Samuel 13:1",
+      "2 Samuel 13:14",
+      "2 Samuel 13:19",
+      "2 Samuel 13:32",
+      "2 Samuel 13:20"
+    ]
+  },
+  {
+    "id": "gw_074",
+    "characterName": "Rizpah",
+    "level": 8,
+    "clues": [
+      "I was a concubine caught in the aftermath of a royal power struggle.",
+      "My sons were handed over and executed to end a famine.",
+      "I guarded their exposed bodies from birds and beasts for months.",
+      "My devotion moved a king to finally give proper burial to the dead.",
+      "My vigil is remembered as an act of fierce, sorrowful loyalty."
+    ],
+    "references": [
+      "2 Samuel 3:7",
+      "2 Samuel 21:8-9",
+      "2 Samuel 21:10",
+      "2 Samuel 21:11-14",
+      "2 Samuel 21:11"
+    ]
+  },
+  {
+    "id": "gw_075",
+    "characterName": "Gehazi",
+    "level": 8,
+    "clues": [
+      "I served as a servant to a prophet with a powerful ministry.",
+      "A foreign commander was healed of a skin disease through my master.",
+      "I secretly chased after that commander for gifts my master refused.",
+      "I lied about where I had been.",
+      "The disease my master refused to profit from clung to me instead."
+    ],
+    "references": [
+      "2 Kings 4:12",
+      "2 Kings 5:14",
+      "2 Kings 5:20",
+      "2 Kings 5:25",
+      "2 Kings 5:27"
+    ]
+  },
+  {
+    "id": "gw_076",
+    "characterName": "Naaman",
+    "level": 8,
+    "clues": [
+      "I commanded an army for a foreign king, though I suffered from a skin disease.",
+      "A captive servant girl told my wife of a prophet who could heal me.",
+      "I was offended when told to simply wash in a river seven times.",
+      "My servants convinced me to swallow my pride and try it anyway.",
+      "I was healed and declared there was no God like the one I had found."
+    ],
+    "references": [
+      "2 Kings 5:1",
+      "2 Kings 5:2-3",
+      "2 Kings 5:11",
+      "2 Kings 5:13",
+      "2 Kings 5:15"
+    ]
+  },
+  {
+    "id": "gw_077",
+    "characterName": "Obadiah",
+    "level": 8,
+    "clues": [
+      "My name means 'servant of the Lord.'",
+      "I wrote the shortest book among the Old Testament prophets.",
+      "My message was directed against a neighboring nation related by blood.",
+      "I condemned that nation for gloating over my people's downfall.",
+      "I promised that deliverance and justice would ultimately prevail."
+    ],
+    "references": [
+      "Obadiah 1:1",
+      "Obadiah 1:1-2",
+      "Obadiah 1:10",
+      "Obadiah 1:12",
+      "Obadiah 1:17"
+    ]
+  },
+  {
+    "id": "gw_078",
+    "characterName": "Habakkuk",
+    "level": 8,
+    "clues": [
+      "I questioned God openly about why evil seemed to go unpunished.",
+      "I was troubled by the answer, which involved an even more violent nation.",
+      "I stationed myself on a watchtower, waiting for God's reply.",
+      "I wrote that the righteous will live by faith.",
+      "My book ends with a song of trust despite hardship."
+    ],
+    "references": [
+      "Habakkuk 1:2-3",
+      "Habakkuk 1:6",
+      "Habakkuk 2:1",
+      "Habakkuk 2:4",
+      "Habakkuk 3:17-18"
+    ]
+  },
+  {
+    "id": "gw_079",
+    "characterName": "Huldah",
+    "level": 8,
+    "clues": [
+      "I was a prophetess consulted about a newly discovered scroll.",
+      "A king's officials sought me out for guidance during a religious reform.",
+      "I confirmed that the words of the scroll would surely come to pass.",
+      "I foretold both coming judgment and mercy for a repentant king.",
+      "My counsel was trusted even by the king's own advisors."
+    ],
+    "references": [
+      "2 Kings 22:14",
+      "2 Kings 22:12-13",
+      "2 Kings 22:16",
+      "2 Kings 22:19",
+      "2 Kings 22:20"
+    ]
+  },
+  {
+    "id": "gw_080",
+    "characterName": "Athaliah",
+    "level": 8,
+    "clues": [
+      "I seized the throne after my son the king was killed.",
+      "I tried to destroy the entire royal line to secure my power.",
+      "One infant was secretly hidden from my purge.",
+      "That hidden child was revealed years later as the rightful king.",
+      "I was executed once my usurped reign was exposed."
+    ],
+    "references": [
+      "2 Kings 11:3",
+      "2 Kings 11:1",
+      "2 Kings 11:2",
+      "2 Kings 11:12",
+      "2 Kings 11:16"
+    ]
+  },
+  {
+    "id": "gw_081",
+    "characterName": "Jehu",
+    "level": 9,
+    "clues": [
+      "I was anointed king in secret while serving as a military commander.",
+      "I drove my chariot furiously, recognized from a distance by my driving.",
+      "I carried out God's judgment against a corrupt royal house.",
+      "I orchestrated the death of a notorious queen.",
+      "Despite my zeal, my own dynasty later fell short of full faithfulness."
+    ],
+    "references": [
+      "2 Kings 9:6",
+      "2 Kings 9:20",
+      "2 Kings 9:7",
+      "2 Kings 9:33",
+      "2 Kings 10:31"
+    ]
+  },
+  {
+    "id": "gw_082",
+    "characterName": "Zephaniah",
+    "level": 9,
+    "clues": [
+      "I traced my lineage back several generations in my own book's opening.",
+      "I warned of a coming day of God's wrath.",
+      "I condemned complacency among my people.",
+      "I prophesied judgment on surrounding nations as well as my own.",
+      "I closed my book with a promise of joyful restoration."
+    ],
+    "references": [
+      "Zephaniah 1:1",
+      "Zephaniah 1:14-15",
+      "Zephaniah 1:12",
+      "Zephaniah 2:4-5",
+      "Zephaniah 3:17"
+    ]
+  },
+  {
+    "id": "gw_083",
+    "characterName": "Nahum",
+    "level": 9,
+    "clues": [
+      "I prophesied the downfall of a great and cruel city.",
+      "That city had earlier repented under another prophet's warning, but returned to evil.",
+      "I described God as slow to anger but not one who leaves the guilty unpunished.",
+      "My vivid poetry described chariots racing through the streets in judgment.",
+      "My short book focuses entirely on one doomed empire's capital."
+    ],
+    "references": [
+      "Nahum 1:1",
+      "Jonah 3:10",
+      "Nahum 1:3",
+      "Nahum 2:4",
+      "Nahum 3:7"
+    ]
+  },
+  {
+    "id": "gw_084",
+    "characterName": "Malachi",
+    "level": 9,
+    "clues": [
+      "I am considered the final voice among the Old Testament prophets.",
+      "I confronted priests for offering blemished sacrifices.",
+      "I rebuked my people for withholding their tithes.",
+      "I promised a messenger would come to prepare the way before the Lord.",
+      "My name means 'my messenger.'"
+    ],
+    "references": [
+      "Malachi 4:5-6",
+      "Malachi 1:8",
+      "Malachi 3:8",
+      "Malachi 3:1",
+      "Malachi 1:1"
+    ]
+  },
+  {
+    "id": "gw_085",
+    "characterName": "Philip",
+    "level": 9,
+    "clues": [
+      "I was chosen to help distribute food, alongside another future martyr.",
+      "I explained scripture to a traveling official from a distant land.",
+      "I baptized that official beside the road after their conversation.",
+      "I was suddenly carried away by the Spirit after that encounter.",
+      "I later hosted an apostle and had four daughters who prophesied."
+    ],
+    "references": [
+      "Acts 6:5",
+      "Acts 8:35",
+      "Acts 8:38",
+      "Acts 8:39",
+      "Acts 21:8-9"
+    ]
+  },
+  {
+    "id": "gw_086",
+    "characterName": "Matthew",
+    "level": 9,
+    "clues": [
+      "I collected taxes before I was called to follow a new teacher.",
+      "I hosted a large dinner for my teacher and many like myself.",
+      "Religious leaders criticized my teacher for eating with people like me.",
+      "I am also known by another name, Levi.",
+      "A Gospel bearing my name opens the New Testament."
+    ],
+    "references": [
+      "Matthew 9:9",
+      "Luke 5:29",
+      "Luke 5:30",
+      "Mark 2:14",
+      "Matthew 10:3"
+    ]
+  },
+  {
+    "id": "gw_087",
+    "characterName": "Simon the Zealot",
+    "level": 9,
+    "clues": [
+      "I belonged to a group fiercely opposed to foreign rule.",
+      "I was one of the twelve closest followers of Jesus.",
+      "Little is recorded about me individually in the Gospels.",
+      "My background contrasted sharply with a tax collector among the twelve.",
+      "I am mentioned mainly in the lists naming the apostles."
+    ],
+    "references": [
+      "Luke 6:15",
+      "Mark 3:14",
+      "Mark 3:18",
+      "Matthew 10:3-4",
+      "Acts 1:13"
+    ]
+  },
+  {
+    "id": "gw_088",
+    "characterName": "Andrew",
+    "level": 9,
+    "clues": [
+      "I was a fisherman alongside my more famous brother.",
+      "I had first followed John the Baptist before changing teachers.",
+      "I was the one who brought my brother to meet Jesus.",
+      "I pointed out a boy with a few loaves and fish before a miracle.",
+      "I am remembered as one of the first disciples called."
+    ],
+    "references": [
+      "Matthew 4:18",
+      "John 1:40",
+      "John 1:41-42",
+      "John 6:8-9",
+      "Mark 1:16-18"
+    ]
+  },
+  {
+    "id": "gw_089",
+    "characterName": "James",
+    "level": 9,
+    "clues": [
+      "I was a fisherman, the son of Zebedee.",
+      "My brother and I were nicknamed 'sons of thunder.'",
+      "I was part of an inner circle present at key private moments.",
+      "My mother once asked for me to sit at a place of honor.",
+      "I became the first apostle martyred for the faith."
+    ],
+    "references": [
+      "Matthew 4:21",
+      "Mark 3:17",
+      "Matthew 17:1",
+      "Matthew 20:20-21",
+      "Acts 12:2"
+    ]
+  },
+  {
+    "id": "gw_090",
+    "characterName": "John",
+    "level": 9,
+    "clues": [
+      "I was a fisherman, brother to another apostle.",
+      "I am often described as the disciple whom Jesus loved.",
+      "I leaned close to Jesus at the Last Supper.",
+      "I was entrusted with the care of Jesus' mother.",
+      "I am traditionally credited with writing a Gospel and a vivid book of visions."
+    ],
+    "references": [
+      "Mark 1:19",
+      "John 21:20",
+      "John 13:23",
+      "John 19:26-27",
+      "John 21:24"
+    ]
+  },
+  {
+    "id": "gw_091",
+    "characterName": "Onesimus",
+    "level": 10,
+    "clues": [
+      "I ran away from the man I served.",
+      "I crossed paths with an imprisoned apostle who became like a father to me.",
+      "That apostle sent me back to the man I had wronged.",
+      "A short New Testament letter pleads on my behalf.",
+      "My name means 'useful,' a play on words in that very letter."
+    ],
+    "references": [
+      "Philemon 1:15",
+      "Philemon 1:10",
+      "Philemon 1:12",
+      "Philemon 1:17-18",
+      "Philemon 1:11"
+    ]
+  },
+  {
+    "id": "gw_092",
+    "characterName": "Epaphroditus",
+    "level": 10,
+    "clues": [
+      "I was sent by a church to deliver a gift to an imprisoned apostle.",
+      "I became seriously ill, nearly to the point of death, during my service.",
+      "The apostle called me his brother, fellow worker, and fellow soldier.",
+      "I was anxious about how my home church would react to news of my illness.",
+      "I am mentioned by name in a letter to the Philippians."
+    ],
+    "references": [
+      "Philippians 4:18",
+      "Philippians 2:27",
+      "Philippians 2:25",
+      "Philippians 2:26",
+      "Philippians 2:29-30"
+    ]
+  },
+  {
+    "id": "gw_093",
+    "characterName": "Tychicus",
+    "level": 10,
+    "clues": [
+      "I carried letters on behalf of an imprisoned apostle to distant churches.",
+      "I am described as a beloved brother and faithful servant.",
+      "I was sent to encourage hearts with news of the apostle's situation.",
+      "I appear in multiple New Testament letters as a trusted courier.",
+      "I was entrusted with delivering both personal and church-wide news."
+    ],
+    "references": [
+      "Ephesians 6:21",
+      "Colossians 4:7",
+      "Colossians 4:8",
+      "2 Timothy 4:12",
+      "Ephesians 6:22"
+    ]
+  },
+  {
+    "id": "gw_094",
+    "characterName": "Priscilla",
+    "level": 10,
+    "clues": [
+      "My husband and I worked as tentmakers alongside a traveling apostle.",
+      "We hosted a church that met in our own home.",
+      "We took aside a gifted, eloquent speaker to explain the faith more accurately to him.",
+      "I am often named before my husband in the New Testament, unusual for the time.",
+      "We are remembered as a devoted ministry couple."
+    ],
+    "references": [
+      "Acts 18:2-3",
+      "1 Corinthians 16:19",
+      "Acts 18:26",
+      "Acts 18:18",
+      "Romans 16:3-4"
+    ]
+  },
+  {
+    "id": "gw_095",
+    "characterName": "Aquila",
+    "level": 10,
+    "clues": [
+      "My wife and I were forced to leave Rome due to an imperial decree.",
+      "I shared a trade with a well-known apostle who stayed and worked with us.",
+      "We hosted a church in our home in more than one city.",
+      "We helped instruct a gifted preacher more accurately in the faith.",
+      "I am almost always mentioned together with my wife."
+    ],
+    "references": [
+      "Acts 18:2",
+      "Acts 18:3",
+      "1 Corinthians 16:19",
+      "Acts 18:26",
+      "2 Timothy 4:19"
+    ]
+  },
+  {
+    "id": "gw_096",
+    "characterName": "Apollos",
+    "level": 10,
+    "clues": [
+      "I was an eloquent speaker with a thorough knowledge of the scriptures.",
+      "I taught boldly but only knew part of the story at first.",
+      "A ministry couple took me aside to explain things more accurately.",
+      "I went on to powerfully refute opponents in public debate.",
+      "Some believers in Corinth favored my teaching over others', causing division."
+    ],
+    "references": [
+      "Acts 18:24",
+      "Acts 18:25",
+      "Acts 18:26",
+      "Acts 18:28",
+      "1 Corinthians 1:12"
+    ]
+  },
+  {
+    "id": "gw_097",
+    "characterName": "Silas",
+    "level": 10,
+    "clues": [
+      "I was a leader among the early believers, chosen to deliver an important letter.",
+      "I accompanied an apostle on missionary travels after an earlier partner departed.",
+      "I was flogged and imprisoned alongside that apostle in one city.",
+      "We sang hymns in our cell, and an earthquake shook the prison doors open.",
+      "I later helped write at least one New Testament letter."
+    ],
+    "references": [
+      "Acts 15:22",
+      "Acts 15:40",
+      "Acts 16:23",
+      "Acts 16:25-26",
+      "1 Thessalonians 1:1"
+    ]
+  },
+  {
+    "id": "gw_098",
+    "characterName": "Timothy",
+    "level": 10,
+    "clues": [
+      "My mother and grandmother had a faith that was passed down to me.",
+      "An apostle became like a spiritual father to me.",
+      "I was left in charge of a church despite my relative youth.",
+      "I was urged not to let anyone look down on me for my age.",
+      "Two New Testament letters are addressed directly to me."
+    ],
+    "references": [
+      "2 Timothy 1:5",
+      "1 Corinthians 4:17",
+      "1 Timothy 1:3",
+      "1 Timothy 4:12",
+      "2 Timothy 1:2"
+    ]
+  },
+  {
+    "id": "gw_099",
+    "characterName": "Titus",
+    "level": 10,
+    "clues": [
+      "I was a Gentile companion of an apostle on his travels.",
+      "I was left behind on an island to organize the church there.",
+      "I was instructed to appoint elders in every town.",
+      "I helped deliver a difficult letter to a troubled church.",
+      "A New Testament letter bears my name."
+    ],
+    "references": [
+      "Galatians 2:3",
+      "Titus 1:5",
+      "Titus 1:5",
+      "2 Corinthians 7:6-7",
+      "Titus 1:4"
+    ]
+  },
+  {
+    "id": "gw_100",
+    "characterName": "Philemon",
+    "level": 10,
+    "clues": [
+      "A church met in my own home.",
+      "My runaway servant crossed paths with an imprisoned apostle.",
+      "That apostle sent my servant back to me with a personal appeal.",
+      "I was urged to receive him back as a brother, not merely a servant.",
+      "A short New Testament letter is addressed directly to me."
+    ],
+    "references": [
+      "Philemon 1:2",
+      "Philemon 1:10",
+      "Philemon 1:12",
+      "Philemon 1:16",
+      "Philemon 1:1"
+    ]
+  },
+  {
+    "id": "gw_101",
+    "characterName": "Cain",
+    "level": 11,
+    "clues": [
+      "I worked the ground as a tiller of the soil.",
+      "My offering of the fruit of the ground was not respected by God.",
+      "God warned me that sin was lying at the door.",
+      "I asked God, \"Am I my brother's keeper?\"",
+      "I killed my brother Abel, and God set a mark upon me."
+    ],
+    "references": [
+      "Genesis 4:2",
+      "Genesis 4:3-5",
+      "Genesis 4:7",
+      "Genesis 4:9",
+      "Genesis 4:8-15"
+    ]
+  },
+  {
+    "id": "gw_102",
+    "characterName": "Abel",
+    "level": 11,
+    "clues": [
+      "I was a keeper of sheep.",
+      "I brought the firstlings of my flock as an offering.",
+      "God had respect unto me and to my offering.",
+      "My blood cried out to God from the ground.",
+      "I was Adam and Eve's second son, killed by my older brother."
+    ],
+    "references": [
+      "Genesis 4:2",
+      "Genesis 4:4",
+      "Genesis 4:4",
+      "Genesis 4:10",
+      "Genesis 4:8"
+    ]
+  },
+  {
+    "id": "gw_103",
+    "characterName": "Seth",
+    "level": 11,
+    "clues": [
+      "My mother said God had appointed me in place of a son who was slain.",
+      "In my son Enos's days, men began to call upon the name of the LORD.",
+      "My father was 130 years old when I was born.",
+      "I was born in my father's likeness, after his image.",
+      "I was the son born to Adam and Eve after Abel's death."
+    ],
+    "references": [
+      "Genesis 4:25",
+      "Genesis 4:26",
+      "Genesis 5:3",
+      "Genesis 5:3",
+      "Genesis 4:25"
+    ]
+  },
+  {
+    "id": "gw_104",
+    "characterName": "Enoch",
+    "level": 11,
+    "clues": [
+      "My son lived longer than any other man recorded.",
+      "I lived 365 years on the earth.",
+      "Jude records my prophecy that the Lord comes with ten thousands of his saints.",
+      "I walked with God.",
+      "I was translated so that I should not see death, for God took me."
+    ],
+    "references": [
+      "Genesis 5:21",
+      "Genesis 5:23",
+      "Jude 1:14-15",
+      "Genesis 5:22",
+      "Hebrews 11:5"
+    ]
+  },
+  {
+    "id": "gw_105",
+    "characterName": "Methuselah",
+    "level": 11,
+    "clues": [
+      "My son was named Lamech.",
+      "Noah was my grandson.",
+      "My father walked with God.",
+      "My father was taken by God without dying.",
+      "I lived 969 years, longer than anyone else recorded."
+    ],
+    "references": [
+      "Genesis 5:25",
+      "Genesis 5:28-29",
+      "Genesis 5:21-22",
+      "Genesis 5:24",
+      "Genesis 5:27"
+    ]
+  },
+  {
+    "id": "gw_106",
+    "characterName": "Lot",
+    "level": 11,
+    "clues": [
+      "I travelled from Haran with my uncle.",
+      "Our herdsmen quarrelled, so my uncle and I parted ways.",
+      "I chose the well-watered plain of Jordan and pitched my tent toward Sodom.",
+      "Two angels urged me to flee the city before it was destroyed.",
+      "My wife looked back and became a pillar of salt."
+    ],
+    "references": [
+      "Genesis 12:5",
+      "Genesis 13:7-11",
+      "Genesis 13:10-12",
+      "Genesis 19:15",
+      "Genesis 19:26"
+    ]
+  },
+  {
+    "id": "gw_107",
+    "characterName": "Ishmael",
+    "level": 11,
+    "clues": [
+      "An angel named me before I was born.",
+      "It was said I would be a wild man, my hand against every man.",
+      "I was seen mocking at a feast, and my mother and I were sent away.",
+      "God heard my voice as I lay under a shrub in the wilderness.",
+      "I was Abraham's son by Hagar."
+    ],
+    "references": [
+      "Genesis 16:11",
+      "Genesis 16:12",
+      "Genesis 21:9-14",
+      "Genesis 21:15-17",
+      "Genesis 16:15"
+    ]
+  },
+  {
+    "id": "gw_108",
+    "characterName": "Hagar",
+    "level": 11,
+    "clues": [
+      "I was an Egyptian handmaid.",
+      "I fled from my mistress into the wilderness.",
+      "I called the LORD \"Thou God seest me.\"",
+      "God opened my eyes to see a well of water in the wilderness of Beersheba.",
+      "I bore Ishmael to Abraham."
+    ],
+    "references": [
+      "Genesis 16:1",
+      "Genesis 16:6",
+      "Genesis 16:13",
+      "Genesis 21:14-19",
+      "Genesis 16:15"
+    ]
+  },
+  {
+    "id": "gw_109",
+    "characterName": "Esau",
+    "level": 11,
+    "clues": [
+      "I was a cunning hunter, a man of the field.",
+      "I was born red, hairy all over like a garment.",
+      "I sold my birthright for a meal of red pottage.",
+      "My brother took our father's blessing by wearing goatskins on his hands.",
+      "I was Jacob's twin brother."
+    ],
+    "references": [
+      "Genesis 25:27",
+      "Genesis 25:25",
+      "Genesis 25:29-34",
+      "Genesis 27:16-23",
+      "Genesis 25:24-26"
+    ]
+  },
+  {
+    "id": "gw_110",
+    "characterName": "Laban",
+    "level": 11,
+    "clues": [
+      "I ran out to meet Abraham's servant at the well.",
+      "My sister Rebekah left home to marry Isaac.",
+      "My nephew said I changed his wages ten times.",
+      "My daughter stole my household gods.",
+      "I gave Leah to Jacob in place of Rachel."
+    ],
+    "references": [
+      "Genesis 24:29",
+      "Genesis 24:58-59",
+      "Genesis 31:7",
+      "Genesis 31:19",
+      "Genesis 29:23-25"
+    ]
+  },
+  {
+    "id": "gw_111",
+    "characterName": "Rachel",
+    "level": 12,
+    "clues": [
+      "I was a shepherdess who came to the well with my father's sheep.",
+      "A man served seven years for me, and they seemed but a few days.",
+      "I hid my father's images in the camel's furniture and sat upon them.",
+      "I died giving birth on the way to Bethlehem.",
+      "I was Jacob's beloved wife, mother of Joseph and Benjamin."
+    ],
+    "references": [
+      "Genesis 29:9",
+      "Genesis 29:20",
+      "Genesis 31:34",
+      "Genesis 35:16-19",
+      "Genesis 35:24"
+    ]
+  },
+  {
+    "id": "gw_112",
+    "characterName": "Leah",
+    "level": 12,
+    "clues": [
+      "My eyes were described as tender.",
+      "I was given in marriage in place of my younger sister.",
+      "I named a son Judah, saying, \"Now will I praise the LORD.\"",
+      "I was buried in the cave of Machpelah.",
+      "I was Laban's elder daughter and Jacob's first wife."
+    ],
+    "references": [
+      "Genesis 29:17",
+      "Genesis 29:23-25",
+      "Genesis 29:35",
+      "Genesis 49:31",
+      "Genesis 29:16"
+    ]
+  },
+  {
+    "id": "gw_113",
+    "characterName": "Reuben",
+    "level": 12,
+    "clues": [
+      "I found mandrakes in the field and brought them to my mother.",
+      "I persuaded my brothers not to kill our brother, but to cast him into a pit.",
+      "I returned to the pit and tore my clothes when the boy was gone.",
+      "My father said I was unstable as water.",
+      "I was Jacob's firstborn son."
+    ],
+    "references": [
+      "Genesis 30:14",
+      "Genesis 37:21-22",
+      "Genesis 37:29",
+      "Genesis 49:4",
+      "Genesis 49:3"
+    ]
+  },
+  {
+    "id": "gw_114",
+    "characterName": "Judah",
+    "level": 12,
+    "clues": [
+      "I suggested selling our brother to the Ishmeelites instead of killing him.",
+      "My daughter-in-law Tamar disguised herself, and I did not know her.",
+      "I offered to stay as a slave in place of my youngest brother.",
+      "My father said the sceptre would not depart from me.",
+      "I was Jacob's fourth son, by Leah; a tribe and a kingdom bear my name."
+    ],
+    "references": [
+      "Genesis 37:26-27",
+      "Genesis 38:15-16",
+      "Genesis 44:33",
+      "Genesis 49:10",
+      "Genesis 29:35"
+    ]
+  },
+  {
+    "id": "gw_115",
+    "characterName": "Benjamin",
+    "level": 12,
+    "clues": [
+      "My dying mother named me Benoni.",
+      "My father renamed me with a name meaning \"son of the right hand.\"",
+      "At a feast my portion was five times as much as my brothers'.",
+      "A silver cup was found in my sack.",
+      "I was the youngest son of Jacob and Rachel."
+    ],
+    "references": [
+      "Genesis 35:18",
+      "Genesis 35:18",
+      "Genesis 43:34",
+      "Genesis 44:12",
+      "Genesis 35:24"
+    ]
+  },
+  {
+    "id": "gw_116",
+    "characterName": "Dinah",
+    "level": 12,
+    "clues": [
+      "I am the one daughter named among Jacob's children.",
+      "I went out to see the daughters of the land.",
+      "Shechem the son of Hamor took me and defiled me.",
+      "My brothers Simeon and Levi avenged me with the sword.",
+      "My mother was Leah."
+    ],
+    "references": [
+      "Genesis 30:21",
+      "Genesis 34:1",
+      "Genesis 34:2",
+      "Genesis 34:25",
+      "Genesis 30:21"
+    ]
+  },
+  {
+    "id": "gw_117",
+    "characterName": "Potiphar",
+    "level": 12,
+    "clues": [
+      "I was an officer of Pharaoh, captain of the guard.",
+      "I bought a Hebrew slave from the Ishmeelites.",
+      "I saw that the LORD made all my servant did to prosper.",
+      "My wife accused my servant falsely.",
+      "I put Joseph into the prison where the king's prisoners were bound."
+    ],
+    "references": [
+      "Genesis 37:36",
+      "Genesis 39:1",
+      "Genesis 39:3",
+      "Genesis 39:17-19",
+      "Genesis 39:20"
+    ]
+  },
+  {
+    "id": "gw_118",
+    "characterName": "Ephraim",
+    "level": 12,
+    "clues": [
+      "I was born in Egypt; my mother was Asenath.",
+      "My name was chosen because God had made my father fruitful in the land of affliction.",
+      "My grandfather crossed his hands to bless me.",
+      "I was set before my older brother Manasseh.",
+      "I was Joseph's younger son."
+    ],
+    "references": [
+      "Genesis 41:50-52",
+      "Genesis 41:52",
+      "Genesis 48:14",
+      "Genesis 48:19-20",
+      "Genesis 41:52"
+    ]
+  },
+  {
+    "id": "gw_119",
+    "characterName": "Jochebed",
+    "level": 12,
+    "clues": [
+      "I was a daughter of Levi.",
+      "I hid my baby son for three months.",
+      "I made an ark of bulrushes and daubed it with slime and pitch.",
+      "Pharaoh's daughter paid me to nurse my own son.",
+      "I was the mother of Aaron, Moses and Miriam."
+    ],
+    "references": [
+      "Numbers 26:59",
+      "Exodus 2:2",
+      "Exodus 2:3",
+      "Exodus 2:9",
+      "Numbers 26:59"
+    ]
+  },
+  {
+    "id": "gw_120",
+    "characterName": "Zipporah",
+    "level": 12,
+    "clues": [
+      "I was one of seven daughters of a priest of Midian.",
+      "A stranger helped us water our flock when shepherds drove us away.",
+      "I bore a son named Gershom.",
+      "I circumcised my son with a sharp stone on the way to Egypt.",
+      "I was the wife of Moses."
+    ],
+    "references": [
+      "Exodus 2:16",
+      "Exodus 2:17",
+      "Exodus 2:22",
+      "Exodus 4:25",
+      "Exodus 2:21"
+    ]
+  },
+  {
+    "id": "gw_121",
+    "characterName": "Korah",
+    "level": 13,
+    "clues": [
+      "I was a Levite, the son of Izhar.",
+      "I gathered 250 princes of the assembly against Moses and Aaron.",
+      "I told Moses and Aaron, \"Ye take too much upon you.\"",
+      "Moses told me to bring censers before the LORD.",
+      "The earth opened and swallowed me and my company."
+    ],
+    "references": [
+      "Numbers 16:1",
+      "Numbers 16:2",
+      "Numbers 16:3",
+      "Numbers 16:16-17",
+      "Numbers 16:32"
+    ]
+  },
+  {
+    "id": "gw_122",
+    "characterName": "Achan",
+    "level": 13,
+    "clues": [
+      "I was of the tribe of Judah.",
+      "I coveted a goodly Babylonish garment.",
+      "I hid silver and gold in the earth under my tent.",
+      "Because of my sin, Israel was defeated at Ai.",
+      "I was stoned in the valley of Achor."
+    ],
+    "references": [
+      "Joshua 7:1",
+      "Joshua 7:21",
+      "Joshua 7:21",
+      "Joshua 7:4-11",
+      "Joshua 7:24-26"
+    ]
+  },
+  {
+    "id": "gw_123",
+    "characterName": "Eleazar",
+    "level": 13,
+    "clues": [
+      "I was one of Aaron's sons.",
+      "My father's garments were put on me on mount Hor.",
+      "I ministered in the priest's office in my father's stead.",
+      "I divided the land of Canaan with Joshua.",
+      "I was the high priest who succeeded Aaron."
+    ],
+    "references": [
+      "Exodus 6:23",
+      "Numbers 20:26-28",
+      "Deuteronomy 10:6",
+      "Joshua 14:1",
+      "Numbers 20:28"
+    ]
+  },
+  {
+    "id": "gw_124",
+    "characterName": "Phinehas",
+    "level": 13,
+    "clues": [
+      "My grandfather was Aaron.",
+      "I was zealous for my God when Israel sinned at Peor.",
+      "I thrust a javelin through an Israelite man and a Midianite woman.",
+      "God gave me his covenant of peace.",
+      "I was the son of Eleazar the priest."
+    ],
+    "references": [
+      "Numbers 25:7",
+      "Numbers 25:11",
+      "Numbers 25:7-8",
+      "Numbers 25:12",
+      "Numbers 25:11"
+    ]
+  },
+  {
+    "id": "gw_125",
+    "characterName": "Hur",
+    "level": 13,
+    "clues": [
+      "I went up the hill with Moses during the battle with Amalek.",
+      "With Aaron I held up Moses' hands until the going down of the sun.",
+      "Aaron and I were left in charge while Moses went up the mount.",
+      "My grandson Bezaleel was filled with the spirit of God for craftsmanship.",
+      "I held up one of Moses' hands while Aaron held the other."
+    ],
+    "references": [
+      "Exodus 17:10",
+      "Exodus 17:12",
+      "Exodus 24:14",
+      "Exodus 31:2",
+      "Exodus 17:12"
+    ]
+  },
+  {
+    "id": "gw_126",
+    "characterName": "Balak",
+    "level": 13,
+    "clues": [
+      "I was the son of Zippor.",
+      "I was king of the Moabites.",
+      "I was distressed because Israel was so many.",
+      "I sent princes to bring a prophet to curse Israel.",
+      "I built seven altars, but the prophet I hired blessed Israel instead."
+    ],
+    "references": [
+      "Numbers 22:2",
+      "Numbers 22:4",
+      "Numbers 22:3",
+      "Numbers 22:5-6",
+      "Numbers 23:1-11"
+    ]
+  },
+  {
+    "id": "gw_127",
+    "characterName": "Bezaleel",
+    "level": 13,
+    "clues": [
+      "I was of the tribe of Judah, the son of Uri.",
+      "God filled me with his spirit in wisdom and understanding.",
+      "I worked in gold, silver and brass, and in cutting of stones.",
+      "Aholiab worked alongside me.",
+      "I made the ark of shittim wood."
+    ],
+    "references": [
+      "Exodus 31:2",
+      "Exodus 31:3",
+      "Exodus 31:4-5",
+      "Exodus 31:6",
+      "Exodus 37:1"
+    ]
+  },
+  {
+    "id": "gw_128",
+    "characterName": "Og",
+    "level": 13,
+    "clues": [
+      "I was king of Bashan.",
+      "I was one of the remnant of the giants.",
+      "My bedstead was of iron, nine cubits long.",
+      "I came out against Israel to battle at Edrei.",
+      "Israel took sixty of my cities."
+    ],
+    "references": [
+      "Numbers 21:33",
+      "Deuteronomy 3:11",
+      "Deuteronomy 3:11",
+      "Numbers 21:33",
+      "Deuteronomy 3:4"
+    ]
+  },
+  {
+    "id": "gw_129",
+    "characterName": "Sisera",
+    "level": 13,
+    "clues": [
+      "I was captain of Jabin's army.",
+      "I had nine hundred chariots of iron.",
+      "My army was routed by Barak at the river Kishon.",
+      "I fled on foot to the tent of Heber the Kenite.",
+      "A woman drove a nail through my temples."
+    ],
+    "references": [
+      "Judges 4:2",
+      "Judges 4:3",
+      "Judges 4:13-15",
+      "Judges 4:17",
+      "Judges 4:21"
+    ]
+  },
+  {
+    "id": "gw_130",
+    "characterName": "Achsah",
+    "level": 13,
+    "clues": [
+      "My father promised me as wife to whoever took Kirjathsepher.",
+      "Othniel won my hand.",
+      "I asked my father for a blessing.",
+      "I asked for springs of water because I had been given a south land.",
+      "I was Caleb's daughter."
+    ],
+    "references": [
+      "Joshua 15:16",
+      "Joshua 15:17",
+      "Joshua 15:19",
+      "Joshua 15:19",
+      "Joshua 15:16"
+    ]
+  },
+  {
+    "id": "gw_131",
+    "characterName": "Jael",
+    "level": 14,
+    "clues": [
+      "I was the wife of Heber the Kenite.",
+      "I invited a fleeing captain into my tent.",
+      "He asked for water, and I gave him milk.",
+      "Deborah's song called me blessed above women in the tent.",
+      "I killed Sisera with a tent nail."
+    ],
+    "references": [
+      "Judges 4:17",
+      "Judges 4:18",
+      "Judges 5:25",
+      "Judges 5:24",
+      "Judges 4:21"
+    ]
+  },
+  {
+    "id": "gw_132",
+    "characterName": "Manoah",
+    "level": 14,
+    "clues": [
+      "I was a man of Zorah, of the family of the Danites.",
+      "My wife was barren until an angel appeared to her.",
+      "I prayed that the man of God would come again and teach us.",
+      "The angel ascended in the flame of our altar.",
+      "I was the father of Samson."
+    ],
+    "references": [
+      "Judges 13:2",
+      "Judges 13:2-3",
+      "Judges 13:8",
+      "Judges 13:20",
+      "Judges 13:24"
+    ]
+  },
+  {
+    "id": "gw_133",
+    "characterName": "Delilah",
+    "level": 14,
+    "clues": [
+      "I lived in the valley of Sorek.",
+      "The Philistine lords each offered me eleven hundred pieces of silver.",
+      "I bound a man with green withs and new ropes.",
+      "I wove his seven locks into the web.",
+      "Samson told me his secret, and I had his head shaved while he slept."
+    ],
+    "references": [
+      "Judges 16:4",
+      "Judges 16:5",
+      "Judges 16:8-12",
+      "Judges 16:13-14",
+      "Judges 16:17-19"
+    ]
+  },
+  {
+    "id": "gw_134",
+    "characterName": "Abimelech",
+    "level": 14,
+    "clues": [
+      "My father was Jerubbaal.",
+      "I killed seventy of my brothers upon one stone.",
+      "My youngest brother Jotham escaped and told a parable of the trees.",
+      "The men of Shechem made me king.",
+      "A woman cast a piece of millstone upon my head at Thebez."
+    ],
+    "references": [
+      "Judges 9:1",
+      "Judges 9:5",
+      "Judges 9:5-15",
+      "Judges 9:6",
+      "Judges 9:50-53"
+    ]
+  },
+  {
+    "id": "gw_135",
+    "characterName": "Elkanah",
+    "level": 14,
+    "clues": [
+      "I was a man of Ramathaimzophim, of mount Ephraim.",
+      "I had two wives.",
+      "I gave a worthy portion to the wife I loved.",
+      "I asked my wife, \"Am not I better to thee than ten sons?\"",
+      "I was Hannah's husband and the father of Samuel."
+    ],
+    "references": [
+      "1 Samuel 1:1",
+      "1 Samuel 1:2",
+      "1 Samuel 1:5",
+      "1 Samuel 1:8",
+      "1 Samuel 1:19-20"
+    ]
+  },
+  {
+    "id": "gw_136",
+    "characterName": "Orpah",
+    "level": 14,
+    "clues": [
+      "I was a woman of Moab.",
+      "I married one of Naomi's sons.",
+      "My husband and his brother both died.",
+      "I wept and kissed my mother-in-law goodbye.",
+      "I went back to my people while my sister-in-law Ruth stayed."
+    ],
+    "references": [
+      "Ruth 1:4",
+      "Ruth 1:4",
+      "Ruth 1:5",
+      "Ruth 1:14",
+      "Ruth 1:15"
+    ]
+  },
+  {
+    "id": "gw_137",
+    "characterName": "Agag",
+    "level": 14,
+    "clues": [
+      "I was king of the Amalekites.",
+      "Saul spared me against God's command.",
+      "I came delicately, thinking the bitterness of death was past.",
+      "Samuel hewed me in pieces before the LORD in Gilgal.",
+      "Sparing me helped cost Saul his kingdom."
+    ],
+    "references": [
+      "1 Samuel 15:8",
+      "1 Samuel 15:9",
+      "1 Samuel 15:32",
+      "1 Samuel 15:33",
+      "1 Samuel 15:26"
+    ]
+  },
+  {
+    "id": "gw_138",
+    "characterName": "Goliath",
+    "level": 14,
+    "clues": [
+      "I was a champion of the Philistines from Gath.",
+      "My height was six cubits and a span.",
+      "The staff of my spear was like a weaver's beam.",
+      "I defied the armies of Israel for forty days.",
+      "A shepherd boy killed me with a sling and a stone."
+    ],
+    "references": [
+      "1 Samuel 17:4",
+      "1 Samuel 17:4",
+      "1 Samuel 17:7",
+      "1 Samuel 17:16",
+      "1 Samuel 17:49-50"
+    ]
+  },
+  {
+    "id": "gw_139",
+    "characterName": "Doeg",
+    "level": 14,
+    "clues": [
+      "I was an Edomite.",
+      "I was the chiefest of Saul's herdmen.",
+      "I saw David receive bread and a sword at Nob.",
+      "I reported Ahimelech the priest to Saul.",
+      "When others refused, I killed eighty-five priests."
+    ],
+    "references": [
+      "1 Samuel 21:7",
+      "1 Samuel 21:7",
+      "1 Samuel 22:9-10",
+      "1 Samuel 22:9",
+      "1 Samuel 22:18"
+    ]
+  },
+  {
+    "id": "gw_140",
+    "characterName": "Abner",
+    "level": 14,
+    "clues": [
+      "I was captain of Saul's host.",
+      "I made Ishbosheth king over Israel.",
+      "I killed Asahel with the end of my spear.",
+      "I made a league with David at Hebron.",
+      "Joab killed me in the gate of Hebron."
+    ],
+    "references": [
+      "1 Samuel 14:50",
+      "2 Samuel 2:8-9",
+      "2 Samuel 2:23",
+      "2 Samuel 3:20-21",
+      "2 Samuel 3:27"
+    ]
+  },
+  {
+    "id": "gw_141",
+    "characterName": "Joab",
+    "level": 15,
+    "clues": [
+      "My mother was Zeruiah, David's sister.",
+      "I went up first against the Jebusites and so became chief.",
+      "I killed Abner to avenge my brother Asahel.",
+      "I thrust three darts through Absalom's heart.",
+      "I was captain of David's army; Benaiah killed me by the altar."
+    ],
+    "references": [
+      "1 Chronicles 2:16",
+      "1 Chronicles 11:6",
+      "2 Samuel 3:30",
+      "2 Samuel 18:14",
+      "1 Kings 2:28-34"
+    ]
+  },
+  {
+    "id": "gw_142",
+    "characterName": "Abishai",
+    "level": 15,
+    "clues": [
+      "I was a son of Zeruiah and brother of Joab.",
+      "I went with David by night into Saul's camp.",
+      "I wanted to smite Saul to the earth with his own spear.",
+      "I asked to take off the head of Shimei, who cursed David.",
+      "I rescued David from the giant Ishbibenob."
+    ],
+    "references": [
+      "2 Samuel 2:18",
+      "1 Samuel 26:7",
+      "1 Samuel 26:8",
+      "2 Samuel 16:9",
+      "2 Samuel 21:16-17"
+    ]
+  },
+  {
+    "id": "gw_143",
+    "characterName": "Asahel",
+    "level": 15,
+    "clues": [
+      "I was a son of Zeruiah.",
+      "I was as light of foot as a wild roe.",
+      "I pursued Abner and would not turn aside.",
+      "I was one of David's thirty mighty men.",
+      "Abner killed me with the hinder end of his spear."
+    ],
+    "references": [
+      "2 Samuel 2:18",
+      "2 Samuel 2:18",
+      "2 Samuel 2:19-21",
+      "2 Samuel 23:24",
+      "2 Samuel 2:23"
+    ]
+  },
+  {
+    "id": "gw_144",
+    "characterName": "Abigail",
+    "level": 15,
+    "clues": [
+      "I was a woman of good understanding and beautiful countenance.",
+      "My husband was churlish and evil in his doings.",
+      "I brought two hundred loaves and five sheep to meet an army.",
+      "I kept David from avenging himself with his own hand.",
+      "After my husband Nabal died, I became David's wife."
+    ],
+    "references": [
+      "1 Samuel 25:3",
+      "1 Samuel 25:3",
+      "1 Samuel 25:18",
+      "1 Samuel 25:33",
+      "1 Samuel 25:42"
+    ]
+  },
+  {
+    "id": "gw_145",
+    "characterName": "Nabal",
+    "level": 15,
+    "clues": [
+      "I had three thousand sheep and a thousand goats.",
+      "I was of the house of Caleb.",
+      "I asked, \"Who is David?\" and turned his young men away.",
+      "My name means fool, and folly was with me.",
+      "My heart died within me and I became as a stone."
+    ],
+    "references": [
+      "1 Samuel 25:2",
+      "1 Samuel 25:3",
+      "1 Samuel 25:10-11",
+      "1 Samuel 25:25",
+      "1 Samuel 25:37"
+    ]
+  },
+  {
+    "id": "gw_146",
+    "characterName": "Mephibosheth",
+    "level": 15,
+    "clues": [
+      "My nurse fled with me in haste; I fell and became lame.",
+      "I lived in Lodebar, in the house of Machir.",
+      "I called myself a dead dog before the king.",
+      "I ate continually at the king's table.",
+      "I was Jonathan's son, shown kindness by David."
+    ],
+    "references": [
+      "2 Samuel 4:4",
+      "2 Samuel 9:4",
+      "2 Samuel 9:8",
+      "2 Samuel 9:13",
+      "2 Samuel 9:6-7"
+    ]
+  },
+  {
+    "id": "gw_147",
+    "characterName": "Hushai",
+    "level": 15,
+    "clues": [
+      "I was an Archite.",
+      "I met David with my coat rent and earth upon my head.",
+      "David sent me back to defeat the counsel of Ahithophel.",
+      "Absalom chose my counsel over Ahithophel's.",
+      "I was known as David's friend."
+    ],
+    "references": [
+      "2 Samuel 15:32",
+      "2 Samuel 15:32",
+      "2 Samuel 15:34",
+      "2 Samuel 17:14",
+      "2 Samuel 15:37"
+    ]
+  },
+  {
+    "id": "gw_148",
+    "characterName": "Zadok",
+    "level": 15,
+    "clues": [
+      "I carried the ark of the covenant when David fled Jerusalem.",
+      "David told me to carry the ark back into the city.",
+      "My son Ahimaaz ran to bring David tidings.",
+      "I anointed Solomon king at Gihon.",
+      "Solomon put me in the room of Abiathar as priest."
+    ],
+    "references": [
+      "2 Samuel 15:24",
+      "2 Samuel 15:25",
+      "2 Samuel 18:19",
+      "1 Kings 1:39",
+      "1 Kings 2:35"
+    ]
+  },
+  {
+    "id": "gw_149",
+    "characterName": "Benaiah",
+    "level": 15,
+    "clues": [
+      "I was the son of Jehoiada.",
+      "I slew a lion in a pit in time of snow.",
+      "I killed an Egyptian with his own spear.",
+      "I was over the Cherethites and the Pelethites.",
+      "Solomon made me captain of the host in Joab's place."
+    ],
+    "references": [
+      "2 Samuel 23:20",
+      "2 Samuel 23:20",
+      "2 Samuel 23:21",
+      "2 Samuel 8:18",
+      "1 Kings 2:35"
+    ]
+  },
+  {
+    "id": "gw_150",
+    "characterName": "Adonijah",
+    "level": 15,
+    "clues": [
+      "I was the son of Haggith.",
+      "I exalted myself, saying, \"I will be king.\"",
+      "I prepared chariots and fifty men to run before me.",
+      "I caught hold of the horns of the altar in fear of Solomon.",
+      "I asked for Abishag the Shunammite as my wife and was put to death."
+    ],
+    "references": [
+      "2 Samuel 3:4",
+      "1 Kings 1:5",
+      "1 Kings 1:5",
+      "1 Kings 1:50",
+      "1 Kings 2:17-25"
+    ]
+  },
+  {
+    "id": "gw_151",
+    "characterName": "Rehoboam",
+    "level": 16,
+    "clues": [
+      "I was the son of Solomon.",
+      "I forsook the counsel of the old men.",
+      "I followed the young men's advice and answered the people roughly.",
+      "Ten tribes rebelled against me.",
+      "Shishak king of Egypt took the treasures of the temple in my reign."
+    ],
+    "references": [
+      "1 Kings 11:43",
+      "1 Kings 12:8",
+      "1 Kings 12:13-14",
+      "1 Kings 12:16-20",
+      "1 Kings 14:25-26"
+    ]
+  },
+  {
+    "id": "gw_152",
+    "characterName": "Jeroboam",
+    "level": 16,
+    "clues": [
+      "I was Solomon's servant, an Ephrathite.",
+      "A prophet tore his new garment into twelve pieces and gave me ten.",
+      "I fled from Solomon into Egypt.",
+      "I set up golden calves in Bethel and Dan.",
+      "My hand dried up when I put it forth against a man of God."
+    ],
+    "references": [
+      "1 Kings 11:26",
+      "1 Kings 11:30-31",
+      "1 Kings 11:40",
+      "1 Kings 12:28-29",
+      "1 Kings 13:4"
+    ]
+  },
+  {
+    "id": "gw_153",
+    "characterName": "Ahab",
+    "level": 16,
+    "clues": [
+      "I was the son of Omri.",
+      "I married Jezebel and served Baal.",
+      "I called Elijah the one that troubled Israel.",
+      "I lay on my bed and would eat no bread because I wanted a vineyard.",
+      "An arrow drawn at a venture struck me between the joints of the harness."
+    ],
+    "references": [
+      "1 Kings 16:29",
+      "1 Kings 16:31",
+      "1 Kings 18:17",
+      "1 Kings 21:4",
+      "1 Kings 22:34"
+    ]
+  },
+  {
+    "id": "gw_154",
+    "characterName": "Naboth",
+    "level": 16,
+    "clues": [
+      "I was a Jezreelite.",
+      "My vineyard was hard by the king's palace.",
+      "I refused to give the king the inheritance of my fathers.",
+      "Two false witnesses said I blasphemed God and the king.",
+      "Jezebel had me stoned so that Ahab could take my vineyard."
+    ],
+    "references": [
+      "1 Kings 21:1",
+      "1 Kings 21:1",
+      "1 Kings 21:3",
+      "1 Kings 21:13",
+      "1 Kings 21:15"
+    ]
+  },
+  {
+    "id": "gw_155",
+    "characterName": "Jehoshaphat",
+    "level": 16,
+    "clues": [
+      "I was king of Judah, the son of Asa.",
+      "I joined Ahab in battle at Ramothgilead.",
+      "I cried out when enemy captains mistook me for the king of Israel.",
+      "I sent Levites to teach the book of the law in the cities of Judah.",
+      "My army sang praises, and the LORD set ambushments against our enemies."
+    ],
+    "references": [
+      "1 Kings 22:41",
+      "1 Kings 22:29",
+      "1 Kings 22:32",
+      "2 Chronicles 17:9",
+      "2 Chronicles 20:22"
+    ]
+  },
+  {
+    "id": "gw_156",
+    "characterName": "Joash",
+    "level": 16,
+    "clues": [
+      "I was hidden in the house of the LORD for six years.",
+      "My aunt Jehosheba stole me away from among the king's sons who were slain.",
+      "I began to reign when I was seven years old.",
+      "I set a chest with a hole in its lid to collect money for repairing the temple.",
+      "I did right all the days that Jehoiada the priest instructed me."
+    ],
+    "references": [
+      "2 Kings 11:3",
+      "2 Kings 11:2",
+      "2 Kings 11:21",
+      "2 Kings 12:9",
+      "2 Kings 12:2"
+    ],
+    "aliases": [
+      "Jehoash"
+    ]
+  },
+  {
+    "id": "gw_157",
+    "characterName": "Jehoiada",
+    "level": 16,
+    "clues": [
+      "I was a priest in the days of Athaliah.",
+      "My wife hid the king's son from Athaliah.",
+      "I brought forth the king's son and put the crown upon him.",
+      "I commanded that Athaliah be slain outside the house of the LORD.",
+      "I died at a hundred and thirty years old and was buried among the kings."
+    ],
+    "references": [
+      "2 Kings 11:4",
+      "2 Chronicles 22:11",
+      "2 Kings 11:12",
+      "2 Kings 11:15",
+      "2 Chronicles 24:15-16"
+    ]
+  },
+  {
+    "id": "gw_158",
+    "characterName": "Uzziah",
+    "level": 16,
+    "clues": [
+      "I became king of Judah at sixteen years old.",
+      "I sought God in the days of Zechariah.",
+      "I loved husbandry and built towers in the desert.",
+      "My heart was lifted up and I went into the temple to burn incense.",
+      "Leprosy rose up in my forehead; Isaiah saw the Lord in the year I died."
+    ],
+    "references": [
+      "2 Chronicles 26:3",
+      "2 Chronicles 26:5",
+      "2 Chronicles 26:10",
+      "2 Chronicles 26:16",
+      "Isaiah 6:1"
+    ]
+  },
+  {
+    "id": "gw_159",
+    "characterName": "Manasseh",
+    "level": 16,
+    "clues": [
+      "I began to reign when I was twelve years old.",
+      "I reigned fifty and five years in Jerusalem.",
+      "I built altars for all the host of heaven in the house of the LORD.",
+      "The Assyrians took me among the thorns, bound me with fetters, and carried me to Babylon.",
+      "I humbled myself in my affliction, and God brought me back to Jerusalem."
+    ],
+    "references": [
+      "2 Kings 21:1",
+      "2 Kings 21:1",
+      "2 Kings 21:5",
+      "2 Chronicles 33:11",
+      "2 Chronicles 33:12-13"
+    ]
+  },
+  {
+    "id": "gw_160",
+    "characterName": "Hiram",
+    "level": 16,
+    "clues": [
+      "I was king of Tyre.",
+      "I sent cedar trees, carpenters and masons to build David a house.",
+      "I was ever a lover of David.",
+      "I supplied Solomon with cedar and fir trees for the temple.",
+      "Solomon gave me twenty cities in Galilee, and they pleased me not."
+    ],
+    "references": [
+      "2 Samuel 5:11",
+      "2 Samuel 5:11",
+      "1 Kings 5:1",
+      "1 Kings 5:10",
+      "1 Kings 9:11-12"
+    ]
+  },
+  {
+    "id": "gw_161",
+    "characterName": "Nebuchadnezzar",
+    "level": 17,
+    "clues": [
+      "I was king of Babylon.",
+      "I carried vessels of the house of God to the house of my god.",
+      "I dreamed of a great image whose head was of fine gold.",
+      "I cast three men into a burning fiery furnace.",
+      "I ate grass as oxen until I knew that the most High ruleth."
+    ],
+    "references": [
+      "Daniel 1:1",
+      "Daniel 1:2",
+      "Daniel 2:31-32",
+      "Daniel 3:20-21",
+      "Daniel 4:32-33"
+    ]
+  },
+  {
+    "id": "gw_162",
+    "characterName": "Belshazzar",
+    "level": 17,
+    "clues": [
+      "I made a great feast to a thousand of my lords.",
+      "We drank wine from the golden vessels taken from Jerusalem.",
+      "I saw the fingers of a man's hand writing upon the wall.",
+      "My knees smote one against another.",
+      "I was slain the same night the writing was interpreted."
+    ],
+    "references": [
+      "Daniel 5:1",
+      "Daniel 5:2-3",
+      "Daniel 5:5",
+      "Daniel 5:6",
+      "Daniel 5:30"
+    ]
+  },
+  {
+    "id": "gw_163",
+    "characterName": "Darius",
+    "level": 17,
+    "clues": [
+      "I took the kingdom being about threescore and two years old.",
+      "I set a hundred and twenty princes over the kingdom.",
+      "I signed a decree that no one could ask a petition of anyone but me for thirty days.",
+      "I passed the night fasting, and my sleep went from me.",
+      "I rose very early and went in haste to the den of lions."
+    ],
+    "references": [
+      "Daniel 5:31",
+      "Daniel 6:1",
+      "Daniel 6:7-9",
+      "Daniel 6:18",
+      "Daniel 6:19"
+    ]
+  },
+  {
+    "id": "gw_164",
+    "characterName": "Cyrus",
+    "level": 17,
+    "clues": [
+      "Isaiah's prophecy named me as God's shepherd.",
+      "God called me his anointed, whose right hand he had holden.",
+      "I was king of Persia.",
+      "The LORD stirred up my spirit to make a proclamation.",
+      "I proclaimed that the house of God at Jerusalem should be rebuilt."
+    ],
+    "references": [
+      "Isaiah 44:28",
+      "Isaiah 45:1",
+      "Ezra 1:1",
+      "Ezra 1:1",
+      "Ezra 1:2-3"
+    ]
+  },
+  {
+    "id": "gw_165",
+    "characterName": "Zerubbabel",
+    "level": 17,
+    "clues": [
+      "I was the son of Shealtiel.",
+      "I led the first company of returning exiles with Jeshua.",
+      "My hands laid the foundation of the house of God.",
+      "The word came to me: \"Not by might, nor by power, but by my spirit.\"",
+      "I was governor of Judah in the days of Haggai."
+    ],
+    "references": [
+      "Ezra 3:2",
+      "Ezra 2:2",
+      "Zechariah 4:9",
+      "Zechariah 4:6",
+      "Haggai 1:1"
+    ]
+  },
+  {
+    "id": "gw_166",
+    "characterName": "Haggai",
+    "level": 17,
+    "clues": [
+      "I prophesied in the second year of Darius the king.",
+      "I asked whether it was time to dwell in ceiled houses while God's house lay waste.",
+      "I said they earned wages to put into a bag with holes.",
+      "I said the glory of the latter house would be greater than the former.",
+      "I prophesied with Zechariah to stir up the rebuilding of the temple."
+    ],
+    "references": [
+      "Haggai 1:1",
+      "Haggai 1:4",
+      "Haggai 1:6",
+      "Haggai 2:9",
+      "Ezra 5:1"
+    ]
+  },
+  {
+    "id": "gw_167",
+    "characterName": "Zechariah",
+    "level": 17,
+    "clues": [
+      "I was the son of Berechiah.",
+      "I saw a man riding on a red horse among the myrtle trees.",
+      "I saw a candlestick all of gold and two olive trees.",
+      "I foretold a king coming lowly, riding upon an ass.",
+      "I wrote of thirty pieces of silver cast to the potter."
+    ],
+    "references": [
+      "Zechariah 1:1",
+      "Zechariah 1:8",
+      "Zechariah 4:2-3",
+      "Zechariah 9:9",
+      "Zechariah 11:12-13"
+    ]
+  },
+  {
+    "id": "gw_168",
+    "characterName": "Joel",
+    "level": 17,
+    "clues": [
+      "I was the son of Pethuel.",
+      "I described a land stripped by the palmerworm, locust and cankerworm.",
+      "I called the people to rend their heart, and not their garments.",
+      "I foretold that God would pour out his spirit upon all flesh.",
+      "Peter quoted my prophecy on the day of Pentecost."
+    ],
+    "references": [
+      "Joel 1:1",
+      "Joel 1:4",
+      "Joel 2:13",
+      "Joel 2:28",
+      "Acts 2:16-17"
+    ]
+  },
+  {
+    "id": "gw_169",
+    "characterName": "Amos",
+    "level": 17,
+    "clues": [
+      "I was among the herdmen of Tekoa.",
+      "I said I was no prophet, but a gatherer of sycomore fruit.",
+      "I saw the Lord standing with a plumbline in his hand.",
+      "I was shown a basket of summer fruit.",
+      "I said, \"Let judgment run down as waters.\""
+    ],
+    "references": [
+      "Amos 1:1",
+      "Amos 7:14",
+      "Amos 7:7-8",
+      "Amos 8:1-2",
+      "Amos 5:24"
+    ]
+  },
+  {
+    "id": "gw_170",
+    "characterName": "Hosea",
+    "level": 17,
+    "clues": [
+      "I was the son of Beeri.",
+      "The LORD told me to take a wife of whoredoms.",
+      "My wife was Gomer, the daughter of Diblaim.",
+      "I named my children Loruhamah and Loammi.",
+      "I bought my wife back for fifteen pieces of silver."
+    ],
+    "references": [
+      "Hosea 1:1",
+      "Hosea 1:2",
+      "Hosea 1:3",
+      "Hosea 1:6-9",
+      "Hosea 3:2"
+    ]
+  },
+  {
+    "id": "gw_171",
+    "characterName": "Elisabeth",
+    "level": 18,
+    "clues": [
+      "I was of the daughters of Aaron.",
+      "I was barren, and well stricken in years.",
+      "My babe leaped in my womb at Mary's greeting.",
+      "I asked, \"Whence is this to me, that the mother of my Lord should come to me?\"",
+      "I was the mother of John the Baptist."
+    ],
+    "references": [
+      "Luke 1:5",
+      "Luke 1:7",
+      "Luke 1:41",
+      "Luke 1:43",
+      "Luke 1:57-60"
+    ],
+    "aliases": [
+      "Elizabeth"
+    ]
+  },
+  {
+    "id": "gw_172",
+    "characterName": "Zacharias",
+    "level": 18,
+    "clues": [
+      "I was a priest of the course of Abia.",
+      "An angel appeared to me by the altar of incense.",
+      "I was struck dumb because I believed not the angel's words.",
+      "I wrote on a writing table, \"His name is John.\"",
+      "Filled with the Holy Ghost, I prophesied, \"Blessed be the Lord God of Israel.\""
+    ],
+    "references": [
+      "Luke 1:5",
+      "Luke 1:11",
+      "Luke 1:20",
+      "Luke 1:63",
+      "Luke 1:67-68"
+    ],
+    "aliases": [
+      "Zechariah"
+    ]
+  },
+  {
+    "id": "gw_173",
+    "characterName": "Simeon",
+    "level": 18,
+    "clues": [
+      "I was just and devout, waiting for the consolation of Israel.",
+      "It was revealed that I would not see death before I had seen the Lord's Christ.",
+      "I came by the Spirit into the temple.",
+      "I took the child Jesus up in my arms and blessed God.",
+      "I said, \"Lord, now lettest thou thy servant depart in peace.\""
+    ],
+    "references": [
+      "Luke 2:25",
+      "Luke 2:26",
+      "Luke 2:27",
+      "Luke 2:28",
+      "Luke 2:29"
+    ]
+  },
+  {
+    "id": "gw_174",
+    "characterName": "Anna",
+    "level": 18,
+    "clues": [
+      "I was a prophetess, the daughter of Phanuel.",
+      "I was of the tribe of Aser.",
+      "I had lived with a husband seven years from my virginity.",
+      "I departed not from the temple, serving God with fastings and prayers night and day.",
+      "I spoke of the child Jesus to all who looked for redemption in Jerusalem."
+    ],
+    "references": [
+      "Luke 2:36",
+      "Luke 2:36",
+      "Luke 2:36",
+      "Luke 2:37",
+      "Luke 2:38"
+    ]
+  },
+  {
+    "id": "gw_175",
+    "characterName": "Jairus",
+    "level": 18,
+    "clues": [
+      "I was one of the rulers of the synagogue.",
+      "I fell at Jesus' feet and begged him to come to my house.",
+      "My only daughter was about twelve years of age.",
+      "Messengers came to tell me, \"Thy daughter is dead.\"",
+      "Jesus took my daughter by the hand and said, \"Talitha cumi.\""
+    ],
+    "references": [
+      "Mark 5:22",
+      "Mark 5:22-23",
+      "Luke 8:42",
+      "Mark 5:35",
+      "Mark 5:41"
+    ]
+  },
+  {
+    "id": "gw_176",
+    "characterName": "Bartimaeus",
+    "level": 18,
+    "clues": [
+      "I was the son of Timaeus.",
+      "I sat by the highway side begging near Jericho.",
+      "I cried out, \"Jesus, thou son of David, have mercy on me.\"",
+      "I cast away my garment and came to Jesus.",
+      "I was blind, and Jesus said, \"Thy faith hath made thee whole.\""
+    ],
+    "references": [
+      "Mark 10:46",
+      "Mark 10:46",
+      "Mark 10:47",
+      "Mark 10:50",
+      "Mark 10:52"
+    ]
+  },
+  {
+    "id": "gw_177",
+    "characterName": "Pontius Pilate",
+    "level": 18,
+    "clues": [
+      "I was governor of Judaea.",
+      "I asked, \"What is truth?\"",
+      "My wife sent word to have nothing to do with that just man.",
+      "I washed my hands before the multitude.",
+      "I wrote the title \"JESUS OF NAZARETH THE KING OF THE JEWS.\""
+    ],
+    "references": [
+      "Luke 3:1",
+      "John 18:38",
+      "Matthew 27:19",
+      "Matthew 27:24",
+      "John 19:19"
+    ],
+    "aliases": [
+      "Pilate"
+    ]
+  },
+  {
+    "id": "gw_178",
+    "characterName": "Caiaphas",
+    "level": 18,
+    "clues": [
+      "I was the high priest that same year.",
+      "I said it was expedient that one man should die for the people.",
+      "The chief priests assembled in my palace to plot.",
+      "Annas was my father-in-law.",
+      "I rent my clothes, saying, \"He hath spoken blasphemy.\""
+    ],
+    "references": [
+      "John 11:49",
+      "John 11:50",
+      "Matthew 26:3-4",
+      "John 18:13",
+      "Matthew 26:65"
+    ]
+  },
+  {
+    "id": "gw_179",
+    "characterName": "Barabbas",
+    "level": 18,
+    "clues": [
+      "I was a notable prisoner.",
+      "I had committed murder in an insurrection.",
+      "John's Gospel calls me a robber.",
+      "The crowd chose me to be released.",
+      "I was set free, and Jesus was delivered to be crucified."
+    ],
+    "references": [
+      "Matthew 27:16",
+      "Mark 15:7",
+      "John 18:40",
+      "Matthew 27:21",
+      "Matthew 27:26"
+    ]
+  },
+  {
+    "id": "gw_180",
+    "characterName": "Joseph of Arimathea",
+    "level": 18,
+    "clues": [
+      "I was an honourable counsellor.",
+      "I had not consented to the council's counsel and deed.",
+      "I was a disciple of Jesus, but secretly for fear of the Jews.",
+      "I went in boldly unto Pilate and craved the body of Jesus.",
+      "I laid Jesus in my own new tomb, hewn out in the rock."
+    ],
+    "references": [
+      "Mark 15:43",
+      "Luke 23:50-51",
+      "John 19:38",
+      "Mark 15:43",
+      "Matthew 27:57-60"
+    ],
+    "aliases": [
+      "Joseph"
+    ]
+  },
+  {
+    "id": "gw_181",
+    "characterName": "Simon of Cyrene",
+    "level": 19,
+    "clues": [
+      "I was coming out of the country into Jerusalem.",
+      "I was the father of Alexander and Rufus.",
+      "Soldiers compelled me to do a task.",
+      "I bore the cross after Jesus.",
+      "I am remembered as the man of Cyrene who carried Jesus' cross."
+    ],
+    "references": [
+      "Mark 15:21",
+      "Mark 15:21",
+      "Matthew 27:32",
+      "Luke 23:26",
+      "Matthew 27:32"
+    ],
+    "aliases": [
+      "Simon"
+    ]
+  },
+  {
+    "id": "gw_182",
+    "characterName": "Cornelius",
+    "level": 19,
+    "clues": [
+      "I was a centurion of the band called the Italian band.",
+      "I was devout and gave much alms to the people.",
+      "An angel told me to send men to Joppa for Peter.",
+      "I fell down at Peter's feet and worshipped him.",
+      "The Holy Ghost fell on my household while Peter was still speaking."
+    ],
+    "references": [
+      "Acts 10:1",
+      "Acts 10:2",
+      "Acts 10:3-5",
+      "Acts 10:25",
+      "Acts 10:44"
+    ]
+  },
+  {
+    "id": "gw_183",
+    "characterName": "Lydia",
+    "level": 19,
+    "clues": [
+      "I was a seller of purple.",
+      "I came from the city of Thyatira.",
+      "I heard Paul by a riverside at Philippi.",
+      "The Lord opened my heart.",
+      "I was baptized with my household and constrained Paul to stay at my house."
+    ],
+    "references": [
+      "Acts 16:14",
+      "Acts 16:14",
+      "Acts 16:13-14",
+      "Acts 16:14",
+      "Acts 16:15"
+    ]
+  },
+  {
+    "id": "gw_184",
+    "characterName": "Dorcas",
+    "level": 19,
+    "clues": [
+      "I was a disciple at Joppa.",
+      "I was full of good works and almsdeeds.",
+      "Widows showed the coats and garments I had made.",
+      "Peter knelt down, prayed, and told me to arise.",
+      "I am the woman Peter raised from the dead at Joppa."
+    ],
+    "references": [
+      "Acts 9:36",
+      "Acts 9:36",
+      "Acts 9:39",
+      "Acts 9:40",
+      "Acts 9:40-41"
+    ],
+    "aliases": [
+      "Tabitha"
+    ]
+  },
+  {
+    "id": "gw_185",
+    "characterName": "Ananias",
+    "level": 19,
+    "clues": [
+      "I was a disciple at Damascus.",
+      "The Lord told me to go into the street called Straight.",
+      "I protested that I had heard how much evil this man had done.",
+      "I put my hands on Saul so that he might receive his sight.",
+      "Paul later described me as a devout man according to the law."
+    ],
+    "references": [
+      "Acts 9:10",
+      "Acts 9:11",
+      "Acts 9:13",
+      "Acts 9:17",
+      "Acts 22:12"
+    ]
+  },
+  {
+    "id": "gw_186",
+    "characterName": "Sapphira",
+    "level": 19,
+    "clues": [
+      "My husband and I sold a possession.",
+      "We kept back part of the price.",
+      "Peter asked me whether the land was sold for so much.",
+      "We agreed together to tempt the Spirit of the Lord.",
+      "I fell down dead at Peter's feet, just as my husband had."
+    ],
+    "references": [
+      "Acts 5:1",
+      "Acts 5:2",
+      "Acts 5:8",
+      "Acts 5:9",
+      "Acts 5:10"
+    ]
+  },
+  {
+    "id": "gw_187",
+    "characterName": "Rhoda",
+    "level": 19,
+    "clues": [
+      "I was a damsel in the house of Mary, the mother of John Mark.",
+      "I came to answer a knock at the door of the gate.",
+      "I knew Peter's voice.",
+      "For gladness I did not open the gate.",
+      "They said I was mad, but I constantly affirmed it was so."
+    ],
+    "references": [
+      "Acts 12:12-13",
+      "Acts 12:13",
+      "Acts 12:14",
+      "Acts 12:14",
+      "Acts 12:15"
+    ]
+  },
+  {
+    "id": "gw_188",
+    "characterName": "Eutychus",
+    "level": 19,
+    "clues": [
+      "I was a young man at Troas.",
+      "I sat in a window while Paul preached long.",
+      "I sank down with a deep sleep.",
+      "I fell down from the third loft and was taken up dead.",
+      "Paul embraced me and said, \"His life is in him.\""
+    ],
+    "references": [
+      "Acts 20:6-9",
+      "Acts 20:9",
+      "Acts 20:9",
+      "Acts 20:9",
+      "Acts 20:10"
+    ]
+  },
+  {
+    "id": "gw_189",
+    "characterName": "John Mark",
+    "level": 19,
+    "clues": [
+      "Many gathered to pray at my mother Mary's house.",
+      "I went with Barnabas and Saul as their minister.",
+      "I departed from them at Pamphylia and returned to Jerusalem.",
+      "Paul and Barnabas parted company over whether to take me.",
+      "Paul later wrote that I was profitable to him for the ministry."
+    ],
+    "references": [
+      "Acts 12:12",
+      "Acts 13:5",
+      "Acts 13:13",
+      "Acts 15:37-39",
+      "2 Timothy 4:11"
+    ],
+    "aliases": [
+      "Mark"
+    ]
+  },
+  {
+    "id": "gw_190",
+    "characterName": "Gamaliel",
+    "level": 19,
+    "clues": [
+      "I was a Pharisee and a doctor of the law.",
+      "I was had in reputation among all the people.",
+      "I advised the council to refrain from the apostles and let them alone.",
+      "I said that if the work was of God, they could not overthrow it.",
+      "Paul was brought up at my feet."
+    ],
+    "references": [
+      "Acts 5:34",
+      "Acts 5:34",
+      "Acts 5:38",
+      "Acts 5:39",
+      "Acts 22:3"
+    ]
+  },
+  {
+    "id": "gw_191",
+    "characterName": "Felix",
+    "level": 20,
+    "clues": [
+      "I was governor when Paul was sent to me at Caesarea.",
+      "Tertullus the orator accused Paul before me.",
+      "My wife Drusilla was a Jewess.",
+      "I trembled as Paul reasoned of righteousness, temperance and judgment.",
+      "I hoped Paul would give me money, and I left him bound for two years."
+    ],
+    "references": [
+      "Acts 23:24",
+      "Acts 24:1-2",
+      "Acts 24:24",
+      "Acts 24:25",
+      "Acts 24:26-27"
+    ]
+  },
+  {
+    "id": "gw_192",
+    "characterName": "Festus",
+    "level": 20,
+    "clues": [
+      "I came into my province after Felix.",
+      "Paul appealed unto Caesar before me.",
+      "I told King Agrippa about Paul's case.",
+      "I said with a loud voice, \"Paul, thou art beside thyself.\"",
+      "I said much learning had made Paul mad."
+    ],
+    "references": [
+      "Acts 24:27",
+      "Acts 25:11-12",
+      "Acts 25:14",
+      "Acts 26:24",
+      "Acts 26:24"
+    ]
+  },
+  {
+    "id": "gw_193",
+    "characterName": "Agrippa",
+    "level": 20,
+    "clues": [
+      "I came to Caesarea with Bernice to salute Festus.",
+      "I said, \"I would also hear the man myself.\"",
+      "Paul thought himself happy to answer for himself before me.",
+      "I said, \"Almost thou persuadest me to be a Christian.\"",
+      "I said Paul might have been set at liberty if he had not appealed unto Caesar."
+    ],
+    "references": [
+      "Acts 25:13",
+      "Acts 25:22",
+      "Acts 26:2",
+      "Acts 26:28",
+      "Acts 26:32"
+    ]
+  },
+  {
+    "id": "gw_194",
+    "characterName": "Sergius Paulus",
+    "level": 20,
+    "clues": [
+      "I was the deputy of the country at Paphos.",
+      "I was described as a prudent man.",
+      "I called for Barnabas and Saul, wanting to hear the word of God.",
+      "A sorcerer tried to turn me away from the faith.",
+      "I believed, astonished at the doctrine of the Lord."
+    ],
+    "references": [
+      "Acts 13:6-7",
+      "Acts 13:7",
+      "Acts 13:7",
+      "Acts 13:8",
+      "Acts 13:12"
+    ],
+    "aliases": [
+      "Sergius"
+    ]
+  },
+  {
+    "id": "gw_195",
+    "characterName": "Elymas",
+    "level": 20,
+    "clues": [
+      "I was a sorcerer and false prophet, a Jew.",
+      "I was also known as Barjesus.",
+      "I was with the deputy of the country.",
+      "Paul called me a child of the devil.",
+      "I was struck blind for a season."
+    ],
+    "references": [
+      "Acts 13:6",
+      "Acts 13:6",
+      "Acts 13:7",
+      "Acts 13:10",
+      "Acts 13:11"
+    ],
+    "aliases": [
+      "Barjesus"
+    ]
+  },
+  {
+    "id": "gw_196",
+    "characterName": "Demas",
+    "level": 20,
+    "clues": [
+      "Paul sent greetings from me to the Colossians, along with Luke.",
+      "Paul called me one of his fellowlabourers.",
+      "I sent greetings to Philemon along with Mark, Aristarchus and Luke.",
+      "I loved this present world.",
+      "I forsook Paul and departed unto Thessalonica."
+    ],
+    "references": [
+      "Colossians 4:14",
+      "Philemon 1:24",
+      "Philemon 1:24",
+      "2 Timothy 4:10",
+      "2 Timothy 4:10"
+    ]
+  },
+  {
+    "id": "gw_197",
+    "characterName": "Agabus",
+    "level": 20,
+    "clues": [
+      "I was a prophet who came from Jerusalem to Antioch.",
+      "I signified by the Spirit that there would be a great dearth throughout all the world.",
+      "My prophecy came to pass in the days of Claudius Caesar.",
+      "I came down from Judaea to Caesarea.",
+      "I bound my own hands and feet with Paul's girdle."
+    ],
+    "references": [
+      "Acts 11:27-28",
+      "Acts 11:28",
+      "Acts 11:28",
+      "Acts 21:10",
+      "Acts 21:11"
+    ]
+  },
+  {
+    "id": "gw_198",
+    "characterName": "Lois",
+    "level": 20,
+    "clues": [
+      "I am named only once in Scripture.",
+      "Paul remembered my unfeigned faith.",
+      "My daughter was Eunice.",
+      "Faith dwelt first in me.",
+      "I was Timothy's grandmother."
+    ],
+    "references": [
+      "2 Timothy 1:5",
+      "2 Timothy 1:5",
+      "2 Timothy 1:5",
+      "2 Timothy 1:5",
+      "2 Timothy 1:5"
+    ]
+  },
+  {
+    "id": "gw_199",
+    "characterName": "Herodias",
+    "level": 20,
+    "clues": [
+      "I had been the wife of Philip, then married his brother Herod.",
+      "John the Baptist said it was not lawful for Herod to have me.",
+      "I had a quarrel against John and would have killed him.",
+      "My daughter danced before Herod on his birthday.",
+      "I told my daughter to ask for John the Baptist's head in a charger."
+    ],
+    "references": [
+      "Mark 6:17",
+      "Mark 6:18",
+      "Mark 6:19",
+      "Matthew 14:6",
+      "Matthew 14:8"
+    ]
+  },
+  {
+    "id": "gw_200",
+    "characterName": "Joanna",
+    "level": 20,
+    "clues": [
+      "My husband Chuza was Herod's steward.",
+      "I had been healed of evil spirits and infirmities.",
+      "I ministered unto Jesus of my substance.",
+      "I came to the sepulchre with spices on the first day of the week.",
+      "I told the apostles about the empty tomb, with Mary Magdalene."
+    ],
+    "references": [
+      "Luke 8:3",
+      "Luke 8:2-3",
+      "Luke 8:3",
+      "Luke 24:1-10",
+      "Luke 24:10"
     ]
   }
 ]

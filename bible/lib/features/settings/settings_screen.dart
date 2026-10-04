@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../../core/models/bible_translation.dart';
 import '../../core/models/difficulty.dart';
@@ -7,6 +11,42 @@ import '../../core/theme/settings_providers.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
+
+  Future<void> _pickCustomMusic(BuildContext context, WidgetRef ref) async {
+    try {
+      final result = await FilePicker.platform.pickFiles(type: FileType.audio);
+      final picked = result?.files.single;
+      if (picked?.path == null) return;
+
+      final docsDir = await getApplicationDocumentsDirectory();
+      final ext = picked!.name.contains('.') ? picked.name.split('.').last : 'audio';
+      final destPath = '${docsDir.path}/custom_music.$ext';
+      final oldPath = ref.read(settingsProvider).customMusicPath;
+
+      await File(picked.path!).copy(destPath);
+      if (oldPath != null && oldPath != destPath && File(oldPath).existsSync()) {
+        File(oldPath).deleteSync();
+      }
+
+      ref
+          .read(settingsProvider.notifier)
+          .update((s) => s.copyWith(customMusicPath: destPath, customMusicName: picked.name));
+    } catch (_) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text("Couldn't use that file — try a different audio file.")));
+      }
+    }
+  }
+
+  void _resetCustomMusic(WidgetRef ref) {
+    final oldPath = ref.read(settingsProvider).customMusicPath;
+    ref.read(settingsProvider.notifier).update((s) => s.copyWith(clearCustomMusic: true));
+    if (oldPath != null && File(oldPath).existsSync()) {
+      File(oldPath).deleteSync();
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,11 +85,13 @@ class SettingsScreen extends ConsumerWidget {
             child: Wrap(
               spacing: 8,
               children: Difficulty.values
-                  .map((d) => ChoiceChip(
-                        label: Text(d.label),
-                        selected: settings.defaultDifficulty == d,
-                        onSelected: (_) => notifier.update((s) => s.copyWith(defaultDifficulty: d)),
-                      ))
+                  .map(
+                    (d) => ChoiceChip(
+                      label: Text(d.label),
+                      selected: settings.defaultDifficulty == d,
+                      onSelected: (_) => notifier.update((s) => s.copyWith(defaultDifficulty: d)),
+                    ),
+                  )
                   .toList(),
             ),
           ),
@@ -64,8 +106,36 @@ class SettingsScreen extends ConsumerWidget {
           ),
           SwitchListTile(
             title: const Text('Sound'),
+            subtitle: const Text('Tap, correct/incorrect, and win effects'),
             value: settings.soundOn,
             onChanged: (v) => notifier.update((s) => s.copyWith(soundOn: v)),
+          ),
+          SwitchListTile(
+            title: const Text('Music'),
+            subtitle: const Text('Background music during gameplay'),
+            value: settings.musicOn,
+            onChanged: (v) => notifier.update((s) => s.copyWith(musicOn: v)),
+          ),
+          ListTile(
+            leading: const Icon(Icons.library_music_outlined),
+            title: const Text('Background Track'),
+            subtitle: Text(settings.customMusicName ?? 'Default ambient track'),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (settings.customMusicPath != null)
+                  IconButton(
+                    icon: const Icon(Icons.restore),
+                    tooltip: 'Reset to default track',
+                    onPressed: () => _resetCustomMusic(ref),
+                  ),
+                IconButton(
+                  icon: const Icon(Icons.folder_open_outlined),
+                  tooltip: 'Choose a song from your phone',
+                  onPressed: () => _pickCustomMusic(context, ref),
+                ),
+              ],
+            ),
           ),
           SwitchListTile(
             title: const Text('High Contrast'),

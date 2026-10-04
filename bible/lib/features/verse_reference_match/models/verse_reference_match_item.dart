@@ -1,28 +1,37 @@
-/// Schema stub for the Verse-to-Reference Match mode — not yet wired to gameplay.
-/// See assets/content/verse_reference_match.json for sample data in this shape.
+/// A verse to place. [tier] (1–6) groups verses by how familiar they are;
+/// see TieredLevels. [chapterVerses] is how many verses the chapter has, so
+/// "nearby verse" wrong answers are always real references.
 class VerseReferenceMatchItem {
   const VerseReferenceMatchItem({
     required this.id,
-    required this.difficulty,
-    required this.verseText,
+    required this.tier,
+    required this.book,
+    required this.chapter,
+    required this.verse,
+    required this.chapterVerses,
     required this.translation,
-    required this.correctReference,
-    required this.referenceOptions,
+    required this.text,
   });
 
   final String id;
-  final String difficulty;
-  final String verseText;
+  final int tier;
+  final String book;
+  final int chapter;
+  final int verse;
+  final int chapterVerses;
   final String translation;
-  final String correctReference;
-  final List<String> referenceOptions;
+  final String text;
+
+  String get reference => '$book $chapter:$verse';
 
   factory VerseReferenceMatchItem.fromJson(Map<String, dynamic> json) => VerseReferenceMatchItem(
-        id: json['id'] as String,
-        difficulty: json['difficulty'] as String,
-        verseText: json['verseText'] as String,
-        translation: json['translation'] as String,
-        correctReference: json['correctReference'] as String,
-        referenceOptions: List<String>.from(json['referenceOptions'] as List),
-      );
+    id: json['id'] as String,
+    tier: json['tier'] as int,
+    book: json['book'] as String,
+    chapter: json['chapter'] as int,
+    verse: json['verse'] as int,
+    chapterVerses: json['chapterVerses'] as int,
+    translation: json['translation'] as String,
+    text: json['text'] as String,
+  );
 }

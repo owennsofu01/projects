@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/constants/game_mode_registry.dart';
-import '../../core/constants/verse_of_the_day.dart';
 import '../../core/progress/progress_providers.dart';
 import '../../core/widgets/game_card.dart';
+import '../bible_reader/providers/bible_reader_provider.dart';
+import '../compete/widgets/daily_challenge_card.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -13,8 +14,13 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final profile = ref.watch(userProfileProvider);
-    final verse = VerseOfTheDay.forDate(DateTime.now());
+    final verseAsync = ref.watch(verseOfTheDayProvider);
     final theme = Theme.of(context);
+
+    // 2 columns fits phones; wider layouts (tablets, foldables, web) get
+    // more columns instead of stretching cards or leaving dead space.
+    final width = MediaQuery.sizeOf(context).width;
+    final crossAxisCount = width >= 900 ? 4 : (width >= 600 ? 3 : 2);
 
     return Scaffold(
       appBar: AppBar(
@@ -51,30 +57,44 @@ class HomeScreen extends ConsumerWidget {
                   children: [
                     Text('Verse of the Day', style: theme.textTheme.labelLarge),
                     const SizedBox(height: 8),
-                    Text('"${verse.$1}"', style: theme.textTheme.titleMedium),
-                    const SizedBox(height: 4),
-                    Text('— ${verse.$2}', style: theme.textTheme.bodySmall),
+                    verseAsync.when(
+                      loading: () => SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2, color: theme.colorScheme.secondary),
+                      ),
+                      error: (_, _) => const SizedBox.shrink(),
+                      data: (verse) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('"${verse.$1}"', style: theme.textTheme.titleMedium),
+                          const SizedBox(height: 4),
+                          Text('— ${verse.$2}', style: theme.textTheme.bodySmall),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
           ),
+          const SliverPadding(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+            sliver: SliverToBoxAdapter(child: DailyChallengeCard()),
+          ),
           SliverPadding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
                 mainAxisSpacing: 14,
                 crossAxisSpacing: 14,
-                childAspectRatio: 0.95,
+                childAspectRatio: 0.85,
               ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final mode = GameModeRegistry.all[index];
-                  return GameCard(mode: mode, onTap: () => context.push(mode.routePath));
-                },
-                childCount: GameModeRegistry.all.length,
-              ),
+              delegate: SliverChildBuilderDelegate((context, index) {
+                final mode = GameModeRegistry.all[index];
+                return GameCard(mode: mode, onTap: () => context.push(mode.routePath));
+              }, childCount: GameModeRegistry.all.length),
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 24)),

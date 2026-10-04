@@ -20,10 +20,8 @@ class FirestoreService {
     return UserProfile.fromJson(snapshot.data()!);
   }
 
-  Future<void> pushGameResult(String uid, GameResult result) => _userDoc(uid)
-      .collection('gameResults')
-      .doc(result.id)
-      .set(result.copyWith(synced: true).toJson());
+  Future<void> pushGameResult(String uid, GameResult result) =>
+      _userDoc(uid).collection('gameResults').doc(result.id).set(result.copyWith(synced: true).toJson());
 
   Future<void> pushLeaderboardScore(String gameModeId, String uid, String displayName, int score) =>
       _db.collection('leaderboards').doc(gameModeId).collection('entries').doc(uid).set({

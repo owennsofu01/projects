@@ -28,11 +28,15 @@ class AppTheme {
   }
 
   static ThemeData _base(ColorScheme scheme, {required double fontScale}) {
-    final textTheme = GoogleFonts.nunitoSansTextTheme().apply(
-      fontSizeFactor: fontScale,
-      bodyColor: scheme.onSurface,
-      displayColor: scheme.onSurface,
+    // Merge in englishLike so every style has a concrete fontSize;
+    // apply(fontSizeFactor:) asserts on styles with a null fontSize.
+    final typography = Typography.material2021();
+    final baseTextTheme = (scheme.brightness == Brightness.dark ? typography.white : typography.black).merge(
+      typography.englishLike,
     );
+    final textTheme = GoogleFonts.nunitoSansTextTheme(
+      baseTextTheme,
+    ).apply(fontSizeFactor: fontScale, bodyColor: scheme.onSurface, displayColor: scheme.onSurface);
     final headingFont = GoogleFonts.lora();
 
     return ThemeData(

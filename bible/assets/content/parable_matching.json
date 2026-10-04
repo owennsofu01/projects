@@ -1,5 +1,601 @@
-[
-  { "id": "pm_001", "parable": "The Prodigal Son", "reference": "Luke 15:11-32", "lesson": "God rejoices when the lost return home." },
-  { "id": "pm_002", "parable": "The Good Samaritan", "reference": "Luke 10:25-37", "lesson": "Love your neighbor, even the unexpected one." },
-  { "id": "pm_003", "parable": "The Mustard Seed", "reference": "Matthew 13:31-32", "lesson": "Small faith can grow into something great." }
-]
+{
+  "parables": [
+    {
+      "id": "pm_001",
+      "parable": "The Prodigal Son",
+      "reference": "Luke 15:11-32",
+      "lesson": "God rejoices when the lost return home.",
+      "detail": "A younger son wastes his inheritance and ends up feeding pigs."
+    },
+    {
+      "id": "pm_002",
+      "parable": "The Good Samaritan",
+      "reference": "Luke 10:30-37",
+      "lesson": "Love your neighbor, even the unexpected one.",
+      "detail": "A man falls among thieves on the road to Jericho."
+    },
+    {
+      "id": "pm_003",
+      "parable": "The Mustard Seed",
+      "reference": "Matthew 13:31-32",
+      "lesson": "Small faith can grow into something great.",
+      "detail": "The least of all seeds grows into a tree where birds lodge."
+    },
+    {
+      "id": "pm_004",
+      "parable": "The Sower",
+      "reference": "Matthew 13:3-9",
+      "lesson": "The condition of our hearts determines how God's word takes root.",
+      "detail": "Seed falls on the wayside, stony ground, among thorns, and good ground."
+    },
+    {
+      "id": "pm_005",
+      "parable": "The Lost Sheep",
+      "reference": "Luke 15:3-7",
+      "lesson": "God pursues the one who wanders, like a shepherd searching for a lost sheep.",
+      "detail": "A shepherd leaves the ninety and nine to search for one."
+    },
+    {
+      "id": "pm_006",
+      "parable": "The Lost Coin",
+      "reference": "Luke 15:8-10",
+      "lesson": "Heaven rejoices over one sinner who is found, however small it may seem.",
+      "detail": "A woman lights a candle and sweeps the house for one piece of silver."
+    },
+    {
+      "id": "pm_007",
+      "parable": "The Talents",
+      "reference": "Matthew 25:14-30",
+      "lesson": "God expects us to faithfully use what He has entrusted to us.",
+      "detail": "One servant buries his master's money in the earth."
+    },
+    {
+      "id": "pm_008",
+      "parable": "The Ten Virgins",
+      "reference": "Matthew 25:1-13",
+      "lesson": "Stay ready and watchful, for we do not know the hour of Christ's return.",
+      "detail": "Five took no oil for their lamps while waiting for the bridegroom."
+    },
+    {
+      "id": "pm_009",
+      "parable": "The Unforgiving Servant",
+      "reference": "Matthew 18:23-35",
+      "lesson": "Having been forgiven much, we must forgive others in turn.",
+      "detail": "A servant forgiven ten thousand talents chokes a man who owes him a hundred pence."
+    },
+    {
+      "id": "pm_010",
+      "parable": "The Rich Fool",
+      "reference": "Luke 12:16-21",
+      "lesson": "Life does not consist in possessions; store up treasure with God instead.",
+      "detail": "A man plans to pull down his barns and build greater ones."
+    },
+    {
+      "id": "pm_011",
+      "parable": "The Pharisee and the Tax Collector",
+      "reference": "Luke 18:9-14",
+      "lesson": "God exalts the humble and opposes the proud.",
+      "detail": "One man prays, 'God be merciful to me a sinner.'"
+    },
+    {
+      "id": "pm_012",
+      "parable": "The Wise and Foolish Builders",
+      "reference": "Matthew 7:24-27",
+      "lesson": "A life built on obedience to Christ's words withstands the storms of life.",
+      "detail": "One house stands on rock, the other falls on sand."
+    },
+    {
+      "id": "pm_013",
+      "parable": "The Workers in the Vineyard",
+      "reference": "Matthew 20:1-16",
+      "lesson": "God's grace is generous and not bound by human ideas of fairness.",
+      "detail": "Those hired at the eleventh hour receive a full day's penny."
+    },
+    {
+      "id": "pm_014",
+      "parable": "The Leaven",
+      "reference": "Matthew 13:33",
+      "lesson": "God's kingdom quietly spreads until it fills everything.",
+      "detail": "A woman hides it in three measures of meal until the whole is leavened."
+    },
+    {
+      "id": "pm_015",
+      "parable": "The Hidden Treasure",
+      "reference": "Matthew 13:44",
+      "lesson": "The kingdom is worth giving up everything to gain.",
+      "detail": "A man finds something buried in a field and sells all he has to buy the field."
+    },
+    {
+      "id": "pm_016",
+      "parable": "The Pearl of Great Price",
+      "reference": "Matthew 13:45-46",
+      "lesson": "Nothing compares to the worth of God's kingdom.",
+      "detail": "A merchant sells all he has for one valuable find."
+    },
+    {
+      "id": "pm_017",
+      "parable": "The Net",
+      "reference": "Matthew 13:47-50",
+      "lesson": "At the end of the age, God will separate the righteous from the wicked.",
+      "detail": "Fishermen sort the good into vessels and cast the bad away."
+    },
+    {
+      "id": "pm_018",
+      "parable": "The Wheat and the Tares",
+      "reference": "Matthew 13:24-30",
+      "lesson": "Good and evil grow together until God's final harvest.",
+      "detail": "An enemy sows weeds among the good seed while men sleep."
+    },
+    {
+      "id": "pm_019",
+      "parable": "The Growing Seed",
+      "reference": "Mark 4:26-29",
+      "lesson": "God makes His kingdom grow in ways we cannot fully see.",
+      "detail": "A man sleeps and rises while the seed sprouts, first the blade, then the ear."
+    },
+    {
+      "id": "pm_020",
+      "parable": "The Two Sons",
+      "reference": "Matthew 21:28-32",
+      "lesson": "Obedience matters more than words.",
+      "detail": "One son says 'I go, sir' but never goes to the vineyard."
+    },
+    {
+      "id": "pm_021",
+      "parable": "The Wicked Husbandmen",
+      "reference": "Matthew 21:33-41",
+      "lesson": "Rejecting God's Son brings judgment.",
+      "detail": "Tenants kill the landowner's son to seize his inheritance."
+    },
+    {
+      "id": "pm_022",
+      "parable": "The Marriage Feast",
+      "reference": "Matthew 22:1-14",
+      "lesson": "Many are called, but few are chosen.",
+      "detail": "A guest is thrown out for not wearing a wedding garment."
+    },
+    {
+      "id": "pm_023",
+      "parable": "The Great Supper",
+      "reference": "Luke 14:16-24",
+      "lesson": "God's invitation is open to all, so do not make excuses.",
+      "detail": "Invited guests make excuses about land, oxen, and a new wife."
+    },
+    {
+      "id": "pm_024",
+      "parable": "The Persistent Widow",
+      "reference": "Luke 18:1-8",
+      "lesson": "Always pray and do not lose heart.",
+      "detail": "A woman keeps pleading with an unjust judge until he gives her justice."
+    },
+    {
+      "id": "pm_025",
+      "parable": "The Friend at Midnight",
+      "reference": "Luke 11:5-8",
+      "lesson": "Be bold and persistent in prayer.",
+      "detail": "A man knocks at night asking to borrow three loaves."
+    },
+    {
+      "id": "pm_026",
+      "parable": "The Rich Man and Lazarus",
+      "reference": "Luke 16:19-31",
+      "lesson": "Our choices in this life have eternal consequences.",
+      "detail": "A beggar full of sores lies at a rich man's gate."
+    },
+    {
+      "id": "pm_027",
+      "parable": "The Unjust Steward",
+      "reference": "Luke 16:1-8",
+      "lesson": "Use worldly resources wisely with eternity in view.",
+      "detail": "A manager about to be fired reduces his master's debtors' bills."
+    },
+    {
+      "id": "pm_028",
+      "parable": "The Barren Fig Tree",
+      "reference": "Luke 13:6-9",
+      "lesson": "God is patient, but time to bear fruit is not unlimited.",
+      "detail": "The vinedresser asks for one more year to dig about it and dung it."
+    },
+    {
+      "id": "pm_029",
+      "parable": "The Two Debtors",
+      "reference": "Luke 7:41-43",
+      "lesson": "Those forgiven much love much.",
+      "detail": "One owed five hundred pence, the other fifty, and both were forgiven."
+    },
+    {
+      "id": "pm_030",
+      "parable": "The Pounds",
+      "reference": "Luke 19:11-27",
+      "lesson": "Be faithful with what God gives until He returns.",
+      "detail": "A nobleman travels to receive a kingdom and leaves money with ten servants."
+    },
+    {
+      "id": "pm_031",
+      "parable": "The Sheep and the Goats",
+      "reference": "Matthew 25:31-46",
+      "lesson": "Serving those in need is serving Christ.",
+      "detail": "The King says, 'I was an hungred, and ye gave me meat.'"
+    },
+    {
+      "id": "pm_032",
+      "parable": "The Faithful and Wise Servant",
+      "reference": "Matthew 24:45-51",
+      "lesson": "Be faithful at all times, not only when the master is watching.",
+      "detail": "An evil servant says 'My lord delayeth his coming' and beats his fellow servants."
+    },
+    {
+      "id": "pm_033",
+      "parable": "The Lamp under a Bushel",
+      "reference": "Matthew 5:14-16",
+      "lesson": "Let your good works shine so others glorify God.",
+      "detail": "No one lights a candle and puts it under a bushel."
+    },
+    {
+      "id": "pm_034",
+      "parable": "New Wine in Old Bottles",
+      "reference": "Luke 5:36-39",
+      "lesson": "The new life Christ brings cannot be squeezed into old forms.",
+      "detail": "Old wineskins burst when filled with new wine."
+    },
+    {
+      "id": "pm_035",
+      "parable": "The Strong Man Bound",
+      "reference": "Mark 3:27",
+      "lesson": "Jesus has power to overcome Satan and free his captives.",
+      "detail": "No one can spoil a strong man's house unless he first binds him."
+    },
+    {
+      "id": "pm_036",
+      "parable": "The Watchful Porter",
+      "reference": "Mark 13:34-37",
+      "lesson": "Keep watch, for the Master may return at any hour.",
+      "detail": "A man going on a far journey commands the doorkeeper to watch."
+    },
+    {
+      "id": "pm_037",
+      "parable": "The Lowest Seat",
+      "reference": "Luke 14:7-11",
+      "lesson": "Whoever humbles himself will be exalted.",
+      "detail": "A guest is told 'Friend, go up higher' at a wedding."
+    },
+    {
+      "id": "pm_038",
+      "parable": "Counting the Cost",
+      "reference": "Luke 14:28-30",
+      "lesson": "Following Jesus requires wholehearted commitment.",
+      "detail": "A builder sits down first to see if he can finish his tower."
+    },
+    {
+      "id": "pm_039",
+      "parable": "The Unprofitable Servants",
+      "reference": "Luke 17:7-10",
+      "lesson": "Serving God is our duty, not a reason for pride.",
+      "detail": "A servant comes in from plowing and still must serve his master's supper."
+    },
+    {
+      "id": "pm_040",
+      "parable": "The Good Shepherd",
+      "reference": "John 10:11-16",
+      "lesson": "Jesus lays down His life for His sheep.",
+      "detail": "A hireling flees when he sees the wolf coming."
+    },
+    {
+      "id": "pm_041",
+      "parable": "The True Vine",
+      "reference": "John 15:1-8",
+      "lesson": "Remain in Christ to bear lasting fruit.",
+      "detail": "Branches that bear no fruit are taken away and burned."
+    },
+    {
+      "id": "pm_042",
+      "parable": "The Budding Fig Tree",
+      "reference": "Matthew 24:32-35",
+      "lesson": "Watch for the signs that His return is near.",
+      "detail": "When its branch is tender and puts forth leaves, summer is nigh."
+    },
+    {
+      "id": "pm_043",
+      "parable": "The Householder's Treasure",
+      "reference": "Matthew 13:52",
+      "lesson": "A disciple shares both old and new truths from God's word.",
+      "detail": "A householder brings forth out of his treasure things new and old."
+    },
+    {
+      "id": "pm_044",
+      "parable": "The King Going to War",
+      "reference": "Luke 14:31-33",
+      "lesson": "Consider carefully what it costs to follow Jesus.",
+      "detail": "A ruler with ten thousand weighs meeting one coming with twenty thousand."
+    },
+    {
+      "id": "pm_045",
+      "parable": "The Blind Leading the Blind",
+      "reference": "Luke 6:39-40",
+      "lesson": "Choose wise teachers and become like Christ.",
+      "detail": "Two men both fall into the ditch."
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "title": "Famous Lessons",
+      "match": "lesson",
+      "parableIds": [
+        "pm_001",
+        "pm_002",
+        "pm_005",
+        "pm_004",
+        "pm_012",
+        "pm_003"
+      ]
+    },
+    {
+      "level": 2,
+      "title": "More Lessons",
+      "match": "lesson",
+      "parableIds": [
+        "pm_006",
+        "pm_007",
+        "pm_008",
+        "pm_009",
+        "pm_010",
+        "pm_011"
+      ]
+    },
+    {
+      "level": 3,
+      "title": "The Kingdom Is Like…",
+      "match": "detail",
+      "parableIds": [
+        "pm_014",
+        "pm_015",
+        "pm_016",
+        "pm_017",
+        "pm_018",
+        "pm_019"
+      ]
+    },
+    {
+      "level": 4,
+      "title": "Lessons on Prayer & Obedience",
+      "match": "lesson",
+      "parableIds": [
+        "pm_013",
+        "pm_020",
+        "pm_024",
+        "pm_025",
+        "pm_028",
+        "pm_033"
+      ]
+    },
+    {
+      "level": 5,
+      "title": "Story Details",
+      "match": "detail",
+      "parableIds": [
+        "pm_001",
+        "pm_002",
+        "pm_026",
+        "pm_021",
+        "pm_023",
+        "pm_029"
+      ]
+    },
+    {
+      "level": 6,
+      "title": "Find It in Scripture",
+      "match": "reference",
+      "parableIds": [
+        "pm_001",
+        "pm_002",
+        "pm_004",
+        "pm_007",
+        "pm_005",
+        "pm_012"
+      ]
+    },
+    {
+      "level": 7,
+      "title": "Faithful Servants",
+      "match": "lesson",
+      "parableIds": [
+        "pm_027",
+        "pm_030",
+        "pm_031",
+        "pm_032",
+        "pm_037",
+        "pm_038"
+      ]
+    },
+    {
+      "level": 8,
+      "title": "Pictures of Christ",
+      "match": "detail",
+      "parableIds": [
+        "pm_022",
+        "pm_034",
+        "pm_035",
+        "pm_039",
+        "pm_040",
+        "pm_041"
+      ]
+    },
+    {
+      "level": 9,
+      "title": "Chapter and Verse",
+      "match": "reference",
+      "parableIds": [
+        "pm_003",
+        "pm_008",
+        "pm_009",
+        "pm_026",
+        "pm_011",
+        "pm_013"
+      ]
+    },
+    {
+      "level": 10,
+      "title": "Lesser-Known Parables",
+      "match": "lesson",
+      "parableIds": [
+        "pm_036",
+        "pm_044",
+        "pm_045",
+        "pm_042",
+        "pm_043",
+        "pm_027"
+      ]
+    },
+    {
+      "level": 11,
+      "title": "Lost, Found & Forgiven",
+      "match": "lesson",
+      "parableIds": [
+        "pm_001",
+        "pm_005",
+        "pm_006",
+        "pm_009",
+        "pm_029",
+        "pm_011",
+        "pm_002",
+        "pm_026"
+      ]
+    },
+    {
+      "level": 12,
+      "title": "Pictures of the Kingdom",
+      "match": "detail",
+      "parableIds": [
+        "pm_003",
+        "pm_014",
+        "pm_015",
+        "pm_016",
+        "pm_017",
+        "pm_018",
+        "pm_019",
+        "pm_004"
+      ]
+    },
+    {
+      "level": 13,
+      "title": "Matthew 13 Up Close",
+      "match": "reference",
+      "parableIds": [
+        "pm_003",
+        "pm_004",
+        "pm_014",
+        "pm_015",
+        "pm_016",
+        "pm_017",
+        "pm_018",
+        "pm_043"
+      ]
+    },
+    {
+      "level": 14,
+      "title": "Servants & Stewards",
+      "match": "lesson",
+      "parableIds": [
+        "pm_007",
+        "pm_009",
+        "pm_013",
+        "pm_027",
+        "pm_030",
+        "pm_032",
+        "pm_036",
+        "pm_039"
+      ]
+    },
+    {
+      "level": 15,
+      "title": "Feasts & Vineyards",
+      "match": "detail",
+      "parableIds": [
+        "pm_013",
+        "pm_020",
+        "pm_021",
+        "pm_022",
+        "pm_023",
+        "pm_028",
+        "pm_037",
+        "pm_041"
+      ]
+    },
+    {
+      "level": 16,
+      "title": "Luke's Parables",
+      "match": "reference",
+      "parableIds": [
+        "pm_010",
+        "pm_023",
+        "pm_024",
+        "pm_025",
+        "pm_026",
+        "pm_027",
+        "pm_028",
+        "pm_029"
+      ]
+    },
+    {
+      "level": 17,
+      "title": "Watch and Be Ready",
+      "match": "lesson",
+      "parableIds": [
+        "pm_008",
+        "pm_031",
+        "pm_032",
+        "pm_036",
+        "pm_042",
+        "pm_012",
+        "pm_038",
+        "pm_044"
+      ]
+    },
+    {
+      "level": 18,
+      "title": "Short Sayings",
+      "match": "detail",
+      "parableIds": [
+        "pm_033",
+        "pm_034",
+        "pm_035",
+        "pm_045",
+        "pm_043",
+        "pm_038",
+        "pm_044",
+        "pm_024"
+      ]
+    },
+    {
+      "level": 19,
+      "title": "Servants in Scripture",
+      "match": "reference",
+      "parableIds": [
+        "pm_007",
+        "pm_030",
+        "pm_032",
+        "pm_039",
+        "pm_009",
+        "pm_013",
+        "pm_036",
+        "pm_027"
+      ]
+    },
+    {
+      "level": 20,
+      "title": "Master Parable Scholar",
+      "match": "reference",
+      "parableIds": [
+        "pm_019",
+        "pm_035",
+        "pm_036",
+        "pm_040",
+        "pm_041",
+        "pm_042",
+        "pm_034",
+        "pm_045"
+      ]
+    }
+  ]
+}

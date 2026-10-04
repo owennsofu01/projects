@@ -26,7 +26,11 @@ class ComingSoonScreen extends StatelessWidget {
                 child: Icon(icon, size: 48, color: accentColor),
               ),
               const SizedBox(height: 24),
-              Text('$title is on the way', style: Theme.of(context).textTheme.headlineSmall, textAlign: TextAlign.center),
+              Text(
+                '$title is on the way',
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
               const SizedBox(height: 8),
               Text(
                 'This mini-game is scaffolded and ready for content — check back in a future update.',

@@ -1,362 +1,4517 @@
 [
   {
-    "id": "verse_001",
-    "difficulty": "kids",
+    "id": "vc_t1_01",
+    "tier": 1,
     "reference": "John 3:16",
     "translation": "KJV",
-    "template": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have ____.",
-    "answer": "everlasting life",
-    "wordBank": ["everlasting life", "eternal peace", "great joy", "lasting hope"]
+    "template": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have ____ life.",
+    "answer": "everlasting",
+    "distractors": [
+      "eternal",
+      "endless",
+      "abundant",
+      "heavenly",
+      "holy"
+    ]
   },
   {
-    "id": "verse_002",
-    "difficulty": "kids",
-    "reference": "Psalm 23:1",
+    "id": "vc_t1_02",
+    "tier": 1,
+    "reference": "Psalms 23:1",
     "translation": "KJV",
-    "template": "The Lord is my ____; I shall not want.",
+    "template": "The LORD is my ____; I shall not want.",
     "answer": "shepherd",
-    "wordBank": ["shepherd", "guide", "helper", "friend"]
+    "distractors": [
+      "king",
+      "father",
+      "teacher",
+      "servant",
+      "friend"
+    ]
   },
   {
-    "id": "verse_003",
-    "difficulty": "kids",
+    "id": "vc_t1_03",
+    "tier": 1,
     "reference": "1 John 4:8",
     "translation": "KJV",
-    "template": "God is ____.",
+    "template": "He that loveth not knoweth not God; for God is ____.",
     "answer": "love",
-    "wordBank": ["love", "light", "good", "great"]
+    "distractors": [
+      "light",
+      "good",
+      "great",
+      "holy",
+      "near"
+    ]
   },
   {
-    "id": "verse_004",
-    "difficulty": "teen",
+    "id": "vc_t1_04",
+    "tier": 1,
+    "reference": "Genesis 1:1",
+    "translation": "KJV",
+    "template": "In the ____ God created the heaven and the earth.",
+    "answer": "beginning",
+    "distractors": [
+      "morning",
+      "garden",
+      "first day",
+      "darkness",
+      "spirit"
+    ]
+  },
+  {
+    "id": "vc_t1_05",
+    "tier": 1,
     "reference": "Philippians 4:13",
     "translation": "KJV",
     "template": "I can do all things through ____ which strengtheneth me.",
     "answer": "Christ",
-    "wordBank": ["Christ", "faith", "prayer", "the Spirit"]
+    "distractors": [
+      "prayer",
+      "faith",
+      "wisdom",
+      "patience",
+      "courage"
+    ]
   },
   {
-    "id": "verse_005",
-    "difficulty": "teen",
+    "id": "vc_t1_06",
+    "tier": 1,
     "reference": "Proverbs 3:5",
     "translation": "KJV",
-    "template": "Trust in the Lord with all thine heart; and lean not unto thine own ____.",
+    "template": "Trust in the LORD with all thine heart; and lean not unto thine own ____.",
     "answer": "understanding",
-    "wordBank": ["understanding", "wisdom", "knowledge", "strength"]
+    "distractors": [
+      "strength",
+      "wisdom",
+      "desire",
+      "knowledge",
+      "ways"
+    ]
   },
   {
-    "id": "verse_006",
-    "difficulty": "teen",
-    "reference": "Joshua 1:9",
-    "translation": "KJV",
-    "template": "Be strong and of a good courage; be not afraid, neither be thou ____.",
-    "answer": "dismayed",
-    "wordBank": ["dismayed", "troubled", "worried", "shaken"]
-  },
-  {
-    "id": "verse_007",
-    "difficulty": "adult",
-    "reference": "Romans 8:28",
-    "translation": "KJV",
-    "template": "And we know that all things work together for good to them that ____ God.",
-    "answer": "love",
-    "wordBank": ["love", "serve", "obey", "trust"]
-  },
-  {
-    "id": "verse_008",
-    "difficulty": "adult",
-    "reference": "Isaiah 41:10",
-    "translation": "KJV",
-    "template": "Fear thou not; for I am with thee: be not dismayed; for I am thy ____.",
-    "answer": "God",
-    "wordBank": ["God", "Lord", "Rock", "Savior"]
-  },
-  {
-    "id": "verse_009",
-    "difficulty": "adult",
-    "reference": "Galatians 5:22-23",
-    "translation": "KJV",
-    "template": "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, ____.",
-    "answer": "temperance",
-    "wordBank": ["temperance", "patience", "humility", "kindness"]
-  },
-  {
-    "id": "verse_010",
-    "difficulty": "adult",
-    "reference": "Ephesians 2:8",
-    "translation": "KJV",
-    "template": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of ____.",
-    "answer": "God",
-    "wordBank": ["God", "Christ", "grace", "the Spirit"]
-  },
-  {
-    "id": "verse_011",
-    "difficulty": "adult",
-    "reference": "Micah 6:8",
-    "translation": "KJV",
-    "template": "He hath shewed thee, O man, what is good; and what doth the Lord require of thee, but to do justly, and to love mercy, and to walk ____ with thy God?",
-    "answer": "humbly",
-    "wordBank": ["humbly", "faithfully", "boldly", "quietly"]
-  },
-  {
-    "id": "verse_012",
-    "difficulty": "scholar",
-    "reference": "Hebrews 11:1",
-    "translation": "KJV",
-    "template": "Now faith is the substance of things hoped for, the evidence of things ____.",
-    "answer": "not seen",
-    "wordBank": ["not seen", "unknown", "yet to come", "unseen by man"]
-  },
-  {
-    "id": "verse_013",
-    "difficulty": "scholar",
-    "reference": "2 Timothy 3:16",
-    "translation": "KJV",
-    "template": "All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in ____.",
-    "answer": "righteousness",
-    "wordBank": ["righteousness", "holiness", "obedience", "faithfulness"]
-  },
-  {
-    "id": "verse_014",
-    "difficulty": "scholar",
-    "reference": "Romans 12:2",
-    "translation": "KJV",
-    "template": "And be not conformed to this world: but be ye transformed by the renewing of your ____.",
-    "answer": "mind",
-    "wordBank": ["mind", "heart", "spirit", "soul"]
-  },
-  {
-    "id": "verse_015",
-    "difficulty": "adult",
-    "reference": "Psalm 46:1",
-    "translation": "WEB",
-    "template": "God is our refuge and strength, a very present help in ____.",
-    "answer": "trouble",
-    "wordBank": ["trouble", "sorrow", "danger", "darkness"]
-  },
-  {
-    "id": "verse_016",
-    "difficulty": "kids",
-    "reference": "Matthew 5:16",
-    "translation": "WEB",
-    "template": "Even so, let your light shine before men; that they may see your good works, and glorify your Father who is in ____.",
-    "answer": "heaven",
-    "wordBank": ["heaven", "glory", "the sky", "light"]
-  },
-  {
-    "id": "verse_017",
-    "difficulty": "kids",
-    "reference": "Genesis 1:1",
-    "translation": "KJV",
-    "template": "In the beginning God created the ____ and the earth.",
-    "answer": "heaven",
-    "wordBank": ["heaven", "heavens", "sky", "stars"]
-  },
-  {
-    "id": "verse_018",
-    "difficulty": "kids",
-    "reference": "Exodus 20:12",
-    "translation": "KJV",
-    "template": "Honour thy father and thy ____.",
-    "answer": "mother",
-    "wordBank": ["mother", "family", "brother", "sister"]
-  },
-  {
-    "id": "verse_019",
-    "difficulty": "kids",
-    "reference": "Psalm 118:1",
-    "translation": "KJV",
-    "template": "O give thanks unto the Lord; for he is ____.",
-    "answer": "good",
-    "wordBank": ["good", "great", "holy", "kind"]
-  },
-  {
-    "id": "verse_020",
-    "difficulty": "kids",
-    "reference": "Proverbs 22:6",
-    "translation": "KJV",
-    "template": "Train up a child in the way he should go: and when he is ____, he will not depart from it.",
-    "answer": "old",
-    "wordBank": ["old", "grown", "tall", "wise"]
-  },
-  {
-    "id": "verse_021",
-    "difficulty": "kids",
-    "reference": "Matthew 19:14",
-    "translation": "KJV",
-    "template": "Suffer the little children to come unto me: for of such is the kingdom of ____.",
-    "answer": "heaven",
-    "wordBank": ["heaven", "God", "glory", "light"]
-  },
-  {
-    "id": "verse_022",
-    "difficulty": "kids",
-    "reference": "Psalm 100:3",
-    "translation": "KJV",
-    "template": "Know ye that the Lord he is ____: it is he that hath made us.",
-    "answer": "God",
-    "wordBank": ["God", "King", "Lord", "Savior"]
-  },
-  {
-    "id": "verse_023",
-    "difficulty": "teen",
-    "reference": "Matthew 6:33",
-    "translation": "KJV",
-    "template": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto ____.",
-    "answer": "you",
-    "wordBank": ["you", "them", "us", "all"]
-  },
-  {
-    "id": "verse_024",
-    "difficulty": "teen",
-    "reference": "Jeremiah 29:11",
-    "translation": "KJV",
-    "template": "For I know the thoughts that I think toward you, saith the Lord, thoughts of ____, and not of evil.",
-    "answer": "peace",
-    "wordBank": ["peace", "joy", "hope", "grace"]
-  },
-  {
-    "id": "verse_025",
-    "difficulty": "teen",
-    "reference": "Romans 10:9",
-    "translation": "KJV",
-    "template": "That if thou shalt confess with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be ____.",
-    "answer": "saved",
-    "wordBank": ["saved", "blessed", "forgiven", "redeemed"]
-  },
-  {
-    "id": "verse_026",
-    "difficulty": "teen",
-    "reference": "Psalm 119:105",
-    "translation": "KJV",
-    "template": "Thy word is a lamp unto my feet, and a light unto my ____.",
-    "answer": "path",
-    "wordBank": ["path", "way", "steps", "journey"]
-  },
-  {
-    "id": "verse_027",
-    "difficulty": "teen",
-    "reference": "1 Thessalonians 5:16-18",
-    "translation": "KJV",
-    "template": "Rejoice evermore. Pray without ceasing. In every thing give ____.",
-    "answer": "thanks",
-    "wordBank": ["thanks", "praise", "glory", "honor"]
-  },
-  {
-    "id": "verse_028",
-    "difficulty": "teen",
-    "reference": "Ephesians 6:1",
-    "translation": "KJV",
-    "template": "Children, obey your parents in the Lord: for this is ____.",
-    "answer": "right",
-    "wordBank": ["right", "good", "wise", "holy"]
-  },
-  {
-    "id": "verse_029",
-    "difficulty": "teen",
+    "id": "vc_t1_07",
+    "tier": 1,
     "reference": "Matthew 5:9",
     "translation": "KJV",
-    "template": "Blessed are the peacemakers: for they shall be called the children of ____.",
-    "answer": "God",
-    "wordBank": ["God", "light", "peace", "heaven"]
+    "template": "Blessed are the ____: for they shall be called the children of God.",
+    "answer": "peacemakers",
+    "distractors": [
+      "merciful",
+      "meek",
+      "poor",
+      "faithful",
+      "humble"
+    ]
   },
   {
-    "id": "verse_030",
-    "difficulty": "adult",
-    "reference": "2 Corinthians 5:17",
+    "id": "vc_t1_08",
+    "tier": 1,
+    "reference": "Psalms 119:105",
     "translation": "KJV",
-    "template": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become ____.",
-    "answer": "new",
-    "wordBank": ["new", "clean", "right", "whole"]
+    "template": "Thy word is a ____ unto my feet, and a light unto my path.",
+    "answer": "lamp",
+    "distractors": [
+      "sword",
+      "staff",
+      "guide",
+      "shield",
+      "map"
+    ]
   },
   {
-    "id": "verse_031",
-    "difficulty": "adult",
-    "reference": "James 1:2-3",
+    "id": "vc_t1_09",
+    "tier": 1,
+    "reference": "John 11:35",
     "translation": "KJV",
-    "template": "My brethren, count it all joy when ye fall into divers temptations; Knowing this, that the trying of your faith worketh ____.",
-    "answer": "patience",
-    "wordBank": ["patience", "strength", "wisdom", "hope"]
+    "template": "Jesus ____.",
+    "answer": "wept",
+    "distractors": [
+      "prayed",
+      "smiled",
+      "slept",
+      "spoke",
+      "sang"
+    ]
   },
   {
-    "id": "verse_032",
-    "difficulty": "adult",
-    "reference": "Proverbs 27:17",
-    "translation": "KJV",
-    "template": "Iron sharpeneth iron; so a man sharpeneth the countenance of his ____.",
-    "answer": "friend",
-    "wordBank": ["friend", "brother", "neighbor", "enemy"]
-  },
-  {
-    "id": "verse_033",
-    "difficulty": "adult",
-    "reference": "Psalm 51:10",
-    "translation": "KJV",
-    "template": "Create in me a clean heart, O God; and renew a right ____ within me.",
-    "answer": "spirit",
-    "wordBank": ["spirit", "mind", "heart", "soul"]
-  },
-  {
-    "id": "verse_034",
-    "difficulty": "adult",
-    "reference": "Matthew 28:19",
-    "translation": "KJV",
-    "template": "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the ____.",
-    "answer": "Holy Ghost",
-    "wordBank": ["Holy Ghost", "Holy Spirit", "Almighty", "Most High"]
-  },
-  {
-    "id": "verse_035",
-    "difficulty": "adult",
-    "reference": "1 Peter 5:7",
-    "translation": "KJV",
-    "template": "Casting all your care upon him; for he careth for ____.",
-    "answer": "you",
-    "wordBank": ["you", "us", "all", "them"]
-  },
-  {
-    "id": "verse_036",
-    "difficulty": "scholar",
-    "reference": "Colossians 1:17",
-    "translation": "KJV",
-    "template": "And he is before all things, and by him all things ____.",
-    "answer": "consist",
-    "wordBank": ["consist", "exist", "are made", "hold together"]
-  },
-  {
-    "id": "verse_037",
-    "difficulty": "scholar",
-    "reference": "John 1:1",
-    "translation": "KJV",
-    "template": "In the beginning was the Word, and the Word was with God, and the Word was ____.",
-    "answer": "God",
-    "wordBank": ["God", "holy", "light", "truth"]
-  },
-  {
-    "id": "verse_038",
-    "difficulty": "scholar",
+    "id": "vc_t1_10",
+    "tier": 1,
     "reference": "Romans 3:23",
     "translation": "KJV",
-    "template": "For all have sinned, and come short of the ____ of God.",
-    "answer": "glory",
-    "wordBank": ["glory", "grace", "presence", "kingdom"]
+    "template": "For all have ____, and come short of the glory of God;",
+    "answer": "sinned",
+    "distractors": [
+      "fallen",
+      "failed",
+      "strayed",
+      "stumbled",
+      "erred"
+    ]
   },
   {
-    "id": "verse_039",
-    "difficulty": "scholar",
-    "reference": "Hebrews 4:12",
+    "id": "vc_t1_11",
+    "tier": 1,
+    "reference": "Matthew 22:39",
     "translation": "KJV",
-    "template": "For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and ____.",
-    "answer": "marrow",
-    "wordBank": ["marrow", "bone", "flesh", "sinew"]
+    "template": "And the second is like unto it, Thou shalt love thy ____ as thyself.",
+    "answer": "neighbour",
+    "distractors": [
+      "brother",
+      "friend",
+      "father",
+      "enemy",
+      "family"
+    ]
   },
   {
-    "id": "verse_040",
-    "difficulty": "scholar",
+    "id": "vc_t1_12",
+    "tier": 1,
+    "reference": "John 14:6",
+    "translation": "KJV",
+    "template": "Jesus saith unto him, I am the ____, the truth, and the life: no man cometh unto the Father, but by me.",
+    "answer": "way",
+    "distractors": [
+      "door",
+      "road",
+      "gate",
+      "light",
+      "vine"
+    ]
+  },
+  {
+    "id": "vc_t1_13",
+    "tier": 1,
+    "reference": "Psalms 46:1",
+    "translation": "KJV",
+    "template": "God is our ____ and strength, a very present help in trouble.",
+    "answer": "refuge",
+    "distractors": [
+      "rock",
+      "fortress",
+      "shepherd",
+      "tower",
+      "light"
+    ]
+  },
+  {
+    "id": "vc_t1_14",
+    "tier": 1,
+    "reference": "Exodus 20:3",
+    "translation": "KJV",
+    "template": "Thou shalt have no other ____ before me.",
+    "answer": "gods",
+    "distractors": [
+      "idols",
+      "kings",
+      "masters",
+      "lords",
+      "names"
+    ]
+  },
+  {
+    "id": "vc_t1_15",
+    "tier": 1,
+    "reference": "John 8:32",
+    "translation": "KJV",
+    "template": "And ye shall know the truth, and the truth shall make you ____.",
+    "answer": "free",
+    "distractors": [
+      "wise",
+      "holy",
+      "strong",
+      "glad",
+      "whole"
+    ]
+  },
+  {
+    "id": "vc_t1_16",
+    "tier": 1,
+    "reference": "Matthew 6:33",
+    "translation": "KJV",
+    "template": "But seek ye first the ____ of God, and his righteousness; and all these things shall be added unto you.",
+    "answer": "kingdom",
+    "distractors": [
+      "glory",
+      "temple",
+      "wisdom",
+      "mercy",
+      "house"
+    ]
+  },
+  {
+    "id": "vc_t1_17",
+    "tier": 1,
+    "reference": "Psalms 118:24",
+    "translation": "KJV",
+    "template": "This is the day which the LORD hath made; we will ____ and be glad in it.",
+    "answer": "rejoice",
+    "distractors": [
+      "sing",
+      "pray",
+      "rest",
+      "dance",
+      "praise"
+    ]
+  },
+  {
+    "id": "vc_t1_18",
+    "tier": 1,
+    "reference": "Joshua 1:9",
+    "translation": "KJV",
+    "template": "Have not I commanded thee? Be strong and of a good ____; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.",
+    "answer": "courage",
+    "distractors": [
+      "faith",
+      "hope",
+      "heart",
+      "mind",
+      "peace"
+    ]
+  },
+  {
+    "id": "vc_t1_19",
+    "tier": 1,
+    "reference": "Isaiah 40:31",
+    "translation": "KJV",
+    "template": "But they that wait upon the LORD shall renew their strength; they shall mount up with wings as ____; they shall run, and not be weary; and they shall walk, and not faint.",
+    "answer": "eagles",
+    "distractors": [
+      "doves",
+      "angels",
+      "lions",
+      "sparrows",
+      "ravens"
+    ]
+  },
+  {
+    "id": "vc_t1_20",
+    "tier": 1,
+    "reference": "Hebrews 11:1",
+    "translation": "KJV",
+    "template": "Now ____ is the substance of things hoped for, the evidence of things not seen.",
+    "answer": "faith",
+    "distractors": [
+      "patience",
+      "love",
+      "grace",
+      "trust",
+      "truth"
+    ]
+  },
+  {
+    "id": "vc_t1_21",
+    "tier": 1,
+    "reference": "Romans 6:23",
+    "translation": "KJV",
+    "template": "For the ____ of sin is death; but the gift of God is eternal life through Jesus Christ our Lord.",
+    "answer": "wages",
+    "distractors": [
+      "price",
+      "cost",
+      "reward",
+      "end",
+      "fruit"
+    ]
+  },
+  {
+    "id": "vc_t1_22",
+    "tier": 1,
+    "reference": "Psalms 150:6",
+    "translation": "KJV",
+    "template": "Let every thing that hath ____ praise the LORD. Praise ye the LORD.",
+    "answer": "breath",
+    "distractors": [
+      "life",
+      "voice",
+      "soul",
+      "heart",
+      "spirit"
+    ]
+  },
+  {
+    "id": "vc_t1_23",
+    "tier": 1,
+    "reference": "Matthew 19:26",
+    "translation": "KJV",
+    "template": "But Jesus beheld them, and said unto them, With men this is impossible; but with God all things are ____.",
+    "answer": "possible",
+    "distractors": [
+      "good",
+      "easy",
+      "known",
+      "done",
+      "true"
+    ]
+  },
+  {
+    "id": "vc_t1_24",
+    "tier": 1,
+    "reference": "1 Thessalonians 5:17",
+    "translation": "KJV",
+    "template": "____ without ceasing.",
+    "answer": "Pray",
+    "distractors": [
+      "Sing",
+      "Give",
+      "Rejoice",
+      "Watch",
+      "Hope"
+    ]
+  },
+  {
+    "id": "vc_t1_25",
+    "tier": 1,
+    "reference": "Psalms 136:1",
+    "translation": "KJV",
+    "template": "O give thanks unto the LORD; for he is good: for his ____ endureth for ever.",
+    "answer": "mercy",
+    "distractors": [
+      "love",
+      "grace",
+      "glory",
+      "truth",
+      "kindness"
+    ]
+  },
+  {
+    "id": "vc_t1_26",
+    "tier": 1,
+    "reference": "John 15:5",
+    "translation": "KJV",
+    "template": "I am the ____, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing.",
+    "answer": "vine",
+    "distractors": [
+      "tree",
+      "root",
+      "light",
+      "door",
+      "rock"
+    ]
+  },
+  {
+    "id": "vc_t1_27",
+    "tier": 1,
+    "reference": "Luke 2:11",
+    "translation": "KJV",
+    "template": "For unto you is born this day in the city of David a ____, which is Christ the Lord.",
+    "answer": "Saviour",
+    "distractors": [
+      "King",
+      "Prophet",
+      "Shepherd",
+      "Teacher",
+      "Judge"
+    ]
+  },
+  {
+    "id": "vc_t1_28",
+    "tier": 1,
+    "reference": "Matthew 7:7",
+    "translation": "KJV",
+    "template": "Ask, and it shall be given you; seek, and ye shall find; ____, and it shall be opened unto you:",
+    "answer": "knock",
+    "distractors": [
+      "call",
+      "wait",
+      "pray",
+      "shout",
+      "stand"
+    ]
+  },
+  {
+    "id": "vc_t1_29",
+    "tier": 1,
+    "reference": "Psalms 37:4",
+    "translation": "KJV",
+    "template": "____ thyself also in the LORD; and he shall give thee the desires of thine heart.",
+    "answer": "Delight",
+    "distractors": [
+      "Trust",
+      "Rest",
+      "Hope",
+      "Rejoice",
+      "Walk"
+    ]
+  },
+  {
+    "id": "vc_t1_30",
+    "tier": 1,
+    "reference": "Proverbs 17:17",
+    "translation": "KJV",
+    "template": "A ____ loveth at all times, and a brother is born for adversity.",
+    "answer": "friend",
+    "distractors": [
+      "king",
+      "neighbour",
+      "father",
+      "servant",
+      "teacher"
+    ]
+  },
+  {
+    "id": "vc_t1_31",
+    "tier": 1,
+    "reference": "Ephesians 6:1",
+    "translation": "KJV",
+    "template": "Children, ____ your parents in the Lord: for this is right.",
+    "answer": "obey",
+    "distractors": [
+      "love",
+      "honour",
+      "serve",
+      "help",
+      "follow"
+    ]
+  },
+  {
+    "id": "vc_t1_32",
+    "tier": 1,
+    "reference": "Exodus 20:12",
+    "translation": "KJV",
+    "template": "____ thy father and thy mother: that thy days may be long upon the land which the LORD thy God giveth thee.",
+    "answer": "Honour",
+    "distractors": [
+      "Love",
+      "Obey",
+      "Serve",
+      "Help",
+      "Thank"
+    ]
+  },
+  {
+    "id": "vc_t1_33",
+    "tier": 1,
+    "reference": "Psalms 56:3",
+    "translation": "KJV",
+    "template": "What time I am ____, I will trust in thee.",
+    "answer": "afraid",
+    "distractors": [
+      "alone",
+      "weary",
+      "lost",
+      "sad",
+      "weak"
+    ]
+  },
+  {
+    "id": "vc_t1_34",
+    "tier": 1,
+    "reference": "1 Peter 5:7",
+    "translation": "KJV",
+    "template": "Casting all your ____ upon him; for he careth for you.",
+    "answer": "care",
+    "distractors": [
+      "trouble",
+      "burden",
+      "sorrow",
+      "fear",
+      "worry"
+    ]
+  },
+  {
+    "id": "vc_t1_35",
+    "tier": 1,
+    "reference": "Matthew 5:14",
+    "translation": "KJV",
+    "template": "Ye are the ____ of the world. A city that is set on an hill cannot be hid.",
+    "answer": "light",
+    "distractors": [
+      "salt",
+      "hope",
+      "joy",
+      "life",
+      "song"
+    ]
+  },
+  {
+    "id": "vc_t1_36",
+    "tier": 1,
+    "reference": "Psalms 100:1",
+    "translation": "KJV",
+    "template": "Make a ____ noise unto the LORD, all ye lands.",
+    "answer": "joyful",
+    "distractors": [
+      "happy",
+      "loud",
+      "glad",
+      "holy",
+      "sweet"
+    ]
+  },
+  {
+    "id": "vc_t1_37",
+    "tier": 1,
+    "reference": "Genesis 1:31",
+    "translation": "KJV",
+    "template": "And God saw every thing that he had made, and, behold, it was very ____. And the evening and the morning were the sixth day.",
+    "answer": "good",
+    "distractors": [
+      "great",
+      "right",
+      "fair",
+      "new",
+      "bright"
+    ]
+  },
+  {
+    "id": "vc_t1_38",
+    "tier": 1,
+    "reference": "John 1:5",
+    "translation": "KJV",
+    "template": "And the ____ shineth in darkness; and the darkness comprehended it not.",
+    "answer": "light",
+    "distractors": [
+      "word",
+      "truth",
+      "fire",
+      "sun",
+      "star"
+    ]
+  },
+  {
+    "id": "vc_t1_39",
+    "tier": 1,
+    "reference": "Psalms 19:1",
+    "translation": "KJV",
+    "template": "The heavens declare the ____ of God; and the firmament sheweth his handywork.",
+    "answer": "glory",
+    "distractors": [
+      "power",
+      "name",
+      "love",
+      "might",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "vc_t1_40",
+    "tier": 1,
+    "reference": "Luke 1:37",
+    "translation": "KJV",
+    "template": "For with God nothing shall be ____.",
+    "answer": "impossible",
+    "distractors": [
+      "hidden",
+      "difficult",
+      "forgotten",
+      "too hard",
+      "lost"
+    ]
+  },
+  {
+    "id": "vc_t1_41",
+    "tier": 1,
+    "reference": "Psalms 121:1",
+    "translation": "KJV",
+    "template": "I will lift up mine eyes unto the ____, from whence cometh my help.",
+    "answer": "hills",
+    "distractors": [
+      "heavens",
+      "clouds",
+      "mountains",
+      "stars",
+      "sky"
+    ]
+  },
+  {
+    "id": "vc_t1_42",
+    "tier": 1,
+    "reference": "Acts 16:31",
+    "translation": "KJV",
+    "template": "And they said, Believe on the Lord Jesus Christ, and thou shalt be ____, and thy house.",
+    "answer": "saved",
+    "distractors": [
+      "blessed",
+      "healed",
+      "forgiven",
+      "free",
+      "whole"
+    ]
+  },
+  {
+    "id": "vc_t1_43",
+    "tier": 1,
+    "reference": "Hebrews 13:8",
+    "translation": "KJV",
+    "template": "Jesus Christ the ____ yesterday, and to day, and for ever.",
+    "answer": "same",
+    "distractors": [
+      "good",
+      "true",
+      "Lord",
+      "faithful",
+      "near"
+    ]
+  },
+  {
+    "id": "vc_t1_44",
+    "tier": 1,
+    "reference": "Matthew 11:28",
+    "translation": "KJV",
+    "template": "Come unto me, all ye that labour and are heavy laden, and I will give you ____.",
+    "answer": "rest",
+    "distractors": [
+      "peace",
+      "joy",
+      "bread",
+      "strength",
+      "help"
+    ]
+  },
+  {
+    "id": "vc_t1_45",
+    "tier": 1,
+    "reference": "Psalms 23:4",
+    "translation": "KJV",
+    "template": "Yea, though I walk through the ____ of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me.",
+    "answer": "valley",
+    "distractors": [
+      "garden",
+      "desert",
+      "river",
+      "forest",
+      "city"
+    ]
+  },
+  {
+    "id": "vc_t1_46",
+    "tier": 1,
+    "reference": "Isaiah 41:10",
+    "translation": "KJV",
+    "template": "Fear thou not; for I am with thee: be not ____; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness.",
+    "answer": "dismayed",
+    "distractors": [
+      "troubled",
+      "ashamed",
+      "alone",
+      "weary",
+      "angry"
+    ]
+  },
+  {
+    "id": "vc_t1_47",
+    "tier": 1,
+    "reference": "Psalms 34:8",
+    "translation": "KJV",
+    "template": "O ____ and see that the LORD is good: blessed is the man that trusteth in him.",
+    "answer": "taste",
+    "distractors": [
+      "look",
+      "come",
+      "listen",
+      "hear",
+      "pray"
+    ]
+  },
+  {
+    "id": "vc_t1_48",
+    "tier": 1,
+    "reference": "Mark 16:15",
+    "translation": "KJV",
+    "template": "And he said unto them, Go ye into all the world, and preach the ____ to every creature.",
+    "answer": "gospel",
+    "distractors": [
+      "word",
+      "truth",
+      "news",
+      "law",
+      "story"
+    ]
+  },
+  {
+    "id": "vc_t1_49",
+    "tier": 1,
+    "reference": "Genesis 9:13",
+    "translation": "KJV",
+    "template": "I do set my ____ in the cloud, and it shall be for a token of a covenant between me and the earth.",
+    "answer": "bow",
+    "distractors": [
+      "star",
+      "light",
+      "dove",
+      "sign",
+      "fire"
+    ]
+  },
+  {
+    "id": "vc_t1_50",
+    "tier": 1,
+    "reference": "Psalms 51:10",
+    "translation": "KJV",
+    "template": "Create in me a ____ heart, O God; and renew a right spirit within me.",
+    "answer": "clean",
+    "distractors": [
+      "pure",
+      "new",
+      "glad",
+      "strong",
+      "humble"
+    ]
+  },
+  {
+    "id": "vc_t1_51",
+    "tier": 1,
+    "reference": "Proverbs 22:6",
+    "translation": "KJV",
+    "template": "Train up a ____ in the way he should go: and when he is old, he will not depart from it.",
+    "answer": "child",
+    "distractors": [
+      "son",
+      "servant",
+      "youth",
+      "daughter",
+      "student"
+    ]
+  },
+  {
+    "id": "vc_t2_01",
+    "tier": 2,
+    "reference": "Romans 8:28",
+    "translation": "KJV",
+    "template": "And we know that all things work together for ____ to them that love God, to them who are the called according to his purpose.",
+    "answer": "good",
+    "distractors": [
+      "best",
+      "glory",
+      "joy",
+      "peace",
+      "gain"
+    ]
+  },
+  {
+    "id": "vc_t2_02",
+    "tier": 2,
+    "reference": "Jeremiah 29:11",
+    "translation": "KJV",
+    "template": "For I know the thoughts that I think toward you, saith the LORD, thoughts of ____, and not of evil, to give you an expected end.",
+    "answer": "peace",
+    "distractors": [
+      "hope",
+      "joy",
+      "blessing",
+      "good",
+      "life"
+    ]
+  },
+  {
+    "id": "vc_t2_03",
+    "tier": 2,
+    "reference": "Galatians 6:7",
+    "translation": "KJV",
+    "template": "Be not deceived; God is not mocked: for whatsoever a man soweth, that shall he also ____.",
+    "answer": "reap",
+    "distractors": [
+      "gather",
+      "harvest",
+      "receive",
+      "keep",
+      "eat"
+    ]
+  },
+  {
+    "id": "vc_t2_04",
+    "tier": 2,
+    "reference": "Romans 12:21",
+    "translation": "KJV",
+    "template": "Be not overcome of evil, but overcome evil with ____.",
+    "answer": "good",
+    "distractors": [
+      "love",
+      "grace",
+      "peace",
+      "kindness",
+      "mercy"
+    ]
+  },
+  {
+    "id": "vc_t2_05",
+    "tier": 2,
+    "reference": "Proverbs 16:18",
+    "translation": "KJV",
+    "template": "____ goeth before destruction, and an haughty spirit before a fall.",
+    "answer": "Pride",
+    "distractors": [
+      "Anger",
+      "Greed",
+      "Envy",
+      "Folly",
+      "Wrath"
+    ]
+  },
+  {
+    "id": "vc_t2_06",
+    "tier": 2,
+    "reference": "Ephesians 2:8",
+    "translation": "KJV",
+    "template": "For by ____ are ye saved through faith; and that not of yourselves: it is the gift of God:",
+    "answer": "grace",
+    "distractors": [
+      "mercy",
+      "love",
+      "works",
+      "truth",
+      "law"
+    ]
+  },
+  {
+    "id": "vc_t2_07",
+    "tier": 2,
+    "reference": "Micah 6:8",
+    "translation": "KJV",
+    "template": "He hath shewed thee, O man, what is good; and what doth the LORD require of thee, but to do justly, and to love mercy, and to walk ____ with thy God?",
+    "answer": "humbly",
+    "distractors": [
+      "faithfully",
+      "boldly",
+      "quietly",
+      "gently",
+      "uprightly"
+    ]
+  },
+  {
+    "id": "vc_t2_08",
+    "tier": 2,
+    "reference": "Psalms 27:1",
+    "translation": "KJV",
+    "template": "The LORD is my light and my ____; whom shall I fear? the LORD is the strength of my life; of whom shall I be afraid?",
+    "answer": "salvation",
+    "distractors": [
+      "shield",
+      "fortress",
+      "refuge",
+      "song",
+      "hope"
+    ]
+  },
+  {
+    "id": "vc_t2_09",
+    "tier": 2,
+    "reference": "Isaiah 53:5",
+    "translation": "KJV",
+    "template": "But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his ____ we are healed.",
+    "answer": "stripes",
+    "distractors": [
+      "scars",
+      "tears",
+      "sufferings",
+      "blood",
+      "cross"
+    ]
+  },
+  {
+    "id": "vc_t2_10",
+    "tier": 2,
     "reference": "2 Timothy 1:7",
     "translation": "KJV",
-    "template": "For God hath not given us the spirit of fear; but of power, and of love, and of a sound ____.",
-    "answer": "mind",
-    "wordBank": ["mind", "heart", "spirit", "will"]
+    "template": "For God hath not given us the spirit of ____; but of power, and of love, and of a sound mind.",
+    "answer": "fear",
+    "distractors": [
+      "doubt",
+      "shame",
+      "worry",
+      "weakness",
+      "sorrow"
+    ]
+  },
+  {
+    "id": "vc_t2_11",
+    "tier": 2,
+    "reference": "Matthew 6:21",
+    "translation": "KJV",
+    "template": "For where your ____ is, there will your heart be also.",
+    "answer": "treasure",
+    "distractors": [
+      "riches",
+      "gold",
+      "wealth",
+      "mind",
+      "home"
+    ]
+  },
+  {
+    "id": "vc_t2_12",
+    "tier": 2,
+    "reference": "James 1:22",
+    "translation": "KJV",
+    "template": "But be ye ____ of the word, and not hearers only, deceiving your own selves.",
+    "answer": "doers",
+    "distractors": [
+      "keepers",
+      "teachers",
+      "lovers",
+      "servants",
+      "speakers"
+    ]
+  },
+  {
+    "id": "vc_t2_13",
+    "tier": 2,
+    "reference": "Psalms 119:11",
+    "translation": "KJV",
+    "template": "Thy word have I ____ in mine heart, that I might not sin against thee.",
+    "answer": "hid",
+    "distractors": [
+      "kept",
+      "written",
+      "sealed",
+      "stored",
+      "placed"
+    ]
+  },
+  {
+    "id": "vc_t2_14",
+    "tier": 2,
+    "reference": "Proverbs 15:1",
+    "translation": "KJV",
+    "template": "A ____ answer turneth away wrath: but grievous words stir up anger.",
+    "answer": "soft",
+    "distractors": [
+      "kind",
+      "gentle",
+      "quiet",
+      "wise",
+      "sweet"
+    ]
+  },
+  {
+    "id": "vc_t2_15",
+    "tier": 2,
+    "reference": "John 13:34",
+    "translation": "KJV",
+    "template": "A new ____ I give unto you, That ye love one another; as I have loved you, that ye also love one another.",
+    "answer": "commandment",
+    "distractors": [
+      "law",
+      "word",
+      "promise",
+      "covenant",
+      "teaching"
+    ]
+  },
+  {
+    "id": "vc_t2_16",
+    "tier": 2,
+    "reference": "Matthew 5:8",
+    "translation": "KJV",
+    "template": "Blessed are the ____ in heart: for they shall see God.",
+    "answer": "pure",
+    "distractors": [
+      "meek",
+      "poor",
+      "holy",
+      "humble",
+      "righteous"
+    ]
+  },
+  {
+    "id": "vc_t2_17",
+    "tier": 2,
+    "reference": "Psalms 46:10",
+    "translation": "KJV",
+    "template": "Be ____, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth.",
+    "answer": "still",
+    "distractors": [
+      "quiet",
+      "calm",
+      "silent",
+      "strong",
+      "ready"
+    ]
+  },
+  {
+    "id": "vc_t2_18",
+    "tier": 2,
+    "reference": "Romans 10:9",
+    "translation": "KJV",
+    "template": "That if thou shalt ____ with thy mouth the Lord Jesus, and shalt believe in thine heart that God hath raised him from the dead, thou shalt be saved.",
+    "answer": "confess",
+    "distractors": [
+      "declare",
+      "proclaim",
+      "speak",
+      "pray",
+      "praise"
+    ]
+  },
+  {
+    "id": "vc_t2_19",
+    "tier": 2,
+    "reference": "1 John 1:9",
+    "translation": "KJV",
+    "template": "If we confess our sins, he is ____ and just to forgive us our sins, and to cleanse us from all unrighteousness.",
+    "answer": "faithful",
+    "distractors": [
+      "merciful",
+      "gracious",
+      "ready",
+      "willing",
+      "patient"
+    ]
+  },
+  {
+    "id": "vc_t2_20",
+    "tier": 2,
+    "reference": "Lamentations 3:23",
+    "translation": "KJV",
+    "template": "They are new every morning: great is thy ____.",
+    "answer": "faithfulness",
+    "distractors": [
+      "mercy",
+      "goodness",
+      "kindness",
+      "glory",
+      "love"
+    ]
+  },
+  {
+    "id": "vc_t2_21",
+    "tier": 2,
+    "reference": "Psalms 103:12",
+    "translation": "KJV",
+    "template": "As far as the east is from the ____, so far hath he removed our transgressions from us.",
+    "answer": "west",
+    "distractors": [
+      "north",
+      "south",
+      "sea",
+      "sky",
+      "night"
+    ]
+  },
+  {
+    "id": "vc_t2_22",
+    "tier": 2,
+    "reference": "Isaiah 9:6",
+    "translation": "KJV",
+    "template": "For unto us a child is born, unto us a son is given: and the government shall be upon his shoulder: and his name shall be called Wonderful, ____, The mighty God, The everlasting Father, The Prince of Peace.",
+    "answer": "Counsellor",
+    "distractors": [
+      "Comforter",
+      "Teacher",
+      "Shepherd",
+      "Redeemer",
+      "Saviour"
+    ]
+  },
+  {
+    "id": "vc_t2_23",
+    "tier": 2,
+    "reference": "Matthew 4:4",
+    "translation": "KJV",
+    "template": "But he answered and said, It is written, Man shall not live by ____ alone, but by every word that proceedeth out of the mouth of God.",
+    "answer": "bread",
+    "distractors": [
+      "food",
+      "water",
+      "meat",
+      "wine",
+      "gold"
+    ]
+  },
+  {
+    "id": "vc_t2_24",
+    "tier": 2,
+    "reference": "John 1:14",
+    "translation": "KJV",
+    "template": "And the Word was made ____, and dwelt among us, (and we beheld his glory, the glory as of the only begotten of the Father,) full of grace and truth.",
+    "answer": "flesh",
+    "distractors": [
+      "man",
+      "body",
+      "servant",
+      "child",
+      "king"
+    ]
+  },
+  {
+    "id": "vc_t2_25",
+    "tier": 2,
+    "reference": "Philippians 4:6",
+    "translation": "KJV",
+    "template": "Be ____ for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
+    "answer": "careful",
+    "distractors": [
+      "anxious",
+      "fearful",
+      "troubled",
+      "sorrowful",
+      "weary"
+    ]
+  },
+  {
+    "id": "vc_t2_26",
+    "tier": 2,
+    "reference": "Hebrews 13:5",
+    "translation": "KJV",
+    "template": "Let your conversation be without covetousness; and be content with such things as ye have: for he hath said, I will never leave thee, nor ____ thee.",
+    "answer": "forsake",
+    "distractors": [
+      "forget",
+      "abandon",
+      "fail",
+      "reject",
+      "ignore"
+    ]
+  },
+  {
+    "id": "vc_t2_27",
+    "tier": 2,
+    "reference": "Psalms 91:1",
+    "translation": "KJV",
+    "template": "He that dwelleth in the secret place of the most High shall abide under the ____ of the Almighty.",
+    "answer": "shadow",
+    "distractors": [
+      "wings",
+      "house",
+      "hand",
+      "tent",
+      "light"
+    ]
+  },
+  {
+    "id": "vc_t2_28",
+    "tier": 2,
+    "reference": "Proverbs 18:10",
+    "translation": "KJV",
+    "template": "The name of the LORD is a strong ____: the righteous runneth into it, and is safe.",
+    "answer": "tower",
+    "distractors": [
+      "rock",
+      "fortress",
+      "refuge",
+      "shield",
+      "wall"
+    ]
+  },
+  {
+    "id": "vc_t2_29",
+    "tier": 2,
+    "reference": "2 Corinthians 5:17",
+    "translation": "KJV",
+    "template": "Therefore if any man be in Christ, he is a new ____: old things are passed away; behold, all things are become new.",
+    "answer": "creature",
+    "distractors": [
+      "person",
+      "creation",
+      "life",
+      "heart",
+      "spirit"
+    ]
+  },
+  {
+    "id": "vc_t2_30",
+    "tier": 2,
+    "reference": "Galatians 5:22",
+    "translation": "KJV",
+    "template": "But the fruit of the Spirit is love, joy, peace, ____, gentleness, goodness, faith,",
+    "answer": "longsuffering",
+    "distractors": [
+      "patience",
+      "kindness",
+      "mercy",
+      "hope",
+      "humility"
+    ]
+  },
+  {
+    "id": "vc_t2_31",
+    "tier": 2,
+    "reference": "Matthew 5:5",
+    "translation": "KJV",
+    "template": "Blessed are the ____: for they shall inherit the earth.",
+    "answer": "meek",
+    "distractors": [
+      "poor",
+      "humble",
+      "merciful",
+      "gentle",
+      "lowly"
+    ]
+  },
+  {
+    "id": "vc_t2_32",
+    "tier": 2,
+    "reference": "Psalms 119:9",
+    "translation": "KJV",
+    "template": "Wherewithal shall a young man ____ his way? by taking heed thereto according to thy word.",
+    "answer": "cleanse",
+    "distractors": [
+      "keep",
+      "guard",
+      "order",
+      "teach",
+      "find"
+    ]
+  },
+  {
+    "id": "vc_t2_33",
+    "tier": 2,
+    "reference": "Proverbs 4:23",
+    "translation": "KJV",
+    "template": "Keep thy heart with all ____; for out of it are the issues of life.",
+    "answer": "diligence",
+    "distractors": [
+      "wisdom",
+      "care",
+      "patience",
+      "prayer",
+      "love"
+    ]
+  },
+  {
+    "id": "vc_t2_34",
+    "tier": 2,
+    "reference": "James 4:7",
+    "translation": "KJV",
+    "template": "Submit yourselves therefore to God. Resist the devil, and he will ____ from you.",
+    "answer": "flee",
+    "distractors": [
+      "fall",
+      "run",
+      "depart",
+      "leave",
+      "hide"
+    ]
+  },
+  {
+    "id": "vc_t2_35",
+    "tier": 2,
+    "reference": "1 Peter 5:8",
+    "translation": "KJV",
+    "template": "Be sober, be vigilant; because your adversary the devil, as a roaring ____, walketh about, seeking whom he may devour:",
+    "answer": "lion",
+    "distractors": [
+      "wolf",
+      "serpent",
+      "bear",
+      "dragon",
+      "thief"
+    ]
+  },
+  {
+    "id": "vc_t2_36",
+    "tier": 2,
+    "reference": "Matthew 18:20",
+    "translation": "KJV",
+    "template": "For where two or ____ are gathered together in my name, there am I in the midst of them.",
+    "answer": "three",
+    "distractors": [
+      "four",
+      "ten",
+      "many",
+      "seven",
+      "twelve"
+    ]
+  },
+  {
+    "id": "vc_t2_37",
+    "tier": 2,
+    "reference": "John 10:10",
+    "translation": "KJV",
+    "template": "The thief cometh not, but for to steal, and to kill, and to destroy: I am come that they might have life, and that they might have it more ____.",
+    "answer": "abundantly",
+    "distractors": [
+      "eternally",
+      "freely",
+      "fully",
+      "richly",
+      "joyfully"
+    ]
+  },
+  {
+    "id": "vc_t2_38",
+    "tier": 2,
+    "reference": "Psalms 139:14",
+    "translation": "KJV",
+    "template": "I will praise thee; for I am ____ and wonderfully made: marvellous are thy works; and that my soul knoweth right well.",
+    "answer": "fearfully",
+    "distractors": [
+      "carefully",
+      "beautifully",
+      "perfectly",
+      "lovingly",
+      "skilfully"
+    ]
+  },
+  {
+    "id": "vc_t2_39",
+    "tier": 2,
+    "reference": "Isaiah 26:3",
+    "translation": "KJV",
+    "template": "Thou wilt keep him in ____ peace, whose mind is stayed on thee: because he trusteth in thee.",
+    "answer": "perfect",
+    "distractors": [
+      "great",
+      "sweet",
+      "lasting",
+      "quiet",
+      "holy"
+    ]
+  },
+  {
+    "id": "vc_t2_40",
+    "tier": 2,
+    "reference": "Luke 6:31",
+    "translation": "KJV",
+    "template": "And as ye would that men should do to you, do ye also to them ____.",
+    "answer": "likewise",
+    "distractors": [
+      "gladly",
+      "freely",
+      "kindly",
+      "always",
+      "truly"
+    ]
+  },
+  {
+    "id": "vc_t2_41",
+    "tier": 2,
+    "reference": "Romans 12:2",
+    "translation": "KJV",
+    "template": "And be not ____ to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.",
+    "answer": "conformed",
+    "distractors": [
+      "joined",
+      "bound",
+      "married",
+      "given",
+      "changed"
+    ]
+  },
+  {
+    "id": "vc_t2_42",
+    "tier": 2,
+    "reference": "Psalms 127:1",
+    "translation": "KJV",
+    "template": "Except the LORD build the house, they labour in vain that build it: except the LORD keep the city, the ____ waketh but in vain.",
+    "answer": "watchman",
+    "distractors": [
+      "shepherd",
+      "soldier",
+      "keeper",
+      "servant",
+      "porter"
+    ]
+  },
+  {
+    "id": "vc_t2_43",
+    "tier": 2,
+    "reference": "Ecclesiastes 3:1",
+    "translation": "KJV",
+    "template": "To every thing there is a ____, and a time to every purpose under the heaven:",
+    "answer": "season",
+    "distractors": [
+      "reason",
+      "moment",
+      "hour",
+      "day",
+      "place"
+    ]
+  },
+  {
+    "id": "vc_t2_44",
+    "tier": 2,
+    "reference": "Proverbs 1:7",
+    "translation": "KJV",
+    "template": "The ____ of the LORD is the beginning of knowledge: but fools despise wisdom and instruction.",
+    "answer": "fear",
+    "distractors": [
+      "love",
+      "praise",
+      "word",
+      "law",
+      "worship"
+    ]
+  },
+  {
+    "id": "vc_t2_45",
+    "tier": 2,
+    "reference": "John 6:35",
+    "translation": "KJV",
+    "template": "And Jesus said unto them, I am the ____ of life: he that cometh to me shall never hunger; and he that believeth on me shall never thirst.",
+    "answer": "bread",
+    "distractors": [
+      "water",
+      "light",
+      "way",
+      "door",
+      "vine"
+    ]
+  },
+  {
+    "id": "vc_t2_46",
+    "tier": 2,
+    "reference": "Psalms 1:1",
+    "translation": "KJV",
+    "template": "____ is the man that walketh not in the counsel of the ungodly, nor standeth in the way of sinners, nor sitteth in the seat of the scornful.",
+    "answer": "Blessed",
+    "distractors": [
+      "Happy",
+      "Holy",
+      "Wise",
+      "Righteous",
+      "Good"
+    ]
+  },
+  {
+    "id": "vc_t2_47",
+    "tier": 2,
+    "reference": "Revelation 3:20",
+    "translation": "KJV",
+    "template": "Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him, and will ____ with him, and he with me.",
+    "answer": "sup",
+    "distractors": [
+      "dine",
+      "dwell",
+      "feast",
+      "stay",
+      "talk"
+    ]
+  },
+  {
+    "id": "vc_t2_48",
+    "tier": 2,
+    "reference": "Psalms 118:8",
+    "translation": "KJV",
+    "template": "It is better to trust in the LORD than to put ____ in man.",
+    "answer": "confidence",
+    "distractors": [
+      "hope",
+      "strength",
+      "pride",
+      "belief",
+      "reliance"
+    ]
+  },
+  {
+    "id": "vc_t2_49",
+    "tier": 2,
+    "reference": "1 Corinthians 16:14",
+    "translation": "KJV",
+    "template": "Let all your things be done with ____.",
+    "answer": "charity",
+    "distractors": [
+      "patience",
+      "prayer",
+      "wisdom",
+      "order",
+      "joy"
+    ]
+  },
+  {
+    "id": "vc_t2_50",
+    "tier": 2,
+    "reference": "Psalms 23:6",
+    "translation": "KJV",
+    "template": "Surely ____ and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever.",
+    "answer": "goodness",
+    "distractors": [
+      "kindness",
+      "blessing",
+      "peace",
+      "grace",
+      "joy"
+    ]
+  },
+  {
+    "id": "vc_t3_01",
+    "tier": 3,
+    "reference": "Proverbs 3:6",
+    "translation": "KJV",
+    "template": "In all thy ways acknowledge him, and he shall ____.",
+    "answer": "direct thy paths",
+    "distractors": [
+      "guide thy steps",
+      "bless thy work",
+      "lead thee home",
+      "keep thy way",
+      "light thy way"
+    ]
+  },
+  {
+    "id": "vc_t3_02",
+    "tier": 3,
+    "reference": "Isaiah 40:8",
+    "translation": "KJV",
+    "template": "The grass withereth, the flower fadeth: but the word of our God shall ____.",
+    "answer": "stand for ever",
+    "distractors": [
+      "remain always",
+      "endure forever",
+      "abide always",
+      "never fail",
+      "live for ever"
+    ]
+  },
+  {
+    "id": "vc_t3_03",
+    "tier": 3,
+    "reference": "Matthew 5:16",
+    "translation": "KJV",
+    "template": "Let your light so shine before men, that they may see your good works, and ____ your Father which is in heaven.",
+    "answer": "glorify",
+    "distractors": [
+      "praise",
+      "honour",
+      "worship",
+      "know",
+      "love"
+    ]
+  },
+  {
+    "id": "vc_t3_04",
+    "tier": 3,
+    "reference": "John 14:27",
+    "translation": "KJV",
+    "template": "Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be ____, neither let it be afraid.",
+    "answer": "troubled",
+    "distractors": [
+      "broken",
+      "heavy",
+      "weary",
+      "grieved",
+      "hardened"
+    ]
+  },
+  {
+    "id": "vc_t3_05",
+    "tier": 3,
+    "reference": "Romans 15:13",
+    "translation": "KJV",
+    "template": "Now the God of hope fill you with all joy and peace in believing, that ye may ____ in hope, through the power of the Holy Ghost.",
+    "answer": "abound",
+    "distractors": [
+      "grow",
+      "rejoice",
+      "walk",
+      "stand",
+      "live"
+    ]
+  },
+  {
+    "id": "vc_t3_06",
+    "tier": 3,
+    "reference": "Psalms 37:5",
+    "translation": "KJV",
+    "template": "____ thy way unto the LORD; trust also in him; and he shall bring it to pass.",
+    "answer": "Commit",
+    "distractors": [
+      "Give",
+      "Show",
+      "Lift",
+      "Turn",
+      "Offer"
+    ]
+  },
+  {
+    "id": "vc_t3_07",
+    "tier": 3,
+    "reference": "Colossians 3:23",
+    "translation": "KJV",
+    "template": "And whatsoever ye do, do it ____, as to the Lord, and not unto men;",
+    "answer": "heartily",
+    "distractors": [
+      "gladly",
+      "quickly",
+      "faithfully",
+      "wholly",
+      "boldly"
+    ]
+  },
+  {
+    "id": "vc_t3_08",
+    "tier": 3,
+    "reference": "Psalms 90:12",
+    "translation": "KJV",
+    "template": "So teach us to ____, that we may apply our hearts unto wisdom.",
+    "answer": "number our days",
+    "distractors": [
+      "count our blessings",
+      "know our hearts",
+      "walk thy ways",
+      "keep thy law",
+      "seek thy face"
+    ]
+  },
+  {
+    "id": "vc_t3_09",
+    "tier": 3,
+    "reference": "2 Timothy 3:16",
+    "translation": "KJV",
+    "template": "All scripture is given by ____ of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness:",
+    "answer": "inspiration",
+    "distractors": [
+      "revelation",
+      "the Spirit",
+      "the hand",
+      "prophecy",
+      "wisdom"
+    ]
+  },
+  {
+    "id": "vc_t3_10",
+    "tier": 3,
+    "reference": "Hebrews 12:1",
+    "translation": "KJV",
+    "template": "Wherefore seeing we also are compassed about with so great a cloud of witnesses, let us lay aside every weight, and the sin which doth so easily beset us, and let us run with ____ the race that is set before us,",
+    "answer": "patience",
+    "distractors": [
+      "endurance",
+      "diligence",
+      "courage",
+      "boldness",
+      "faith"
+    ]
+  },
+  {
+    "id": "vc_t3_11",
+    "tier": 3,
+    "reference": "Matthew 11:30",
+    "translation": "KJV",
+    "template": "For my ____ is easy, and my burden is light.",
+    "answer": "yoke",
+    "distractors": [
+      "cross",
+      "way",
+      "load",
+      "path",
+      "work"
+    ]
+  },
+  {
+    "id": "vc_t3_12",
+    "tier": 3,
+    "reference": "Psalms 121:2",
+    "translation": "KJV",
+    "template": "My help cometh from the LORD, which made ____.",
+    "answer": "heaven and earth",
+    "distractors": [
+      "the sea and land",
+      "all things",
+      "the hills",
+      "the stars",
+      "man and beast"
+    ]
+  },
+  {
+    "id": "vc_t3_13",
+    "tier": 3,
+    "reference": "Proverbs 31:10",
+    "translation": "KJV",
+    "template": "Who can find a virtuous woman? for her price is far above ____.",
+    "answer": "rubies",
+    "distractors": [
+      "gold",
+      "pearls",
+      "silver",
+      "diamonds",
+      "jewels"
+    ]
+  },
+  {
+    "id": "vc_t3_14",
+    "tier": 3,
+    "reference": "Joshua 1:8",
+    "translation": "KJV",
+    "template": "This book of the law shall not depart out of thy mouth; but thou shalt ____ therein day and night, that thou mayest observe to do according to all that is written therein: for then thou shalt make thy way prosperous, and then thou shalt have good success.",
+    "answer": "meditate",
+    "distractors": [
+      "read",
+      "rejoice",
+      "walk",
+      "dwell",
+      "speak"
+    ]
+  },
+  {
+    "id": "vc_t3_15",
+    "tier": 3,
+    "reference": "Romans 1:16",
+    "translation": "KJV",
+    "template": "For I am not ____ of the gospel of Christ: for it is the power of God unto salvation to every one that believeth; to the Jew first, and also to the Greek.",
+    "answer": "ashamed",
+    "distractors": [
+      "afraid",
+      "weary",
+      "silent",
+      "doubtful",
+      "proud"
+    ]
+  },
+  {
+    "id": "vc_t3_16",
+    "tier": 3,
+    "reference": "Psalms 51:12",
+    "translation": "KJV",
+    "template": "Restore unto me the ____ of thy salvation; and uphold me with thy free spirit.",
+    "answer": "joy",
+    "distractors": [
+      "peace",
+      "hope",
+      "light",
+      "song",
+      "gift"
+    ]
+  },
+  {
+    "id": "vc_t3_17",
+    "tier": 3,
+    "reference": "Matthew 7:13",
+    "translation": "KJV",
+    "template": "Enter ye in at the ____ gate: for wide is the gate, and broad is the way, that leadeth to destruction, and many there be which go in thereat:",
+    "answer": "strait",
+    "distractors": [
+      "narrow",
+      "small",
+      "golden",
+      "holy",
+      "low"
+    ]
+  },
+  {
+    "id": "vc_t3_18",
+    "tier": 3,
+    "reference": "John 15:13",
+    "translation": "KJV",
+    "template": "Greater love hath no man than this, that a man ____ for his friends.",
+    "answer": "lay down his life",
+    "distractors": [
+      "give up his soul",
+      "pour out his heart",
+      "give his all",
+      "suffer much",
+      "forsake all"
+    ]
+  },
+  {
+    "id": "vc_t3_19",
+    "tier": 3,
+    "reference": "1 Corinthians 13:4",
+    "translation": "KJV",
+    "template": "Charity suffereth long, and is kind; charity envieth not; charity ____ not itself, is not puffed up,",
+    "answer": "vaunteth",
+    "distractors": [
+      "boasteth",
+      "seeketh",
+      "exalteth",
+      "pleaseth",
+      "praiseth"
+    ]
+  },
+  {
+    "id": "vc_t3_20",
+    "tier": 3,
+    "reference": "Psalms 30:5",
+    "translation": "KJV",
+    "template": "For his anger endureth but a moment; in his favour is life: weeping may endure for a night, but joy cometh in the ____.",
+    "answer": "morning",
+    "distractors": [
+      "dawn",
+      "light",
+      "day",
+      "spring",
+      "evening"
+    ]
+  },
+  {
+    "id": "vc_t3_21",
+    "tier": 3,
+    "reference": "Isaiah 6:8",
+    "translation": "KJV",
+    "template": "Also I heard the voice of the Lord, saying, Whom shall I send, and who will go for us? Then said I, Here am I; ____.",
+    "answer": "send me",
+    "distractors": [
+      "take me",
+      "use me",
+      "call me",
+      "lead me",
+      "choose me"
+    ]
+  },
+  {
+    "id": "vc_t3_22",
+    "tier": 3,
+    "reference": "Deuteronomy 31:6",
+    "translation": "KJV",
+    "template": "Be strong and of a good courage, fear not, nor be afraid of them: for the LORD thy God, he it is that doth go with thee; he will not ____ thee, nor forsake thee.",
+    "answer": "fail",
+    "distractors": [
+      "leave",
+      "forget",
+      "deny",
+      "reject",
+      "desert"
+    ]
+  },
+  {
+    "id": "vc_t3_23",
+    "tier": 3,
+    "reference": "Mark 8:36",
+    "translation": "KJV",
+    "template": "For what shall it profit a man, if he shall gain the whole world, and lose his own ____?",
+    "answer": "soul",
+    "distractors": [
+      "life",
+      "heart",
+      "mind",
+      "way",
+      "faith"
+    ]
+  },
+  {
+    "id": "vc_t3_24",
+    "tier": 3,
+    "reference": "Psalms 16:11",
+    "translation": "KJV",
+    "template": "Thou wilt shew me the path of life: in thy presence is ____; at thy right hand there are pleasures for evermore.",
+    "answer": "fulness of joy",
+    "distractors": [
+      "peace and rest",
+      "abundant life",
+      "great delight",
+      "light and glory",
+      "perfect peace"
+    ]
+  },
+  {
+    "id": "vc_t3_25",
+    "tier": 3,
+    "reference": "John 3:30",
+    "translation": "KJV",
+    "template": "He must increase, but I must ____.",
+    "answer": "decrease",
+    "distractors": [
+      "serve",
+      "wait",
+      "rest",
+      "follow",
+      "diminish"
+    ]
+  },
+  {
+    "id": "vc_t3_26",
+    "tier": 3,
+    "reference": "Proverbs 14:12",
+    "translation": "KJV",
+    "template": "There is a way which seemeth right unto a man, but the end thereof are the ways of ____.",
+    "answer": "death",
+    "distractors": [
+      "sorrow",
+      "folly",
+      "ruin",
+      "destruction",
+      "darkness"
+    ]
+  },
+  {
+    "id": "vc_t3_27",
+    "tier": 3,
+    "reference": "Matthew 9:37",
+    "translation": "KJV",
+    "template": "Then saith he unto his disciples, The harvest truly is plenteous, but the ____ are few;",
+    "answer": "labourers",
+    "distractors": [
+      "workers",
+      "reapers",
+      "servants",
+      "shepherds",
+      "sowers"
+    ]
+  },
+  {
+    "id": "vc_t3_28",
+    "tier": 3,
+    "reference": "Psalms 133:1",
+    "translation": "KJV",
+    "template": "Behold, how good and how pleasant it is for brethren to dwell together in ____!",
+    "answer": "unity",
+    "distractors": [
+      "peace",
+      "love",
+      "harmony",
+      "joy",
+      "one accord"
+    ]
+  },
+  {
+    "id": "vc_t3_29",
+    "tier": 3,
+    "reference": "Luke 2:14",
+    "translation": "KJV",
+    "template": "Glory to God in the ____, and on earth peace, good will toward men.",
+    "answer": "highest",
+    "distractors": [
+      "heavens",
+      "temple",
+      "world",
+      "skies",
+      "heights"
+    ]
+  },
+  {
+    "id": "vc_t3_30",
+    "tier": 3,
+    "reference": "Acts 1:8",
+    "translation": "KJV",
+    "template": "But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be ____ unto me both in Jerusalem, and in all Judæa, and in Samaria, and unto the uttermost part of the earth.",
+    "answer": "witnesses",
+    "distractors": [
+      "servants",
+      "apostles",
+      "prophets",
+      "messengers",
+      "teachers"
+    ]
+  },
+  {
+    "id": "vc_t3_31",
+    "tier": 3,
+    "reference": "Galatians 2:20",
+    "translation": "KJV",
+    "template": "I am ____ with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+    "answer": "crucified",
+    "distractors": [
+      "buried",
+      "raised",
+      "risen",
+      "hidden",
+      "joined"
+    ]
+  },
+  {
+    "id": "vc_t3_32",
+    "tier": 3,
+    "reference": "James 1:5",
+    "translation": "KJV",
+    "template": "If any of you lack ____, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.",
+    "answer": "wisdom",
+    "distractors": [
+      "faith",
+      "patience",
+      "strength",
+      "knowledge",
+      "understanding"
+    ]
+  },
+  {
+    "id": "vc_t3_33",
+    "tier": 3,
+    "reference": "Psalms 34:18",
+    "translation": "KJV",
+    "template": "The LORD is ____ unto them that are of a broken heart; and saveth such as be of a contrite spirit.",
+    "answer": "nigh",
+    "distractors": [
+      "near",
+      "close",
+      "kind",
+      "gracious",
+      "present"
+    ]
+  },
+  {
+    "id": "vc_t3_34",
+    "tier": 3,
+    "reference": "1 John 4:18",
+    "translation": "KJV",
+    "template": "There is no fear in love; but perfect love ____ fear: because fear hath torment. He that feareth is not made perfect in love.",
+    "answer": "casteth out",
+    "distractors": [
+      "driveth away",
+      "overcometh",
+      "taketh away",
+      "putteth off",
+      "removeth"
+    ]
+  },
+  {
+    "id": "vc_t3_35",
+    "tier": 3,
+    "reference": "Romans 8:31",
+    "translation": "KJV",
+    "template": "What shall we then say to these things? If God be for us, who can be ____ us?",
+    "answer": "against",
+    "distractors": [
+      "before",
+      "above",
+      "beside",
+      "over",
+      "greater"
+    ]
+  },
+  {
+    "id": "vc_t3_36",
+    "tier": 3,
+    "reference": "Psalms 37:7",
+    "translation": "KJV",
+    "template": "Rest in the LORD, and wait patiently for him: ____ thyself because of him who prospereth in his way, because of the man who bringeth wicked devices to pass.",
+    "answer": "fret not",
+    "distractors": [
+      "be not troubled",
+      "fear not",
+      "envy not",
+      "grieve not",
+      "be not weary"
+    ]
+  },
+  {
+    "id": "vc_t3_37",
+    "tier": 3,
+    "reference": "Proverbs 11:25",
+    "translation": "KJV",
+    "template": "The ____ soul shall be made fat: and he that watereth shall be watered also himself.",
+    "answer": "liberal",
+    "distractors": [
+      "generous",
+      "humble",
+      "faithful",
+      "kind",
+      "giving"
+    ]
+  },
+  {
+    "id": "vc_t3_38",
+    "tier": 3,
+    "reference": "Matthew 6:19",
+    "translation": "KJV",
+    "template": "Lay not up for yourselves treasures upon earth, where moth and ____ doth corrupt, and where thieves break through and steal:",
+    "answer": "rust",
+    "distractors": [
+      "decay",
+      "worms",
+      "time",
+      "fire",
+      "dust"
+    ]
+  },
+  {
+    "id": "vc_t3_39",
+    "tier": 3,
+    "reference": "Ephesians 4:32",
+    "translation": "KJV",
+    "template": "And be ye kind one to another, ____, forgiving one another, even as God for Christ’s sake hath forgiven you.",
+    "answer": "tenderhearted",
+    "distractors": [
+      "gentle",
+      "patient",
+      "merciful",
+      "humble",
+      "loving"
+    ]
+  },
+  {
+    "id": "vc_t3_40",
+    "tier": 3,
+    "reference": "Ephesians 6:11",
+    "translation": "KJV",
+    "template": "Put on the whole armour of God, that ye may be able to stand against the ____ of the devil.",
+    "answer": "wiles",
+    "distractors": [
+      "schemes",
+      "snares",
+      "power",
+      "lies",
+      "tricks"
+    ]
+  },
+  {
+    "id": "vc_t3_41",
+    "tier": 3,
+    "reference": "Psalms 42:1",
+    "translation": "KJV",
+    "template": "As the ____ panteth after the water brooks, so panteth my soul after thee, O God.",
+    "answer": "hart",
+    "distractors": [
+      "deer",
+      "lamb",
+      "dove",
+      "sparrow",
+      "stag"
+    ]
+  },
+  {
+    "id": "vc_t3_42",
+    "tier": 3,
+    "reference": "Isaiah 1:18",
+    "translation": "KJV",
+    "template": "Come now, and let us reason together, saith the LORD: though your sins be as ____, they shall be as white as snow; though they be red like crimson, they shall be as wool.",
+    "answer": "scarlet",
+    "distractors": [
+      "purple",
+      "blood",
+      "fire",
+      "darkness",
+      "ashes"
+    ]
+  },
+  {
+    "id": "vc_t3_43",
+    "tier": 3,
+    "reference": "Luke 6:38",
+    "translation": "KJV",
+    "template": "Give, and it shall be given unto you; good measure, pressed down, and shaken together, and ____, shall men give into your bosom. For with the same measure that ye mete withal it shall be measured to you again.",
+    "answer": "running over",
+    "distractors": [
+      "overflowing",
+      "filled up",
+      "heaped high",
+      "made full",
+      "poured out"
+    ]
+  },
+  {
+    "id": "vc_t3_44",
+    "tier": 3,
+    "reference": "Psalms 119:130",
+    "translation": "KJV",
+    "template": "The ____ of thy words giveth light; it giveth understanding unto the simple.",
+    "answer": "entrance",
+    "distractors": [
+      "reading",
+      "speaking",
+      "hearing",
+      "keeping",
+      "study"
+    ]
+  },
+  {
+    "id": "vc_t3_45",
+    "tier": 3,
+    "reference": "Philippians 4:19",
+    "translation": "KJV",
+    "template": "But my God shall ____ all your need according to his riches in glory by Christ Jesus.",
+    "answer": "supply",
+    "distractors": [
+      "meet",
+      "give",
+      "provide",
+      "fill",
+      "bless"
+    ]
+  },
+  {
+    "id": "vc_t3_46",
+    "tier": 3,
+    "reference": "Hebrews 4:12",
+    "translation": "KJV",
+    "template": "For the word of God is quick, and powerful, and sharper than any ____, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and is a discerner of the thoughts and intents of the heart.",
+    "answer": "twoedged sword",
+    "distractors": [
+      "flaming sword",
+      "iron rod",
+      "mighty spear",
+      "sharpened arrow",
+      "golden blade"
+    ]
+  },
+  {
+    "id": "vc_t3_47",
+    "tier": 3,
+    "reference": "Isaiah 7:14",
+    "translation": "KJV",
+    "template": "Therefore the Lord himself shall give you a sign; Behold, a virgin shall conceive, and bear a son, and shall call his name ____.",
+    "answer": "Immanuel",
+    "distractors": [
+      "Messiah",
+      "Jesus",
+      "Wonderful",
+      "Christ",
+      "Elijah"
+    ]
+  },
+  {
+    "id": "vc_t3_48",
+    "tier": 3,
+    "reference": "John 11:25",
+    "translation": "KJV",
+    "template": "Jesus said unto her, I am the ____, and the life: he that believeth in me, though he were dead, yet shall he live:",
+    "answer": "resurrection",
+    "distractors": [
+      "way",
+      "light",
+      "truth",
+      "door",
+      "vine"
+    ]
+  },
+  {
+    "id": "vc_t3_49",
+    "tier": 3,
+    "reference": "Psalms 19:14",
+    "translation": "KJV",
+    "template": "Let the words of my mouth, and the ____ of my heart, be acceptable in thy sight, O LORD, my strength, and my redeemer.",
+    "answer": "meditation",
+    "distractors": [
+      "thoughts",
+      "desires",
+      "prayers",
+      "love",
+      "songs"
+    ]
+  },
+  {
+    "id": "vc_t3_50",
+    "tier": 3,
+    "reference": "Romans 8:1",
+    "translation": "KJV",
+    "template": "There is therefore now no ____ to them which are in Christ Jesus, who walk not after the flesh, but after the Spirit.",
+    "answer": "condemnation",
+    "distractors": [
+      "judgment",
+      "shame",
+      "fear",
+      "separation",
+      "sorrow"
+    ]
+  },
+  {
+    "id": "vc_t4_01",
+    "tier": 4,
+    "reference": "Romans 5:8",
+    "translation": "KJV",
+    "template": "But God ____ his love toward us, in that, while we were yet sinners, Christ died for us.",
+    "answer": "commendeth",
+    "distractors": [
+      "sheweth",
+      "proveth",
+      "declareth",
+      "giveth",
+      "poureth"
+    ]
+  },
+  {
+    "id": "vc_t4_02",
+    "tier": 4,
+    "reference": "Matthew 5:44",
+    "translation": "KJV",
+    "template": "But I say unto you, Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which ____ use you, and persecute you;",
+    "answer": "despitefully",
+    "distractors": [
+      "wrongfully",
+      "cruelly",
+      "spitefully",
+      "falsely",
+      "unjustly"
+    ]
+  },
+  {
+    "id": "vc_t4_03",
+    "tier": 4,
+    "reference": "Proverbs 29:18",
+    "translation": "KJV",
+    "template": "Where there is no ____, the people perish: but he that keepeth the law, happy is he.",
+    "answer": "vision",
+    "distractors": [
+      "prophet",
+      "wisdom",
+      "king",
+      "shepherd",
+      "counsel"
+    ]
+  },
+  {
+    "id": "vc_t4_04",
+    "tier": 4,
+    "reference": "Psalms 84:10",
+    "translation": "KJV",
+    "template": "For a day in thy courts is better than a thousand. I had rather be a ____ in the house of my God, than to dwell in the tents of wickedness.",
+    "answer": "doorkeeper",
+    "distractors": [
+      "servant",
+      "watchman",
+      "porter",
+      "beggar",
+      "stranger"
+    ]
+  },
+  {
+    "id": "vc_t4_05",
+    "tier": 4,
+    "reference": "Zephaniah 3:17",
+    "translation": "KJV",
+    "template": "The LORD thy God in the midst of thee is mighty; he will save, he will rejoice over thee with joy; he will rest in his love, he will joy over thee with ____.",
+    "answer": "singing",
+    "distractors": [
+      "gladness",
+      "dancing",
+      "praise",
+      "shouting",
+      "delight"
+    ]
+  },
+  {
+    "id": "vc_t4_06",
+    "tier": 4,
+    "reference": "Nahum 1:7",
+    "translation": "KJV",
+    "template": "The LORD is good, a ____ in the day of trouble; and he knoweth them that trust in him.",
+    "answer": "strong hold",
+    "distractors": [
+      "high tower",
+      "sure refuge",
+      "mighty rock",
+      "safe shelter",
+      "great shield"
+    ]
+  },
+  {
+    "id": "vc_t4_07",
+    "tier": 4,
+    "reference": "Isaiah 30:15",
+    "translation": "KJV",
+    "template": "For thus saith the Lord GOD, the Holy One of Israel; In returning and rest shall ye be saved; in ____ and in confidence shall be your strength: and ye would not.",
+    "answer": "quietness",
+    "distractors": [
+      "stillness",
+      "patience",
+      "silence",
+      "humility",
+      "meekness"
+    ]
+  },
+  {
+    "id": "vc_t4_08",
+    "tier": 4,
+    "reference": "Proverbs 25:11",
+    "translation": "KJV",
+    "template": "A word fitly spoken is like apples of gold in ____.",
+    "answer": "pictures of silver",
+    "distractors": [
+      "bowls of silver",
+      "cups of silver",
+      "baskets of silver",
+      "settings of silver",
+      "vessels of silver"
+    ]
+  },
+  {
+    "id": "vc_t4_09",
+    "tier": 4,
+    "reference": "Psalms 126:5",
+    "translation": "KJV",
+    "template": "They that sow in ____ shall reap in joy.",
+    "answer": "tears",
+    "distractors": [
+      "sorrow",
+      "weeping",
+      "sadness",
+      "mourning",
+      "pain"
+    ]
+  },
+  {
+    "id": "vc_t4_10",
+    "tier": 4,
+    "reference": "Ecclesiastes 12:1",
+    "translation": "KJV",
+    "template": "Remember now thy ____ in the days of thy youth, while the evil days come not, nor the years draw nigh, when thou shalt say, I have no pleasure in them;",
+    "answer": "Creator",
+    "distractors": [
+      "Maker",
+      "Father",
+      "Redeemer",
+      "Lord",
+      "Saviour"
+    ]
+  },
+  {
+    "id": "vc_t4_11",
+    "tier": 4,
+    "reference": "Jeremiah 33:3",
+    "translation": "KJV",
+    "template": "Call unto me, and I will answer thee, and shew thee ____, which thou knowest not.",
+    "answer": "great and mighty things",
+    "distractors": [
+      "wonderful and hidden things",
+      "deep and secret things",
+      "marvellous works",
+      "high and holy things",
+      "rich and glorious things"
+    ]
+  },
+  {
+    "id": "vc_t4_12",
+    "tier": 4,
+    "reference": "Amos 3:3",
+    "translation": "KJV",
+    "template": "Can two walk together, except they be ____?",
+    "answer": "agreed",
+    "distractors": [
+      "friends",
+      "brethren",
+      "united",
+      "willing",
+      "joined"
+    ]
+  },
+  {
+    "id": "vc_t4_13",
+    "tier": 4,
+    "reference": "Psalms 103:2",
+    "translation": "KJV",
+    "template": "Bless the LORD, O my soul, and forget not all his ____:",
+    "answer": "benefits",
+    "distractors": [
+      "blessings",
+      "mercies",
+      "gifts",
+      "works",
+      "wonders"
+    ]
+  },
+  {
+    "id": "vc_t4_14",
+    "tier": 4,
+    "reference": "Isaiah 43:2",
+    "translation": "KJV",
+    "template": "When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame ____ upon thee.",
+    "answer": "kindle",
+    "distractors": [
+      "burn",
+      "touch",
+      "fall",
+      "rest",
+      "rise"
+    ]
+  },
+  {
+    "id": "vc_t4_15",
+    "tier": 4,
+    "reference": "2 Chronicles 7:14",
+    "translation": "KJV",
+    "template": "If my people, which are called by my name, shall humble themselves, and pray, and seek my face, and turn from their wicked ways; then will I hear from heaven, and will forgive their sin, and will ____.",
+    "answer": "heal their land",
+    "distractors": [
+      "bless their land",
+      "restore their land",
+      "save their land",
+      "keep their land",
+      "renew their land"
+    ]
+  },
+  {
+    "id": "vc_t4_16",
+    "tier": 4,
+    "reference": "Psalms 37:25",
+    "translation": "KJV",
+    "template": "I have been young, and now am old; yet have I not seen the righteous forsaken, nor his seed ____.",
+    "answer": "begging bread",
+    "distractors": [
+      "wanting bread",
+      "lacking food",
+      "seeking bread",
+      "in hunger",
+      "without bread"
+    ]
+  },
+  {
+    "id": "vc_t4_17",
+    "tier": 4,
+    "reference": "Proverbs 13:20",
+    "translation": "KJV",
+    "template": "He that walketh with wise men shall be wise: but a ____ of fools shall be destroyed.",
+    "answer": "companion",
+    "distractors": [
+      "friend",
+      "servant",
+      "brother",
+      "follower",
+      "neighbour"
+    ]
+  },
+  {
+    "id": "vc_t4_18",
+    "tier": 4,
+    "reference": "Malachi 3:10",
+    "translation": "KJV",
+    "template": "Bring ye all the tithes into the ____, that there may be meat in mine house, and prove me now herewith, saith the LORD of hosts, if I will not open you the windows of heaven, and pour you out a blessing, that there shall not be room enough to receive it.",
+    "answer": "storehouse",
+    "distractors": [
+      "treasury",
+      "temple",
+      "barn",
+      "granary",
+      "tabernacle"
+    ]
+  },
+  {
+    "id": "vc_t4_19",
+    "tier": 4,
+    "reference": "Isaiah 64:8",
+    "translation": "KJV",
+    "template": "But now, O LORD, thou art our father; we are the clay, and thou our ____; and we all are the work of thy hand.",
+    "answer": "potter",
+    "distractors": [
+      "maker",
+      "builder",
+      "sculptor",
+      "shepherd",
+      "craftsman"
+    ]
+  },
+  {
+    "id": "vc_t4_20",
+    "tier": 4,
+    "reference": "Psalms 68:5",
+    "translation": "KJV",
+    "template": "A father of the fatherless, and a judge of the ____, is God in his holy habitation.",
+    "answer": "widows",
+    "distractors": [
+      "orphans",
+      "poor",
+      "needy",
+      "strangers",
+      "weak"
+    ]
+  },
+  {
+    "id": "vc_t4_21",
+    "tier": 4,
+    "reference": "Proverbs 16:9",
+    "translation": "KJV",
+    "template": "A man’s heart deviseth his way: but the LORD ____ his steps.",
+    "answer": "directeth",
+    "distractors": [
+      "ordereth",
+      "guideth",
+      "keepeth",
+      "leadeth",
+      "numbereth"
+    ]
+  },
+  {
+    "id": "vc_t4_22",
+    "tier": 4,
+    "reference": "Psalms 147:3",
+    "translation": "KJV",
+    "template": "He healeth the broken in heart, and ____ their wounds.",
+    "answer": "bindeth up",
+    "distractors": [
+      "cleanseth",
+      "covereth",
+      "closeth",
+      "dresseth",
+      "tendeth"
+    ]
+  },
+  {
+    "id": "vc_t4_23",
+    "tier": 4,
+    "reference": "Matthew 10:16",
+    "translation": "KJV",
+    "template": "Behold, I send you forth as sheep in the midst of wolves: be ye therefore wise as serpents, and ____ as doves.",
+    "answer": "harmless",
+    "distractors": [
+      "gentle",
+      "innocent",
+      "peaceful",
+      "meek",
+      "quiet"
+    ]
+  },
+  {
+    "id": "vc_t4_24",
+    "tier": 4,
+    "reference": "Romans 12:12",
+    "translation": "KJV",
+    "template": "Rejoicing in hope; patient in tribulation; continuing ____ in prayer;",
+    "answer": "instant",
+    "distractors": [
+      "steadfast",
+      "faithful",
+      "constant",
+      "earnest",
+      "always"
+    ]
+  },
+  {
+    "id": "vc_t4_25",
+    "tier": 4,
+    "reference": "Philippians 1:21",
+    "translation": "KJV",
+    "template": "For to me to live is Christ, and to die is ____.",
+    "answer": "gain",
+    "distractors": [
+      "glory",
+      "peace",
+      "rest",
+      "life",
+      "joy"
+    ]
+  },
+  {
+    "id": "vc_t4_26",
+    "tier": 4,
+    "reference": "1 Thessalonians 5:18",
+    "translation": "KJV",
+    "template": "In every thing ____: for this is the will of God in Christ Jesus concerning you.",
+    "answer": "give thanks",
+    "distractors": [
+      "rejoice",
+      "pray always",
+      "be content",
+      "trust God",
+      "sing praises"
+    ]
+  },
+  {
+    "id": "vc_t4_27",
+    "tier": 4,
+    "reference": "Hebrews 11:6",
+    "translation": "KJV",
+    "template": "But without faith it is impossible to please him: for he that cometh to God must believe that he is, and that he is a ____ of them that diligently seek him.",
+    "answer": "rewarder",
+    "distractors": [
+      "giver",
+      "keeper",
+      "helper",
+      "friend",
+      "father"
+    ]
+  },
+  {
+    "id": "vc_t4_28",
+    "tier": 4,
+    "reference": "James 5:16",
+    "translation": "KJV",
+    "template": "Confess your faults one to another, and pray one for another, that ye may be healed. The ____ prayer of a righteous man availeth much.",
+    "answer": "effectual fervent",
+    "distractors": [
+      "earnest humble",
+      "faithful constant",
+      "quiet secret",
+      "bold steadfast",
+      "sincere ardent"
+    ]
+  },
+  {
+    "id": "vc_t4_29",
+    "tier": 4,
+    "reference": "Psalms 91:4",
+    "translation": "KJV",
+    "template": "He shall cover thee with his feathers, and under his wings shalt thou trust: his truth shall be thy shield and ____.",
+    "answer": "buckler",
+    "distractors": [
+      "helmet",
+      "sword",
+      "armour",
+      "fortress",
+      "banner"
+    ]
+  },
+  {
+    "id": "vc_t4_30",
+    "tier": 4,
+    "reference": "Luke 19:10",
+    "translation": "KJV",
+    "template": "For the Son of man is come to ____ that which was lost.",
+    "answer": "seek and to save",
+    "distractors": [
+      "find and to heal",
+      "call and to keep",
+      "serve and to give",
+      "teach and to lead",
+      "love and to bless"
+    ]
+  },
+  {
+    "id": "vc_t4_31",
+    "tier": 4,
+    "reference": "1 Samuel 16:7",
+    "translation": "KJV",
+    "template": "But the LORD said unto Samuel, Look not on his countenance, or on the height of his stature; because I have refused him: for the Lord seeth not as man seeth; for man looketh on the ____, but the LORD looketh on the heart.",
+    "answer": "outward appearance",
+    "distractors": [
+      "face and form",
+      "fair countenance",
+      "strength of arm",
+      "rich apparel",
+      "great stature"
+    ]
+  },
+  {
+    "id": "vc_t4_32",
+    "tier": 4,
+    "reference": "Psalms 46:4",
+    "translation": "KJV",
+    "template": "There is a ____, the streams whereof shall make glad the city of God, the holy place of the tabernacles of the most High.",
+    "answer": "river",
+    "distractors": [
+      "fountain",
+      "well",
+      "spring",
+      "sea",
+      "brook"
+    ]
+  },
+  {
+    "id": "vc_t4_33",
+    "tier": 4,
+    "reference": "Isaiah 40:29",
+    "translation": "KJV",
+    "template": "He giveth power to the ____; and to them that have no might he increaseth strength.",
+    "answer": "faint",
+    "distractors": [
+      "weak",
+      "weary",
+      "lowly",
+      "poor",
+      "humble"
+    ]
+  },
+  {
+    "id": "vc_t4_34",
+    "tier": 4,
+    "reference": "Proverbs 12:25",
+    "translation": "KJV",
+    "template": "Heaviness in the heart of man maketh it ____: but a good word maketh it glad.",
+    "answer": "stoop",
+    "distractors": [
+      "weep",
+      "faint",
+      "break",
+      "mourn",
+      "tremble"
+    ]
+  },
+  {
+    "id": "vc_t4_35",
+    "tier": 4,
+    "reference": "Psalms 32:8",
+    "translation": "KJV",
+    "template": "I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with ____.",
+    "answer": "mine eye",
+    "distractors": [
+      "my hand",
+      "my staff",
+      "my voice",
+      "my light",
+      "my word"
+    ]
+  },
+  {
+    "id": "vc_t4_36",
+    "tier": 4,
+    "reference": "Matthew 25:21",
+    "translation": "KJV",
+    "template": "His lord said unto him, Well done, thou good and faithful servant: thou hast been faithful over a few things, I will make thee ____ over many things: enter thou into the joy of thy lord.",
+    "answer": "ruler",
+    "distractors": [
+      "steward",
+      "overseer",
+      "governor",
+      "judge",
+      "keeper"
+    ]
+  },
+  {
+    "id": "vc_t4_37",
+    "tier": 4,
+    "reference": "John 12:24",
+    "translation": "KJV",
+    "template": "Verily, verily, I say unto you, Except a ____ fall into the ground and die, it abideth alone: but if it die, it bringeth forth much fruit.",
+    "answer": "corn of wheat",
+    "distractors": [
+      "seed of barley",
+      "grain of mustard",
+      "kernel of corn",
+      "ear of wheat",
+      "seed of grass"
+    ]
+  },
+  {
+    "id": "vc_t4_38",
+    "tier": 4,
+    "reference": "Acts 20:35",
+    "translation": "KJV",
+    "template": "I have shewed you all things, how that so labouring ye ought to support the weak, and to remember the words of the Lord Jesus, how he said, It is ____ to give than to receive.",
+    "answer": "more blessed",
+    "distractors": [
+      "better",
+      "more righteous",
+      "greater joy",
+      "more holy",
+      "wiser"
+    ]
+  },
+  {
+    "id": "vc_t4_39",
+    "tier": 4,
+    "reference": "2 Corinthians 12:9",
+    "translation": "KJV",
+    "template": "And he said unto me, My grace is ____ for thee: for my strength is made perfect in weakness. Most gladly therefore will I rather glory in my infirmities, that the power of Christ may rest upon me.",
+    "answer": "sufficient",
+    "distractors": [
+      "enough",
+      "abundant",
+      "given",
+      "ready",
+      "plenty"
+    ]
+  },
+  {
+    "id": "vc_t4_40",
+    "tier": 4,
+    "reference": "Psalms 55:22",
+    "translation": "KJV",
+    "template": "Cast thy burden upon the LORD, and he shall ____ thee: he shall never suffer the righteous to be moved.",
+    "answer": "sustain",
+    "distractors": [
+      "carry",
+      "uphold",
+      "keep",
+      "hold",
+      "save"
+    ]
+  },
+  {
+    "id": "vc_t4_41",
+    "tier": 4,
+    "reference": "Proverbs 9:10",
+    "translation": "KJV",
+    "template": "The fear of the LORD is the ____ of wisdom: and the knowledge of the holy is understanding.",
+    "answer": "beginning",
+    "distractors": [
+      "end",
+      "root",
+      "crown",
+      "source",
+      "sum"
+    ]
+  },
+  {
+    "id": "vc_t4_42",
+    "tier": 4,
+    "reference": "Psalms 30:11",
+    "translation": "KJV",
+    "template": "Thou hast turned for me my mourning into ____: thou hast put off my sackcloth, and girded me with gladness;",
+    "answer": "dancing",
+    "distractors": [
+      "singing",
+      "joy",
+      "laughter",
+      "praise",
+      "rejoicing"
+    ]
+  },
+  {
+    "id": "vc_t4_43",
+    "tier": 4,
+    "reference": "Galatians 6:9",
+    "translation": "KJV",
+    "template": "And let us not be weary in well doing: for in ____ we shall reap, if we faint not.",
+    "answer": "due season",
+    "distractors": [
+      "the harvest",
+      "good time",
+      "the end",
+      "the last day",
+      "his time"
+    ]
+  },
+  {
+    "id": "vc_t4_44",
+    "tier": 4,
+    "reference": "Ephesians 4:26",
+    "translation": "KJV",
+    "template": "Be ye angry, and sin not: let not the ____ go down upon your wrath:",
+    "answer": "sun",
+    "distractors": [
+      "day",
+      "night",
+      "moon",
+      "light",
+      "evening"
+    ]
+  },
+  {
+    "id": "vc_t4_45",
+    "tier": 4,
+    "reference": "Philippians 2:3",
+    "translation": "KJV",
+    "template": "Let nothing be done through strife or ____; but in lowliness of mind let each esteem other better than themselves.",
+    "answer": "vainglory",
+    "distractors": [
+      "pride",
+      "envy",
+      "boasting",
+      "anger",
+      "selfishness"
+    ]
+  },
+  {
+    "id": "vc_t4_46",
+    "tier": 4,
+    "reference": "Colossians 4:6",
+    "translation": "KJV",
+    "template": "Let your speech be alway with grace, seasoned with ____, that ye may know how ye ought to answer every man.",
+    "answer": "salt",
+    "distractors": [
+      "love",
+      "wisdom",
+      "kindness",
+      "truth",
+      "honey"
+    ]
+  },
+  {
+    "id": "vc_t4_47",
+    "tier": 4,
+    "reference": "1 Timothy 6:10",
+    "translation": "KJV",
+    "template": "For the love of money is the ____ of all evil: which while some coveted after, they have erred from the faith, and pierced themselves through with many sorrows.",
+    "answer": "root",
+    "distractors": [
+      "source",
+      "cause",
+      "seed",
+      "beginning",
+      "father"
+    ]
+  },
+  {
+    "id": "vc_t4_48",
+    "tier": 4,
+    "reference": "Psalms 62:1",
+    "translation": "KJV",
+    "template": "Truly my soul ____ upon God: from him cometh my salvation.",
+    "answer": "waiteth",
+    "distractors": [
+      "resteth",
+      "hopeth",
+      "trusteth",
+      "longeth",
+      "thirsteth"
+    ]
+  },
+  {
+    "id": "vc_t4_49",
+    "tier": 4,
+    "reference": "Revelation 21:4",
+    "translation": "KJV",
+    "template": "And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the ____ are passed away.",
+    "answer": "former things",
+    "distractors": [
+      "old things",
+      "first things",
+      "earthly things",
+      "past days",
+      "sorrows"
+    ]
+  },
+  {
+    "id": "vc_t4_50",
+    "tier": 4,
+    "reference": "Psalms 4:8",
+    "translation": "KJV",
+    "template": "I will both lay me down in peace, and sleep: for thou, LORD, only makest me dwell in ____.",
+    "answer": "safety",
+    "distractors": [
+      "rest",
+      "quiet",
+      "comfort",
+      "security",
+      "hope"
+    ]
+  },
+  {
+    "id": "vc_t5_01",
+    "tier": 5,
+    "reference": "Habakkuk 3:18",
+    "translation": "KJV",
+    "template": "Yet I will rejoice in the LORD, I will ____ in the God of my salvation.",
+    "answer": "joy",
+    "distractors": [
+      "glory",
+      "trust",
+      "delight",
+      "hope",
+      "boast"
+    ]
+  },
+  {
+    "id": "vc_t5_02",
+    "tier": 5,
+    "reference": "Joel 2:25",
+    "translation": "KJV",
+    "template": "And I will restore to you the years that the ____ hath eaten, the cankerworm, and the caterpiller, and the palmerworm, my great army which I sent among you.",
+    "answer": "locust",
+    "distractors": [
+      "grasshopper",
+      "moth",
+      "worm",
+      "enemy",
+      "famine"
+    ]
+  },
+  {
+    "id": "vc_t5_03",
+    "tier": 5,
+    "reference": "Malachi 4:2",
+    "translation": "KJV",
+    "template": "But unto you that fear my name shall the Sun of righteousness arise with healing in his wings; and ye shall go forth, and grow up as ____.",
+    "answer": "calves of the stall",
+    "distractors": [
+      "lambs of the fold",
+      "sheep of the pasture",
+      "trees of the field",
+      "lilies of the valley",
+      "cedars of Lebanon"
+    ]
+  },
+  {
+    "id": "vc_t5_04",
+    "tier": 5,
+    "reference": "Zechariah 4:6",
+    "translation": "KJV",
+    "template": "Then he answered and spake unto me, saying, This is the word of the LORD unto Zerubbabel, saying, Not by ____, nor by power, but by my spirit, saith the LORD of hosts.",
+    "answer": "might",
+    "distractors": [
+      "strength",
+      "sword",
+      "wisdom",
+      "armies",
+      "riches"
+    ]
+  },
+  {
+    "id": "vc_t5_05",
+    "tier": 5,
+    "reference": "Isaiah 40:11",
+    "translation": "KJV",
+    "template": "He shall feed his flock like a shepherd: he shall gather the lambs with his arm, and carry them in his ____, and shall gently lead those that are with young.",
+    "answer": "bosom",
+    "distractors": [
+      "heart",
+      "hands",
+      "shoulders",
+      "fold",
+      "tent"
+    ]
+  },
+  {
+    "id": "vc_t5_06",
+    "tier": 5,
+    "reference": "Hosea 6:6",
+    "translation": "KJV",
+    "template": "For I desired mercy, and not ____; and the knowledge of God more than burnt offerings.",
+    "answer": "sacrifice",
+    "distractors": [
+      "obedience",
+      "fasting",
+      "gold",
+      "incense",
+      "temples"
+    ]
+  },
+  {
+    "id": "vc_t5_07",
+    "tier": 5,
+    "reference": "Isaiah 35:1",
+    "translation": "KJV",
+    "template": "The wilderness and the solitary place shall be glad for them; and the desert shall rejoice, and blossom as the ____.",
+    "answer": "rose",
+    "distractors": [
+      "lily",
+      "vine",
+      "cedar",
+      "flower",
+      "olive"
+    ]
+  },
+  {
+    "id": "vc_t5_08",
+    "tier": 5,
+    "reference": "Jeremiah 17:9",
+    "translation": "KJV",
+    "template": "The heart is ____ above all things, and desperately wicked: who can know it?",
+    "answer": "deceitful",
+    "distractors": [
+      "proud",
+      "foolish",
+      "hardened",
+      "sinful",
+      "crooked"
+    ]
+  },
+  {
+    "id": "vc_t5_09",
+    "tier": 5,
+    "reference": "Ezekiel 36:26",
+    "translation": "KJV",
+    "template": "A new heart also will I give you, and a new spirit will I put within you: and I will take away the ____ heart out of your flesh, and I will give you an heart of flesh.",
+    "answer": "stony",
+    "distractors": [
+      "hard",
+      "cold",
+      "proud",
+      "broken",
+      "iron"
+    ]
+  },
+  {
+    "id": "vc_t5_10",
+    "tier": 5,
+    "reference": "Daniel 12:3",
+    "translation": "KJV",
+    "template": "And they that be wise shall shine as the brightness of the ____; and they that turn many to righteousness as the stars for ever and ever.",
+    "answer": "firmament",
+    "distractors": [
+      "heavens",
+      "sun",
+      "morning",
+      "noonday",
+      "sky"
+    ]
+  },
+  {
+    "id": "vc_t5_11",
+    "tier": 5,
+    "reference": "Psalms 1:3",
+    "translation": "KJV",
+    "template": "And he shall be like a tree planted by the ____, that bringeth forth his fruit in his season; his leaf also shall not wither; and whatsoever he doeth shall prosper.",
+    "answer": "rivers of water",
+    "distractors": [
+      "streams of the field",
+      "wells of salvation",
+      "springs of the valley",
+      "brooks of the hills",
+      "fountains of the deep"
+    ]
+  },
+  {
+    "id": "vc_t5_12",
+    "tier": 5,
+    "reference": "Proverbs 24:16",
+    "translation": "KJV",
+    "template": "For a just man falleth ____ times, and riseth up again: but the wicked shall fall into mischief.",
+    "answer": "seven",
+    "distractors": [
+      "three",
+      "ten",
+      "many",
+      "twelve",
+      "forty"
+    ]
+  },
+  {
+    "id": "vc_t5_13",
+    "tier": 5,
+    "reference": "Ecclesiastes 4:12",
+    "translation": "KJV",
+    "template": "And if one prevail against him, two shall withstand him; and a ____ is not quickly broken.",
+    "answer": "threefold cord",
+    "distractors": [
+      "twisted rope",
+      "triple strand",
+      "golden chain",
+      "silver cord",
+      "strong band"
+    ]
+  },
+  {
+    "id": "vc_t5_14",
+    "tier": 5,
+    "reference": "Song of Solomon 2:15",
+    "translation": "KJV",
+    "template": "Take us the foxes, the little foxes, that spoil the vines: for our vines have ____.",
+    "answer": "tender grapes",
+    "distractors": [
+      "sweet fruit",
+      "ripe clusters",
+      "young shoots",
+      "fair blossoms",
+      "green figs"
+    ]
+  },
+  {
+    "id": "vc_t5_15",
+    "tier": 5,
+    "reference": "Isaiah 11:6",
+    "translation": "KJV",
+    "template": "The wolf also shall dwell with the lamb, and the ____ shall lie down with the kid; and the calf and the young lion and the fatling together; and a little child shall lead them.",
+    "answer": "leopard",
+    "distractors": [
+      "bear",
+      "tiger",
+      "jackal",
+      "fox",
+      "panther"
+    ]
+  },
+  {
+    "id": "vc_t5_16",
+    "tier": 5,
+    "reference": "Lamentations 3:22",
+    "translation": "KJV",
+    "template": "It is of the LORD’s mercies that we are not ____, because his compassions fail not.",
+    "answer": "consumed",
+    "distractors": [
+      "destroyed",
+      "forsaken",
+      "forgotten",
+      "scattered",
+      "overcome"
+    ]
+  },
+  {
+    "id": "vc_t5_17",
+    "tier": 5,
+    "reference": "Psalms 42:7",
+    "translation": "KJV",
+    "template": "Deep calleth unto deep at the noise of thy ____: all thy waves and thy billows are gone over me.",
+    "answer": "waterspouts",
+    "distractors": [
+      "thunders",
+      "floods",
+      "fountains",
+      "storms",
+      "rivers"
+    ]
+  },
+  {
+    "id": "vc_t5_18",
+    "tier": 5,
+    "reference": "Isaiah 53:6",
+    "translation": "KJV",
+    "template": "All we like sheep have gone astray; we have turned every one to his own way; and the LORD hath laid on him the ____ of us all.",
+    "answer": "iniquity",
+    "distractors": [
+      "burden",
+      "sorrow",
+      "guilt",
+      "transgression",
+      "punishment"
+    ]
+  },
+  {
+    "id": "vc_t5_19",
+    "tier": 5,
+    "reference": "Proverbs 6:6",
+    "translation": "KJV",
+    "template": "Go to the ant, thou ____; consider her ways, and be wise:",
+    "answer": "sluggard",
+    "distractors": [
+      "fool",
+      "scorner",
+      "idler",
+      "simple one",
+      "slothful"
+    ]
+  },
+  {
+    "id": "vc_t5_20",
+    "tier": 5,
+    "reference": "Psalms 137:1",
+    "translation": "KJV",
+    "template": "By the rivers of ____, there we sat down, yea, we wept, when we remembered Zion.",
+    "answer": "Babylon",
+    "distractors": [
+      "Egypt",
+      "Assyria",
+      "Nineveh",
+      "Persia",
+      "Damascus"
+    ]
+  },
+  {
+    "id": "vc_t5_21",
+    "tier": 5,
+    "reference": "Ruth 1:16",
+    "translation": "KJV",
+    "template": "And Ruth said, ____ me not to leave thee, or to return from following after thee: for whither thou goest, I will go; and where thou lodgest, I will lodge: thy people shall be my people, and thy God my God:",
+    "answer": "Intreat",
+    "distractors": [
+      "Command",
+      "Beg",
+      "Ask",
+      "Urge",
+      "Force"
+    ]
+  },
+  {
+    "id": "vc_t5_22",
+    "tier": 5,
+    "reference": "Job 19:25",
+    "translation": "KJV",
+    "template": "For I know that my redeemer liveth, and that he shall stand at the ____ upon the earth:",
+    "answer": "latter day",
+    "distractors": [
+      "last day",
+      "end of days",
+      "appointed time",
+      "great day",
+      "final hour"
+    ]
+  },
+  {
+    "id": "vc_t5_23",
+    "tier": 5,
+    "reference": "Job 1:21",
+    "translation": "KJV",
+    "template": "And said, Naked came I out of my mother’s womb, and naked shall I return thither: the LORD gave, and the LORD hath ____; blessed be the name of the LORD.",
+    "answer": "taken away",
+    "distractors": [
+      "received again",
+      "kept it",
+      "required it",
+      "brought low",
+      "called back"
+    ]
+  },
+  {
+    "id": "vc_t5_24",
+    "tier": 5,
+    "reference": "Psalms 90:4",
+    "translation": "KJV",
+    "template": "For a thousand years in thy sight are but as yesterday when it is past, and as a ____.",
+    "answer": "watch in the night",
+    "distractors": [
+      "breath of wind",
+      "dream at morning",
+      "moment of time",
+      "shadow at noon",
+      "flower of the field"
+    ]
+  },
+  {
+    "id": "vc_t5_25",
+    "tier": 5,
+    "reference": "Isaiah 2:4",
+    "translation": "KJV",
+    "template": "And he shall judge among the nations, and shall rebuke many people: and they shall beat their swords into plowshares, and their spears into ____: nation shall not lift up sword against nation, neither shall they learn war any more.",
+    "answer": "pruninghooks",
+    "distractors": [
+      "sickles",
+      "ploughs",
+      "staves",
+      "scythes",
+      "shovels"
+    ]
+  },
+  {
+    "id": "vc_t5_26",
+    "tier": 5,
+    "reference": "Proverbs 26:11",
+    "translation": "KJV",
+    "template": "As a dog returneth to his vomit, so a fool returneth to his ____.",
+    "answer": "folly",
+    "distractors": [
+      "sin",
+      "ways",
+      "error",
+      "pride",
+      "mischief"
+    ]
+  },
+  {
+    "id": "vc_t5_27",
+    "tier": 5,
+    "reference": "Ecclesiastes 1:9",
+    "translation": "KJV",
+    "template": "The thing that hath been, it is that which shall be; and that which is done is that which shall be done: and there is no new thing ____.",
+    "answer": "under the sun",
+    "distractors": [
+      "upon the earth",
+      "in all the world",
+      "beneath the heavens",
+      "in our days",
+      "among men"
+    ]
+  },
+  {
+    "id": "vc_t5_28",
+    "tier": 5,
+    "reference": "Micah 4:4",
+    "translation": "KJV",
+    "template": "But they shall sit every man under his vine and under his ____; and none shall make them afraid: for the mouth of the LORD of hosts hath spoken it.",
+    "answer": "fig tree",
+    "distractors": [
+      "olive tree",
+      "palm tree",
+      "cedar",
+      "oak",
+      "roof"
+    ]
+  },
+  {
+    "id": "vc_t5_29",
+    "tier": 5,
+    "reference": "Psalms 8:4",
+    "translation": "KJV",
+    "template": "What is man, that thou art ____ of him? and the son of man, that thou visitest him?",
+    "answer": "mindful",
+    "distractors": [
+      "thoughtful",
+      "careful",
+      "watchful",
+      "gracious",
+      "merciful"
+    ]
+  },
+  {
+    "id": "vc_t5_30",
+    "tier": 5,
+    "reference": "Romans 13:8",
+    "translation": "KJV",
+    "template": "____ no man any thing, but to love one another: for he that loveth another hath fulfilled the law.",
+    "answer": "Owe",
+    "distractors": [
+      "Judge",
+      "Envy",
+      "Fear",
+      "Hate",
+      "Rob"
+    ]
+  },
+  {
+    "id": "vc_t5_31",
+    "tier": 5,
+    "reference": "1 Corinthians 15:55",
+    "translation": "KJV",
+    "template": "O death, where is thy ____? O grave, where is thy victory?",
+    "answer": "sting",
+    "distractors": [
+      "power",
+      "hold",
+      "triumph",
+      "terror",
+      "dominion"
+    ]
+  },
+  {
+    "id": "vc_t5_32",
+    "tier": 5,
+    "reference": "2 Timothy 4:7",
+    "translation": "KJV",
+    "template": "I have fought a good fight, I have finished my ____, I have kept the faith:",
+    "answer": "course",
+    "distractors": [
+      "race",
+      "work",
+      "journey",
+      "task",
+      "path"
+    ]
+  },
+  {
+    "id": "vc_t5_33",
+    "tier": 5,
+    "reference": "Titus 2:11",
+    "translation": "KJV",
+    "template": "For the grace of God that bringeth salvation hath ____ to all men,",
+    "answer": "appeared",
+    "distractors": [
+      "come",
+      "spoken",
+      "been given",
+      "shined",
+      "drawn near"
+    ]
+  },
+  {
+    "id": "vc_t5_34",
+    "tier": 5,
+    "reference": "Hebrews 13:2",
+    "translation": "KJV",
+    "template": "Be not forgetful to entertain strangers: for thereby some have entertained angels ____.",
+    "answer": "unawares",
+    "distractors": [
+      "unknowingly",
+      "in secret",
+      "by chance",
+      "unseen",
+      "in disguise"
+    ]
+  },
+  {
+    "id": "vc_t5_35",
+    "tier": 5,
+    "reference": "James 3:5",
+    "translation": "KJV",
+    "template": "Even so the tongue is a little ____, and boasteth great things. Behold, how great a matter a little fire kindleth!",
+    "answer": "member",
+    "distractors": [
+      "part",
+      "flame",
+      "thing",
+      "organ",
+      "spark"
+    ]
+  },
+  {
+    "id": "vc_t5_36",
+    "tier": 5,
+    "reference": "1 Peter 2:9",
+    "translation": "KJV",
+    "template": "But ye are a chosen generation, a royal priesthood, an holy nation, a ____ people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light:",
+    "answer": "peculiar",
+    "distractors": [
+      "special",
+      "precious",
+      "separate",
+      "beloved",
+      "faithful"
+    ]
+  },
+  {
+    "id": "vc_t5_37",
+    "tier": 5,
+    "reference": "2 Peter 3:8",
+    "translation": "KJV",
+    "template": "But, beloved, be not ____ of this one thing, that one day is with the Lord as a thousand years, and a thousand years as one day.",
+    "answer": "ignorant",
+    "distractors": [
+      "forgetful",
+      "doubtful",
+      "troubled",
+      "careless",
+      "deceived"
+    ]
+  },
+  {
+    "id": "vc_t5_38",
+    "tier": 5,
+    "reference": "Jude 1:24",
+    "translation": "KJV",
+    "template": "Now unto him that is able to keep you from falling, and to present you ____ before the presence of his glory with exceeding joy,",
+    "answer": "faultless",
+    "distractors": [
+      "blameless",
+      "spotless",
+      "holy",
+      "righteous",
+      "perfect"
+    ]
+  },
+  {
+    "id": "vc_t5_39",
+    "tier": 5,
+    "reference": "Revelation 3:16",
+    "translation": "KJV",
+    "template": "So then because thou art ____, and neither cold nor hot, I will spue thee out of my mouth.",
+    "answer": "lukewarm",
+    "distractors": [
+      "halfhearted",
+      "asleep",
+      "wavering",
+      "slothful",
+      "proud"
+    ]
+  },
+  {
+    "id": "vc_t5_40",
+    "tier": 5,
+    "reference": "Psalms 104:15",
+    "translation": "KJV",
+    "template": "And wine that maketh glad the heart of man, and ____ to make his face to shine, and bread which strengtheneth man’s heart.",
+    "answer": "oil",
+    "distractors": [
+      "light",
+      "joy",
+      "honey",
+      "ointment",
+      "water"
+    ]
+  },
+  {
+    "id": "vc_t5_41",
+    "tier": 5,
+    "reference": "Isaiah 55:1",
+    "translation": "KJV",
+    "template": "Ho, every one that thirsteth, come ye to the waters, and he that hath no money; come ye, buy, and eat; yea, come, buy wine and ____ without money and without price.",
+    "answer": "milk",
+    "distractors": [
+      "honey",
+      "bread",
+      "oil",
+      "figs",
+      "corn"
+    ]
+  },
+  {
+    "id": "vc_t5_42",
+    "tier": 5,
+    "reference": "Psalms 118:22",
+    "translation": "KJV",
+    "template": "The stone which the builders ____ is become the head stone of the corner.",
+    "answer": "refused",
+    "distractors": [
+      "rejected",
+      "despised",
+      "cast away",
+      "broke",
+      "forgot"
+    ]
+  },
+  {
+    "id": "vc_t5_43",
+    "tier": 5,
+    "reference": "Proverbs 22:1",
+    "translation": "KJV",
+    "template": "A good name is rather to be chosen than great riches, and ____ rather than silver and gold.",
+    "answer": "loving favour",
+    "distractors": [
+      "kind words",
+      "honour",
+      "good report",
+      "wisdom",
+      "a pure heart"
+    ]
+  },
+  {
+    "id": "vc_t5_44",
+    "tier": 5,
+    "reference": "Isaiah 54:17",
+    "translation": "KJV",
+    "template": "No weapon that is formed against thee shall prosper; and every tongue that shall rise against thee in judgment thou shalt condemn. This is the ____ of the servants of the LORD, and their righteousness is of me, saith the LORD.",
+    "answer": "heritage",
+    "distractors": [
+      "portion",
+      "reward",
+      "inheritance",
+      "blessing",
+      "promise"
+    ]
+  },
+  {
+    "id": "vc_t5_45",
+    "tier": 5,
+    "reference": "Psalms 24:1",
+    "translation": "KJV",
+    "template": "The earth is the LORD’s, and the ____ thereof; the world, and they that dwell therein.",
+    "answer": "fulness",
+    "distractors": [
+      "riches",
+      "glory",
+      "beauty",
+      "treasure",
+      "abundance"
+    ]
+  },
+  {
+    "id": "vc_t5_46",
+    "tier": 5,
+    "reference": "Proverbs 23:7",
+    "translation": "KJV",
+    "template": "For as he ____ in his heart, so is he: Eat and drink, saith he to thee; but his heart is not with thee.",
+    "answer": "thinketh",
+    "distractors": [
+      "feeleth",
+      "desireth",
+      "speaketh",
+      "believeth",
+      "purposeth"
+    ]
+  },
+  {
+    "id": "vc_t5_47",
+    "tier": 5,
+    "reference": "Mark 4:39",
+    "translation": "KJV",
+    "template": "And he arose, and rebuked the wind, and said unto the sea, Peace, be still. And the wind ceased, and there was a ____.",
+    "answer": "great calm",
+    "distractors": [
+      "deep silence",
+      "sweet peace",
+      "perfect rest",
+      "sudden stillness",
+      "holy hush"
+    ]
+  },
+  {
+    "id": "vc_t5_48",
+    "tier": 5,
+    "reference": "Luke 10:42",
+    "translation": "KJV",
+    "template": "But one thing is ____: and Mary hath chosen that good part, which shall not be taken away from her.",
+    "answer": "needful",
+    "distractors": [
+      "required",
+      "enough",
+      "lacking",
+      "best",
+      "wanted"
+    ]
+  },
+  {
+    "id": "vc_t5_49",
+    "tier": 5,
+    "reference": "John 20:29",
+    "translation": "KJV",
+    "template": "Jesus saith unto him, ____, because thou hast seen me, thou hast believed: blessed are they that have not seen, and yet have believed.",
+    "answer": "Thomas",
+    "distractors": [
+      "Peter",
+      "Philip",
+      "Nathanael",
+      "Andrew",
+      "Matthew"
+    ]
+  },
+  {
+    "id": "vc_t5_50",
+    "tier": 5,
+    "reference": "Acts 17:28",
+    "translation": "KJV",
+    "template": "For in him we live, and move, and have our being; as certain also of your own poets have said, For we are also his ____.",
+    "answer": "offspring",
+    "distractors": [
+      "children",
+      "creation",
+      "people",
+      "handiwork",
+      "image"
+    ]
+  },
+  {
+    "id": "vc_t6_01",
+    "tier": 6,
+    "reference": "Isaiah 61:3",
+    "translation": "KJV",
+    "template": "To appoint unto them that mourn in Zion, to give unto them ____, the oil of joy for mourning, the garment of praise for the spirit of heaviness; that they might be called trees of righteousness, the planting of the LORD, that he might be glorified.",
+    "answer": "beauty for ashes",
+    "distractors": [
+      "joy for sorrow",
+      "gladness for tears",
+      "crowns for dust",
+      "glory for shame",
+      "songs for sighing"
+    ]
+  },
+  {
+    "id": "vc_t6_02",
+    "tier": 6,
+    "reference": "Habakkuk 2:14",
+    "translation": "KJV",
+    "template": "For the earth shall be filled with the knowledge of the glory of the LORD, ____.",
+    "answer": "as the waters cover the sea",
+    "distractors": [
+      "as the stars fill the sky",
+      "as the sun lights the day",
+      "as the dew covers the grass",
+      "as the rain soaks the land",
+      "as the light fills the morning"
+    ]
+  },
+  {
+    "id": "vc_t6_03",
+    "tier": 6,
+    "reference": "Obadiah 1:4",
+    "translation": "KJV",
+    "template": "Though thou exalt thyself as the eagle, and though thou set thy ____ among the stars, thence will I bring thee down, saith the LORD.",
+    "answer": "nest",
+    "distractors": [
+      "throne",
+      "house",
+      "tent",
+      "seat",
+      "dwelling"
+    ]
+  },
+  {
+    "id": "vc_t6_04",
+    "tier": 6,
+    "reference": "Ecclesiastes 11:1",
+    "translation": "KJV",
+    "template": "Cast thy bread upon the waters: for thou shalt find it ____.",
+    "answer": "after many days",
+    "distractors": [
+      "in due season",
+      "on the third day",
+      "at the harvest",
+      "in the morning",
+      "before long"
+    ]
+  },
+  {
+    "id": "vc_t6_05",
+    "tier": 6,
+    "reference": "Proverbs 30:25",
+    "translation": "KJV",
+    "template": "The ants are a people not strong, yet they prepare their ____ in the summer;",
+    "answer": "meat",
+    "distractors": [
+      "food",
+      "bread",
+      "store",
+      "corn",
+      "houses"
+    ]
+  },
+  {
+    "id": "vc_t6_06",
+    "tier": 6,
+    "reference": "Jeremiah 6:16",
+    "translation": "KJV",
+    "template": "Thus saith the LORD, Stand ye in the ways, and see, and ask for the ____, where is the good way, and walk therein, and ye shall find rest for your souls. But they said, We will not walk therein.",
+    "answer": "old paths",
+    "distractors": [
+      "ancient ways",
+      "narrow road",
+      "first ways",
+      "straight paths",
+      "former roads"
+    ]
+  },
+  {
+    "id": "vc_t6_07",
+    "tier": 6,
+    "reference": "Jeremiah 13:23",
+    "translation": "KJV",
+    "template": "Can the ____ change his skin, or the leopard his spots? then may ye also do good, that are accustomed to do evil.",
+    "answer": "Ethiopian",
+    "distractors": [
+      "Egyptian",
+      "Philistine",
+      "Moabite",
+      "Canaanite",
+      "Assyrian"
+    ]
+  },
+  {
+    "id": "vc_t6_08",
+    "tier": 6,
+    "reference": "Ezekiel 37:4",
+    "translation": "KJV",
+    "template": "Again he said unto me, ____ upon these bones, and say unto them, O ye dry bones, hear the word of the LORD.",
+    "answer": "Prophesy",
+    "distractors": [
+      "Breathe",
+      "Speak",
+      "Call",
+      "Cry",
+      "Pray"
+    ]
+  },
+  {
+    "id": "vc_t6_09",
+    "tier": 6,
+    "reference": "Hosea 8:7",
+    "translation": "KJV",
+    "template": "For they have sown the wind, and they shall reap the ____: it hath no stalk: the bud shall yield no meal: if so be it yield, the strangers shall swallow it up.",
+    "answer": "whirlwind",
+    "distractors": [
+      "storm",
+      "tempest",
+      "thunder",
+      "flood",
+      "fire"
+    ]
+  },
+  {
+    "id": "vc_t6_10",
+    "tier": 6,
+    "reference": "Amos 5:24",
+    "translation": "KJV",
+    "template": "But let judgment run down as waters, and righteousness as a ____.",
+    "answer": "mighty stream",
+    "distractors": [
+      "flowing river",
+      "rushing flood",
+      "rolling sea",
+      "living well",
+      "great fountain"
+    ]
+  },
+  {
+    "id": "vc_t6_11",
+    "tier": 6,
+    "reference": "Jonah 1:17",
+    "translation": "KJV",
+    "template": "Now the LORD had ____ a great fish to swallow up Jonah. And Jonah was in the belly of the fish three days and three nights.",
+    "answer": "prepared",
+    "distractors": [
+      "sent",
+      "created",
+      "commanded",
+      "appointed",
+      "called"
+    ]
+  },
+  {
+    "id": "vc_t6_12",
+    "tier": 6,
+    "reference": "Nehemiah 8:10",
+    "translation": "KJV",
+    "template": "Then he said unto them, Go your way, eat the fat, and drink the sweet, and send portions unto them for whom nothing is prepared: for this day is holy unto our Lord: neither be ye sorry; for the joy of the LORD is your ____.",
+    "answer": "strength",
+    "distractors": [
+      "refuge",
+      "shield",
+      "song",
+      "portion",
+      "fortress"
+    ]
+  },
+  {
+    "id": "vc_t6_13",
+    "tier": 6,
+    "reference": "Esther 4:14",
+    "translation": "KJV",
+    "template": "For if thou altogether holdest thy peace at this time, then shall there enlargement and deliverance arise to the Jews from another place; but thou and thy father’s house shall be destroyed: and who knoweth whether thou art come to the kingdom for ____?",
+    "answer": "such a time as this",
+    "distractors": [
+      "a day like this",
+      "this very hour",
+      "a season such as this",
+      "this purpose",
+      "such a cause as this"
+    ]
+  },
+  {
+    "id": "vc_t6_14",
+    "tier": 6,
+    "reference": "Job 38:4",
+    "translation": "KJV",
+    "template": "Where wast thou when I laid the ____ of the earth? declare, if thou hast understanding.",
+    "answer": "foundations",
+    "distractors": [
+      "cornerstone",
+      "pillars",
+      "bounds",
+      "measures",
+      "corners"
+    ]
+  },
+  {
+    "id": "vc_t6_15",
+    "tier": 6,
+    "reference": "Job 13:15",
+    "translation": "KJV",
+    "template": "Though he ____ me, yet will I trust in him: but I will maintain mine own ways before him.",
+    "answer": "slay",
+    "distractors": [
+      "smite",
+      "forsake",
+      "afflict",
+      "leave",
+      "crush"
+    ]
+  },
+  {
+    "id": "vc_t6_16",
+    "tier": 6,
+    "reference": "Psalms 84:11",
+    "translation": "KJV",
+    "template": "For the LORD God is a ____: the LORD will give grace and glory: no good thing will he withhold from them that walk uprightly.",
+    "answer": "sun and shield",
+    "distractors": [
+      "rock and fortress",
+      "light and salvation",
+      "strength and song",
+      "shield and buckler",
+      "tower and refuge"
+    ]
+  },
+  {
+    "id": "vc_t6_17",
+    "tier": 6,
+    "reference": "Proverbs 25:21",
+    "translation": "KJV",
+    "template": "If thine enemy be hungry, give him bread to eat; and if he be ____, give him water to drink:",
+    "answer": "thirsty",
+    "distractors": [
+      "weary",
+      "naked",
+      "poor",
+      "cold",
+      "sick"
+    ]
+  },
+  {
+    "id": "vc_t6_18",
+    "tier": 6,
+    "reference": "Proverbs 27:6",
+    "translation": "KJV",
+    "template": "Faithful are the ____ of a friend; but the kisses of an enemy are deceitful.",
+    "answer": "wounds",
+    "distractors": [
+      "rebukes",
+      "words",
+      "counsels",
+      "blows",
+      "corrections"
+    ]
+  },
+  {
+    "id": "vc_t6_19",
+    "tier": 6,
+    "reference": "Song of Solomon 8:7",
+    "translation": "KJV",
+    "template": "Many waters cannot ____ love, neither can the floods drown it: if a man would give all the substance of his house for love, it would utterly be contemned.",
+    "answer": "quench",
+    "distractors": [
+      "destroy",
+      "overcome",
+      "cool",
+      "extinguish",
+      "wash away"
+    ]
+  },
+  {
+    "id": "vc_t6_20",
+    "tier": 6,
+    "reference": "Isaiah 40:4",
+    "translation": "KJV",
+    "template": "Every valley shall be exalted, and every mountain and hill shall be made low: and the crooked shall be made straight, and the ____:",
+    "answer": "rough places plain",
+    "distractors": [
+      "high places low",
+      "dry places wet",
+      "dark places light",
+      "hard places smooth",
+      "broken places whole"
+    ]
+  },
+  {
+    "id": "vc_t6_21",
+    "tier": 6,
+    "reference": "Isaiah 42:3",
+    "translation": "KJV",
+    "template": "A bruised reed shall he not break, and the ____ shall he not quench: he shall bring forth judgment unto truth.",
+    "answer": "smoking flax",
+    "distractors": [
+      "dying ember",
+      "fading lamp",
+      "flickering wick",
+      "burning coal",
+      "glowing candle"
+    ]
+  },
+  {
+    "id": "vc_t6_22",
+    "tier": 6,
+    "reference": "Jeremiah 31:3",
+    "translation": "KJV",
+    "template": "The LORD hath appeared of old unto me, saying, Yea, I have loved thee with an everlasting love: therefore with ____ have I drawn thee.",
+    "answer": "lovingkindness",
+    "distractors": [
+      "tenderness",
+      "compassion",
+      "mercy",
+      "faithfulness",
+      "gentleness"
+    ]
+  },
+  {
+    "id": "vc_t6_23",
+    "tier": 6,
+    "reference": "Daniel 5:27",
+    "translation": "KJV",
+    "template": "TEKEL; Thou art weighed in the balances, and art ____.",
+    "answer": "found wanting",
+    "distractors": [
+      "found guilty",
+      "found lacking",
+      "judged unworthy",
+      "found light",
+      "cast down"
+    ]
+  },
+  {
+    "id": "vc_t6_24",
+    "tier": 6,
+    "reference": "Malachi 3:6",
+    "translation": "KJV",
+    "template": "For I am the LORD, ____; therefore ye sons of Jacob are not consumed.",
+    "answer": "I change not",
+    "distractors": [
+      "I lie not",
+      "I fail not",
+      "I sleep not",
+      "I forget not",
+      "I tire not"
+    ]
+  },
+  {
+    "id": "vc_t6_25",
+    "tier": 6,
+    "reference": "Matthew 6:28",
+    "translation": "KJV",
+    "template": "And why take ye thought for raiment? Consider the lilies of the field, how they grow; they toil not, neither do they ____:",
+    "answer": "spin",
+    "distractors": [
+      "weave",
+      "sow",
+      "labour",
+      "reap",
+      "sew"
+    ]
+  },
+  {
+    "id": "vc_t6_26",
+    "tier": 6,
+    "reference": "Mark 9:24",
+    "translation": "KJV",
+    "template": "And straightway the father of the child cried out, and said with tears, Lord, I believe; help thou mine ____.",
+    "answer": "unbelief",
+    "distractors": [
+      "doubt",
+      "weakness",
+      "fear",
+      "faith",
+      "sorrow"
+    ]
+  },
+  {
+    "id": "vc_t6_27",
+    "tier": 6,
+    "reference": "Luke 9:62",
+    "translation": "KJV",
+    "template": "And Jesus said unto him, No man, having put his hand to the ____, and looking back, is fit for the kingdom of God.",
+    "answer": "plough",
+    "distractors": [
+      "sickle",
+      "harvest",
+      "work",
+      "field",
+      "oxen"
+    ]
+  },
+  {
+    "id": "vc_t6_28",
+    "tier": 6,
+    "reference": "John 1:29",
+    "translation": "KJV",
+    "template": "The next day John seeth Jesus coming unto him, and saith, Behold the Lamb of God, which ____ the sin of the world.",
+    "answer": "taketh away",
+    "distractors": [
+      "beareth",
+      "forgiveth",
+      "washeth away",
+      "covereth",
+      "blotteth out"
+    ]
+  },
+  {
+    "id": "vc_t6_29",
+    "tier": 6,
+    "reference": "Acts 4:12",
+    "translation": "KJV",
+    "template": "Neither is there salvation in any other: for there is ____ under heaven given among men, whereby we must be saved.",
+    "answer": "none other name",
+    "distractors": [
+      "no other way",
+      "no other door",
+      "none other hope",
+      "no other god",
+      "none other path"
+    ]
+  },
+  {
+    "id": "vc_t6_30",
+    "tier": 6,
+    "reference": "Romans 11:33",
+    "translation": "KJV",
+    "template": "O the depth of the riches both of the wisdom and knowledge of God! how unsearchable are his judgments, and his ways ____!",
+    "answer": "past finding out",
+    "distractors": [
+      "beyond our knowing",
+      "too high for us",
+      "hidden from men",
+      "without end",
+      "deeper than the sea"
+    ]
+  },
+  {
+    "id": "vc_t6_31",
+    "tier": 6,
+    "reference": "1 Corinthians 2:9",
+    "translation": "KJV",
+    "template": "But as it is written, Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which God hath ____ for them that love him.",
+    "answer": "prepared",
+    "distractors": [
+      "promised",
+      "reserved",
+      "kept",
+      "given",
+      "planned"
+    ]
+  },
+  {
+    "id": "vc_t6_32",
+    "tier": 6,
+    "reference": "2 Corinthians 4:17",
+    "translation": "KJV",
+    "template": "For our light affliction, which is but for a moment, worketh for us a far more exceeding and eternal ____;",
+    "answer": "weight of glory",
+    "distractors": [
+      "crown of life",
+      "reward in heaven",
+      "measure of joy",
+      "treasure of grace",
+      "fulness of glory"
+    ]
+  },
+  {
+    "id": "vc_t6_33",
+    "tier": 6,
+    "reference": "Galatians 6:2",
+    "translation": "KJV",
+    "template": "Bear ye one another’s burdens, and so ____ the law of Christ.",
+    "answer": "fulfil",
+    "distractors": [
+      "keep",
+      "obey",
+      "honour",
+      "show",
+      "walk in"
+    ]
+  },
+  {
+    "id": "vc_t6_34",
+    "tier": 6,
+    "reference": "Ephesians 3:20",
+    "translation": "KJV",
+    "template": "Now unto him that is able to do ____ above all that we ask or think, according to the power that worketh in us,",
+    "answer": "exceeding abundantly",
+    "distractors": [
+      "far more richly",
+      "most wonderfully",
+      "greatly beyond",
+      "infinitely more",
+      "mightily above"
+    ]
+  },
+  {
+    "id": "vc_t6_35",
+    "tier": 6,
+    "reference": "Philippians 3:14",
+    "translation": "KJV",
+    "template": "I press toward the ____ for the prize of the high calling of God in Christ Jesus.",
+    "answer": "mark",
+    "distractors": [
+      "goal",
+      "finish",
+      "crown",
+      "end",
+      "line"
+    ]
+  },
+  {
+    "id": "vc_t6_36",
+    "tier": 6,
+    "reference": "Colossians 3:2",
+    "translation": "KJV",
+    "template": "Set your ____ on things above, not on things on the earth.",
+    "answer": "affection",
+    "distractors": [
+      "heart",
+      "hope",
+      "eyes",
+      "thoughts",
+      "desire"
+    ]
+  },
+  {
+    "id": "vc_t6_37",
+    "tier": 6,
+    "reference": "1 Timothy 4:12",
+    "translation": "KJV",
+    "template": "Let no man despise thy youth; but be thou an example of the believers, in word, in ____, in charity, in spirit, in faith, in purity.",
+    "answer": "conversation",
+    "distractors": [
+      "conduct",
+      "manners",
+      "doctrine",
+      "patience",
+      "speech"
+    ]
+  },
+  {
+    "id": "vc_t6_38",
+    "tier": 6,
+    "reference": "Hebrews 4:15",
+    "translation": "KJV",
+    "template": "For we have not an high priest which cannot be touched with the feeling of our ____; but was in all points tempted like as we are, yet without sin.",
+    "answer": "infirmities",
+    "distractors": [
+      "weaknesses",
+      "sorrows",
+      "troubles",
+      "failings",
+      "burdens"
+    ]
+  },
+  {
+    "id": "vc_t6_39",
+    "tier": 6,
+    "reference": "Hebrews 12:2",
+    "translation": "KJV",
+    "template": "Looking unto Jesus the ____ of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God.",
+    "answer": "author and finisher",
+    "distractors": [
+      "beginning and end",
+      "founder and keeper",
+      "giver and keeper",
+      "first and last",
+      "maker and perfecter"
+    ]
+  },
+  {
+    "id": "vc_t6_40",
+    "tier": 6,
+    "reference": "James 1:17",
+    "translation": "KJV",
+    "template": "Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no ____, neither shadow of turning.",
+    "answer": "variableness",
+    "distractors": [
+      "changeableness",
+      "darkness",
+      "falsehood",
+      "weakness",
+      "partiality"
+    ]
+  },
+  {
+    "id": "vc_t6_41",
+    "tier": 6,
+    "reference": "1 Peter 3:15",
+    "translation": "KJV",
+    "template": "But ____ the Lord God in your hearts: and be ready always to give an answer to every man that asketh you a reason of the hope that is in you with meekness and fear:",
+    "answer": "sanctify",
+    "distractors": [
+      "honour",
+      "glorify",
+      "enthrone",
+      "worship",
+      "exalt"
+    ]
+  },
+  {
+    "id": "vc_t6_42",
+    "tier": 6,
+    "reference": "1 John 3:1",
+    "translation": "KJV",
+    "template": "Behold, what manner of love the Father hath ____ upon us, that we should be called the sons of God: therefore the world knoweth us not, because it knew him not.",
+    "answer": "bestowed",
+    "distractors": [
+      "poured",
+      "shown",
+      "given",
+      "lavished",
+      "granted"
+    ]
+  },
+  {
+    "id": "vc_t6_43",
+    "tier": 6,
+    "reference": "Revelation 2:10",
+    "translation": "KJV",
+    "template": "Fear none of those things which thou shalt suffer: behold, the devil shall cast some of you into prison, that ye may be tried; and ye shall have tribulation ten days: be thou faithful unto death, and I will give thee a ____.",
+    "answer": "crown of life",
+    "distractors": [
+      "crown of glory",
+      "crown of gold",
+      "robe of white",
+      "seat of honour",
+      "crown of righteousness"
+    ]
+  },
+  {
+    "id": "vc_t6_44",
+    "tier": 6,
+    "reference": "Psalms 139:9",
+    "translation": "KJV",
+    "template": "If I take the ____, and dwell in the uttermost parts of the sea;",
+    "answer": "wings of the morning",
+    "distractors": [
+      "wings of the dawn",
+      "light of the morning",
+      "chariots of fire",
+      "wings of the wind",
+      "breath of the morning"
+    ]
+  },
+  {
+    "id": "vc_t6_45",
+    "tier": 6,
+    "reference": "Proverbs 15:3",
+    "translation": "KJV",
+    "template": "The eyes of the LORD are in every place, ____ the evil and the good.",
+    "answer": "beholding",
+    "distractors": [
+      "watching",
+      "seeing",
+      "judging",
+      "searching",
+      "weighing"
+    ]
+  },
+  {
+    "id": "vc_t6_46",
+    "tier": 6,
+    "reference": "Proverbs 20:27",
+    "translation": "KJV",
+    "template": "The spirit of man is the ____ of the LORD, searching all the inward parts of the belly.",
+    "answer": "candle",
+    "distractors": [
+      "lamp",
+      "light",
+      "breath",
+      "fire",
+      "lantern"
+    ]
+  },
+  {
+    "id": "vc_t6_47",
+    "tier": 6,
+    "reference": "Isaiah 30:21",
+    "translation": "KJV",
+    "template": "And thine ears shall hear a word ____, saying, This is the way, walk ye in it, when ye turn to the right hand, and when ye turn to the left.",
+    "answer": "behind thee",
+    "distractors": [
+      "before thee",
+      "within thee",
+      "beside thee",
+      "above thee",
+      "around thee"
+    ]
+  },
+  {
+    "id": "vc_t6_48",
+    "tier": 6,
+    "reference": "Psalms 18:2",
+    "translation": "KJV",
+    "template": "The LORD is my rock, and my fortress, and my deliverer; my God, my strength, in whom I will trust; my buckler, and the ____, and my high tower.",
+    "answer": "horn of my salvation",
+    "distractors": [
+      "shield of my salvation",
+      "cup of my salvation",
+      "song of my salvation",
+      "God of my salvation",
+      "well of my salvation"
+    ]
+  },
+  {
+    "id": "vc_t6_49",
+    "tier": 6,
+    "reference": "Psalms 121:4",
+    "translation": "KJV",
+    "template": "Behold, he that keepeth Israel shall neither ____ nor sleep.",
+    "answer": "slumber",
+    "distractors": [
+      "rest",
+      "tire",
+      "faint",
+      "weary",
+      "stray"
+    ]
+  },
+  {
+    "id": "vc_t6_50",
+    "tier": 6,
+    "reference": "Isaiah 9:2",
+    "translation": "KJV",
+    "template": "The people that walked in darkness have seen a great light: they that dwell in the land of the ____, upon them hath the light shined.",
+    "answer": "shadow of death",
+    "distractors": [
+      "valley of death",
+      "darkness of night",
+      "pit of sorrow",
+      "gates of death",
+      "land of exile"
+    ]
   }
 ]

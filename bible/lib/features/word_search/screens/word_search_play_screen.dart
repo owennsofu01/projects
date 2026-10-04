@@ -6,10 +6,20 @@ import '../models/word_search_grid.dart';
 import '../providers/word_search_session_provider.dart';
 import 'word_search_result_screen.dart';
 
-class WordSearchPlayScreen extends ConsumerStatefulWidget {
-  const WordSearchPlayScreen({super.key, required this.puzzleId});
+class WordSearchPlayArgs {
+  /// Each args instance is a fresh attempt with a newly generated grid.
+  WordSearchPlayArgs(this.level) : attempt = DateTime.now().microsecondsSinceEpoch;
 
-  final String puzzleId;
+  final int level;
+  final int attempt;
+
+  WordSearchRound get round => (level: level, attempt: attempt);
+}
+
+class WordSearchPlayScreen extends ConsumerStatefulWidget {
+  const WordSearchPlayScreen({super.key, required this.args});
+
+  final WordSearchPlayArgs args;
 
   @override
   ConsumerState<WordSearchPlayScreen> createState() => _WordSearchPlayScreenState();
@@ -30,27 +40,29 @@ class _WordSearchPlayScreenState extends ConsumerState<WordSearchPlayScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(wordSearchSessionProvider(widget.puzzleId));
-    final notifier = ref.read(wordSearchSessionProvider(widget.puzzleId).notifier);
+    final state = ref.watch(wordSearchSessionProvider(widget.args.round));
+    final notifier = ref.read(wordSearchSessionProvider(widget.args.round).notifier);
     final accent = AppColors.accentFor('word_search');
 
     if (state.status == WordSearchStatus.loading || state.grid == null) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
     if (state.status == WordSearchStatus.finished) {
-      return WordSearchResultScreen(state: state);
+      return WordSearchResultScreen(state: state, level: widget.args.level);
     }
 
     final grid = state.grid!;
 
     return Scaffold(
-      appBar: AppBar(title: Text(state.puzzle!.theme)),
+      appBar: AppBar(title: Text('Level ${widget.args.level} · ${state.puzzle!.theme}')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            Text('Found ${state.foundWords.length} / ${grid.placements.length}',
-                style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              'Found ${state.foundWords.length} / ${grid.placements.length}',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 12),
             AspectRatio(
               aspectRatio: 1,
@@ -91,8 +103,8 @@ class _WordSearchPlayScreenState extends ConsumerState<WordSearchPlayScreen> {
                               color: isFound
                                   ? Colors.green.withValues(alpha: 0.3)
                                   : isSelected
-                                      ? accent.withValues(alpha: 0.35)
-                                      : null,
+                                  ? accent.withValues(alpha: 0.35)
+                                  : null,
                               border: Border.all(color: Colors.black12, width: 0.5),
                             ),
                             child: Text(
@@ -112,13 +124,13 @@ class _WordSearchPlayScreenState extends ConsumerState<WordSearchPlayScreen> {
               spacing: 8,
               runSpacing: 8,
               children: grid.placements
-                  .map((p) => Chip(
-                        label: Text(p.label),
-                        backgroundColor: state.foundWords.contains(p.word)
-                            ? Colors.green.withValues(alpha: 0.2)
-                            : null,
-                        avatar: state.foundWords.contains(p.word) ? const Icon(Icons.check, size: 16) : null,
-                      ))
+                  .map(
+                    (p) => Chip(
+                      label: Text(p.label),
+                      backgroundColor: state.foundWords.contains(p.word) ? Colors.green.withValues(alpha: 0.2) : null,
+                      avatar: state.foundWords.contains(p.word) ? const Icon(Icons.check, size: 16) : null,
+                    ),
+                  )
                   .toList(),
             ),
           ],

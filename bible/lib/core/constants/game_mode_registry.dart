@@ -11,6 +11,15 @@ class GameModeRegistry {
 
   static final List<GameMode> all = [
     GameMode(
+      id: 'bible_reader',
+      title: 'Read the Bible',
+      description: 'Browse and read any book and chapter, King James Version.',
+      icon: Icons.menu_book_outlined,
+      accentColor: AppColors.accentFor('bible_reader'),
+      routePath: RoutePaths.bibleReader,
+      status: GameModeStatus.available,
+    ),
+    GameMode(
       id: 'trivia',
       title: 'Bible Trivia',
       description: 'Multiple choice, timed rounds across the whole Bible.',
@@ -44,7 +53,7 @@ class GameModeRegistry {
       icon: Icons.compare_arrows_outlined,
       accentColor: AppColors.accentFor('verse_reference_match'),
       routePath: RoutePaths.verseReferenceMatch,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'crossword',
@@ -53,7 +62,7 @@ class GameModeRegistry {
       icon: Icons.grid_4x4_outlined,
       accentColor: AppColors.accentFor('crossword'),
       routePath: RoutePaths.crossword,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'character_match',
@@ -62,7 +71,7 @@ class GameModeRegistry {
       icon: Icons.style_outlined,
       accentColor: AppColors.accentFor('character_match'),
       routePath: RoutePaths.characterMatch,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'timeline_puzzle',
@@ -71,7 +80,7 @@ class GameModeRegistry {
       icon: Icons.timeline_outlined,
       accentColor: AppColors.accentFor('timeline_puzzle'),
       routePath: RoutePaths.timelinePuzzle,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'guess_who',
@@ -80,7 +89,7 @@ class GameModeRegistry {
       icon: Icons.person_search_outlined,
       accentColor: AppColors.accentFor('guess_who'),
       routePath: RoutePaths.guessWho,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'parable_matching',
@@ -89,7 +98,7 @@ class GameModeRegistry {
       icon: Icons.auto_stories_outlined,
       accentColor: AppColors.accentFor('parable_matching'),
       routePath: RoutePaths.parableMatching,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'map_puzzle',
@@ -98,7 +107,7 @@ class GameModeRegistry {
       icon: Icons.map_outlined,
       accentColor: AppColors.accentFor('map_puzzle'),
       routePath: RoutePaths.mapPuzzle,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'match3',
@@ -107,7 +116,7 @@ class GameModeRegistry {
       icon: Icons.apps_outlined,
       accentColor: AppColors.accentFor('match3'),
       routePath: RoutePaths.match3,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'hangman',
@@ -116,7 +125,7 @@ class GameModeRegistry {
       icon: Icons.abc_outlined,
       accentColor: AppColors.accentFor('hangman'),
       routePath: RoutePaths.hangman,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
     GameMode(
       id: 'jigsaw',
@@ -125,7 +134,7 @@ class GameModeRegistry {
       icon: Icons.extension_outlined,
       accentColor: AppColors.accentFor('jigsaw'),
       routePath: RoutePaths.jigsaw,
-      status: GameModeStatus.comingSoon,
+      status: GameModeStatus.available,
     ),
   ];
 

@@ -11,11 +11,7 @@ import '../progress/progress_repository.dart';
 /// Never blocks gameplay — every write already landed locally via
 /// [ProgressRepository] before this ever runs.
 class SyncService {
-  SyncService({
-    required this.progressRepository,
-    required this.firestoreService,
-    required this.getUid,
-  });
+  SyncService({required this.progressRepository, required this.firestoreService, required this.getUid});
 
   final ProgressRepository progressRepository;
   final FirestoreService firestoreService;

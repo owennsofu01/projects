@@ -1,40 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/models/difficulty.dart';
+import '../../../core/widgets/answer_choice_button.dart';
 import '../providers/verse_completion_session_provider.dart';
 import 'verse_completion_result_screen.dart';
 
 class VerseCompletionPlayArgs {
-  const VerseCompletionPlayArgs({required this.difficulty, required this.kidMode});
+  /// Each args instance is a fresh attempt, so retrying a level deals new verses.
+  VerseCompletionPlayArgs(this.level) : attempt = DateTime.now().microsecondsSinceEpoch;
 
-  final Difficulty difficulty;
-  final bool kidMode;
+  final int level;
+  final int attempt;
+
+  VerseCompletionRound get round => (level: level, attempt: attempt);
 }
 
-class VerseCompletionPlayScreen extends ConsumerStatefulWidget {
+class VerseCompletionPlayScreen extends ConsumerWidget {
   const VerseCompletionPlayScreen({super.key, required this.args});
 
   final VerseCompletionPlayArgs args;
 
   @override
-  ConsumerState<VerseCompletionPlayScreen> createState() => _VerseCompletionPlayScreenState();
-}
-
-class _VerseCompletionPlayScreenState extends ConsumerState<VerseCompletionPlayScreen> {
-  final _controller = TextEditingController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final config = VerseCompletionConfig(difficulty: widget.args.difficulty, kidMode: widget.args.kidMode);
-    final state = ref.watch(verseCompletionSessionProvider(config));
-    final notifier = ref.read(verseCompletionSessionProvider(config).notifier);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(verseCompletionSessionProvider(args.round));
+    final notifier = ref.read(verseCompletionSessionProvider(args.round).notifier);
+    final theme = Theme.of(context);
 
     if (state.status == VerseCompletionStatus.loading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
@@ -42,90 +32,66 @@ class _VerseCompletionPlayScreenState extends ConsumerState<VerseCompletionPlayS
     if (state.items.isEmpty) {
       return Scaffold(
         appBar: AppBar(title: const Text('Verse Completion')),
-        body: const Center(child: Text('No verses match that difficulty yet.')),
+        body: const Center(child: Text('No verses for this level yet.')),
       );
     }
     if (state.status == VerseCompletionStatus.finished) {
-      return VerseCompletionResultScreen(state: state);
+      return VerseCompletionResultScreen(state: state, level: args.level);
     }
 
     final item = state.currentItem!;
     final answered = state.status == VerseCompletionStatus.answered;
 
     return Scaffold(
-      appBar: AppBar(title: Text('Verse ${state.currentIndex + 1} of ${state.totalCount}')),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      appBar: AppBar(title: Text('Level ${args.level} · ${state.currentIndex + 1} of ${state.totalCount}')),
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(20),
           children: [
             LinearProgressIndicator(value: (state.currentIndex + 1) / state.totalCount),
             const SizedBox(height: 24),
-            RichText(
-              text: TextSpan(
-                style: Theme.of(context).textTheme.headlineSmall,
+            Text.rich(
+              TextSpan(
                 children: [
                   TextSpan(text: item.textBeforeBlank),
                   TextSpan(
-                    text: answered ? (state.wasCorrect ? item.answer : state.lastAnswer) : '_____',
+                    text: answered ? item.answer : '_____',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: answered
-                          ? (state.wasCorrect ? Colors.green : Colors.red)
-                          : Theme.of(context).colorScheme.secondary,
+                      color: answered ? Colors.green : theme.colorScheme.secondary,
                     ),
                   ),
                   TextSpan(text: item.textAfterBlank),
                 ],
               ),
+              style: theme.textTheme.titleLarge,
             ),
             const SizedBox(height: 8),
-            Text('${item.reference} (${item.translation})', style: Theme.of(context).textTheme.bodySmall),
-            const SizedBox(height: 32),
-            if (!answered && widget.args.kidMode)
-              Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                children: item.wordBank
-                    .map((word) => ActionChip(label: Text(word), onPressed: () => notifier.submitAnswer(word)))
-                    .toList(),
-              )
-            else if (!answered)
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Type the missing words…',
-                      ),
-                      onSubmitted: (value) => notifier.submitAnswer(value),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  FilledButton(
-                    onPressed: () => notifier.submitAnswer(_controller.text),
-                    child: const Text('Check'),
-                  ),
-                ],
+            Text('${item.reference} (${item.translation})', style: theme.textTheme.bodySmall),
+            const SizedBox(height: 28),
+            for (final choice in state.currentChoices)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: AnswerChoiceButton(
+                  label: choice,
+                  result: !answered
+                      ? null
+                      : choice == item.answer
+                      ? true
+                      : choice == state.lastAnswer
+                      ? false
+                      : null,
+                  onPressed: answered ? null : () => notifier.submitAnswer(choice),
+                ),
               ),
             if (answered) ...[
+              const SizedBox(height: 8),
               Text(
                 state.wasCorrect ? 'Correct!' : 'Not quite — the answer was "${item.answer}".',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(color: state.wasCorrect ? Colors.green : Colors.red),
+                style: theme.textTheme.titleMedium?.copyWith(color: state.wasCorrect ? Colors.green : Colors.red),
               ),
               const SizedBox(height: 16),
-              FilledButton(
-                onPressed: () {
-                  _controller.clear();
-                  notifier.nextItem();
-                },
-                child: Text(state.isLastItem ? 'See results' : 'Next verse'),
-              ),
+              FilledButton(onPressed: notifier.nextItem, child: Text(state.isLastItem ? 'See results' : 'Next verse')),
             ],
           ],
         ),
