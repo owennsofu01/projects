@@ -36,6 +36,12 @@ class DashboardController extends GetxController {
   Stream<List<DailyExpense>> get weekExpenseSeries =>
       _service.dailyExpenseSeries(userId);
 
+  Stream<List<MonthlySales>> get yearSalesSeries =>
+      _service.monthlySalesSeries(userId);
+
+  Stream<List<double>> get yearExpenseSeries =>
+      _service.monthlyExpenseSeries(userId);
+
   Stream<Map<String, double>> get monthExpenseBreakdown =>
       _service.expenseBreakdownByCategory(userId, _monthStart);
 }

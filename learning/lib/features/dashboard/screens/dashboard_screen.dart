@@ -12,6 +12,7 @@ import '../../settings/screens/settings_screen.dart';
 import '../controllers/dashboard_controller.dart';
 import '../services/dashboard_service.dart';
 import '../widgets/expense_breakdown_chart.dart';
+import '../widgets/monthly_profit_chart.dart';
 import '../widgets/product_profitability_card.dart';
 import '../widgets/sales_trend_chart.dart';
 import '../widgets/stock_intelligence_card.dart';
@@ -89,6 +90,8 @@ class DashboardScreen extends StatelessWidget {
                   const SizedBox(height: 24),
                   const SectionHeader('Analytics'),
                   const SizedBox(height: 12),
+                  MonthlyProfitChart(controller: controller),
+                  const SizedBox(height: 16),
                   if (isWide)
                     IntrinsicHeight(
                       child: Row(

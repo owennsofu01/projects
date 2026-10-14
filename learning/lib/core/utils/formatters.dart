@@ -28,6 +28,9 @@ class AppFormatter {
   static String month(DateTime date) =>
       '${_months[date.month - 1]} ${date.year}';
 
+  /// Three-letter month name, e.g. "Oct" — for chart axes.
+  static String shortMonth(DateTime date) => _months[date.month - 1];
+
   static String weekday(DateTime date) => _weekdays[date.weekday - 1];
 
   /// Compact currency for chart axes/labels, e.g. 1200 -> "1.2K". [amount]

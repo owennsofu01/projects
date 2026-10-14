@@ -35,6 +35,20 @@ class DailyExpense {
   const DailyExpense({required this.day, required this.amount});
 }
 
+/// One calendar month's sales activity in a trend series, zero-filled
+/// like [DailySales].
+class MonthlySales {
+  final DateTime month;
+  final double amount;
+  final double profit;
+
+  const MonthlySales({
+    required this.month,
+    required this.amount,
+    required this.profit,
+  });
+}
+
 class DashboardService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
@@ -77,9 +91,7 @@ class DashboardService {
   /// Sales bucketed by day for the trailing [days] days (including today),
   /// oldest first.
   Stream<List<DailySales>> dailySalesSeries(String userId, {int days = 7}) {
-    final from = _startOfDay(
-      DateTime.now().subtract(Duration(days: days - 1)),
-    );
+    final from = _startOfDay(DateTime.now().subtract(Duration(days: days - 1)));
 
     return _db
         .collection(FirestoreCollections.users)
@@ -113,13 +125,8 @@ class DashboardService {
 
   /// Expenses bucketed by day for the trailing [days] days, mirroring
   /// [dailySalesSeries] so the two can be zipped by index in the UI.
-  Stream<List<DailyExpense>> dailyExpenseSeries(
-    String userId, {
-    int days = 7,
-  }) {
-    final from = _startOfDay(
-      DateTime.now().subtract(Duration(days: days - 1)),
-    );
+  Stream<List<DailyExpense>> dailyExpenseSeries(String userId, {int days = 7}) {
+    final from = _startOfDay(DateTime.now().subtract(Duration(days: days - 1)));
 
     return _db
         .collection(FirestoreCollections.users)
@@ -168,6 +175,76 @@ class DashboardService {
             ..sort((a, b) => b.value.compareTo(a.value));
           return {for (final e in sorted) e.key: e.value};
         });
+  }
+
+  /// Sales bucketed by calendar month for the trailing [months] months
+  /// (including the current one), oldest first.
+  Stream<List<MonthlySales>> monthlySalesSeries(
+    String userId, {
+    int months = 12,
+  }) {
+    final from = _monthsAgo(months - 1);
+
+    return _db
+        .collection(FirestoreCollections.users)
+        .doc(userId)
+        .collection(FirestoreCollections.sales)
+        .where('date', isGreaterThanOrEqualTo: Timestamp.fromDate(from))
+        .snapshots()
+        .map((snapshot) {
+          final amountByMonth = <DateTime, double>{};
+          final profitByMonth = <DateTime, double>{};
+
+          for (final doc in snapshot.docs) {
+            final month = _startOfMonth((doc['date'] as Timestamp).toDate());
+            amountByMonth[month] =
+                (amountByMonth[month] ?? 0) +
+                (doc['totalAmount'] as num).toDouble();
+            profitByMonth[month] =
+                (profitByMonth[month] ?? 0) + (doc['profit'] as num).toDouble();
+          }
+
+          return List.generate(months, (i) {
+            final month = DateTime(from.year, from.month + i);
+            return MonthlySales(
+              month: month,
+              amount: amountByMonth[month] ?? 0,
+              profit: profitByMonth[month] ?? 0,
+            );
+          });
+        });
+  }
+
+  /// Expense totals bucketed by calendar month, mirroring
+  /// [monthlySalesSeries] so the two can be zipped by index in the UI.
+  Stream<List<double>> monthlyExpenseSeries(String userId, {int months = 12}) {
+    final from = _monthsAgo(months - 1);
+
+    return _db
+        .collection(FirestoreCollections.users)
+        .doc(userId)
+        .collection(FirestoreCollections.expenses)
+        .where('date', isGreaterThanOrEqualTo: Timestamp.fromDate(from))
+        .snapshots()
+        .map((snapshot) {
+          final amountByMonth = <DateTime, double>{};
+          for (final doc in snapshot.docs) {
+            final month = _startOfMonth((doc['date'] as Timestamp).toDate());
+            amountByMonth[month] =
+                (amountByMonth[month] ?? 0) + (doc['amount'] as num).toDouble();
+          }
+          return List.generate(
+            months,
+            (i) => amountByMonth[DateTime(from.year, from.month + i)] ?? 0,
+          );
+        });
+  }
+
+  DateTime _startOfMonth(DateTime date) => DateTime(date.year, date.month);
+
+  DateTime _monthsAgo(int months) {
+    final now = DateTime.now();
+    return DateTime(now.year, now.month - months);
   }
 
   DateTime _startOfDay(DateTime date) =>
