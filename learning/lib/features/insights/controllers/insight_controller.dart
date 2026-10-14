@@ -47,12 +47,12 @@ class InsightController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _salesSub = _service
-        .salesByProductSince(userId, days: lookbackDays)
-        .listen((data) {
-          _salesByProduct = data;
-          _recompute();
-        });
+    _salesSub = _service.salesByProductSince(userId, days: lookbackDays).listen(
+      (data) {
+        _salesByProduct = data;
+        _recompute();
+      },
+    );
     _productsWorker = ever(_productController.products, (_) => _recompute());
     _recompute();
   }
@@ -73,15 +73,17 @@ class InsightController extends GetxController {
     }
 
     final analyzed = [
-      for (final product in products) _analyze(product, _salesByProduct[product.id]),
+      for (final product in products)
+        _analyze(product, _salesByProduct[product.id]),
     ];
 
     final promoteIds = _topPerformerIds(analyzed);
 
-    insights.value = analyzed
-        .map((i) => promoteIds.contains(i.productId) ? _promote(i) : i)
-        .toList()
-      ..sort(_byUrgency);
+    insights.value =
+        analyzed
+            .map((i) => promoteIds.contains(i.productId) ? _promote(i) : i)
+            .toList()
+          ..sort(_byUrgency);
 
     isLoading.value = false;
   }
@@ -144,6 +146,11 @@ class InsightController extends GetxController {
       reason = agg.quantity > 0
           ? 'Out of stock — sold ${agg.quantity} in the last $lookbackDays days'
           : 'Out of stock';
+    } else if (product.isLowStock) {
+      recommendation = StockRecommendation.restock;
+      reason =
+          'Only ${product.stock} left — at or below your reorder level of '
+          '${product.reorderLevel}';
     } else if (daysOfStock != null && daysOfStock <= restockDaysThreshold) {
       recommendation = StockRecommendation.restock;
       final days = daysOfStock.round();

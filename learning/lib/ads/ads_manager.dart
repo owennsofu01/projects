@@ -24,6 +24,14 @@ class InterstitialAdController extends BaseAdController {
   InterstitialAd? _interstitialAd;
   bool _isLoaded = false;
 
+  /// Frequency cap for [maybeShowAfterAction]: at most one interstitial
+  /// every [_actionsPerAd] completed actions, and never twice within
+  /// [_minInterval].
+  static const int _actionsPerAd = 3;
+  static const Duration _minInterval = Duration(minutes: 3);
+  int _actionsSinceAd = 0;
+  DateTime? _lastShownAt;
+
   @override
   void onInit() {
     super.onInit();
@@ -47,6 +55,22 @@ class InterstitialAdController extends BaseAdController {
         },
       ),
     );
+  }
+
+  /// Call after the user finishes something (e.g. recording a sale).
+  /// Shows an interstitial only when the frequency cap allows it, so ads
+  /// never interrupt every single action.
+  void maybeShowAfterAction() {
+    _actionsSinceAd++;
+    final lastShownAt = _lastShownAt;
+    final tooSoon =
+        lastShownAt != null &&
+        DateTime.now().difference(lastShownAt) < _minInterval;
+    if (_actionsSinceAd < _actionsPerAd || tooSoon || !_isLoaded) return;
+
+    _actionsSinceAd = 0;
+    _lastShownAt = DateTime.now();
+    show();
   }
 
   void show() {
@@ -76,6 +100,64 @@ class InterstitialAdController extends BaseAdController {
   void onClose() {
     _interstitialAd?.dispose();
     super.onClose();
+  }
+}
+
+/// =================================================================
+/// ANCHORED BANNER AD – Always-on standard 320x50 banner, meant to sit
+/// directly above the bottom navigation bar
+/// =================================================================
+class AnchoredBannerAd extends StatefulWidget {
+  const AnchoredBannerAd({super.key});
+
+  @override
+  State<AnchoredBannerAd> createState() => _AnchoredBannerAdState();
+}
+
+class _AnchoredBannerAdState extends State<AnchoredBannerAd> {
+  BannerAd? _bannerAd;
+  bool _isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _bannerAd = BannerAd(
+      adUnitId: AdMobIds.banner,
+      size: AdSize.banner,
+      request: const AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (_) {
+          if (mounted) setState(() => _isLoaded = true);
+        },
+        onAdFailedToLoad: (ad, error) {
+          debugPrint("❌ Banner Error: $error");
+          ad.dispose();
+          _bannerAd = null;
+        },
+      ),
+    )..load();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final ad = _bannerAd;
+    if (!_isLoaded || ad == null) return const SizedBox.shrink();
+    return SizedBox(
+      width: double.infinity,
+      height: ad.size.height.toDouble(),
+      child: Center(
+        child: SizedBox(
+          width: ad.size.width.toDouble(),
+          child: AdWidget(ad: ad),
+        ),
+      ),
+    );
   }
 }
 
@@ -175,14 +257,11 @@ class AdsController extends BaseAdController {
     _loadAd();
 
     // Auto-show reward every 4 minutes
-    _autoShowTimer = Timer.periodic(
-      const Duration(minutes: 15),
-      (_) {
-        if (areAdsEnabled.value) {
-          isReady.value ? show() : _loadAd();
-        }
-      },
-    );
+    _autoShowTimer = Timer.periodic(const Duration(minutes: 15), (_) {
+      if (areAdsEnabled.value) {
+        isReady.value ? show() : _loadAd();
+      }
+    });
   }
 
   void _loadAd() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../ads/ads_manager.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/utils/validators.dart';
@@ -39,10 +40,25 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
       return;
     }
 
-    final success = await saleController.recordSale(selectedProduct!, quantity);
+    final product = selectedProduct!;
+    final success = await saleController.recordSale(product, quantity);
     if (success) {
       Get.back();
-      showSuccessSnackbar('Sale recorded');
+      final remaining = product.stock - quantity;
+      if (remaining <= 0) {
+        showWarningSnackbar(
+          'Out of stock',
+          'Sale recorded — ${product.name} is now out of stock.',
+        );
+      } else if (remaining <= product.reorderLevel) {
+        showWarningSnackbar(
+          'Time to reorder',
+          'Sale recorded — only $remaining ${product.name} left.',
+        );
+      } else {
+        showSuccessSnackbar('Sale recorded');
+      }
+      Get.find<InterstitialAdController>().maybeShowAfterAction();
     }
   }
 
@@ -98,7 +114,9 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
                         Obx(
                           () => _row(
                             'Selling Price',
-                            AppFormatter.currency(selectedProduct!.sellingPrice),
+                            AppFormatter.currency(
+                              selectedProduct!.sellingPrice,
+                            ),
                           ),
                         ),
                         _row('Available Stock', '${selectedProduct!.stock}'),

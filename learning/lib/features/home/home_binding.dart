@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../ads/ads_manager.dart';
 import '../../core/currency/currency_controller.dart';
 import '../../core/theme/theme_mode_controller.dart';
 import '../auth/controllers/auth_controller.dart';
@@ -20,6 +21,8 @@ class HomeBinding extends Bindings {
     // Eager, not lazy: the theme must apply the moment home loads, not
     // whenever the user happens to first open Settings.
     Get.put(ThemeModeController(userId));
+    // Eager so the first interstitial is preloaded before it's needed.
+    Get.put(InterstitialAdController());
     Get.lazyPut<ProductController>(() => ProductController(userId));
     Get.lazyPut<ProductProfitabilityController>(
       () => ProductProfitabilityController(userId),

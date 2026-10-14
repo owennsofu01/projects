@@ -28,6 +28,9 @@ class AddProductScreen extends StatelessWidget {
   late final TextEditingController stockCtrl = TextEditingController(
     text: product?.stock.toString(),
   );
+  late final TextEditingController reorderCtrl = TextEditingController(
+    text: (product?.reorderLevel ?? ProductModel.lowStockThreshold).toString(),
+  );
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -49,6 +52,7 @@ class AddProductScreen extends StatelessWidget {
           costPrice: newCostPrice,
           sellingPrice: double.parse(sellingCtrl.text),
           stock: int.parse(stockCtrl.text),
+          reorderLevel: int.parse(reorderCtrl.text),
           createdAt: now,
           updatedAt: now,
         ),
@@ -61,6 +65,7 @@ class AddProductScreen extends StatelessWidget {
           costPrice: newCostPrice,
           sellingPrice: double.parse(sellingCtrl.text),
           stock: existing.stock,
+          reorderLevel: int.parse(reorderCtrl.text),
           createdAt: existing.createdAt,
           updatedAt: now,
         ),
@@ -125,6 +130,13 @@ class AddProductScreen extends StatelessWidget {
                 validator: isEditing
                     ? FormValidators.nonNegativeInteger
                     : FormValidators.positiveInteger,
+              ),
+              AppTextField(
+                controller: reorderCtrl,
+                label: 'Low-stock alert at (units left)',
+                icon: Icons.notifications_active_outlined,
+                keyboardType: TextInputType.number,
+                validator: FormValidators.nonNegativeInteger,
               ),
               const SizedBox(height: 24),
               Obx(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../ads/ads_manager.dart';
+
 import '../../dashboard/screens/dashboard_screen.dart';
 import '../../expenses/screens/expense_list_screen.dart';
 import '../../products/screens/product_list_screen.dart';
@@ -28,34 +30,40 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _index, children: _tabs),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _index,
-        onDestinationSelected: (index) => setState(() => _index = index),
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.dashboard_outlined),
-            selectedIcon: Icon(Icons.dashboard),
-            label: 'Dashboard',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.inventory_2_outlined),
-            selectedIcon: Icon(Icons.inventory_2),
-            label: 'Products',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.point_of_sale_outlined),
-            selectedIcon: Icon(Icons.point_of_sale),
-            label: 'Sales',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.receipt_long_outlined),
-            selectedIcon: Icon(Icons.receipt_long),
-            label: 'Expenses',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.bar_chart_outlined),
-            selectedIcon: Icon(Icons.bar_chart),
-            label: 'Reports',
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const AnchoredBannerAd(),
+          NavigationBar(
+            selectedIndex: _index,
+            onDestinationSelected: (index) => setState(() => _index = index),
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(Icons.dashboard_outlined),
+                selectedIcon: Icon(Icons.dashboard),
+                label: 'Dashboard',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.inventory_2_outlined),
+                selectedIcon: Icon(Icons.inventory_2),
+                label: 'Products',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.point_of_sale_outlined),
+                selectedIcon: Icon(Icons.point_of_sale),
+                label: 'Sales',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.receipt_long_outlined),
+                selectedIcon: Icon(Icons.receipt_long),
+                label: 'Expenses',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.bar_chart_outlined),
+                selectedIcon: Icon(Icons.bar_chart),
+                label: 'Reports',
+              ),
+            ],
           ),
         ],
       ),

@@ -18,6 +18,19 @@ void showSuccessSnackbar(String message) {
   );
 }
 
+void showWarningSnackbar(String title, String message) {
+  Get.snackbar(
+    title,
+    message,
+    backgroundColor: Colors.orange.shade800,
+    colorText: Colors.white,
+    icon: const Icon(Icons.warning_amber_rounded, color: Colors.white),
+    snackPosition: SnackPosition.BOTTOM,
+    margin: const EdgeInsets.all(12),
+    duration: const Duration(seconds: 5),
+  );
+}
+
 void showErrorSnackbar(String message) {
   Get.snackbar(
     'Error',
