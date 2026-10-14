@@ -40,6 +40,15 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
     target.build_configurations.each do |config|
+      # Pods that declare a deployment target below what Xcode supports fail the build.
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 15.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+      end
+      # google_mobile_ads imports a private GoogleMobileAds header, which is
+      # non-modular when pods are built as frameworks (use_frameworks!).
+      if target.name == 'google_mobile_ads'
+        config.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
+      end
       config.build_settings['CODE_SIGN_STYLE'] = 'Automatic'
       config.build_settings['PROVISIONING_PROFILE_SPECIFIER'] = ''
       config.build_settings['CODE_SIGNING_REQUIRED'] = 'NO'
