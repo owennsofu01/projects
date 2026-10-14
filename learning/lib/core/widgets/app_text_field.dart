@@ -12,6 +12,7 @@ class AppTextField extends StatefulWidget {
     this.obscureText = false,
     this.readOnly = false,
     this.validator,
+    this.suffixIcon,
   });
 
   final TextEditingController controller;
@@ -21,6 +22,10 @@ class AppTextField extends StatefulWidget {
   final bool obscureText;
   final bool readOnly;
   final String? Function(String?)? validator;
+
+  /// Trailing widget (e.g. a scan button). Ignored for [obscureText]
+  /// fields, which use that slot for the show/hide toggle.
+  final Widget? suffixIcon;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -51,9 +56,7 @@ class _AppTextFieldState extends State<AppTextField> {
         ),
         decoration: InputDecoration(
           labelText: widget.label,
-          prefixIcon: widget.icon != null
-              ? Icon(widget.icon, size: 20)
-              : null,
+          prefixIcon: widget.icon != null ? Icon(widget.icon, size: 20) : null,
           suffixIcon: widget.obscureText
               ? IconButton(
                   icon: Icon(
@@ -65,7 +68,7 @@ class _AppTextFieldState extends State<AppTextField> {
                   tooltip: _obscured ? 'Show password' : 'Hide password',
                   onPressed: () => setState(() => _obscured = !_obscured),
                 )
-              : null,
+              : widget.suffixIcon,
         ),
       ),
     );

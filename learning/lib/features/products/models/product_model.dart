@@ -14,6 +14,10 @@ class ProductModel {
   /// Stock at or below this (but above zero) is flagged "low" — product
   /// cards, the post-sale warning, and Stock Intelligence all key off it.
   final int reorderLevel;
+
+  /// Barcode printed on the product (EAN/UPC/etc.), or empty if none —
+  /// lets checkout add it by scanning.
+  final String barcode;
   final DateTime createdAt;
   final DateTime updatedAt;
 
@@ -24,6 +28,7 @@ class ProductModel {
     required this.sellingPrice,
     required this.stock,
     this.reorderLevel = lowStockThreshold,
+    this.barcode = '',
     required this.createdAt,
     required this.updatedAt,
   });
@@ -45,6 +50,7 @@ class ProductModel {
       stock: data['stock'],
       reorderLevel:
           (data['reorderLevel'] as num?)?.toInt() ?? lowStockThreshold,
+      barcode: data['barcode'] as String? ?? '',
       createdAt: (data['createdAt'] as Timestamp).toDate(),
       updatedAt: (data['updatedAt'] as Timestamp).toDate(),
     );
@@ -58,6 +64,7 @@ class ProductModel {
       'sellingPrice': sellingPrice,
       'stock': stock,
       'reorderLevel': reorderLevel,
+      'barcode': barcode,
       'createdAt': Timestamp.fromDate(createdAt),
       'updatedAt': Timestamp.fromDate(updatedAt),
     };

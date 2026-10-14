@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/scanner/barcode_scanner_screen.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/validators.dart';
 import '../../../core/widgets/app_primary_button.dart';
@@ -28,6 +29,9 @@ class AddProductScreen extends StatelessWidget {
   late final TextEditingController stockCtrl = TextEditingController(
     text: product?.stock.toString(),
   );
+  late final TextEditingController barcodeCtrl = TextEditingController(
+    text: product?.barcode,
+  );
   late final TextEditingController reorderCtrl = TextEditingController(
     text: (product?.reorderLevel ?? ProductModel.lowStockThreshold).toString(),
   );
@@ -36,8 +40,20 @@ class AddProductScreen extends StatelessWidget {
 
   bool get isEditing => product != null;
 
+  Future<void> _scanBarcode() async {
+    final code = await Get.to<String>(() => const BarcodeScannerScreen());
+    if (code != null) barcodeCtrl.text = code;
+  }
+
   Future<void> _saveProduct() async {
     if (!formKey.currentState!.validate()) return;
+
+    final barcode = barcodeCtrl.text.trim();
+    final clash = controller.findByBarcode(barcode);
+    if (clash != null && clash.id != product?.id) {
+      showErrorSnackbar('${clash.name} already uses barcode $barcode');
+      return;
+    }
 
     final existing = product;
     final now = DateTime.now();
@@ -53,6 +69,7 @@ class AddProductScreen extends StatelessWidget {
           sellingPrice: double.parse(sellingCtrl.text),
           stock: int.parse(stockCtrl.text),
           reorderLevel: int.parse(reorderCtrl.text),
+          barcode: barcode,
           createdAt: now,
           updatedAt: now,
         ),
@@ -66,6 +83,7 @@ class AddProductScreen extends StatelessWidget {
           sellingPrice: double.parse(sellingCtrl.text),
           stock: existing.stock,
           reorderLevel: int.parse(reorderCtrl.text),
+          barcode: barcode,
           createdAt: existing.createdAt,
           updatedAt: now,
         ),
@@ -137,6 +155,17 @@ class AddProductScreen extends StatelessWidget {
                 icon: Icons.notifications_active_outlined,
                 keyboardType: TextInputType.number,
                 validator: FormValidators.nonNegativeInteger,
+              ),
+              AppTextField(
+                controller: barcodeCtrl,
+                label: 'Barcode (optional)',
+                icon: Icons.qr_code_2,
+                validator: (_) => null,
+                suffixIcon: IconButton(
+                  tooltip: 'Scan barcode',
+                  icon: const Icon(Icons.qr_code_scanner),
+                  onPressed: _scanBarcode,
+                ),
               ),
               const SizedBox(height: 24),
               Obx(

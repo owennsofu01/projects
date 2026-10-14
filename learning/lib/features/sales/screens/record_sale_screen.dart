@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../ads/ads_manager.dart';
+import '../../../core/scanner/barcode_scanner_screen.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/app_primary_button.dart';
@@ -76,15 +77,44 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
       product;
 
   void _add(ProductModel product) {
+    final error = _tryAdd(product);
+    if (error != null) showErrorSnackbar(error);
+  }
+
+  /// Adds one unit of [product], returning why it couldn't be added (or
+  /// null on success) so callers can report it their own way.
+  String? _tryAdd(ProductModel product) {
     final live = _live(product);
     final inCart = _cart[live.id]?.quantity ?? 0;
     if (inCart >= live.stock) {
-      showErrorSnackbar('Only ${live.stock} ${live.name} in stock');
-      return;
+      return live.stock == 0
+          ? '${live.name} is out of stock'
+          : 'Only ${live.stock} ${live.name} in stock';
     }
     setState(() {
       _cart[live.id] = CartItem(product: live, quantity: inCart + 1);
     });
+    return null;
+  }
+
+  /// Continuous scanning: each code read adds one of its product.
+  void _scan() {
+    Get.to(
+      () => BarcodeScannerScreen(
+        title: 'Scan items',
+        onScan: (code) {
+          final product = productController.findByBarcode(code);
+          if (product == null) {
+            return ScanFeedback.error('No product has barcode $code');
+          }
+          final error = _tryAdd(product);
+          if (error != null) return ScanFeedback.error(error);
+          return ScanFeedback.success(
+            'Added ${product.name} · ${_cart[product.id]!.quantity} in sale',
+          );
+        },
+      ),
+    );
   }
 
   void _setQuantity(String productId, int quantity) {
@@ -248,7 +278,16 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
     final items = _cart.values.toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('New Sale')),
+      appBar: AppBar(
+        title: const Text('New Sale'),
+        actions: [
+          IconButton(
+            tooltip: 'Scan barcodes',
+            icon: const Icon(Icons.qr_code_scanner),
+            onPressed: _scan,
+          ),
+        ],
+      ),
       body: items.isEmpty
           ? Center(
               child: Column(
@@ -259,10 +298,22 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
                     message: 'Add products to start a sale',
                   ),
                   const SizedBox(height: 16),
-                  FilledButton.icon(
-                    onPressed: _openPicker,
-                    icon: const Icon(Icons.add),
-                    label: const Text('Add product'),
+                  Wrap(
+                    spacing: 12,
+                    runSpacing: 12,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      FilledButton.icon(
+                        onPressed: _openPicker,
+                        icon: const Icon(Icons.add),
+                        label: const Text('Add product'),
+                      ),
+                      OutlinedButton.icon(
+                        onPressed: _scan,
+                        icon: const Icon(Icons.qr_code_scanner),
+                        label: const Text('Scan'),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -520,7 +571,11 @@ class _ProductPickerState extends State<_ProductPicker> {
     final query = _query.trim().toLowerCase();
     final products =
         widget.products
-            .where((p) => p.name.toLowerCase().contains(query))
+            .where(
+              (p) =>
+                  p.name.toLowerCase().contains(query) ||
+                  (query.isNotEmpty && p.barcode.contains(query)),
+            )
             .toList()
           ..sort(
             (a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()),

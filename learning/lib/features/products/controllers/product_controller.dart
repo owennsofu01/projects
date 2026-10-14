@@ -20,6 +20,13 @@ class ProductController extends GetxController {
     super.onInit();
   }
 
+  /// The product with this exact [barcode], if any.
+  ProductModel? findByBarcode(String barcode) {
+    final code = barcode.trim();
+    if (code.isEmpty) return null;
+    return products.firstWhereOrNull((p) => p.barcode == code);
+  }
+
   Future<bool> addProduct(ProductModel product) async {
     try {
       isSaving.value = true;

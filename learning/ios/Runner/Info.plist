@@ -28,6 +28,8 @@
 	<string>ca-app-pub-2167249885961554~2254268409</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>ProfitPulse uses the camera to scan product barcodes.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

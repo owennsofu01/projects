@@ -48,6 +48,7 @@ dependencies:
   share_plus: ^13.3.0
   path_provider: ^2.1.6
   google_mobile_ads: ^9.1.0
+  mobile_scanner: ^7.4.2
 
 dev_dependencies:
   flutter_test:
