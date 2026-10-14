@@ -11,6 +11,10 @@ class SaleModel {
   final double profit;
   final DateTime date;
 
+  /// Shared by every line item recorded in the same checkout. Sales from
+  /// before multi-item checkout have none and act as their own receipt.
+  final String receiptId;
+
   SaleModel({
     required this.id,
     required this.productId,
@@ -21,6 +25,7 @@ class SaleModel {
     required this.costAmount,
     required this.profit,
     required this.date,
+    required this.receiptId,
   });
 
   factory SaleModel.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
@@ -35,6 +40,7 @@ class SaleModel {
       costAmount: (data['costAmount'] as num).toDouble(),
       profit: (data['profit'] as num).toDouble(),
       date: (data['date'] as Timestamp).toDate(),
+      receiptId: data['receiptId'] as String? ?? doc.id,
     );
   }
 
@@ -48,6 +54,7 @@ class SaleModel {
       'costAmount': costAmount,
       'profit': profit,
       'date': Timestamp.fromDate(date),
+      'receiptId': receiptId,
     };
   }
 }

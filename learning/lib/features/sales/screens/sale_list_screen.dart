@@ -29,9 +29,9 @@ class SaleListScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
 
-          final sales = snapshot.data!;
+          final receipts = _groupByReceipt(snapshot.data!);
 
-          if (sales.isEmpty) {
+          if (receipts.isEmpty) {
             return const EmptyState(
               icon: Icons.point_of_sale_outlined,
               message: 'No sales recorded yet',
@@ -55,51 +55,128 @@ class SaleListScreen extends StatelessWidget {
                       horizontal: horizontalPadding,
                       vertical: 16,
                     ),
-                    itemCount: sales.length,
+                    itemCount: receipts.length,
                     separatorBuilder: (_, _) => const SizedBox(height: 12),
-                    itemBuilder: (context, index) {
-                      final sale = sales[index];
-
-                      return Card(
-                        child: ListTile(
-                          leading: const Icon(Icons.point_of_sale),
-                          title: Text(sale.productName),
-                          subtitle: Obx(
-                            () => Text(
-                              '${sale.quantity} × ${AppFormatter.currency(sale.sellingPrice)}'
-                              '  •  ${AppFormatter.date(sale.date)}',
-                            ),
-                          ),
-                          trailing: Obx(
-                            () => Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  AppFormatter.currency(sale.totalAmount),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  '+${AppFormatter.currency(sale.profit)}',
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: AppColors.income,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
+                    itemBuilder: (context, index) =>
+                        _ReceiptCard(lines: receipts[index]),
                   ),
                 ),
               );
             },
           );
         },
+      ),
+    );
+  }
+
+  /// Groups line items into receipts, keeping the newest-first order of
+  /// [sales] (lines of one receipt share a timestamp, so stay adjacent).
+  List<List<SaleModel>> _groupByReceipt(List<SaleModel> sales) {
+    final byReceipt = <String, List<SaleModel>>{};
+    for (final sale in sales) {
+      byReceipt.putIfAbsent(sale.receiptId, () => []).add(sale);
+    }
+    return byReceipt.values.toList();
+  }
+}
+
+class _ReceiptCard extends StatelessWidget {
+  const _ReceiptCard({required this.lines});
+
+  final List<SaleModel> lines;
+
+  @override
+  Widget build(BuildContext context) {
+    final total = lines.fold<double>(0, (sum, s) => sum + s.totalAmount);
+    final profit = lines.fold<double>(0, (sum, s) => sum + s.profit);
+    final date = lines.first.date;
+
+    if (lines.length == 1) {
+      final sale = lines.first;
+      return Card(
+        child: ListTile(
+          leading: const Icon(Icons.point_of_sale),
+          title: Text(sale.productName),
+          subtitle: Obx(
+            () => Text(
+              '${sale.quantity} × ${AppFormatter.currency(sale.sellingPrice)}'
+              '  •  ${AppFormatter.date(date)}',
+            ),
+          ),
+          trailing: _Amounts(total: total, profit: profit),
+        ),
+      );
+    }
+
+    final units = lines.fold<int>(0, (sum, s) => sum + s.quantity);
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      child: ExpansionTile(
+        leading: const Icon(Icons.receipt_long),
+        shape: const Border(),
+        collapsedShape: const Border(),
+        title: Text(
+          '${lines.length} products · $units units',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        subtitle: Text(
+          '${lines.map((s) => s.productName).join(', ')}\n'
+          '${AppFormatter.date(date)}',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+        trailing: _Amounts(total: total, profit: profit),
+        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+        children: [
+          for (final sale in lines)
+            Obx(
+              () => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        '${sale.productName}  ·  ${sale.quantity} × '
+                        '${AppFormatter.currency(sale.sellingPrice)}',
+                      ),
+                    ),
+                    Text(
+                      AppFormatter.currency(sale.totalAmount),
+                      style: const TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Amounts extends StatelessWidget {
+  const _Amounts({required this.total, required this.profit});
+
+  final double total;
+  final double profit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            AppFormatter.currency(total),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Text(
+            '+${AppFormatter.currency(profit)}',
+            style: const TextStyle(fontSize: 12, color: AppColors.income),
+          ),
+        ],
       ),
     );
   }

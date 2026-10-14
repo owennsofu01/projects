@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_snackbars.dart';
-import '../../products/models/product_model.dart';
+import '../models/cart_item.dart';
 import '../models/sale_model.dart';
 import '../services/sale_service.dart';
 
@@ -15,14 +15,10 @@ class SaleController extends GetxController {
 
   Stream<List<SaleModel>> get salesStream => _service.getSales(userId);
 
-  Future<bool> recordSale(ProductModel product, int quantity) async {
+  Future<bool> checkout(List<CartItem> items) async {
     try {
       isSaving.value = true;
-      await _service.recordSale(
-        userId: userId,
-        product: product,
-        quantity: quantity,
-      );
+      await _service.checkout(userId: userId, items: items);
       return true;
     } catch (e) {
       showErrorSnackbar(e.toString().replaceFirst('Exception: ', ''));

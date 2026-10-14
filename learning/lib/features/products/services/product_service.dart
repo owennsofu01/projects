@@ -110,7 +110,7 @@ class ProductService {
 
     // Firestore transactions can only re-read specific documents, not run
     // queries, so FIFO order is determined by this query up front — same
-    // approach as SaleService.recordSale.
+    // approach as SaleService.checkout.
     final batchSnapshot = await batchesRef.orderBy('purchasedAt').get();
     final batchRefs = batchSnapshot.docs
         .where((doc) => (doc.data()['remainingQuantity'] as int) > 0)
