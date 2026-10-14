@@ -11,6 +11,8 @@ import '../../customers/models/customer_model.dart';
 import '../../customers/widgets/customer_picker_sheet.dart';
 import '../../products/controllers/product_controller.dart';
 import '../../products/models/product_model.dart';
+import '../../receipts/models/receipt.dart';
+import '../../receipts/screens/receipt_screen.dart';
 import '../controllers/sale_controller.dart';
 import '../models/cart_item.dart';
 
@@ -122,16 +124,27 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
     ];
     final customer = _customer;
     final credit = _creditAmount;
-    final success = await saleController.checkout(
+    final receiptId = await saleController.checkout(
       items,
       customer: customer,
       creditAmount: credit,
     );
-    if (!success) return;
+    if (receiptId == null) return;
+
+    final receipt = Receipt.fromCart(
+      id: receiptId,
+      items: items,
+      customerName: customer?.name,
+      creditAmount: credit,
+    );
 
     Get.back();
     _showResult(
       items,
+      receiptAction: SnackbarAction(
+        'RECEIPT',
+        () => Get.to(() => ReceiptScreen(receipt: receipt)),
+      ),
       creditNote: credit > 0 && customer != null
           ? '${AppFormatter.currency(credit)} added to '
                 "${customer.name}'s balance."
@@ -140,7 +153,11 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
     Get.find<InterstitialAdController>().maybeShowAfterAction();
   }
 
-  void _showResult(List<CartItem> items, {String? creditNote}) {
+  void _showResult(
+    List<CartItem> items, {
+    String? creditNote,
+    SnackbarAction? receiptAction,
+  }) {
     final outOfStock = <String>[];
     final low = <String>[];
     for (final item in items) {
@@ -158,6 +175,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
           'Sale recorded — ${AppFormatter.currency(_totalOf(items))}.',
           ?creditNote,
         ].join(' '),
+        action: receiptAction,
       );
       return;
     }
@@ -171,6 +189,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
           'Now out of stock: ${outOfStock.join(', ')}.',
         if (low.isNotEmpty) 'Running low: ${low.join(', ')}.',
       ].join(' '),
+      action: receiptAction,
     );
   }
 

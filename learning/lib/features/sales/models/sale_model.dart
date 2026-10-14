@@ -19,6 +19,11 @@ class SaleModel {
   final String? customerId;
   final String? customerName;
 
+  /// How much of the whole receipt (not just this line) went on the
+  /// customer's account — repeated on every line so any one line can
+  /// rebuild the receipt.
+  final double receiptCredit;
+
   SaleModel({
     required this.id,
     required this.productId,
@@ -32,6 +37,7 @@ class SaleModel {
     required this.receiptId,
     this.customerId,
     this.customerName,
+    this.receiptCredit = 0,
   });
 
   factory SaleModel.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
@@ -49,6 +55,7 @@ class SaleModel {
       receiptId: data['receiptId'] as String? ?? doc.id,
       customerId: data['customerId'] as String?,
       customerName: data['customerName'] as String?,
+      receiptCredit: (data['receiptCredit'] as num? ?? 0).toDouble(),
     );
   }
 
@@ -65,6 +72,7 @@ class SaleModel {
       'receiptId': receiptId,
       if (customerId != null) 'customerId': customerId,
       if (customerName != null) 'customerName': customerName,
+      if (receiptCredit > 0) 'receiptCredit': receiptCredit,
     };
   }
 }

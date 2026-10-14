@@ -6,6 +6,7 @@ import '../../../core/currency/currency_controller.dart';
 import '../../../core/theme/theme_mode_controller.dart';
 import '../../../core/utils/legal_links.dart';
 import '../../profile/screens/profile_screen.dart';
+import '../../receipts/screens/business_profile_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({super.key});
@@ -28,6 +29,13 @@ class SettingsScreen extends StatelessWidget {
             subtitle: const Text('Edit your name and manage your account'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => Get.to(() => const ProfileScreen()),
+          ),
+          ListTile(
+            leading: const Icon(Icons.storefront_outlined),
+            title: const Text('Business details'),
+            subtitle: const Text('Shop name, phone and message on receipts'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Get.to(() => BusinessProfileScreen()),
           ),
           const Divider(height: 24),
           _SectionLabel('APPEARANCE', color: colorScheme.primary),

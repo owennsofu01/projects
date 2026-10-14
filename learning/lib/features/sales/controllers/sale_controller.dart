@@ -16,23 +16,23 @@ class SaleController extends GetxController {
 
   Stream<List<SaleModel>> get salesStream => _service.getSales(userId);
 
-  Future<bool> checkout(
+  /// Returns the receipt id on success, or null if the sale failed.
+  Future<String?> checkout(
     List<CartItem> items, {
     CustomerModel? customer,
     double creditAmount = 0,
   }) async {
     try {
       isSaving.value = true;
-      await _service.checkout(
+      return await _service.checkout(
         userId: userId,
         items: items,
         customer: customer,
         creditAmount: creditAmount,
       );
-      return true;
     } catch (e) {
       showErrorSnackbar(e.toString().replaceFirst('Exception: ', ''));
-      return false;
+      return null;
     } finally {
       isSaving.value = false;
     }

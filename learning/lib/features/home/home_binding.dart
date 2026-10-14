@@ -10,6 +10,7 @@ import '../expenses/controllers/expense_controller.dart';
 import '../insights/controllers/insight_controller.dart';
 import '../products/controllers/product_controller.dart';
 import '../products/controllers/product_profitability_controller.dart';
+import '../receipts/controllers/business_profile_controller.dart';
 import '../reports/controllers/report_controller.dart';
 import '../sales/controllers/sale_controller.dart';
 
@@ -29,6 +30,9 @@ class HomeBinding extends Bindings {
       () => ProductProfitabilityController(userId),
     );
     Get.lazyPut<CustomerController>(() => CustomerController(userId));
+    Get.lazyPut<BusinessProfileController>(
+      () => BusinessProfileController(userId),
+    );
     Get.lazyPut<SaleController>(() => SaleController(userId));
     Get.lazyPut<ExpenseController>(() => ExpenseController(userId));
     Get.lazyPut<DashboardController>(() => DashboardController(userId));

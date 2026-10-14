@@ -17,7 +17,8 @@ class SaleService {
   /// With a [customer], the sale is tagged with them, and [creditAmount]
   /// (the part of the total not paid now) is added to their balance with a
   /// matching ledger entry — in the same transaction as the sale itself.
-  Future<void> checkout({
+  /// Returns the new receipt's id.
+  Future<String> checkout({
     required String userId,
     required List<CartItem> items,
     CustomerModel? customer,
@@ -149,6 +150,7 @@ class SaleService {
             'customerId': customer.id,
             'customerName': customer.name,
           },
+          if (creditAmount > 0) 'receiptCredit': creditAmount,
         });
       }
 
@@ -169,6 +171,8 @@ class SaleService {
             });
       }
     });
+
+    return receiptId;
   }
 
   Stream<List<SaleModel>> getSales(String userId) {

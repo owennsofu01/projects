@@ -5,6 +5,8 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../customers/screens/customer_list_screen.dart';
+import '../../receipts/models/receipt.dart';
+import '../../receipts/screens/receipt_screen.dart';
 import '../controllers/sale_controller.dart';
 import '../models/sale_model.dart';
 import 'record_sale_screen.dart';
@@ -95,6 +97,9 @@ class _ReceiptCard extends StatelessWidget {
 
   final List<SaleModel> lines;
 
+  void _openReceipt() =>
+      Get.to(() => ReceiptScreen(receipt: Receipt.fromSales(lines)));
+
   String get _customerSuffix {
     final name = lines.first.customerName;
     return name == null ? '' : '  •  $name';
@@ -110,6 +115,7 @@ class _ReceiptCard extends StatelessWidget {
       final sale = lines.first;
       return Card(
         child: ListTile(
+          onTap: _openReceipt,
           leading: const Icon(Icons.point_of_sale),
           title: Text(sale.productName),
           subtitle: Obx(
@@ -164,6 +170,14 @@ class _ReceiptCard extends StatelessWidget {
                 ),
               ),
             ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton.icon(
+              onPressed: _openReceipt,
+              icon: const Icon(Icons.receipt_outlined),
+              label: const Text('View receipt'),
+            ),
+          ),
         ],
       ),
     );
