@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../core/constants/firestore_collections.dart';
+import '../../customers/models/customer_model.dart';
+import '../../customers/models/ledger_entry.dart';
 import '../models/cart_item.dart';
 import '../models/sale_model.dart';
 
@@ -11,10 +13,17 @@ class SaleService {
   /// own sale document (so per-product reporting is unchanged), all sharing
   /// one `receiptId`. Runs as a single transaction — if any product is
   /// short on stock, nothing is recorded.
+  ///
+  /// With a [customer], the sale is tagged with them, and [creditAmount]
+  /// (the part of the total not paid now) is added to their balance with a
+  /// matching ledger entry — in the same transaction as the sale itself.
   Future<void> checkout({
     required String userId,
     required List<CartItem> items,
+    CustomerModel? customer,
+    double creditAmount = 0,
   }) async {
+    assert(creditAmount == 0 || customer != null);
     final userRef = _db.collection(FirestoreCollections.users).doc(userId);
     final salesRef = userRef.collection(FirestoreCollections.sales);
     final productsRef = userRef.collection(FirestoreCollections.products);
@@ -101,6 +110,17 @@ class SaleService {
         );
       }
 
+      final customerRef = customer == null
+          ? null
+          : userRef.collection(FirestoreCollections.customers).doc(customer.id);
+      double? customerBalance;
+      if (customerRef != null) {
+        final customerSnap = await transaction.get(customerRef);
+        if (!customerSnap.exists) throw Exception('Customer not found');
+        customerBalance = (customerSnap.data()!['balance'] as num? ?? 0)
+            .toDouble();
+      }
+
       final now = Timestamp.now();
       for (final line in lines) {
         final product = line.item.product;
@@ -125,7 +145,28 @@ class SaleService {
           'profit': totalAmount - line.costAmount,
           'date': now,
           'receiptId': receiptId,
+          if (customer != null) ...{
+            'customerId': customer.id,
+            'customerName': customer.name,
+          },
         });
+      }
+
+      if (customerRef != null && creditAmount > 0) {
+        transaction.update(customerRef, {
+          'balance': customerBalance! + creditAmount,
+          'updatedAt': now,
+        });
+        transaction
+            .set(customerRef.collection(FirestoreCollections.ledger).doc(), {
+              'type': LedgerEntryType.credit.name,
+              'amount': creditAmount,
+              'date': now,
+              'receiptId': receiptId,
+              'note': items
+                  .map((i) => '${i.quantity} × ${i.product.name}')
+                  .join(', '),
+            });
       }
     });
   }

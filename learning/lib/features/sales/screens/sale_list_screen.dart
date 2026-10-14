@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/empty_state.dart';
+import '../../customers/screens/customer_list_screen.dart';
 import '../controllers/sale_controller.dart';
 import '../models/sale_model.dart';
 import 'record_sale_screen.dart';
@@ -16,7 +17,16 @@ class SaleListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sales')),
+      appBar: AppBar(
+        title: const Text('Sales'),
+        actions: [
+          IconButton(
+            tooltip: 'Customers',
+            icon: const Icon(Icons.people_outline),
+            onPressed: () => Get.to(() => const CustomerListScreen()),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'sales-fab',
         onPressed: () => Get.to(() => const RecordSaleScreen()),
@@ -85,6 +95,11 @@ class _ReceiptCard extends StatelessWidget {
 
   final List<SaleModel> lines;
 
+  String get _customerSuffix {
+    final name = lines.first.customerName;
+    return name == null ? '' : '  •  $name';
+  }
+
   @override
   Widget build(BuildContext context) {
     final total = lines.fold<double>(0, (sum, s) => sum + s.totalAmount);
@@ -100,7 +115,7 @@ class _ReceiptCard extends StatelessWidget {
           subtitle: Obx(
             () => Text(
               '${sale.quantity} × ${AppFormatter.currency(sale.sellingPrice)}'
-              '  •  ${AppFormatter.date(date)}',
+              '  •  ${AppFormatter.date(date)}$_customerSuffix',
             ),
           ),
           trailing: _Amounts(total: total, profit: profit),
@@ -122,7 +137,7 @@ class _ReceiptCard extends StatelessWidget {
         ),
         subtitle: Text(
           '${lines.map((s) => s.productName).join(', ')}\n'
-          '${AppFormatter.date(date)}',
+          '${AppFormatter.date(date)}$_customerSuffix',
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),

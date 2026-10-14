@@ -4,6 +4,7 @@ import '../../ads/ads_manager.dart';
 import '../../core/currency/currency_controller.dart';
 import '../../core/theme/theme_mode_controller.dart';
 import '../auth/controllers/auth_controller.dart';
+import '../customers/controllers/customer_controller.dart';
 import '../dashboard/controllers/dashboard_controller.dart';
 import '../expenses/controllers/expense_controller.dart';
 import '../insights/controllers/insight_controller.dart';
@@ -27,6 +28,7 @@ class HomeBinding extends Bindings {
     Get.lazyPut<ProductProfitabilityController>(
       () => ProductProfitabilityController(userId),
     );
+    Get.lazyPut<CustomerController>(() => CustomerController(userId));
     Get.lazyPut<SaleController>(() => SaleController(userId));
     Get.lazyPut<ExpenseController>(() => ExpenseController(userId));
     Get.lazyPut<DashboardController>(() => DashboardController(userId));

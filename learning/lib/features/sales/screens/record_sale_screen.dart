@@ -7,6 +7,8 @@ import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/empty_state.dart';
+import '../../customers/models/customer_model.dart';
+import '../../customers/widgets/customer_picker_sheet.dart';
 import '../../products/controllers/product_controller.dart';
 import '../../products/models/product_model.dart';
 import '../controllers/sale_controller.dart';
@@ -27,6 +29,39 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
 
   /// Keyed by product id so adding the same product twice merges lines.
   final Map<String, CartItem> _cart = {};
+
+  /// Who the sale is for; null for a walk-in (cash) sale.
+  CustomerModel? _customer;
+  bool _onCredit = false;
+  final TextEditingController _paidNowCtrl = TextEditingController();
+
+  @override
+  void dispose() {
+    _paidNowCtrl.dispose();
+    super.dispose();
+  }
+
+  double get _paidNow => double.tryParse(_paidNowCtrl.text.trim()) ?? 0;
+
+  /// The part of the total added to the customer's balance.
+  double get _creditAmount {
+    if (_customer == null || !_onCredit) return 0;
+    final credit = _total - _paidNow;
+    return credit > 0 ? credit : 0;
+  }
+
+  Future<void> _chooseCustomer() async {
+    final customer = await showCustomerPicker(context);
+    if (customer != null) setState(() => _customer = customer);
+  }
+
+  void _clearCustomer() {
+    setState(() {
+      _customer = null;
+      _onCredit = false;
+      _paidNowCtrl.clear();
+    });
+  }
 
   double get _total => _cart.values.fold(0, (sum, item) => sum + item.total);
   int get _unitCount =>
@@ -76,19 +111,36 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
       return;
     }
 
+    if (_onCredit && _paidNow > _total) {
+      showErrorSnackbar('Paid now is more than the total');
+      return;
+    }
+
     final items = [
       for (final item in _cart.values)
         item.copyWith(product: _live(item.product)),
     ];
-    final success = await saleController.checkout(items);
+    final customer = _customer;
+    final credit = _creditAmount;
+    final success = await saleController.checkout(
+      items,
+      customer: customer,
+      creditAmount: credit,
+    );
     if (!success) return;
 
     Get.back();
-    _showResult(items);
+    _showResult(
+      items,
+      creditNote: credit > 0 && customer != null
+          ? '${AppFormatter.currency(credit)} added to '
+                "${customer.name}'s balance."
+          : null,
+    );
     Get.find<InterstitialAdController>().maybeShowAfterAction();
   }
 
-  void _showResult(List<CartItem> items) {
+  void _showResult(List<CartItem> items, {String? creditNote}) {
     final outOfStock = <String>[];
     final low = <String>[];
     for (final item in items) {
@@ -102,7 +154,10 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
 
     if (outOfStock.isEmpty && low.isEmpty) {
       showSuccessSnackbar(
-        'Sale recorded — ${AppFormatter.currency(_totalOf(items))}',
+        [
+          'Sale recorded — ${AppFormatter.currency(_totalOf(items))}.',
+          ?creditNote,
+        ].join(' '),
       );
       return;
     }
@@ -111,6 +166,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
       outOfStock.isNotEmpty ? 'Out of stock' : 'Time to reorder',
       [
         'Sale recorded.',
+        ?creditNote,
         if (outOfStock.isNotEmpty)
           'Now out of stock: ${outOfStock.join(', ')}.',
         if (low.isNotEmpty) 'Running low: ${low.join(', ')}.',
@@ -215,6 +271,18 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
                       icon: const Icon(Icons.add),
                       label: const Text('Add another product'),
                     ),
+                    const SizedBox(height: 24),
+                    _PaymentSection(
+                      customer: _customer,
+                      onCredit: _onCredit,
+                      paidNowCtrl: _paidNowCtrl,
+                      creditAmount: _creditAmount,
+                      onChooseCustomer: _chooseCustomer,
+                      onClearCustomer: _clearCustomer,
+                      onCreditChanged: (value) =>
+                          setState(() => _onCredit = value),
+                      onPaidNowChanged: () => setState(() {}),
+                    ),
                   ],
                 ),
               ),
@@ -226,6 +294,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
               unitCount: _unitCount,
               total: _total,
               saleController: saleController,
+              isCredit: _creditAmount > 0,
               onCheckout: _checkout,
             ),
     );
@@ -350,6 +419,7 @@ class _CheckoutBar extends StatelessWidget {
     required this.unitCount,
     required this.total,
     required this.saleController,
+    required this.isCredit,
     required this.onCheckout,
   });
 
@@ -357,6 +427,7 @@ class _CheckoutBar extends StatelessWidget {
   final int unitCount;
   final double total;
   final SaleController saleController;
+  final bool isCredit;
   final VoidCallback onCheckout;
 
   @override
@@ -397,7 +468,7 @@ class _CheckoutBar extends StatelessWidget {
               const SizedBox(height: 12),
               Obx(
                 () => AppPrimaryButton(
-                  label: 'COMPLETE SALE',
+                  label: isCredit ? 'COMPLETE CREDIT SALE' : 'COMPLETE SALE',
                   isLoading: saleController.isSaving.value,
                   onPressed: onCheckout,
                 ),
@@ -496,6 +567,128 @@ class _ProductPickerState extends State<_ProductPicker> {
                   ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Who the sale is for and how it's paid: walk-in cash by default, or a
+/// saved customer paying in full or taking some/all of it on credit.
+class _PaymentSection extends StatelessWidget {
+  const _PaymentSection({
+    required this.customer,
+    required this.onCredit,
+    required this.paidNowCtrl,
+    required this.creditAmount,
+    required this.onChooseCustomer,
+    required this.onClearCustomer,
+    required this.onCreditChanged,
+    required this.onPaidNowChanged,
+  });
+
+  final CustomerModel? customer;
+  final bool onCredit;
+  final TextEditingController paidNowCtrl;
+  final double creditAmount;
+  final VoidCallback onChooseCustomer;
+  final VoidCallback onClearCustomer;
+  final ValueChanged<bool> onCreditChanged;
+  final VoidCallback onPaidNowChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+    final customer = this.customer;
+
+    return Card(
+      margin: EdgeInsets.zero,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ListTile(
+              onTap: onChooseCustomer,
+              leading: const Icon(Icons.person_outline),
+              title: Text(customer?.name ?? 'Walk-in customer'),
+              subtitle: Text(
+                customer == null
+                    ? 'Tap to choose a customer'
+                    : customer.owesMoney
+                    ? 'Already owes ${AppFormatter.currency(customer.balance)}'
+                    : 'No outstanding balance',
+              ),
+              trailing: customer == null
+                  ? const Icon(Icons.chevron_right)
+                  : IconButton(
+                      tooltip: 'Remove customer',
+                      icon: const Icon(Icons.close),
+                      onPressed: onClearCustomer,
+                    ),
+            ),
+            if (customer != null) ...[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+                child: SegmentedButton<bool>(
+                  segments: const [
+                    ButtonSegment(
+                      value: false,
+                      label: Text('Paid in full'),
+                      icon: Icon(Icons.check_circle_outline),
+                    ),
+                    ButtonSegment(
+                      value: true,
+                      label: Text('On credit'),
+                      icon: Icon(Icons.schedule),
+                    ),
+                  ],
+                  selected: {onCredit},
+                  onSelectionChanged: (selection) =>
+                      onCreditChanged(selection.first),
+                ),
+              ),
+              if (onCredit)
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextField(
+                        controller: paidNowCtrl,
+                        onChanged: (_) => onPaidNowChanged(),
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
+                        ),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9.]')),
+                        ],
+                        decoration: const InputDecoration(
+                          labelText: 'Paid now (optional)',
+                          hintText: '0',
+                          isDense: true,
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Obx(
+                        () => Text(
+                          'Added to balance: '
+                          '${AppFormatter.currency(creditAmount)}',
+                          style: textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: creditAmount > 0
+                                ? colorScheme.error
+                                : colorScheme.onSurfaceVariant,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ],
+        ),
       ),
     );
   }

@@ -15,6 +15,10 @@ class SaleModel {
   /// before multi-item checkout have none and act as their own receipt.
   final String receiptId;
 
+  /// Set when the sale was made to a saved customer.
+  final String? customerId;
+  final String? customerName;
+
   SaleModel({
     required this.id,
     required this.productId,
@@ -26,6 +30,8 @@ class SaleModel {
     required this.profit,
     required this.date,
     required this.receiptId,
+    this.customerId,
+    this.customerName,
   });
 
   factory SaleModel.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
@@ -41,6 +47,8 @@ class SaleModel {
       profit: (data['profit'] as num).toDouble(),
       date: (data['date'] as Timestamp).toDate(),
       receiptId: data['receiptId'] as String? ?? doc.id,
+      customerId: data['customerId'] as String?,
+      customerName: data['customerName'] as String?,
     );
   }
 
@@ -55,6 +63,8 @@ class SaleModel {
       'profit': profit,
       'date': Timestamp.fromDate(date),
       'receiptId': receiptId,
+      if (customerId != null) 'customerId': customerId,
+      if (customerName != null) 'customerName': customerName,
     };
   }
 }
