@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constants/firestore_collections.dart';
+import '../../../core/sync/sync_status_controller.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../models/business_profile.dart';
 
@@ -34,9 +35,11 @@ class BusinessProfileController extends GetxController {
   Future<bool> save(BusinessProfile value) async {
     try {
       isSaving.value = true;
-      await _userRef.set({
-        'businessProfile': value.toMap(),
-      }, SetOptions(merge: true));
+      await Get.find<SyncStatusController>().commit(
+        _userRef.set({
+          'businessProfile': value.toMap(),
+        }, SetOptions(merge: true)),
+      );
       profile.value = value;
       return true;
     } catch (e) {

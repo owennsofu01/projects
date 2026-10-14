@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../ads/ads_manager.dart';
+import '../../../core/sync/sync_status_bar.dart';
 
 import '../../dashboard/screens/dashboard_screen.dart';
 import '../../expenses/screens/expense_list_screen.dart';
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          const SyncStatusBar(),
           const AnchoredBannerAd(),
           NavigationBar(
             selectedIndex: _index,

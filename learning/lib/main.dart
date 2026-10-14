@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'app.dart';
+import 'core/sync/sync_status_controller.dart';
 import 'features/auth/controllers/auth_controller.dart';
 import 'firebase_options.dart';
 
@@ -16,6 +17,7 @@ void main() async {
 
   // Inject AuthController once, for the lifetime of the app
   Get.put(AuthController(), permanent: true);
+  Get.put(SyncStatusController(), permanent: true);
 
   runApp(const App());
 }

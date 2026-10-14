@@ -6,6 +6,7 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../../../core/constants/app_routes.dart';
 import '../../../core/constants/firestore_collections.dart';
+import '../../../core/sync/sync_status_controller.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/auth_error_mapper.dart';
 import '../models/user_model.dart';
@@ -210,9 +211,11 @@ class AuthController extends GetxController {
   Future<void> updateName(String name) async {
     try {
       isLoading.value = true;
-      await _db.collection(FirestoreCollections.users).doc(userId).update({
-        'name': name,
-      });
+      await Get.find<SyncStatusController>().commit(
+        _db.collection(FirestoreCollections.users).doc(userId).update({
+          'name': name,
+        }),
+      );
       showSuccessSnackbar('Profile updated');
     } catch (e) {
       showErrorSnackbar('Could not update profile. Please try again.');

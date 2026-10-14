@@ -24,6 +24,10 @@ class SaleModel {
   /// rebuild the receipt.
   final double receiptCredit;
 
+  /// Saved on this device but not yet confirmed by the server (e.g. made
+  /// offline). Not stored — read from the snapshot's metadata.
+  final bool isPendingSync;
+
   SaleModel({
     required this.id,
     required this.productId,
@@ -38,6 +42,7 @@ class SaleModel {
     this.customerId,
     this.customerName,
     this.receiptCredit = 0,
+    this.isPendingSync = false,
   });
 
   factory SaleModel.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
@@ -56,6 +61,7 @@ class SaleModel {
       customerId: data['customerId'] as String?,
       customerName: data['customerName'] as String?,
       receiptCredit: (data['receiptCredit'] as num? ?? 0).toDouble(),
+      isPendingSync: doc.metadata.hasPendingWrites,
     );
   }
 

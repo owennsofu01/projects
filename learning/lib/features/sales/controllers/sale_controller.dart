@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../core/sync/sync_status_controller.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../customers/models/customer_model.dart';
 import '../models/cart_item.dart';
@@ -8,6 +9,7 @@ import '../services/sale_service.dart';
 
 class SaleController extends GetxController {
   final SaleService _service = SaleService();
+  final SyncStatusController _sync = Get.find<SyncStatusController>();
   final String userId;
 
   SaleController(this.userId);
@@ -24,12 +26,15 @@ class SaleController extends GetxController {
   }) async {
     try {
       isSaving.value = true;
-      return await _service.checkout(
+      final receiptId = await _service.checkout(
         userId: userId,
         items: items,
+        online: _sync.isOnline.value,
         customer: customer,
         creditAmount: creditAmount,
       );
+      _sync.watchPendingWrites();
+      return receiptId;
     } catch (e) {
       showErrorSnackbar(e.toString().replaceFirst('Exception: ', ''));
       return null;

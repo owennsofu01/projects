@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../core/constants/firestore_collections.dart';
@@ -37,23 +39,17 @@ class CustomerService {
         .map((s) => s.docs.map(LedgerEntry.fromFirestore).toList());
   }
 
-  /// Creates the customer with a zero balance and returns it with its id.
-  Future<CustomerModel> addCustomer(
+  /// Creates the customer with a zero balance. Returns the customer (its
+  /// id is generated on-device, so it's usable straight away, even offline)
+  /// and the pending write.
+  ({CustomerModel customer, Future<void> write}) addCustomer(
     String userId, {
     required String name,
     required String phone,
-  }) async {
+  }) {
+    final ref = customersRef(userId).doc();
     final now = DateTime.now();
     final customer = CustomerModel(
-      id: '',
-      name: name,
-      phone: phone,
-      balance: 0,
-      createdAt: now,
-      updatedAt: now,
-    );
-    final ref = await customersRef(userId).add(customer.toFirestore());
-    return CustomerModel(
       id: ref.id,
       name: name,
       phone: phone,
@@ -61,6 +57,7 @@ class CustomerService {
       createdAt: now,
       updatedAt: now,
     );
+    return (customer: customer, write: ref.set(customer.toFirestore()));
   }
 
   /// Updates name/phone only — the balance is changed exclusively through
@@ -100,33 +97,54 @@ class CustomerService {
   }
 
   /// Records money received from the customer, reducing their balance.
+  ///
+  /// Online this is a transaction against the server's balance. Offline
+  /// (transactions need the server) it checks the cached balance and
+  /// queues a batch; the balance changes by increment either way, so it
+  /// merges correctly with anything recorded elsewhere meanwhile.
   Future<void> recordPayment(
     String userId,
     String customerId, {
     required double amount,
+    required bool online,
     String note = '',
-  }) {
+  }) async {
     final customerRef = customersRef(userId).doc(customerId);
     final entryRef = customerRef.collection(FirestoreCollections.ledger).doc();
 
-    return _db.runTransaction((transaction) async {
-      final snap = await transaction.get(customerRef);
+    void checkBalance(DocumentSnapshot<Map<String, dynamic>> snap) {
       final balance = (snap.data()?['balance'] as num? ?? 0).toDouble();
       if (amount > balance + 0.005) {
         throw Exception('Payment is more than the balance owed');
       }
+    }
 
-      final now = Timestamp.now();
-      transaction.update(customerRef, {
-        'balance': balance - amount,
-        'updatedAt': now,
+    final now = Timestamp.now();
+    final balanceUpdate = {
+      'balance': FieldValue.increment(-amount),
+      'updatedAt': now,
+    };
+    final entry = {
+      'type': LedgerEntryType.payment.name,
+      'amount': amount,
+      'date': now,
+      'note': note,
+    };
+
+    if (online) {
+      await _db.runTransaction((transaction) async {
+        checkBalance(await transaction.get(customerRef));
+        transaction.update(customerRef, balanceUpdate);
+        transaction.set(entryRef, entry);
       });
-      transaction.set(entryRef, {
-        'type': LedgerEntryType.payment.name,
-        'amount': amount,
-        'date': now,
-        'note': note,
-      });
-    });
+      return;
+    }
+
+    checkBalance(await customerRef.get(const GetOptions(source: Source.cache)));
+    final batch = _db.batch()
+      ..update(customerRef, balanceUpdate)
+      ..set(entryRef, entry);
+    // Applied locally right away; only completes once the server has it.
+    unawaited(batch.commit());
   }
 }

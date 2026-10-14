@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../constants/currencies.dart';
 import '../constants/firestore_collections.dart';
+import '../sync/sync_status_controller.dart';
 import '../utils/app_snackbars.dart';
 import 'exchange_rate_service.dart';
 
@@ -77,9 +78,11 @@ class CurrencyController extends GetxController {
 
     try {
       isSaving.value = true;
-      await _db.collection(FirestoreCollections.users).doc(userId).update({
-        'currencyCode': newCurrency.code,
-      });
+      await Get.find<SyncStatusController>().commit(
+        _db.collection(FirestoreCollections.users).doc(userId).update({
+          'currencyCode': newCurrency.code,
+        }),
+      );
       currency.value = newCurrency;
       showSuccessSnackbar('Currency changed to ${newCurrency.name}');
     } catch (e) {

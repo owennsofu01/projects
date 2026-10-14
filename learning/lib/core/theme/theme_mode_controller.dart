@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../constants/firestore_collections.dart';
+import '../sync/sync_status_controller.dart';
 import '../utils/app_snackbars.dart';
 
 /// Persists the user's preferred [ThemeMode] on their Firestore user doc
@@ -39,9 +40,11 @@ class ThemeModeController extends GetxController {
 
     try {
       isSaving.value = true;
-      await _db.collection(FirestoreCollections.users).doc(userId).update({
-        'themeMode': _toStored(mode),
-      });
+      await Get.find<SyncStatusController>().commit(
+        _db.collection(FirestoreCollections.users).doc(userId).update({
+          'themeMode': _toStored(mode),
+        }),
+      );
       themeMode.value = mode;
       Get.changeThemeMode(mode);
     } catch (e) {

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../core/sync/sync_status_controller.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../models/customer_model.dart';
 import '../models/ledger_entry.dart';
@@ -7,6 +8,7 @@ import '../services/customer_service.dart';
 
 class CustomerController extends GetxController {
   final CustomerService _service = CustomerService();
+  final SyncStatusController _sync = Get.find<SyncStatusController>();
   final String userId;
 
   CustomerController(this.userId);
@@ -39,7 +41,9 @@ class CustomerController extends GetxController {
   }) async {
     try {
       isSaving.value = true;
-      return await _service.addCustomer(userId, name: name, phone: phone);
+      final added = _service.addCustomer(userId, name: name, phone: phone);
+      await _sync.commit(added.write);
+      return added.customer;
     } catch (e) {
       showErrorSnackbar('Could not save customer. Please try again.');
       return null;
@@ -55,11 +59,8 @@ class CustomerController extends GetxController {
   }) async {
     try {
       isSaving.value = true;
-      await _service.updateCustomer(
-        userId,
-        customerId,
-        name: name,
-        phone: phone,
+      await _sync.commit(
+        _service.updateCustomer(userId, customerId, name: name, phone: phone),
       );
       return true;
     } catch (e) {
@@ -71,6 +72,10 @@ class CustomerController extends GetxController {
   }
 
   Future<bool> deleteCustomer(String customerId) async {
+    if (!_sync.isOnline.value) {
+      showErrorSnackbar('Deleting a customer needs an internet connection.');
+      return false;
+    }
     try {
       await _service.deleteCustomer(userId, customerId);
       return true;
@@ -91,8 +96,10 @@ class CustomerController extends GetxController {
         userId,
         customerId,
         amount: amount,
+        online: _sync.isOnline.value,
         note: note,
       );
+      _sync.watchPendingWrites();
       return true;
     } catch (e) {
       showErrorSnackbar(e.toString().replaceFirst('Exception: ', ''));

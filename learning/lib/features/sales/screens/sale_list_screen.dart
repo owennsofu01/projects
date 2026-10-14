@@ -100,6 +100,16 @@ class _ReceiptCard extends StatelessWidget {
   void _openReceipt() =>
       Get.to(() => ReceiptScreen(receipt: Receipt.fromSales(lines)));
 
+  bool get _isPendingSync => lines.any((s) => s.isPendingSync);
+
+  /// Shown next to the amounts while the sale is only on this device.
+  Widget? get _pendingIcon => _isPendingSync
+      ? const Tooltip(
+          message: 'Waiting to sync',
+          child: Icon(Icons.cloud_upload_outlined, size: 18),
+        )
+      : null;
+
   String get _customerSuffix {
     final name = lines.first.customerName;
     return name == null ? '' : '  •  $name';
@@ -124,7 +134,11 @@ class _ReceiptCard extends StatelessWidget {
               '  •  ${AppFormatter.date(date)}$_customerSuffix',
             ),
           ),
-          trailing: _Amounts(total: total, profit: profit),
+          trailing: _Amounts(
+            total: total,
+            profit: profit,
+            leading: _pendingIcon,
+          ),
         ),
       );
     }
@@ -147,7 +161,7 @@ class _ReceiptCard extends StatelessWidget {
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
-        trailing: _Amounts(total: total, profit: profit),
+        trailing: _Amounts(total: total, profit: profit, leading: _pendingIcon),
         childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
         children: [
           for (final sale in lines)
@@ -185,14 +199,15 @@ class _ReceiptCard extends StatelessWidget {
 }
 
 class _Amounts extends StatelessWidget {
-  const _Amounts({required this.total, required this.profit});
+  const _Amounts({required this.total, required this.profit, this.leading});
 
   final double total;
   final double profit;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
+    final amounts = Obx(
       () => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -207,6 +222,12 @@ class _Amounts extends StatelessWidget {
           ),
         ],
       ),
+    );
+    final leading = this.leading;
+    if (leading == null) return amounts;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [leading, const SizedBox(width: 8), amounts],
     );
   }
 }
