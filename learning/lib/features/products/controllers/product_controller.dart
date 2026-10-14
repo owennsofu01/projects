@@ -66,6 +66,28 @@ class ProductController extends GetxController {
   Stream<List<StockBatchModel>> batchesFor(String productId) =>
       _service.getBatches(userId, productId);
 
+  Future<bool> updateStock(
+    String productId,
+    int newQuantity,
+    double costPrice,
+  ) async {
+    try {
+      isSaving.value = true;
+      await _service.setStock(
+        userId,
+        productId,
+        newQuantity: newQuantity,
+        costPrice: costPrice,
+      );
+      return true;
+    } catch (e) {
+      showErrorSnackbar('Could not update stock. Please try again.');
+      return false;
+    } finally {
+      isSaving.value = false;
+    }
+  }
+
   Future<bool> deleteProduct(String productId) async {
     try {
       await _service.deleteProduct(userId, productId);

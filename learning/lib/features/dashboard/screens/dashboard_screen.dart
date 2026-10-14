@@ -7,10 +7,12 @@ import '../../../core/widgets/stat_card.dart';
 import '../../auth/controllers/auth_controller.dart';
 import '../../insights/controllers/insight_controller.dart';
 import '../../insights/screens/stock_intelligence_screen.dart';
+import '../../products/controllers/product_profitability_controller.dart';
 import '../../settings/screens/settings_screen.dart';
 import '../controllers/dashboard_controller.dart';
 import '../services/dashboard_service.dart';
 import '../widgets/expense_breakdown_chart.dart';
+import '../widgets/product_profitability_card.dart';
 import '../widgets/sales_trend_chart.dart';
 import '../widgets/stock_intelligence_card.dart';
 
@@ -20,6 +22,8 @@ class DashboardScreen extends StatelessWidget {
   final DashboardController controller = Get.find<DashboardController>();
   final AuthController auth = Get.find<AuthController>();
   final InsightController insightController = Get.find<InsightController>();
+  final ProductProfitabilityController profitabilityController =
+      Get.find<ProductProfitabilityController>();
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +82,10 @@ class DashboardScreen extends StatelessWidget {
                   const SectionHeader('This Month'),
                   const SizedBox(height: 12),
                   _summaryRow(controller.monthSales, controller.monthExpenses),
+                  const SizedBox(height: 24),
+                  const SectionHeader('Inventory'),
+                  const SizedBox(height: 12),
+                  ProductProfitabilityCard(controller: profitabilityController),
                   const SizedBox(height: 24),
                   const SectionHeader('Analytics'),
                   const SizedBox(height: 12),

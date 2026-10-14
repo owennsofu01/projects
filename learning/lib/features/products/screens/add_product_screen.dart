@@ -9,41 +9,87 @@ import '../controllers/product_controller.dart';
 import '../models/product_model.dart';
 
 class AddProductScreen extends StatelessWidget {
-  AddProductScreen({super.key});
+  AddProductScreen({super.key, this.product});
+
+  /// When set, the screen edits this product instead of creating a new one.
+  final ProductModel? product;
 
   final ProductController controller = Get.find<ProductController>();
 
-  final TextEditingController nameCtrl = TextEditingController();
-  final TextEditingController costCtrl = TextEditingController();
-  final TextEditingController sellingCtrl = TextEditingController();
-  final TextEditingController stockCtrl = TextEditingController();
+  late final TextEditingController nameCtrl = TextEditingController(
+    text: product?.name,
+  );
+  late final TextEditingController costCtrl = TextEditingController(
+    text: product?.costPrice.toStringAsFixed(2),
+  );
+  late final TextEditingController sellingCtrl = TextEditingController(
+    text: product?.sellingPrice.toStringAsFixed(2),
+  );
+  late final TextEditingController stockCtrl = TextEditingController(
+    text: product?.stock.toString(),
+  );
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  bool get isEditing => product != null;
 
   Future<void> _saveProduct() async {
     if (!formKey.currentState!.validate()) return;
 
-    final product = ProductModel(
-      id: '',
-      name: nameCtrl.text.trim(),
-      costPrice: double.parse(costCtrl.text),
-      sellingPrice: double.parse(sellingCtrl.text),
-      stock: int.parse(stockCtrl.text),
-      createdAt: DateTime.now(),
-      updatedAt: DateTime.now(),
-    );
+    final existing = product;
+    final now = DateTime.now();
+    final newCostPrice = double.parse(costCtrl.text);
+    bool success;
 
-    final success = await controller.addProduct(product);
+    if (existing == null) {
+      success = await controller.addProduct(
+        ProductModel(
+          id: '',
+          name: nameCtrl.text.trim(),
+          costPrice: newCostPrice,
+          sellingPrice: double.parse(sellingCtrl.text),
+          stock: int.parse(stockCtrl.text),
+          createdAt: now,
+          updatedAt: now,
+        ),
+      );
+    } else {
+      success = await controller.updateProduct(
+        ProductModel(
+          id: existing.id,
+          name: nameCtrl.text.trim(),
+          costPrice: newCostPrice,
+          sellingPrice: double.parse(sellingCtrl.text),
+          stock: existing.stock,
+          createdAt: existing.createdAt,
+          updatedAt: now,
+        ),
+      );
+
+      final newStock = int.parse(stockCtrl.text);
+      if (success && newStock != existing.stock) {
+        success = await controller.updateStock(
+          existing.id,
+          newStock,
+          newCostPrice,
+        );
+      }
+    }
+
     if (success) {
       Get.back();
-      showSuccessSnackbar('Product added successfully');
+      showSuccessSnackbar(
+        isEditing
+            ? 'Product updated successfully'
+            : 'Product added successfully',
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Add Product')),
+      appBar: AppBar(title: Text(isEditing ? 'Edit Product' : 'Add Product')),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -71,15 +117,19 @@ class AddProductScreen extends StatelessWidget {
               ),
               AppTextField(
                 controller: stockCtrl,
-                label: 'Stock Quantity',
+                label: isEditing
+                    ? 'Stock Quantity (correction — use Restock for purchases)'
+                    : 'Stock Quantity',
                 icon: Icons.numbers,
                 keyboardType: TextInputType.number,
-                validator: FormValidators.positiveInteger,
+                validator: isEditing
+                    ? FormValidators.nonNegativeInteger
+                    : FormValidators.positiveInteger,
               ),
               const SizedBox(height: 24),
               Obx(
                 () => AppPrimaryButton(
-                  label: 'SAVE PRODUCT',
+                  label: isEditing ? 'SAVE CHANGES' : 'SAVE PRODUCT',
                   isLoading: controller.isSaving.value,
                   onPressed: _saveProduct,
                 ),

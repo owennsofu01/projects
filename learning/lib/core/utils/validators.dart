@@ -27,4 +27,14 @@ class FormValidators {
     if (number <= 0) return 'Must be greater than 0';
     return null;
   }
+
+  /// Like [positiveInteger] but allows 0 — for fields like stock corrections
+  /// where "none left" is a valid value, unlike an initial stock count.
+  static String? nonNegativeInteger(String? value) {
+    if (value == null || value.trim().isEmpty) return 'Required';
+    final number = int.tryParse(value.trim());
+    if (number == null) return 'Enter a whole number';
+    if (number < 0) return 'Cannot be negative';
+    return null;
+  }
 }

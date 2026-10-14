@@ -5,11 +5,13 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/utils/validators.dart';
+import '../../../core/widgets/confirm_dialog.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../controllers/product_controller.dart';
 import '../models/product_model.dart';
 import '../widgets/purchase_history_sheet.dart';
 import 'add_product_screen.dart';
+import 'product_profitability_screen.dart';
 
 class ProductListScreen extends StatelessWidget {
   ProductListScreen({super.key});
@@ -19,7 +21,16 @@ class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Products')),
+      appBar: AppBar(
+        title: const Text('Products'),
+        actions: [
+          IconButton(
+            onPressed: () => Get.to(() => ProductProfitabilityScreen()),
+            icon: const Icon(Icons.table_chart_outlined),
+            tooltip: 'Product profitability',
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'products-fab',
         onPressed: () => Get.to(() => AddProductScreen()),
@@ -41,9 +52,7 @@ class ProductListScreen extends StatelessWidget {
             final columns = constraints.maxWidth >= 1100
                 ? 3
                 : (constraints.maxWidth >= 700 ? 2 : 1);
-            final horizontalPadding = constraints.maxWidth >= 600
-                ? 24.0
-                : 16.0;
+            final horizontalPadding = constraints.maxWidth >= 600 ? 24.0 : 16.0;
 
             final products = controller.products;
             final rowCount = (products.length / columns).ceil();
@@ -173,6 +182,24 @@ class ProductListScreen extends StatelessWidget {
     }
   }
 
+  Future<void> _deleteProduct(
+    BuildContext context,
+    ProductModel product,
+  ) async {
+    final confirmed = await showConfirmDialog(
+      context,
+      title: 'Delete ${product.name}?',
+      message:
+          'This removes the product and its purchase history. This can\'t be undone.',
+    );
+    if (!confirmed) return;
+
+    final success = await controller.deleteProduct(product.id);
+    if (success) {
+      showSuccessSnackbar('${product.name} deleted');
+    }
+  }
+
   Widget _productCard(BuildContext context, ProductModel product) {
     return Card(
       child: Padding(
@@ -205,6 +232,33 @@ class ProductListScreen extends StatelessWidget {
                   tooltip: 'Restock',
                   visualDensity: VisualDensity.compact,
                 ),
+                PopupMenuButton<_ProductAction>(
+                  tooltip: 'More',
+                  onSelected: (action) {
+                    switch (action) {
+                      case _ProductAction.edit:
+                        Get.to(() => AddProductScreen(product: product));
+                      case _ProductAction.delete:
+                        _deleteProduct(context, product);
+                    }
+                  },
+                  itemBuilder: (context) => const [
+                    PopupMenuItem(
+                      value: _ProductAction.edit,
+                      child: ListTile(
+                        leading: Icon(Icons.edit_outlined),
+                        title: Text('Edit'),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: _ProductAction.delete,
+                      child: ListTile(
+                        leading: Icon(Icons.delete_outline),
+                        title: Text('Delete'),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
             if (product.needsAttention) ...[
@@ -216,11 +270,11 @@ class ProductListScreen extends StatelessWidget {
               () => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _info('Latest Cost', AppFormatter.currency(product.costPrice)),
                   _info(
-                    'Selling',
-                    AppFormatter.currency(product.sellingPrice),
+                    'Latest Cost',
+                    AppFormatter.currency(product.costPrice),
                   ),
+                  _info('Selling', AppFormatter.currency(product.sellingPrice)),
                   _info('Stock', product.stock.toString()),
                 ],
               ),
@@ -281,3 +335,5 @@ class _StockStatusChip extends StatelessWidget {
     );
   }
 }
+
+enum _ProductAction { edit, delete }

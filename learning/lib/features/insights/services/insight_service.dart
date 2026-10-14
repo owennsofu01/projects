@@ -32,6 +32,29 @@ class ProductSalesAggregate {
 class InsightService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+  CollectionReference<Map<String, dynamic>> _salesRef(String userId) {
+    return _db
+        .collection(FirestoreCollections.users)
+        .doc(userId)
+        .collection(FirestoreCollections.sales);
+  }
+
+  Map<String, ProductSalesAggregate> _aggregateByProduct(
+    QuerySnapshot<Map<String, dynamic>> snapshot,
+  ) {
+    final byProduct = <String, ProductSalesAggregate>{};
+    for (final doc in snapshot.docs) {
+      final productId = doc['productId'] as String;
+      final existing = byProduct[productId] ?? ProductSalesAggregate.zero;
+      byProduct[productId] = existing.add(
+        quantity: (doc['quantity'] as num).toInt(),
+        revenue: (doc['totalAmount'] as num).toDouble(),
+        profit: (doc['profit'] as num).toDouble(),
+      );
+    }
+    return byProduct;
+  }
+
   /// Sales summed per product over the trailing [days] days — the raw
   /// input the Stock Intelligence engine ranks products against.
   Stream<Map<String, ProductSalesAggregate>> salesByProductSince(
@@ -40,24 +63,31 @@ class InsightService {
   }) {
     final from = DateTime.now().subtract(Duration(days: days));
 
-    return _db
-        .collection(FirestoreCollections.users)
-        .doc(userId)
-        .collection(FirestoreCollections.sales)
+    return _salesRef(userId)
         .where('date', isGreaterThanOrEqualTo: Timestamp.fromDate(from))
         .snapshots()
-        .map((snapshot) {
-          final byProduct = <String, ProductSalesAggregate>{};
-          for (final doc in snapshot.docs) {
-            final productId = doc['productId'] as String;
-            final existing = byProduct[productId] ?? ProductSalesAggregate.zero;
-            byProduct[productId] = existing.add(
-              quantity: (doc['quantity'] as num).toInt(),
-              revenue: (doc['totalAmount'] as num).toDouble(),
-              profit: (doc['profit'] as num).toDouble(),
-            );
-          }
-          return byProduct;
-        });
+        .map(_aggregateByProduct);
+  }
+
+  /// Sales summed per product with a date in [from, to) — the input for a
+  /// single-month view of the product profitability table.
+  Stream<Map<String, ProductSalesAggregate>> salesByProductBetween(
+    String userId, {
+    required DateTime from,
+    required DateTime to,
+  }) {
+    return _salesRef(userId)
+        .where('date', isGreaterThanOrEqualTo: Timestamp.fromDate(from))
+        .where('date', isLessThan: Timestamp.fromDate(to))
+        .snapshots()
+        .map(_aggregateByProduct);
+  }
+
+  /// Sales summed per product across all recorded history — the input for
+  /// the all-time product profitability table.
+  Stream<Map<String, ProductSalesAggregate>> salesByProductAllTime(
+    String userId,
+  ) {
+    return _salesRef(userId).snapshots().map(_aggregateByProduct);
   }
 }
