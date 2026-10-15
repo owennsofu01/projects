@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../core/utils/formatters.dart';
 import '../../../core/widgets/empty_state.dart';
+import '../../budgets/controllers/budget_controller.dart';
+import '../../budgets/screens/budget_screen.dart';
 import '../controllers/expense_controller.dart';
 import '../models/expense_model.dart';
 import 'add_expense_screen.dart';
@@ -11,14 +13,31 @@ class ExpenseListScreen extends StatelessWidget {
   ExpenseListScreen({super.key});
 
   final ExpenseController controller = Get.find<ExpenseController>();
+  final BudgetController budgetController = Get.find<BudgetController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Expenses')),
+      appBar: AppBar(
+        title: const Text('Expenses'),
+        actions: [
+          Obx(() {
+            final count = budgetController.needingAttention.length;
+            return IconButton(
+              onPressed: () => Get.to(() => BudgetScreen()),
+              tooltip: 'Budgets',
+              icon: Badge(
+                label: Text('$count'),
+                isLabelVisible: count > 0,
+                child: const Icon(Icons.savings_outlined),
+              ),
+            );
+          }),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'expenses-fab',
-        onPressed: () => Get.to(() => AddExpenseScreen()),
+        onPressed: () => Get.to(() => const AddExpenseScreen()),
         child: const Icon(Icons.add),
       ),
       body: StreamBuilder<List<ExpenseModel>>(

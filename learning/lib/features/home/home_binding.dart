@@ -4,6 +4,7 @@ import '../../ads/ads_manager.dart';
 import '../../core/currency/currency_controller.dart';
 import '../../core/theme/theme_mode_controller.dart';
 import '../auth/controllers/auth_controller.dart';
+import '../budgets/controllers/budget_controller.dart';
 import '../customers/controllers/customer_controller.dart';
 import '../daily_summary/controllers/daily_summary_controller.dart';
 import '../dashboard/controllers/dashboard_controller.dart';
@@ -36,6 +37,7 @@ class HomeBinding extends Bindings {
     );
     Get.lazyPut<SaleController>(() => SaleController(userId));
     Get.lazyPut<ExpenseController>(() => ExpenseController(userId));
+    Get.lazyPut<BudgetController>(() => BudgetController(userId));
     // Eager so the summary notifications are refreshed on every launch.
     Get.put(DailySummaryController(userId));
     Get.lazyPut<DashboardController>(() => DashboardController(userId));

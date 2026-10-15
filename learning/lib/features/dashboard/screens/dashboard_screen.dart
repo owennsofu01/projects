@@ -5,6 +5,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/section_header.dart';
 import '../../../core/widgets/stat_card.dart';
 import '../../auth/controllers/auth_controller.dart';
+import '../../budgets/controllers/budget_controller.dart';
 import '../../customers/controllers/customer_controller.dart';
 import '../../insights/controllers/insight_controller.dart';
 import '../../insights/screens/stock_intelligence_screen.dart';
@@ -12,6 +13,7 @@ import '../../products/controllers/product_profitability_controller.dart';
 import '../../settings/screens/settings_screen.dart';
 import '../controllers/dashboard_controller.dart';
 import '../services/dashboard_service.dart';
+import '../widgets/budget_card.dart';
 import '../widgets/customer_credit_card.dart';
 import '../widgets/expense_breakdown_chart.dart';
 import '../widgets/monthly_profit_chart.dart';
@@ -26,6 +28,7 @@ class DashboardScreen extends StatelessWidget {
   final AuthController auth = Get.find<AuthController>();
   final InsightController insightController = Get.find<InsightController>();
   final CustomerController customerController = Get.find<CustomerController>();
+  final BudgetController budgetController = Get.find<BudgetController>();
   final ProductProfitabilityController profitabilityController =
       Get.find<ProductProfitabilityController>();
 
@@ -87,11 +90,13 @@ class DashboardScreen extends StatelessWidget {
                   const SizedBox(height: 12),
                   _summaryRow(controller.monthSales, controller.monthExpenses),
                   const SizedBox(height: 24),
-                  const SectionHeader('Inventory & Credit'),
+                  const SectionHeader('Inventory, Credit & Budgets'),
                   const SizedBox(height: 12),
                   ProductProfitabilityCard(controller: profitabilityController),
                   const SizedBox(height: 12),
                   CustomerCreditCard(controller: customerController),
+                  const SizedBox(height: 12),
+                  BudgetCard(controller: budgetController),
                   const SizedBox(height: 24),
                   const SectionHeader('Analytics'),
                   const SizedBox(height: 12),

@@ -105,7 +105,12 @@ class ProductProfitabilityCard extends StatelessWidget {
     });
   }
 
-  Widget _metric(BuildContext context, String label, double value, Color color) {
+  Widget _metric(
+    BuildContext context,
+    String label,
+    double value,
+    Color color,
+  ) {
     final colorScheme = Theme.of(context).colorScheme;
     return Expanded(
       child: Column(
@@ -113,9 +118,9 @@ class ProductProfitabilityCard extends StatelessWidget {
         children: [
           Text(
             label,
-            style: Theme.of(
-              context,
-            ).textTheme.labelSmall?.copyWith(color: colorScheme.onSurfaceVariant),
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              color: colorScheme.onSurfaceVariant,
+            ),
           ),
           const SizedBox(height: 4),
           Text(

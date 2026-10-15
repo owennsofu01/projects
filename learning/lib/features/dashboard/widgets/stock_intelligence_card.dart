@@ -88,7 +88,8 @@ class StockIntelligenceCard extends StatelessWidget {
                   runSpacing: 8,
                   children: [
                     for (final type in StockRecommendation.values)
-                      if (counts[type]! > 0) _CountChip(type: type, count: counts[type]!),
+                      if (counts[type]! > 0)
+                        _CountChip(type: type, count: counts[type]!),
                   ],
                 ),
               ],

@@ -15,4 +15,8 @@ class FirestoreCollections {
   /// Subcollection under each product: one doc per purchase batch, so a
   /// restock at a different price never overwrites the previous cost.
   static const batches = 'batches';
+
+  /// One doc per expense category with a monthly spending limit, keyed
+  /// by the lowercased category name.
+  static const budgets = 'budgets';
 }

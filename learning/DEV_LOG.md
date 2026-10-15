@@ -24,34 +24,33 @@ Branch: `profitpulse-profitability-monthly` (not merged to `main`, not pushed)
 | `fc38959` | #8 Offline support: checkout and payments work offline, saves don't hang, sync status strip, unsynced-sale icon |
 | `cfe5f1b` | Fix Android launch crash: AdMob `APPLICATION_ID` was missing from `AndroidManifest.xml` |
 | `ed981a0` | #9 Daily summary notification: Settings → Notifications, local scheduled notifications (default 20:00), tested on a real phone |
+| `e61107f` | #13 Tests (fake_cloud_firestore): FIFO checkout, credit, payments, stock corrections, profitability, report totals. Fixed `setStock` reads-after-writes bug |
 
 ### In progress (uncommitted)
-**#13 Tests** (session 2026-10-15)
-- Services take an optional `FirebaseFirestore db` (default
-  `FirebaseFirestore.instance`); tests use `fake_cloud_firestore`.
-  `ReportController` takes an optional `ReportService`.
-- `test/support/fake_shop.dart` seeds products, batches, customers, sales,
-  expenses. Tests: `sale_checkout_test` (FIFO, fallback cost, offline,
-  receipt, all-or-nothing, credit), `customer_balance_test`,
-  `stock_correction_test`, `profitability_test`, `report_totals_test`.
-- Bug fixed: `ProductService.setStock` read batches after writing in its
-  transaction, so lowering stock across 2+ batches failed. Now reads all
-  first, then writes.
-- 31 tests pass, analyze clean.
-- Not covered: `ProductProfitabilityController` filters (needs
-  `ProductController`/`SyncStatusController` injection).
+**#10 Budgets** (session 2026-10-15)
+- Monthly limit per expense category: `users/{uid}/budgets/{key}`, key =
+  lowercased, trimmed category (blank = "other"), so "Rent"/"rent " match.
+- Expenses tab → savings icon (badge = budgets near/over) → Budgets screen:
+  progress bars, add/edit sheet, delete. Dashboard "Budgets" card.
+- Warning after saving an expense that takes a category to 80% or over its
+  limit (replaces the "Expense added" snackbar; not repeated once already
+  near/over).
+- Add Expense category field now suggests existing categories.
+- Code: `lib/features/budgets/`, `dashboard/widgets/budget_card.dart`,
+  `test/budget_test.dart`. 43 tests pass, analyze clean, debug APK builds.
+- Tested on a phone by the user.
+
 
 ### Remaining
-1. **#10 Budgets:** monthly limit per expense category with warnings.
-2. **#12 Backup and import:** import products/expenses from Excel; full backup.
-3. **#11 Pro tier:** in-app purchase (ad-free, staff accounts). Needs App
+1. **#12 Backup and import:** import products/expenses from Excel; full backup.
+2. **#11 Pro tier:** in-app purchase (ad-free, staff accounts). Needs App
    Store Connect / Play Console setup.
 
 ### Open issues
 - `AdsController` in `lib/ads/ads_manager.dart` auto-shows rewarded ads
   every 15 min. That breaks AdMob policy. Unused, but should be deleted.
 - No UMP consent form (EEA/UK) or iOS App Tracking Transparency prompt yet.
-- Typed amounts (expenses, payments, "paid now") are saved as entered, not
+- Typed amounts (expenses, payments, "paid now", budget limits) are saved as entered, not
   converted from the selected display currency. Only matters for non-ZMW
   display currencies.
 - Offline edge case: two phones selling the last unit while one is offline
