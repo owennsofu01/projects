@@ -8,6 +8,7 @@ import '../budgets/controllers/budget_controller.dart';
 import '../customers/controllers/customer_controller.dart';
 import '../daily_summary/controllers/daily_summary_controller.dart';
 import '../dashboard/controllers/dashboard_controller.dart';
+import '../data_transfer/controllers/data_transfer_controller.dart';
 import '../expenses/controllers/expense_controller.dart';
 import '../insights/controllers/insight_controller.dart';
 import '../products/controllers/product_controller.dart';
@@ -38,6 +39,7 @@ class HomeBinding extends Bindings {
     Get.lazyPut<SaleController>(() => SaleController(userId));
     Get.lazyPut<ExpenseController>(() => ExpenseController(userId));
     Get.lazyPut<BudgetController>(() => BudgetController(userId));
+    Get.lazyPut<DataTransferController>(() => DataTransferController(userId));
     // Eager so the summary notifications are refreshed on every launch.
     Get.put(DailySummaryController(userId));
     Get.lazyPut<DashboardController>(() => DashboardController(userId));

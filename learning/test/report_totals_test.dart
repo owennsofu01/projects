@@ -44,17 +44,20 @@ void main() {
     await shop.addExpense(amount: 999, date: DateTime(2026, 8, 31, 23));
   });
 
-  test('totals cover every record in the range, including its last day', () async {
-    await controller.setRange(
-      ReportRange.custom(DateTime(2026, 9, 1), DateTime(2026, 9, 15)),
-    );
+  test(
+    'totals cover every record in the range, including its last day',
+    () async {
+      await controller.setRange(
+        ReportRange.custom(DateTime(2026, 9, 1), DateTime(2026, 9, 15)),
+      );
 
-    expect(controller.sales, hasLength(2));
-    expect(controller.totalSales, 150);
-    expect(controller.totalProfit, 25);
-    expect(controller.totalExpenses, 10);
-    expect(controller.netProfit, 15);
-  });
+      expect(controller.sales, hasLength(2));
+      expect(controller.totalSales, 150);
+      expect(controller.totalProfit, 25);
+      expect(controller.totalExpenses, 10);
+      expect(controller.netProfit, 15);
+    },
+  );
 
   test('net profit goes negative when expenses exceed profit', () async {
     await shop.addExpense(amount: 40, date: DateTime(2026, 9, 2));

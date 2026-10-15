@@ -6,6 +6,8 @@ import '../../../core/currency/currency_controller.dart';
 import '../../../core/theme/theme_mode_controller.dart';
 import '../../../core/utils/legal_links.dart';
 import '../../daily_summary/controllers/daily_summary_controller.dart';
+import '../../data_transfer/controllers/data_transfer_controller.dart';
+import '../../data_transfer/screens/import_screen.dart';
 import '../../profile/screens/profile_screen.dart';
 import '../../receipts/screens/business_profile_screen.dart';
 
@@ -16,6 +18,8 @@ class SettingsScreen extends StatelessWidget {
   final ThemeModeController themeController = Get.find<ThemeModeController>();
   final DailySummaryController summaryController =
       Get.find<DailySummaryController>();
+  final DataTransferController dataController =
+      Get.find<DataTransferController>();
 
   @override
   Widget build(BuildContext context) {
@@ -143,6 +147,35 @@ class SettingsScreen extends StatelessWidget {
               ],
             );
           }),
+          const Divider(height: 24),
+          _SectionLabel('DATA', color: colorScheme.primary),
+          ListTile(
+            leading: const Icon(Icons.upload_file_outlined),
+            title: const Text('Import from Excel'),
+            subtitle: const Text(
+              'Add products and expenses from a spreadsheet',
+            ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Get.to(() => ImportScreen()),
+          ),
+          Obx(
+            () => ListTile(
+              leading: const Icon(Icons.backup_outlined),
+              title: const Text('Back up all data'),
+              subtitle: const Text(
+                'Save or send an Excel copy of everything in your account',
+              ),
+              trailing: dataController.isBusy.value
+                  ? const SizedBox.square(
+                      dimension: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : const Icon(Icons.share_outlined, size: 20),
+              onTap: dataController.isBusy.value
+                  ? null
+                  : dataController.shareBackup,
+            ),
+          ),
           const Divider(height: 24),
           _SectionLabel('ABOUT', color: colorScheme.primary),
           ListTile(

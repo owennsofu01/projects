@@ -10,10 +10,7 @@ void main() {
       MaterialApp(
         theme: AppTheme.light,
         home: const Scaffold(
-          body: EmptyState(
-            icon: Icons.inbox_outlined,
-            message: 'No data yet',
-          ),
+          body: EmptyState(icon: Icons.inbox_outlined, message: 'No data yet'),
         ),
       ),
     );

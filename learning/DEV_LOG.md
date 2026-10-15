@@ -25,26 +25,31 @@ Branch: `profitpulse-profitability-monthly` (not merged to `main`, not pushed)
 | `cfe5f1b` | Fix Android launch crash: AdMob `APPLICATION_ID` was missing from `AndroidManifest.xml` |
 | `ed981a0` | #9 Daily summary notification: Settings → Notifications, local scheduled notifications (default 20:00), tested on a real phone |
 | `e61107f` | #13 Tests (fake_cloud_firestore): FIFO checkout, credit, payments, stock corrections, profitability, report totals. Fixed `setStock` reads-after-writes bug |
+| `da08eb3` | #10 Budgets: monthly limit per expense category, Budgets screen, dashboard card, 80%/over warnings on new expenses |
 
 ### In progress (uncommitted)
-**#10 Budgets** (session 2026-10-15)
-- Monthly limit per expense category: `users/{uid}/budgets/{key}`, key =
-  lowercased, trimmed category (blank = "other"), so "Rent"/"rent " match.
-- Expenses tab → savings icon (badge = budgets near/over) → Budgets screen:
-  progress bars, add/edit sheet, delete. Dashboard "Budgets" card.
-- Warning after saving an expense that takes a category to 80% or over its
-  limit (replaces the "Expense added" snackbar; not repeated once already
-  near/over).
-- Add Expense category field now suggests existing categories.
-- Code: `lib/features/budgets/`, `dashboard/widgets/budget_card.dart`,
-  `test/budget_test.dart`. 43 tests pass, analyze clean, debug APK builds.
-- Tested on a phone by the user.
-
+**#12 Import and backup** (session 2026-10-15)
+- Settings → Data → Import from Excel: pick an .xlsx (`file_picker`),
+  preview counts and rows that will be left out, then import. "Products"
+  sheet (Name, Cost price, Selling price, Stock, Reorder level, Barcode)
+  and/or "Expenses" sheet (Date, Title, Category, Amount). Headers and
+  sheet names match ignoring case; dates as Excel dates, YYYY-MM-DD or
+  D/M/YYYY. Products with an existing name and expenses already recorded
+  (same day, title, category, amount) are skipped. Opening stock gets a
+  purchase batch. Writes split into batches of 400.
+- "Get the template" shares a template workbook with examples and help.
+- Settings → Data → Back up all data: shares an .xlsx with About,
+  Products, Expenses, Sales, Customers, Customer ledger, Stock purchases,
+  Budgets. Amounts are stored ZMW values. Products/Expenses sheets use the
+  import layout, so a backup re-imports (skipping what's already there).
+- No full restore of sales, customers or ledgers (backup is a copy for
+  the user's records).
+- Code: `lib/features/data_transfer/`, `test/data_transfer_test.dart`.
+  56 tests pass, analyze clean, Android debug APK builds.
+- Tested on a phone by the user. iOS needs `pod install` for file_picker.
 
 ### Remaining
-1. **#12 Backup and import:** import products/expenses from Excel; full backup.
-2. **#11 Pro tier:** in-app purchase (ad-free, staff accounts). Needs App
-   Store Connect / Play Console setup.
+Nothing. #11 Pro tier (in-app purchase) was dropped on 2026-10-15.
 
 ### Open issues
 - `AdsController` in `lib/ads/ads_manager.dart` auto-shows rewarded ads
