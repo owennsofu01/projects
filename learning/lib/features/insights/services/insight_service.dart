@@ -30,7 +30,9 @@ class ProductSalesAggregate {
 }
 
 class InsightService {
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  InsightService({FirebaseFirestore? db}) : _db = db ?? FirebaseFirestore.instance;
+
+  final FirebaseFirestore _db;
 
   CollectionReference<Map<String, dynamic>> _salesRef(String userId) {
     return _db

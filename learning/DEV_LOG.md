@@ -23,14 +23,28 @@ Branch: `profitpulse-profitability-monthly` (not merged to `main`, not pushed)
 | `3b2b69e` | #7 Barcode scanning (`mobile_scanner`): product barcodes, continuous scan at checkout |
 | `fc38959` | #8 Offline support: checkout and payments work offline, saves don't hang, sync status strip, unsynced-sale icon |
 | `cfe5f1b` | Fix Android launch crash: AdMob `APPLICATION_ID` was missing from `AndroidManifest.xml` |
-| (next) | #9 Daily summary notification: Settings → Notifications, local scheduled notifications (default 20:00), tested on a real phone |
+| `ed981a0` | #9 Daily summary notification: Settings → Notifications, local scheduled notifications (default 20:00), tested on a real phone |
+
+### In progress (uncommitted)
+**#13 Tests** (session 2026-10-15)
+- Services take an optional `FirebaseFirestore db` (default
+  `FirebaseFirestore.instance`); tests use `fake_cloud_firestore`.
+  `ReportController` takes an optional `ReportService`.
+- `test/support/fake_shop.dart` seeds products, batches, customers, sales,
+  expenses. Tests: `sale_checkout_test` (FIFO, fallback cost, offline,
+  receipt, all-or-nothing, credit), `customer_balance_test`,
+  `stock_correction_test`, `profitability_test`, `report_totals_test`.
+- Bug fixed: `ProductService.setStock` read batches after writing in its
+  transaction, so lowering stock across 2+ batches failed. Now reads all
+  first, then writes.
+- 31 tests pass, analyze clean.
+- Not covered: `ProductProfitabilityController` filters (needs
+  `ProductController`/`SyncStatusController` injection).
 
 ### Remaining
-1. **#13 Tests** (suggested next): checkout FIFO costing, credit balances,
-   profitability, report totals.
-2. **#10 Budgets:** monthly limit per expense category with warnings.
-3. **#12 Backup and import:** import products/expenses from Excel; full backup.
-4. **#11 Pro tier:** in-app purchase (ad-free, staff accounts). Needs App
+1. **#10 Budgets:** monthly limit per expense category with warnings.
+2. **#12 Backup and import:** import products/expenses from Excel; full backup.
+3. **#11 Pro tier:** in-app purchase (ad-free, staff accounts). Needs App
    Store Connect / Play Console setup.
 
 ### Open issues

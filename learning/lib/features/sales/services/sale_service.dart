@@ -9,7 +9,9 @@ import '../models/cart_item.dart';
 import '../models/sale_model.dart';
 
 class SaleService {
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  SaleService({FirebaseFirestore? db}) : _db = db ?? FirebaseFirestore.instance;
+
+  final FirebaseFirestore _db;
 
   /// Records every item in [items] as one checkout: each line becomes its
   /// own sale document (so per-product reporting is unchanged), all sharing

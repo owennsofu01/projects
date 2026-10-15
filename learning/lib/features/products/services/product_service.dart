@@ -5,7 +5,9 @@ import '../models/product_model.dart';
 import '../models/stock_batch_model.dart';
 
 class ProductService {
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  ProductService({FirebaseFirestore? db}) : _db = db ?? FirebaseFirestore.instance;
+
+  final FirebaseFirestore _db;
 
   CollectionReference<ProductModel> productsRef(String userId) {
     return _db
@@ -132,6 +134,9 @@ class ProductService {
           'purchasedAt': now,
         });
       } else {
+        // Work out every batch's new quantity before writing any of them:
+        // transactions require all reads to happen before the first write.
+        final newRemaining = <DocumentReference<Map<String, dynamic>>, int>{};
         var remaining = -delta;
         for (final batchRef in batchRefs) {
           if (remaining <= 0) break;
@@ -143,10 +148,12 @@ class ProductService {
           if (batchRemaining <= 0) continue;
 
           final take = batchRemaining < remaining ? batchRemaining : remaining;
-          transaction.update(batchRef, {
-            'remainingQuantity': batchRemaining - take,
-          });
+          newRemaining[batchRef] = batchRemaining - take;
           remaining -= take;
+        }
+
+        for (final entry in newRemaining.entries) {
+          transaction.update(entry.key, {'remainingQuantity': entry.value});
         }
       }
 

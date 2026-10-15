@@ -9,11 +9,12 @@ import '../services/excel_export_service.dart';
 import '../services/report_service.dart';
 
 class ReportController extends GetxController {
-  final ReportService _reportService = ReportService();
+  final ReportService _reportService;
   final ExcelExportService _exportService = ExcelExportService();
   final String userId;
 
-  ReportController(this.userId);
+  ReportController(this.userId, {ReportService? reportService})
+    : _reportService = reportService ?? ReportService();
 
   final Rx<ReportRange> range = ReportRange.thisMonth().obs;
   final RxBool isLoading = false.obs;

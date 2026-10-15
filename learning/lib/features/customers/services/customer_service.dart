@@ -7,7 +7,9 @@ import '../models/customer_model.dart';
 import '../models/ledger_entry.dart';
 
 class CustomerService {
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  CustomerService({FirebaseFirestore? db}) : _db = db ?? FirebaseFirestore.instance;
+
+  final FirebaseFirestore _db;
 
   CollectionReference<Map<String, dynamic>> customersRef(String userId) {
     return _db
