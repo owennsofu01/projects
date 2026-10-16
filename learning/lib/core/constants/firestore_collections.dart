@@ -7,6 +7,10 @@ class FirestoreCollections {
   static const expenses = 'expenses';
   static const customers = 'customers';
 
+  /// What the business does rather than stocks (haircuts, braids…). Sold
+  /// through the same checkout and `sales` collection as products.
+  static const services = 'services';
+
   /// Subcollection under each customer: one doc per credit sale or
   /// payment, so the running balance on the customer doc has an audit
   /// trail behind it.

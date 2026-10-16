@@ -16,6 +16,8 @@ import '../products/controllers/product_profitability_controller.dart';
 import '../receipts/controllers/business_profile_controller.dart';
 import '../reports/controllers/report_controller.dart';
 import '../sales/controllers/sale_controller.dart';
+import '../services/controllers/service_controller.dart';
+import '../services/controllers/service_performance_controller.dart';
 
 class HomeBinding extends Bindings {
   @override
@@ -31,6 +33,10 @@ class HomeBinding extends Bindings {
     Get.lazyPut<ProductController>(() => ProductController(userId));
     Get.lazyPut<ProductProfitabilityController>(
       () => ProductProfitabilityController(userId),
+    );
+    Get.lazyPut<ServiceController>(() => ServiceController(userId));
+    Get.lazyPut<ServicePerformanceController>(
+      () => ServicePerformanceController(userId),
     );
     Get.lazyPut<CustomerController>(() => CustomerController(userId));
     Get.lazyPut<BusinessProfileController>(

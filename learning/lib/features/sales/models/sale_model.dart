@@ -1,8 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+/// What a sale line sold. Sales from before services existed have no
+/// `kind` and are products.
+enum SaleKind { product, service }
+
 class SaleModel {
   final String id;
+
+  /// What was sold. Product sales set [productId]; service sales set
+  /// [serviceId] and leave [productId] empty.
+  final SaleKind kind;
   final String productId;
+  final String? serviceId;
+
+  /// The product's or service's name at the time of the sale.
   final String productName;
   final int quantity;
   final double sellingPrice;
@@ -28,9 +39,13 @@ class SaleModel {
   /// offline). Not stored — read from the snapshot's metadata.
   final bool isPendingSync;
 
+  bool get isService => kind == SaleKind.service;
+
   SaleModel({
     required this.id,
+    this.kind = SaleKind.product,
     required this.productId,
+    this.serviceId,
     required this.productName,
     required this.quantity,
     required this.sellingPrice,
@@ -49,7 +64,11 @@ class SaleModel {
     final data = doc.data()!;
     return SaleModel(
       id: doc.id,
-      productId: data['productId'],
+      kind: data['kind'] == SaleKind.service.name
+          ? SaleKind.service
+          : SaleKind.product,
+      productId: data['productId'] as String? ?? '',
+      serviceId: data['serviceId'] as String?,
       productName: data['productName'],
       quantity: data['quantity'],
       sellingPrice: (data['sellingPrice'] as num).toDouble(),
@@ -67,7 +86,11 @@ class SaleModel {
 
   Map<String, dynamic> toFirestore() {
     return {
-      'productId': productId,
+      if (kind == SaleKind.service) ...{
+        'kind': kind.name,
+        'serviceId': serviceId,
+      } else
+        'productId': productId,
       'productName': productName,
       'quantity': quantity,
       'sellingPrice': sellingPrice,

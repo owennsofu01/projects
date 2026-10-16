@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
+import '../../../core/widgets/month_period_bar.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../controllers/product_profitability_controller.dart';
 import '../models/product_profit_row.dart';
@@ -34,7 +35,10 @@ class ProductProfitabilityScreen extends StatelessWidget {
 
         return Column(
           children: [
-            _PeriodBar(controller: controller),
+            MonthPeriodBar(
+              selectedMonth: controller.selectedMonth,
+              onSelected: controller.selectMonth,
+            ),
             _FilterBar(controller: controller),
             _TotalsBar(controller: controller),
             Expanded(child: _buildTable()),
@@ -124,87 +128,6 @@ class ProductProfitabilityScreen extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-/// Switches the table between all-time and a single month's sales.
-class _PeriodBar extends StatelessWidget {
-  const _PeriodBar({required this.controller});
-
-  final ProductProfitabilityController controller;
-
-  /// The current month plus the 23 before it.
-  List<DateTime> get _recentMonths {
-    final now = DateTime.now();
-    return [for (var i = 0; i < 24; i++) DateTime(now.year, now.month - i)];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-      child: Obx(() {
-        final month = controller.selectedMonth.value;
-        return Row(
-          children: [
-            IconButton(
-              tooltip: 'Previous month',
-              icon: const Icon(Icons.chevron_left),
-              onPressed: controller.previousMonth,
-            ),
-            Expanded(
-              child: Center(
-                child: PopupMenuButton<DateTime?>(
-                  tooltip: 'Choose period',
-                  initialValue: month,
-                  onSelected: controller.selectMonth,
-                  itemBuilder: (_) => [
-                    const PopupMenuItem<DateTime?>(
-                      value: null,
-                      child: Text('All time'),
-                    ),
-                    const PopupMenuDivider(),
-                    for (final m in _recentMonths)
-                      PopupMenuItem<DateTime?>(
-                        value: m,
-                        child: Text(AppFormatter.month(m)),
-                      ),
-                  ],
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.calendar_month_outlined, size: 20),
-                        const SizedBox(width: 8),
-                        Text(
-                          month == null
-                              ? 'All time'
-                              : AppFormatter.month(month),
-                          style: Theme.of(context).textTheme.titleMedium
-                              ?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                        const Icon(Icons.arrow_drop_down),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            IconButton(
-              tooltip: 'Next month',
-              icon: const Icon(Icons.chevron_right),
-              onPressed: controller.canGoToNextMonth
-                  ? controller.nextMonth
-                  : null,
-            ),
-          ],
-        );
-      }),
     );
   }
 }

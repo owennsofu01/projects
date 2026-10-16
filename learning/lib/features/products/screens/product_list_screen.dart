@@ -11,8 +11,8 @@ import '../controllers/product_controller.dart';
 import '../models/product_model.dart';
 import '../widgets/purchase_history_sheet.dart';
 import 'add_product_screen.dart';
-import 'product_profitability_screen.dart';
 
+/// The Products tab of the catalog. Shown without its own app bar.
 class ProductListScreen extends StatelessWidget {
   ProductListScreen({super.key});
 
@@ -21,18 +21,9 @@ class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Products'),
-        actions: [
-          IconButton(
-            onPressed: () => Get.to(() => ProductProfitabilityScreen()),
-            icon: const Icon(Icons.table_chart_outlined),
-            tooltip: 'Product profitability',
-          ),
-        ],
-      ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'products-fab',
+        tooltip: 'Add product',
         onPressed: () => Get.to(() => AddProductScreen()),
         child: const Icon(Icons.add),
       ),

@@ -18,6 +18,9 @@ class SaleService {
   /// one `receiptId`. All-or-nothing — if any product is short on stock,
   /// nothing is recorded.
   ///
+  /// Service lines have no stock: they're costed at the service's
+  /// materials cost and sold at the cart line's price.
+  ///
   /// With a [customer], the sale is tagged with them, and [creditAmount]
   /// (the part of the total not paid now) is added to their balance with a
   /// matching ledger entry, in the same atomic write as the sale itself.
@@ -51,14 +54,16 @@ class SaleService {
     final batchRefsByProduct =
         <String, List<DocumentReference<Map<String, dynamic>>>>{};
     for (final item in items) {
+      final product = item.product;
+      if (product == null) continue;
       final batchSnapshot = await productsRef
-          .doc(item.product.id)
+          .doc(product.id)
           .collection(FirestoreCollections.batches)
           .orderBy('purchasedAt')
           .get(
             GetOptions(source: online ? Source.serverAndCache : Source.cache),
           );
-      batchRefsByProduct[item.product.id] = batchSnapshot.docs
+      batchRefsByProduct[product.id] = batchSnapshot.docs
           .where((doc) => (doc.data()['remainingQuantity'] as int) > 0)
           .map((doc) => doc.reference)
           .toList();
@@ -112,13 +117,19 @@ class SaleService {
     final lines = <_CostedLine>[];
 
     for (final item in items) {
-      final productRef = productsRef.doc(item.product.id);
+      final product = item.product;
+      if (product == null) {
+        lines.add(_CostedLine(item: item, costAmount: item.serviceCost));
+        continue;
+      }
+
+      final productRef = productsRef.doc(product.id);
       final productSnap = await read(productRef);
       final int currentStock = productSnap['stock'];
 
       if (currentStock < item.quantity) {
         throw Exception(
-          'Insufficient stock for ${item.product.name} '
+          'Insufficient stock for ${product.name} '
           '(only $currentStock left)',
         );
       }
@@ -131,7 +142,7 @@ class SaleService {
       int remaining = item.quantity;
       final batchTakes = <DocumentReference<Map<String, dynamic>>, int>{};
 
-      for (final batchRef in batchRefsByProduct[item.product.id]!) {
+      for (final batchRef in batchRefsByProduct[product.id]!) {
         if (remaining <= 0) break;
 
         final batchSnap = await read(batchRef);
@@ -175,13 +186,17 @@ class SaleService {
 
     final now = Timestamp.now();
     for (final line in lines) {
-      final product = line.item.product;
-      final totalAmount = line.item.total;
+      final item = line.item;
+      final product = item.product;
+      final totalAmount = item.total;
 
-      write.update(line.productRef, {
-        'stock': FieldValue.increment(-line.item.quantity),
-        'updatedAt': now,
-      });
+      final productRef = line.productRef;
+      if (productRef != null) {
+        write.update(productRef, {
+          'stock': FieldValue.increment(-item.quantity),
+          'updatedAt': now,
+        });
+      }
 
       for (final entry in line.batchTakes.entries) {
         write.update(entry.key, {
@@ -190,10 +205,15 @@ class SaleService {
       }
 
       write.set(salesRef.doc(), {
-        'productId': product.id,
-        'productName': product.name,
-        'quantity': line.item.quantity,
-        'sellingPrice': product.sellingPrice,
+        if (product != null)
+          'productId': product.id
+        else ...{
+          'kind': SaleKind.service.name,
+          'serviceId': item.service!.id,
+        },
+        'productName': item.name,
+        'quantity': item.quantity,
+        'sellingPrice': item.unitPrice,
         'totalAmount': totalAmount,
         'costAmount': line.costAmount,
         'profit': totalAmount - line.costAmount,
@@ -217,9 +237,7 @@ class SaleService {
         'amount': creditAmount,
         'date': now,
         'receiptId': receiptId,
-        'note': items
-            .map((i) => '${i.quantity} × ${i.product.name}')
-            .join(', '),
+        'note': items.map((i) => '${i.quantity} × ${i.name}').join(', '),
       });
     }
   }
@@ -277,13 +295,15 @@ class _Writer {
 class _CostedLine {
   const _CostedLine({
     required this.item,
-    required this.productRef,
+    this.productRef,
     required this.costAmount,
-    required this.batchTakes,
+    this.batchTakes = const {},
   });
 
   final CartItem item;
-  final DocumentReference<Map<String, dynamic>> productRef;
+
+  /// Null for a service line, which has no stock to change.
+  final DocumentReference<Map<String, dynamic>>? productRef;
   final double costAmount;
 
   /// Units taken from each purchase batch.

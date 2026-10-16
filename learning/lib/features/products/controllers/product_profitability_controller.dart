@@ -57,16 +57,6 @@ class ProductProfitabilityController extends GetxController {
       searchQuery.value.trim().isNotEmpty ||
       profitFilter.value != ProfitFilter.all;
 
-  DateTime get _currentMonth {
-    final now = DateTime.now();
-    return DateTime(now.year, now.month);
-  }
-
-  bool get canGoToNextMonth {
-    final month = selectedMonth.value;
-    return month != null && month.isBefore(_currentMonth);
-  }
-
   @override
   void onInit() {
     super.onInit();
@@ -120,17 +110,6 @@ class ProductProfitabilityController extends GetxController {
           isPeriodLoading.value = false;
           _applyFilters();
         });
-  }
-
-  void previousMonth() {
-    final month = selectedMonth.value ?? _currentMonth;
-    selectMonth(DateTime(month.year, month.month - 1));
-  }
-
-  void nextMonth() {
-    final month = selectedMonth.value;
-    if (month == null || !canGoToNextMonth) return;
-    selectMonth(DateTime(month.year, month.month + 1));
   }
 
   void clearFilters() {

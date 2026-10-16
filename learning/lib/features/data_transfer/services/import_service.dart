@@ -25,6 +25,7 @@ class ImportService {
   ) async {
     final userRef = _userRef(userId);
     final productsRef = userRef.collection(FirestoreCollections.products);
+    final servicesRef = userRef.collection(FirestoreCollections.services);
     final expensesRef = userRef.collection(FirestoreCollections.expenses);
 
     // Products match by name, ignoring case.
@@ -37,6 +38,18 @@ class ImportService {
     }
     final newProducts = preview.products
         .where((p) => !existingNames.contains(p.name.toLowerCase()))
+        .toList();
+
+    // Services also match by name, ignoring case.
+    final existingServices = <String>{};
+    if (preview.services.isNotEmpty) {
+      final snapshot = await servicesRef.get();
+      for (final doc in snapshot.docs) {
+        existingServices.add((doc['name'] as String).trim().toLowerCase());
+      }
+    }
+    final newServices = preview.services
+        .where((s) => !existingServices.contains(s.name.toLowerCase()))
         .toList();
 
     final existingExpenses = <String>{};
@@ -84,6 +97,16 @@ class ImportService {
       }
     }
 
+    for (final service in newServices) {
+      writer.set(servicesRef.doc(), {
+        'name': service.name,
+        'price': service.price,
+        'materialsCost': service.materialsCost,
+        'createdAt': now,
+        'updatedAt': now,
+      });
+    }
+
     for (final expense in newExpenses) {
       writer.set(expensesRef.doc(), {
         'title': expense.title,
@@ -97,6 +120,8 @@ class ImportService {
       result: ImportResult(
         productsAdded: newProducts.length,
         productsSkipped: preview.products.length - newProducts.length,
+        servicesAdded: newServices.length,
+        servicesSkipped: preview.services.length - newServices.length,
         expensesAdded: newExpenses.length,
         expensesSkipped: preview.expenses.length - newExpenses.length,
       ),

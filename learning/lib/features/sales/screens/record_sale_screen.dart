@@ -14,11 +14,13 @@ import '../../products/controllers/product_controller.dart';
 import '../../products/models/product_model.dart';
 import '../../receipts/models/receipt.dart';
 import '../../receipts/screens/receipt_screen.dart';
+import '../../services/controllers/service_controller.dart';
+import '../../services/models/service_model.dart';
 import '../controllers/sale_controller.dart';
 import '../models/cart_item.dart';
 
-/// Checkout screen: build a cart of one or more products, then record them
-/// all as one sale (one receipt).
+/// Checkout screen: build a cart of products and/or services, then record
+/// them all as one sale (one receipt).
 class RecordSaleScreen extends StatefulWidget {
   const RecordSaleScreen({super.key});
 
@@ -28,9 +30,10 @@ class RecordSaleScreen extends StatefulWidget {
 
 class _RecordSaleScreenState extends State<RecordSaleScreen> {
   final ProductController productController = Get.find<ProductController>();
+  final ServiceController serviceController = Get.find<ServiceController>();
   final SaleController saleController = Get.find<SaleController>();
 
-  /// Keyed by product id so adding the same product twice merges lines.
+  /// Keyed by [CartItem.key] so adding the same item twice merges lines.
   final Map<String, CartItem> _cart = {};
 
   /// Who the sale is for; null for a walk-in (cash) sale.
@@ -85,16 +88,37 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
   /// null on success) so callers can report it their own way.
   String? _tryAdd(ProductModel product) {
     final live = _live(product);
-    final inCart = _cart[live.id]?.quantity ?? 0;
+    final line = CartItem(product: live, quantity: 1);
+    final inCart = _cart[line.key]?.quantity ?? 0;
     if (inCart >= live.stock) {
       return live.stock == 0
           ? '${live.name} is out of stock'
           : 'Only ${live.stock} ${live.name} in stock';
     }
     setState(() {
-      _cart[live.id] = CartItem(product: live, quantity: inCart + 1);
+      _cart[line.key] = line.copyWith(quantity: inCart + 1);
     });
     return null;
+  }
+
+  /// Adds one more job of [service], keeping any price already set for it
+  /// in this sale.
+  void _addService(ServiceModel service) {
+    final line = CartItem.service(service: service, quantity: 1);
+    final existing = _cart[line.key];
+    setState(() {
+      _cart[line.key] =
+          existing?.copyWith(quantity: existing.quantity + 1) ?? line;
+    });
+  }
+
+  void _increment(CartItem item) {
+    final service = item.service;
+    if (service != null) {
+      _addService(service);
+    } else {
+      _add(item.product!);
+    }
   }
 
   /// Continuous scanning: each code read adds one of its product.
@@ -109,27 +133,31 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
           }
           final error = _tryAdd(product);
           if (error != null) return ScanFeedback.error(error);
+          final inSale = _cart[CartItem(product: product, quantity: 1).key]!;
           return ScanFeedback.success(
-            'Added ${product.name} · ${_cart[product.id]!.quantity} in sale',
+            'Added ${product.name} · ${inSale.quantity} in sale',
           );
         },
       ),
     );
   }
 
-  void _setQuantity(String productId, int quantity) {
-    final item = _cart[productId];
+  void _setQuantity(String key, int quantity, {double? unitPrice}) {
+    final item = _cart[key];
     if (item == null) return;
-    final live = _live(item.product);
+    final product = item.product;
 
     setState(() {
       if (quantity <= 0) {
-        _cart.remove(productId);
+        _cart.remove(key);
+      } else if (product == null) {
+        _cart[key] = item.copyWith(quantity: quantity, unitPrice: unitPrice);
       } else {
+        final live = _live(product);
         if (quantity > live.stock) {
           showErrorSnackbar('Only ${live.stock} ${live.name} in stock');
         }
-        _cart[productId] = item.copyWith(
+        _cart[key] = item.copyWith(
           product: live,
           quantity: quantity.clamp(1, live.stock),
         );
@@ -139,7 +167,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
 
   Future<void> _checkout() async {
     if (_cart.isEmpty) {
-      showErrorSnackbar('Add at least one product');
+      showErrorSnackbar('Add at least one product or service');
       return;
     }
 
@@ -150,7 +178,10 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
 
     final items = [
       for (final item in _cart.values)
-        item.copyWith(product: _live(item.product)),
+        if (item.product case final product?)
+          item.copyWith(product: _live(product))
+        else
+          item,
     ];
     final customer = _customer;
     final credit = _creditAmount;
@@ -191,11 +222,13 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
     final outOfStock = <String>[];
     final low = <String>[];
     for (final item in items) {
-      final remaining = item.product.stock - item.quantity;
+      final product = item.product;
+      if (product == null) continue;
+      final remaining = product.stock - item.quantity;
       if (remaining <= 0) {
-        outOfStock.add(item.product.name);
-      } else if (remaining <= item.product.reorderLevel) {
-        low.add('${item.product.name} ($remaining left)');
+        outOfStock.add(product.name);
+      } else if (remaining <= product.reorderLevel) {
+        low.add('${product.name} ($remaining left)');
       }
     }
 
@@ -227,16 +260,103 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
       items.fold(0, (sum, item) => sum + item.total);
 
   Future<void> _openPicker() async {
-    final product = await showModalBottomSheet<ProductModel>(
+    final picked = await showModalBottomSheet<Object>(
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
-      builder: (_) => _ProductPicker(
+      builder: (_) => _ItemPicker(
         products: productController.products,
+        services: serviceController.services,
         inCart: {for (final e in _cart.entries) e.key: e.value.quantity},
       ),
     );
-    if (product != null) _add(product);
+    switch (picked) {
+      case ProductModel product:
+        _add(product);
+      case ServiceModel service:
+        _addService(service);
+    }
+  }
+
+  Future<void> _editLine(CartItem item) =>
+      item.isService ? _editServiceLine(item) : _editQuantity(item);
+
+  /// Price and number of jobs for a service line — the price can differ
+  /// from the service's usual price (e.g. longer braids).
+  Future<void> _editServiceLine(CartItem item) async {
+    final priceCtrl = TextEditingController(
+      text: item.unitPrice.toStringAsFixed(2),
+    );
+    final qtyCtrl = TextEditingController(text: item.quantity.toString());
+    final formKey = GlobalKey<FormState>();
+
+    final result = await showDialog<(double, int)>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(item.name),
+        content: Form(
+          key: formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                controller: priceCtrl,
+                autofocus: true,
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9.]')),
+                ],
+                decoration: InputDecoration(
+                  labelText: 'Price per job',
+                  helperText:
+                      'Usual price ${item.service!.price.toStringAsFixed(2)}',
+                ),
+                validator: (value) {
+                  final price = double.tryParse(value?.trim() ?? '');
+                  return price == null || price <= 0
+                      ? 'Must be greater than 0'
+                      : null;
+                },
+              ),
+              const SizedBox(height: 12),
+              TextFormField(
+                controller: qtyCtrl,
+                keyboardType: TextInputType.number,
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                decoration: const InputDecoration(labelText: 'Jobs'),
+                validator: (value) {
+                  final qty = int.tryParse(value?.trim() ?? '');
+                  return qty == null || qty <= 0 ? 'Must be at least 1' : null;
+                },
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () {
+              if (!formKey.currentState!.validate()) return;
+              Navigator.of(context).pop((
+                double.parse(priceCtrl.text.trim()),
+                int.parse(qtyCtrl.text.trim()),
+              ));
+            },
+            child: const Text('Set'),
+          ),
+        ],
+      ),
+    );
+    priceCtrl.dispose();
+    qtyCtrl.dispose();
+    if (result == null) return;
+    final (price, quantity) = result;
+    _setQuantity(item.key, quantity, unitPrice: price);
   }
 
   Future<void> _editQuantity(CartItem item) async {
@@ -244,7 +364,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
     final result = await showDialog<int>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(item.product.name),
+        title: Text(item.name),
         content: TextField(
           controller: ctrl,
           autofocus: true,
@@ -252,7 +372,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           decoration: InputDecoration(
             labelText: 'Quantity',
-            helperText: '${_live(item.product).stock} in stock',
+            helperText: '${_live(item.product!).stock} in stock',
           ),
           onSubmitted: (value) =>
               Navigator.of(context).pop(int.tryParse(value)),
@@ -270,7 +390,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
       ),
     );
     ctrl.dispose();
-    if (result != null) _setQuantity(item.product.id, result);
+    if (result != null) _setQuantity(item.key, result);
   }
 
   @override
@@ -295,7 +415,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
                 children: [
                   const EmptyState(
                     icon: Icons.shopping_cart_outlined,
-                    message: 'Add products to start a sale',
+                    message: 'Add products or services to start a sale',
                   ),
                   const SizedBox(height: 16),
                   Wrap(
@@ -306,7 +426,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
                       FilledButton.icon(
                         onPressed: _openPicker,
                         icon: const Icon(Icons.add),
-                        label: const Text('Add product'),
+                        label: const Text('Add item'),
                       ),
                       OutlinedButton.icon(
                         onPressed: _scan,
@@ -327,11 +447,11 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
                     for (final item in items) ...[
                       _CartLine(
                         item: item,
-                        onIncrement: () => _add(item.product),
+                        onIncrement: () => _increment(item),
                         onDecrement: () =>
-                            _setQuantity(item.product.id, item.quantity - 1),
-                        onRemove: () => _setQuantity(item.product.id, 0),
-                        onEditQuantity: () => _editQuantity(item),
+                            _setQuantity(item.key, item.quantity - 1),
+                        onRemove: () => _setQuantity(item.key, 0),
+                        onEdit: () => _editLine(item),
                       ),
                       const SizedBox(height: 8),
                     ],
@@ -339,7 +459,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
                     OutlinedButton.icon(
                       onPressed: _openPicker,
                       icon: const Icon(Icons.add),
-                      label: const Text('Add another product'),
+                      label: const Text('Add another item'),
                     ),
                     const SizedBox(height: 24),
                     _PaymentSection(
@@ -377,14 +497,16 @@ class _CartLine extends StatelessWidget {
     required this.onIncrement,
     required this.onDecrement,
     required this.onRemove,
-    required this.onEditQuantity,
+    required this.onEdit,
   });
 
   final CartItem item;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
   final VoidCallback onRemove;
-  final VoidCallback onEditQuantity;
+
+  /// Quantity for a product; price and jobs for a service.
+  final VoidCallback onEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -392,7 +514,7 @@ class _CartLine extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
 
     return Dismissible(
-      key: ValueKey(item.product.id),
+      key: ValueKey(item.key),
       direction: DismissDirection.endToStart,
       onDismissed: (_) => onRemove(),
       background: Container(
@@ -416,18 +538,41 @@ class _CartLine extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        item.product.name,
+                        item.name,
                         style: textTheme.titleSmall?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       const SizedBox(height: 2),
-                      Text(
-                        '${AppFormatter.currency(item.product.sellingPrice)} each',
-                        style: textTheme.bodySmall?.copyWith(
-                          color: colorScheme.onSurfaceVariant,
+                      if (item.isService)
+                        InkWell(
+                          onTap: onEdit,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                '${AppFormatter.currency(item.unitPrice)} per job',
+                                style: textTheme.bodySmall?.copyWith(
+                                  color: colorScheme.primary,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(width: 4),
+                              Icon(
+                                Icons.edit_outlined,
+                                size: 14,
+                                color: colorScheme.primary,
+                              ),
+                            ],
+                          ),
+                        )
+                      else
+                        Text(
+                          '${AppFormatter.currency(item.unitPrice)} each',
+                          style: textTheme.bodySmall?.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                          ),
                         ),
-                      ),
                       const SizedBox(height: 4),
                       Text(
                         AppFormatter.currency(item.total),
@@ -449,7 +594,7 @@ class _CartLine extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: onEditQuantity,
+                onTap: onEdit,
                 borderRadius: BorderRadius.circular(8),
                 child: Container(
                   constraints: const BoxConstraints(minWidth: 44),
@@ -518,7 +663,7 @@ class _CheckoutBar extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '$lineCount product${lineCount == 1 ? '' : 's'} · '
+                    '$lineCount item${lineCount == 1 ? '' : 's'} · '
                     '$unitCount unit${unitCount == 1 ? '' : 's'}',
                     style: textTheme.bodyMedium?.copyWith(
                       color: colorScheme.onSurfaceVariant,
@@ -551,22 +696,93 @@ class _CheckoutBar extends StatelessWidget {
   }
 }
 
-/// Searchable product list; pops with the tapped product.
-class _ProductPicker extends StatefulWidget {
-  const _ProductPicker({required this.products, required this.inCart});
+/// Searchable list of products and services; pops with the tapped
+/// [ProductModel] or [ServiceModel]. Shows a Products/Services switch
+/// only when the business has both.
+class _ItemPicker extends StatefulWidget {
+  const _ItemPicker({
+    required this.products,
+    required this.services,
+    required this.inCart,
+  });
 
   final List<ProductModel> products;
+  final List<ServiceModel> services;
+
+  /// Quantity in the cart per [CartItem.key].
   final Map<String, int> inCart;
 
   @override
-  State<_ProductPicker> createState() => _ProductPickerState();
+  State<_ItemPicker> createState() => _ItemPickerState();
 }
 
-class _ProductPickerState extends State<_ProductPicker> {
+class _ItemPickerState extends State<_ItemPicker> {
   String _query = '';
+
+  /// Start on services for a business that only has services.
+  late bool _showServices =
+      widget.products.isEmpty && widget.services.isNotEmpty;
 
   @override
   Widget build(BuildContext context) {
+    final hasBoth = widget.products.isNotEmpty && widget.services.isNotEmpty;
+    final total = widget.products.length + widget.services.length;
+
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height * 0.75,
+      child: Column(
+        children: [
+          if (hasBoth)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+              child: SegmentedButton<bool>(
+                segments: const [
+                  ButtonSegment(
+                    value: false,
+                    label: Text('Products'),
+                    icon: Icon(Icons.inventory_2_outlined),
+                  ),
+                  ButtonSegment(
+                    value: true,
+                    label: Text('Services'),
+                    icon: Icon(Icons.content_cut),
+                  ),
+                ],
+                selected: {_showServices},
+                onSelectionChanged: (selection) =>
+                    setState(() => _showServices = selection.first),
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+            child: TextField(
+              autofocus: total > 8,
+              onChanged: (value) => setState(() => _query = value),
+              decoration: InputDecoration(
+                hintText: _showServices ? 'Search services' : 'Search products',
+                prefixIcon: const Icon(Icons.search),
+                isDense: true,
+                border: const OutlineInputBorder(),
+              ),
+            ),
+          ),
+          Expanded(
+            child: _showServices
+                ? _serviceList(context)
+                : _productList(context),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _empty(String message) =>
+      EmptyState(icon: Icons.search_off, message: message);
+
+  EdgeInsets _listPadding(BuildContext context) =>
+      EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom + 16);
+
+  Widget _productList(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final query = _query.trim().toLowerCase();
     final products =
@@ -581,67 +797,78 @@ class _ProductPickerState extends State<_ProductPicker> {
             (a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()),
           );
 
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.75,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
-            child: TextField(
-              autofocus: widget.products.length > 8,
-              onChanged: (value) => setState(() => _query = value),
-              decoration: const InputDecoration(
-                hintText: 'Search products',
-                prefixIcon: Icon(Icons.search),
-                isDense: true,
-                border: OutlineInputBorder(),
-              ),
+    if (widget.products.isEmpty) return _empty('No products added yet');
+    if (products.isEmpty) return _empty('No matching products');
+
+    return ListView.builder(
+      padding: _listPadding(context),
+      itemCount: products.length,
+      itemBuilder: (context, index) {
+        final product = products[index];
+        final inCart =
+            widget.inCart[CartItem(product: product, quantity: 1).key] ?? 0;
+        final available = product.stock - inCart;
+
+        return ListTile(
+          enabled: available > 0,
+          onTap: () => Navigator.of(context).pop(product),
+          title: Text(product.name),
+          subtitle: Text(
+            product.stock <= 0
+                ? 'Out of stock'
+                : '${product.stock} in stock'
+                      '${inCart > 0 ? ' · $inCart in cart' : ''}',
+            style: TextStyle(
+              color: product.needsAttention ? colorScheme.error : null,
             ),
           ),
-          Expanded(
-            child: products.isEmpty
-                ? const EmptyState(
-                    icon: Icons.search_off,
-                    message: 'No matching products',
-                  )
-                : ListView.builder(
-                    padding: EdgeInsets.only(
-                      bottom: MediaQuery.viewInsetsOf(context).bottom + 16,
-                    ),
-                    itemCount: products.length,
-                    itemBuilder: (context, index) {
-                      final product = products[index];
-                      final inCart = widget.inCart[product.id] ?? 0;
-                      final available = product.stock - inCart;
-                      final enabled = available > 0;
-
-                      return ListTile(
-                        enabled: enabled,
-                        onTap: () => Navigator.of(context).pop(product),
-                        title: Text(product.name),
-                        subtitle: Text(
-                          product.stock <= 0
-                              ? 'Out of stock'
-                              : '${product.stock} in stock'
-                                    '${inCart > 0 ? ' · $inCart in cart' : ''}',
-                          style: TextStyle(
-                            color: product.needsAttention
-                                ? colorScheme.error
-                                : null,
-                          ),
-                        ),
-                        trailing: Obx(
-                          () => Text(
-                            AppFormatter.currency(product.sellingPrice),
-                            style: const TextStyle(fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+          trailing: Obx(
+            () => Text(
+              AppFormatter.currency(product.sellingPrice),
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
           ),
-        ],
-      ),
+        );
+      },
+    );
+  }
+
+  Widget _serviceList(BuildContext context) {
+    final query = _query.trim().toLowerCase();
+    final services = widget.services
+        .where((s) => s.name.toLowerCase().contains(query))
+        .toList();
+
+    if (widget.services.isEmpty) {
+      return _empty('No services yet. Add them in Catalog → Services.');
+    }
+    if (services.isEmpty) return _empty('No matching services');
+
+    return ListView.builder(
+      padding: _listPadding(context),
+      itemCount: services.length,
+      itemBuilder: (context, index) {
+        final service = services[index];
+        final inCart =
+            widget.inCart[CartItem.service(
+              service: service,
+              quantity: 1,
+            ).key] ??
+            0;
+
+        return ListTile(
+          onTap: () => Navigator.of(context).pop(service),
+          leading: const Icon(Icons.content_cut),
+          title: Text(service.name),
+          subtitle: inCart > 0 ? Text('$inCart in sale') : null,
+          trailing: Obx(
+            () => Text(
+              AppFormatter.currency(service.price),
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ),
+        );
+      },
     );
   }
 }

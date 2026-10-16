@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../ads/ads_manager.dart';
 import '../../../core/sync/sync_status_bar.dart';
-
+import '../../catalog/screens/catalog_screen.dart';
 import '../../dashboard/screens/dashboard_screen.dart';
 import '../../expenses/screens/expense_list_screen.dart';
-import '../../products/screens/product_list_screen.dart';
 import '../../reports/screens/report_screen.dart';
 import '../../sales/screens/sale_list_screen.dart';
 
@@ -21,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   late final List<Widget> _tabs = [
     DashboardScreen(),
-    ProductListScreen(),
+    const CatalogScreen(),
     SaleListScreen(),
     ExpenseListScreen(),
     ReportScreen(),
@@ -48,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
               NavigationDestination(
                 icon: Icon(Icons.inventory_2_outlined),
                 selectedIcon: Icon(Icons.inventory_2),
-                label: 'Products',
+                label: 'Catalog',
               ),
               NavigationDestination(
                 icon: Icon(Icons.point_of_sale_outlined),

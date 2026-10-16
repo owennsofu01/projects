@@ -3,12 +3,13 @@ import 'package:excel/excel.dart';
 import '../../products/models/product_model.dart';
 import '../models/import_rows.dart';
 
-/// The Products and Expenses sheet layout shared by the import template,
-/// imports and backups, so a backup can be imported again as-is.
+/// The Products, Services and Expenses sheet layout shared by the import
+/// template, imports and backups, so a backup can be imported again as-is.
 class SpreadsheetFormat {
   SpreadsheetFormat._();
 
   static const productsSheet = 'Products';
+  static const servicesSheet = 'Services';
   static const expensesSheet = 'Expenses';
 
   static const productColumns = [
@@ -20,9 +21,11 @@ class SpreadsheetFormat {
     'Barcode',
   ];
 
+  static const serviceColumns = ['Name', 'Price', 'Materials cost'];
+
   static const expenseColumns = ['Date', 'Title', 'Category', 'Amount'];
 
-  /// Reads the Products and Expenses sheets of an .xlsx file. Sheet and
+  /// Reads the Products, Services and Expenses sheets of an .xlsx file. Sheet and
   /// column names are matched ignoring case, and columns may be in any
   /// order. Invalid rows are skipped and described in
   /// [ImportPreview.problems].
@@ -39,11 +42,12 @@ class SpreadsheetFormat {
 
     final problems = <String>[];
     final products = _sheet(workbook, productsSheet);
+    final services = _sheet(workbook, servicesSheet);
     final expenses = _sheet(workbook, expensesSheet);
-    if (products == null && expenses == null) {
+    if (products == null && services == null && expenses == null) {
       throw const FormatException(
-        'No "Products" or "Expenses" sheet found. Use the template to see '
-        'the layout.',
+        'No "Products", "Services" or "Expenses" sheet found. Use the '
+        'template to see the layout.',
       );
     }
 
@@ -51,6 +55,9 @@ class SpreadsheetFormat {
       products: products == null
           ? const []
           : _parseProducts(products, problems),
+      services: services == null
+          ? const []
+          : _parseServices(services, problems),
       expenses: expenses == null
           ? const []
           : _parseExpenses(expenses, problems),
@@ -117,6 +124,45 @@ class SpreadsheetFormat {
       );
     });
     return products;
+  }
+
+  static List<ImportedService> _parseServices(
+    Sheet sheet,
+    List<String> problems,
+  ) {
+    final rows = _Rows(sheet, servicesSheet, problems);
+    final name = rows.column('Name', required: true);
+    final price = rows.column('Price', required: true);
+    final materials = rows.column('Materials cost');
+    if (!rows.hasRequiredColumns) return const [];
+
+    final services = <ImportedService>[];
+    final seenNames = <String>{};
+    rows.forEachRow((row, problem) {
+      final serviceName = row.text(name);
+      if (serviceName.isEmpty) return problem('Name is missing');
+      if (!seenNames.add(serviceName.toLowerCase())) {
+        return problem('"$serviceName" appears more than once');
+      }
+
+      final servicePrice = row.number(price);
+      if (servicePrice == null || servicePrice <= 0) {
+        return problem('Price must be more than 0');
+      }
+      final materialsCost = row.number(materials) ?? 0;
+      if (materialsCost < 0) {
+        return problem('Materials cost cannot be negative');
+      }
+
+      services.add(
+        ImportedService(
+          name: serviceName,
+          price: servicePrice,
+          materialsCost: materialsCost,
+        ),
+      );
+    });
+    return services;
   }
 
   static List<ImportedExpense> _parseExpenses(

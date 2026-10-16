@@ -46,7 +46,9 @@ class InsightService {
   ) {
     final byProduct = <String, ProductSalesAggregate>{};
     for (final doc in snapshot.docs) {
-      final productId = doc['productId'] as String;
+      // Service sales have no product.
+      final productId = doc.data()['productId'] as String?;
+      if (productId == null) continue;
       final existing = byProduct[productId] ?? ProductSalesAggregate.zero;
       byProduct[productId] = existing.add(
         quantity: (doc['quantity'] as num).toInt(),

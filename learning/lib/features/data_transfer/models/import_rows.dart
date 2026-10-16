@@ -17,6 +17,19 @@ class ImportedProduct {
   });
 }
 
+/// A service row read from an import spreadsheet, already validated.
+class ImportedService {
+  final String name;
+  final double price;
+  final double materialsCost;
+
+  const ImportedService({
+    required this.name,
+    required this.price,
+    required this.materialsCost,
+  });
+}
+
 /// An expense row read from an import spreadsheet, already validated.
 class ImportedExpense {
   final DateTime date;
@@ -41,6 +54,7 @@ class ImportedExpense {
 /// Everything read from a spreadsheet, before anything is saved.
 class ImportPreview {
   final List<ImportedProduct> products;
+  final List<ImportedService> services;
   final List<ImportedExpense> expenses;
 
   /// Rows that couldn't be read, e.g. "Products row 4: Selling price is
@@ -49,23 +63,28 @@ class ImportPreview {
 
   const ImportPreview({
     required this.products,
+    this.services = const [],
     required this.expenses,
     required this.problems,
   });
 
-  bool get isEmpty => products.isEmpty && expenses.isEmpty;
+  bool get isEmpty => products.isEmpty && services.isEmpty && expenses.isEmpty;
 }
 
 /// What an import actually saved.
 class ImportResult {
   final int productsAdded;
   final int productsSkipped;
+  final int servicesAdded;
+  final int servicesSkipped;
   final int expensesAdded;
   final int expensesSkipped;
 
   const ImportResult({
     required this.productsAdded,
     required this.productsSkipped,
+    this.servicesAdded = 0,
+    this.servicesSkipped = 0,
     required this.expensesAdded,
     required this.expensesSkipped,
   });

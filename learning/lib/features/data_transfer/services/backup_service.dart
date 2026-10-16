@@ -21,8 +21,8 @@ class BackupService {
 
   static final _headerStyle = CellStyle(bold: true);
 
-  /// An .xlsx with one sheet per kind of record. Its Products and
-  /// Expenses sheets use the import layout.
+  /// An .xlsx with one sheet per kind of record. Its Products, Services
+  /// and Expenses sheets use the import layout.
   Future<List<int>> buildBackup(String userId) async {
     final userRef = _db.collection(FirestoreCollections.users).doc(userId);
     Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> all(
@@ -31,6 +31,9 @@ class BackupService {
 
     final products = await all(
       userRef.collection(FirestoreCollections.products),
+    );
+    final services = await all(
+      userRef.collection(FirestoreCollections.services),
     );
     final customers = await all(
       userRef.collection(FirestoreCollections.customers),
@@ -42,6 +45,7 @@ class BackupService {
     final budgets = await all(userRef.collection(FirestoreCollections.budgets));
 
     products.sort((a, b) => _text(a['name']).compareTo(_text(b['name'])));
+    services.sort((a, b) => _text(a['name']).compareTo(_text(b['name'])));
     customers.sort((a, b) => _text(a['name']).compareTo(_text(b['name'])));
     sales.sort((a, b) => _date(a['date']).compareTo(_date(b['date'])));
     expenses.sort((a, b) => _date(a['date']).compareTo(_date(b['date'])));
@@ -57,7 +61,8 @@ class BackupService {
     about.appendRow([
       TextCellValue('Re-importing'),
       TextCellValue(
-        'Products and Expenses can be imported again from Settings. '
+        'Products, Services and Expenses can be imported again from '
+        'Settings. '
         'Anything already in the app is skipped.',
       ),
     ]);
@@ -80,6 +85,19 @@ class BackupService {
       ]);
     }
 
+    final serviceSheet = _sheet(
+      workbook,
+      SpreadsheetFormat.servicesSheet,
+      SpreadsheetFormat.serviceColumns,
+    );
+    for (final s in services) {
+      serviceSheet.appendRow([
+        TextCellValue(_text(s['name'])),
+        DoubleCellValue(_number(s['price'])),
+        DoubleCellValue(_number(s.data()['materialsCost'])),
+      ]);
+    }
+
     final expenseSheet = _sheet(
       workbook,
       SpreadsheetFormat.expensesSheet,
@@ -97,7 +115,8 @@ class BackupService {
     final saleSheet = _sheet(workbook, 'Sales', [
       'Date',
       'Receipt',
-      'Product',
+      'Type',
+      'Item',
       'Quantity',
       'Unit price',
       'Total',
@@ -111,6 +130,7 @@ class BackupService {
       saleSheet.appendRow([
         TextCellValue(_dateTimeText(_date(s['date']))),
         TextCellValue(_text(data['receiptId'] ?? s.id)),
+        TextCellValue(data['kind'] == 'service' ? 'Service' : 'Product'),
         TextCellValue(_text(s['productName'])),
         IntCellValue(_number(s['quantity']).toInt()),
         DoubleCellValue(_number(s['sellingPrice'])),
@@ -212,6 +232,15 @@ class BackupService {
     ]);
     _sheet(
       workbook,
+      SpreadsheetFormat.servicesSheet,
+      SpreadsheetFormat.serviceColumns,
+    ).appendRow([
+      TextCellValue('Example: Box braids'),
+      DoubleCellValue(350),
+      DoubleCellValue(120),
+    ]);
+    _sheet(
+      workbook,
       SpreadsheetFormat.expensesSheet,
       SpreadsheetFormat.expenseColumns,
     ).appendRow([
@@ -223,12 +252,17 @@ class BackupService {
 
     final help = _sheet(workbook, 'How to use', ['Column', 'What to enter']);
     for (final (column, text) in const [
-      ('Name', 'Product name. Products already in the app are skipped.'),
+      ('Name', 'Product or service name. Ones already in the app are skipped.'),
       ('Cost price', 'What you pay for one unit.'),
       ('Selling price', 'What you charge for one unit.'),
       ('Stock', 'Units on hand now (optional, default 0).'),
       ('Reorder level', 'Warn when stock falls to this (optional, default 5).'),
       ('Barcode', 'Optional.'),
+      ('Price', 'Services sheet: usual price per job.'),
+      (
+        'Materials cost',
+        'Services sheet: materials used per job (optional, default 0).',
+      ),
       ('Date', 'Expense date, e.g. 2026-10-15 or 15/10/2026.'),
       ('Category', 'Optional; blank becomes "Other".'),
       ('', 'Delete the example rows before importing.'),

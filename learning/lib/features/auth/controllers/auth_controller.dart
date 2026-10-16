@@ -266,10 +266,24 @@ class AuthController extends GetxController {
 
   Future<void> _deleteUserData(String uid) async {
     final userRef = _db.collection(FirestoreCollections.users).doc(uid);
+    // Deleting a doc leaves its subcollections behind, so empty those
+    // first.
+    for (final (parent, child) in [
+      (FirestoreCollections.products, FirestoreCollections.batches),
+      (FirestoreCollections.customers, FirestoreCollections.ledger),
+    ]) {
+      final parents = await userRef.collection(parent).get();
+      for (final doc in parents.docs) {
+        await _deleteCollection(doc.reference.collection(child));
+      }
+    }
     for (final sub in [
       FirestoreCollections.products,
+      FirestoreCollections.services,
       FirestoreCollections.sales,
       FirestoreCollections.expenses,
+      FirestoreCollections.customers,
+      FirestoreCollections.budgets,
     ]) {
       await _deleteCollection(userRef.collection(sub));
     }

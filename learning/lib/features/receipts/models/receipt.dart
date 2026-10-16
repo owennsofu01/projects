@@ -73,9 +73,9 @@ class Receipt {
       lines: [
         for (final item in items)
           ReceiptLine(
-            name: item.product.name,
+            name: item.name,
             quantity: item.quantity,
-            unitPrice: item.product.sellingPrice,
+            unitPrice: item.unitPrice,
           ),
       ],
     );

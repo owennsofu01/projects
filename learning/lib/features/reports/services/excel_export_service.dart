@@ -128,7 +128,8 @@ class ExcelExportService {
 
     sheet.appendRow([
       TextCellValue('Date'),
-      TextCellValue('Product'),
+      TextCellValue('Item'),
+      TextCellValue('Type'),
       TextCellValue('Quantity'),
       TextCellValue('Unit Price ($currencySymbol)'),
       TextCellValue('Total ($currencySymbol)'),
@@ -141,6 +142,7 @@ class ExcelExportService {
       sheet.appendRow([
         TextCellValue(_formatDate(sale.date)),
         TextCellValue(sale.productName),
+        TextCellValue(sale.isService ? 'Service' : 'Product'),
         IntCellValue(sale.quantity),
         DoubleCellValue(convert(sale.sellingPrice)),
         DoubleCellValue(convert(sale.totalAmount)),
@@ -149,7 +151,7 @@ class ExcelExportService {
       ]);
     }
 
-    for (var col = 0; col < 7; col++) {
+    for (var col = 0; col < 8; col++) {
       sheet.setColumnWidth(col, col == 1 ? 24 : 16);
     }
   }

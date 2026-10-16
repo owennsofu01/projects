@@ -153,7 +153,7 @@ class SettingsScreen extends StatelessWidget {
             leading: const Icon(Icons.upload_file_outlined),
             title: const Text('Import from Excel'),
             subtitle: const Text(
-              'Add products and expenses from a spreadsheet',
+              'Add products, services and expenses from a spreadsheet',
             ),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => Get.to(() => ImportScreen()),

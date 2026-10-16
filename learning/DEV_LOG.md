@@ -2,7 +2,7 @@
 
 ## Session: 2026-10-14
 
-Branch: `profitpulse-profitability-monthly` (not merged to `main`, not pushed)
+Branch: `profitpulse-profitability-monthly`, fast-forwarded into `main` and pushed on 2026-10-15
 
 ### Fixed
 - iOS launch crash: `google_mobile_ads` aborted at startup because
@@ -26,27 +26,32 @@ Branch: `profitpulse-profitability-monthly` (not merged to `main`, not pushed)
 | `ed981a0` | #9 Daily summary notification: Settings → Notifications, local scheduled notifications (default 20:00), tested on a real phone |
 | `e61107f` | #13 Tests (fake_cloud_firestore): FIFO checkout, credit, payments, stock corrections, profitability, report totals. Fixed `setStock` reads-after-writes bug |
 | `da08eb3` | #10 Budgets: monthly limit per expense category, Budgets screen, dashboard card, 80%/over warnings on new expenses |
+| `f198915` | #12 Import from Excel (Products/Expenses sheets, template) and full backup to .xlsx |
 
-### In progress (uncommitted)
-**#12 Import and backup** (session 2026-10-15)
-- Settings → Data → Import from Excel: pick an .xlsx (`file_picker`),
-  preview counts and rows that will be left out, then import. "Products"
-  sheet (Name, Cost price, Selling price, Stock, Reorder level, Barcode)
-  and/or "Expenses" sheet (Date, Title, Category, Amount). Headers and
-  sheet names match ignoring case; dates as Excel dates, YYYY-MM-DD or
-  D/M/YYYY. Products with an existing name and expenses already recorded
-  (same day, title, category, amount) are skipped. Opening stock gets a
-  purchase batch. Writes split into batches of 400.
-- "Get the template" shares a template workbook with examples and help.
-- Settings → Data → Back up all data: shares an .xlsx with About,
-  Products, Expenses, Sales, Customers, Customer ledger, Stock purchases,
-  Budgets. Amounts are stored ZMW values. Products/Expenses sheets use the
-  import layout, so a backup re-imports (skipping what's already there).
-- No full restore of sales, customers or ledgers (backup is a copy for
-  the user's records).
-- Code: `lib/features/data_transfer/`, `test/data_transfer_test.dart`.
-  56 tests pass, analyze clean, Android debug APK builds.
-- Tested on a phone by the user. iOS needs `pod install` for file_picker.
+### Services (committed 2026-10-16)
+**Services** (session 2026-10-16), for barbers, hair plaiting and similar
+- New `services` collection (`ServiceModel`: name, price, materialsCost).
+  No stock or batches. Catalog tab (was Products) has Products | Services
+  tabs; the table icon opens Product profitability or Service performance.
+- Checkout picker has a Products/Services switch. A service line's price
+  and jobs can be changed per sale (tap the price). Service lines skip
+  stock and FIFO; cost = materialsCost × jobs. Mixed carts and credit work.
+- Service sales go in `sales` with `kind: 'service'`, `serviceId`, no
+  `productId`; `productName` holds the service name. Old sales without
+  `kind` read as products. Product insights/profitability skip services.
+- Service performance screen: jobs, revenue, average price, materials,
+  profit per service, all time or by month (shared `MonthPeriodBar`).
+  Deleted services still show from their sales.
+- Backup has a Services sheet and a Type column on Sales; import and the
+  template read a Services sheet (Name, Price, Materials cost). Report
+  export has a Type column.
+- Account deletion now also removes services, customers (and ledgers),
+  budgets and product batches.
+- Code: `lib/features/services/`, `lib/features/catalog/`,
+  `test/services_test.dart`. 68 tests pass, analyze clean, debug APK
+  builds. Tested on a phone by the user.
+- Later ideas: "done by" (staff) per service sale with commission report;
+  hiding Products for service-only businesses.
 
 ### Remaining
 Nothing. #11 Pro tier (in-app purchase) was dropped on 2026-10-15.
@@ -61,4 +66,3 @@ Nothing. #11 Pro tier (in-app purchase) was dropped on 2026-10-15.
 - Offline edge case: two phones selling the last unit while one is offline
   can drive stock negative (no server check offline).
 - Customer phone numbers need a country code for WhatsApp reminders.
-- Merge `profitpulse-profitability-monthly` into `main` and push when ready.

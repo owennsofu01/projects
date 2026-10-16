@@ -21,10 +21,15 @@ class ImportScreen extends StatelessWidget {
     final added = [
       if (result.productsAdded > 0)
         '${result.productsAdded} product${result.productsAdded == 1 ? '' : 's'}',
+      if (result.servicesAdded > 0)
+        '${result.servicesAdded} service${result.servicesAdded == 1 ? '' : 's'}',
       if (result.expensesAdded > 0)
         '${result.expensesAdded} expense${result.expensesAdded == 1 ? '' : 's'}',
     ];
-    final skipped = result.productsSkipped + result.expensesSkipped;
+    final skipped =
+        result.productsSkipped +
+        result.servicesSkipped +
+        result.expensesSkipped;
     final skippedText = skipped == 0
         ? ''
         : ' $skipped already in the app ${skipped == 1 ? 'was' : 'were'} '
@@ -33,7 +38,10 @@ class ImportScreen extends StatelessWidget {
     if (added.isEmpty) {
       showWarningSnackbar('Nothing new to import', skippedText.trim());
     } else {
-      showSuccessSnackbar('Imported ${added.join(' and ')}.$skippedText');
+      final list = added.length == 1
+          ? added.single
+          : '${added.take(added.length - 1).join(', ')} and ${added.last}';
+      showSuccessSnackbar('Imported $list.$skippedText');
     }
   }
 
@@ -54,9 +62,10 @@ class ImportScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             children: [
               Text(
-                'Add products and expenses from an Excel file (.xlsx) with a '
-                '"Products" and/or "Expenses" sheet. Products already in the '
-                'app (same name) and expenses already recorded are skipped.',
+                'Add products, services and expenses from an Excel file '
+                '(.xlsx) with "Products", "Services" and/or "Expenses" '
+                'sheets. Products and services already in the app (same '
+                'name) and expenses already recorded are skipped.',
                 style: textTheme.bodyMedium?.copyWith(
                   color: colorScheme.onSurfaceVariant,
                 ),
@@ -140,6 +149,7 @@ class _PreviewSummary extends StatelessWidget {
               'Products read',
               preview.products.length,
             ),
+            row(Icons.content_cut, 'Services read', preview.services.length),
             row(
               Icons.receipt_long_outlined,
               'Expenses read',
