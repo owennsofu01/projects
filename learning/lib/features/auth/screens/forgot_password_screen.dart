@@ -27,16 +27,7 @@ class ForgotPasswordScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              colorScheme.primary.withValues(alpha: 0.05),
-              colorScheme.surface,
-            ],
-          ),
-        ),
+        color: colorScheme.surface,
         child: SafeArea(
           child: Center(
             child: SingleChildScrollView(

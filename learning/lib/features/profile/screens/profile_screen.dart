@@ -212,15 +212,11 @@ class _Avatar extends StatelessWidget {
       width: 84,
       height: 84,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: AppColors.brandGradient,
-        ),
+        color: AppColors.brand,
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: AppColors.brandGradient.first.withValues(alpha: 0.3),
+            color: AppColors.brand.withValues(alpha: 0.3),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),

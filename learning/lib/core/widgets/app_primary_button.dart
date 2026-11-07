@@ -48,16 +48,12 @@ class _AppPrimaryButtonState extends State<AppPrimaryButton> {
             color: Colors.transparent,
             child: Ink(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: AppColors.brandGradient,
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ),
+                color: AppColors.brand,
                 borderRadius: BorderRadius.circular(radius),
                 boxShadow: _enabled
                     ? [
                         BoxShadow(
-                          color: AppColors.brandGradient.first.withValues(
+                          color: AppColors.brand.withValues(
                             alpha: 0.35,
                           ),
                           blurRadius: 16,

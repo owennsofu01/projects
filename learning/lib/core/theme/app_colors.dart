@@ -12,6 +12,6 @@ class AppColors {
   static const profit = Color(0xFF2563EB);
   static const warning = Color(0xFFF59E0B);
 
-  /// Gradient used for primary CTAs and brand accents (splash, auth).
-  static const brandGradient = [Color(0xFF2563EB), Color(0xFF4F46E5)];
+  /// Solid brand color for primary CTAs and brand accents.
+  static const brand = Color(0xFF2563EB);
 }

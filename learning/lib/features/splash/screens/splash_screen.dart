@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constants/app_routes.dart';
-import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/brand_mark.dart';
 import '../../auth/controllers/auth_controller.dart';
 
@@ -57,16 +56,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColors.brandGradient.first.withValues(alpha: 0.06),
-              colorScheme.surface,
-            ],
-          ),
-        ),
+        color: colorScheme.surface,
         child: Center(
           child: FadeTransition(
             opacity: _fade,

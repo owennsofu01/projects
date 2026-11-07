@@ -191,14 +191,7 @@ class _Chart extends StatelessWidget {
       belowBarData: withArea
           ? BarAreaData(
               show: true,
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  color.withValues(alpha: 0.22),
-                  color.withValues(alpha: 0.0),
-                ],
-              ),
+              color: color.withValues(alpha: 0.12),
             )
           : BarAreaData(show: false),
     );
