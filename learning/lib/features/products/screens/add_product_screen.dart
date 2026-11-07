@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import '../../../core/scanner/barcode_scanner_screen.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/validators.dart';
-import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/app_text_field.dart';
+import '../../../core/widgets/form_page.dart';
 import '../controllers/product_controller.dart';
 import '../models/product_model.dart';
 
@@ -111,74 +111,84 @@ class AddProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(isEditing ? 'Edit Product' : 'Add Product')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: formKey,
-          child: ListView(
-            children: [
-              AppTextField(
-                controller: nameCtrl,
-                label: 'Product Name',
-                icon: Icons.inventory,
+    return FormPage(
+      title: isEditing ? 'Edit product' : 'New product',
+      formKey: formKey,
+      submitLabel: isEditing ? 'Save changes' : 'Save product',
+      isSaving: controller.isSaving,
+      onSubmit: _saveProduct,
+      children: [
+        FormSection(
+          title: 'Details',
+          children: [
+            AppTextField(
+              controller: nameCtrl,
+              label: 'Product name',
+              icon: Icons.inventory_2_outlined,
+            ),
+            AppTextField(
+              controller: barcodeCtrl,
+              label: 'Barcode (optional)',
+              icon: Icons.qr_code_2,
+              validator: (_) => null,
+              suffixIcon: IconButton(
+                tooltip: 'Scan barcode',
+                icon: const Icon(Icons.qr_code_scanner),
+                onPressed: _scanBarcode,
               ),
-              AppTextField(
-                controller: costCtrl,
-                label: 'Cost Price',
-                icon: Icons.attach_money,
-                keyboardType: TextInputType.number,
-                validator: FormValidators.positiveNumber,
-              ),
-              AppTextField(
-                controller: sellingCtrl,
-                label: 'Selling Price',
-                icon: Icons.price_check,
-                keyboardType: TextInputType.number,
-                validator: FormValidators.positiveNumber,
-              ),
-              AppTextField(
-                controller: stockCtrl,
-                label: isEditing
-                    ? 'Stock Quantity (correction — use Restock for purchases)'
-                    : 'Stock Quantity',
-                icon: Icons.numbers,
-                keyboardType: TextInputType.number,
-                validator: isEditing
-                    ? FormValidators.nonNegativeInteger
-                    : FormValidators.positiveInteger,
-              ),
-              AppTextField(
-                controller: reorderCtrl,
-                label: 'Low-stock alert at (units left)',
-                icon: Icons.notifications_active_outlined,
-                keyboardType: TextInputType.number,
-                validator: FormValidators.nonNegativeInteger,
-              ),
-              AppTextField(
-                controller: barcodeCtrl,
-                label: 'Barcode (optional)',
-                icon: Icons.qr_code_2,
-                validator: (_) => null,
-                suffixIcon: IconButton(
-                  tooltip: 'Scan barcode',
-                  icon: const Icon(Icons.qr_code_scanner),
-                  onPressed: _scanBarcode,
-                ),
-              ),
-              const SizedBox(height: 24),
-              Obx(
-                () => AppPrimaryButton(
-                  label: isEditing ? 'SAVE CHANGES' : 'SAVE PRODUCT',
-                  isLoading: controller.isSaving.value,
-                  onPressed: _saveProduct,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
+        FormSection(
+          title: 'Pricing',
+          children: [
+            AppTextField(
+              controller: costCtrl,
+              label: 'Cost price',
+              helperText: 'What you pay for one unit',
+              icon: Icons.shopping_cart_outlined,
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
+              validator: FormValidators.positiveNumber,
+            ),
+            AppTextField(
+              controller: sellingCtrl,
+              label: 'Selling price',
+              icon: Icons.sell_outlined,
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
+              validator: FormValidators.positiveNumber,
+            ),
+          ],
+        ),
+        FormSection(
+          title: 'Stock',
+          children: [
+            AppTextField(
+              controller: stockCtrl,
+              label: 'Quantity in stock',
+              helperText: isEditing
+                  ? 'Only to correct a count. Use Restock for new purchases.'
+                  : null,
+              icon: Icons.numbers,
+              keyboardType: TextInputType.number,
+              validator: isEditing
+                  ? FormValidators.nonNegativeInteger
+                  : FormValidators.positiveInteger,
+            ),
+            AppTextField(
+              controller: reorderCtrl,
+              label: 'Low-stock alert at',
+              helperText: 'Warn me when this many units are left',
+              icon: Icons.notifications_active_outlined,
+              keyboardType: TextInputType.number,
+              validator: FormValidators.nonNegativeInteger,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/icon_badge.dart';
+
 import '../../insights/controllers/insight_controller.dart';
 import '../../insights/models/product_insight.dart';
 import '../../insights/screens/stock_intelligence_screen.dart';
@@ -53,7 +56,7 @@ class StockIntelligenceCard extends StatelessWidget {
 
       return Card(
         child: InkWell(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(12),
           onTap: () => Get.to(() => StockIntelligenceScreen()),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -62,10 +65,9 @@ class StockIntelligenceCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(
+                    IconBadge(
                       Icons.insights_outlined,
-                      color: colorScheme.primary,
-                      size: 20,
+                      color: AppColors.brandGreen,
                     ),
                     const SizedBox(width: 8),
                     Expanded(

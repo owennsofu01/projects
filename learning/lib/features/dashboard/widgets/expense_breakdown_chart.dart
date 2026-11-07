@@ -1,21 +1,20 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../controllers/dashboard_controller.dart';
 import 'chart_card.dart';
 import 'chart_empty_state.dart';
 
-/// Qualitative palette distinct from the app's income/expense/profit
-/// semantic colors (green/red/blue) — category slices here aren't
-/// "good/bad", so reusing red for every slice would misleadingly imply
-/// severity rather than just identity.
+/// Category colors drawn from the logo, plus amber and purple for contrast.
+/// Red is avoided so a slice doesn't look like a warning.
 const _categoryPalette = [
-  Color(0xFF4F46E5), // indigo
+  AppColors.brandTeal,
   Color(0xFFF59E0B), // amber
-  Color(0xFF0EA5E9), // sky
-  Color(0xFFA855F7), // purple
-  Color(0xFF64748B), // slate ("Other")
+  AppColors.brandCyan,
+  Color(0xFF8B5CF6), // purple
+  AppColors.brandCharcoal, // "Other"
 ];
 
 class ExpenseBreakdownChart extends StatelessWidget {

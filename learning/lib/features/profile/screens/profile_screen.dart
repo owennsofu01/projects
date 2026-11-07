@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/auth_error_mapper.dart';
 import '../../../core/utils/formatters.dart';
@@ -179,7 +178,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const SizedBox(height: 8),
                         Obx(
                           () => AppPrimaryButton(
-                            label: 'SAVE CHANGES',
+                            label: 'Save changes',
                             isLoading: auth.isLoading.value,
                             onPressed: _saveName,
                           ),
@@ -212,21 +211,14 @@ class _Avatar extends StatelessWidget {
       width: 84,
       height: 84,
       decoration: BoxDecoration(
-        color: AppColors.brand,
+        color: Theme.of(context).colorScheme.primaryContainer,
         shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.brand.withValues(alpha: 0.3),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
-        ],
       ),
       alignment: Alignment.center,
       child: Text(
         initial,
-        style: const TextStyle(
-          color: Colors.white,
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.onPrimaryContainer,
           fontSize: 32,
           fontWeight: FontWeight.w700,
         ),
@@ -248,7 +240,7 @@ class _DangerZone extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(12),
         border: Border.all(color: colorScheme.error.withValues(alpha: 0.4)),
         color: colorScheme.error.withValues(alpha: 0.05),
       ),
@@ -266,9 +258,9 @@ class _DangerZone extends StatelessWidget {
           Text(
             'Deleting your account permanently removes your profile, '
             'products, sales, and expenses. This cannot be undone.',
-            style: Theme.of(
-              context,
-            ).textTheme.bodySmall?.copyWith(color: colorScheme.onSurfaceVariant),
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: colorScheme.onSurfaceVariant,
+            ),
           ),
           const SizedBox(height: 16),
           FilledButton.icon(
@@ -287,7 +279,7 @@ class _DangerZone extends StatelessWidget {
                     ),
                   )
                 : const Icon(Icons.delete_outline, size: 18),
-            label: const Text('Delete Account'),
+            label: const Text('Delete account'),
           ),
         ],
       ),

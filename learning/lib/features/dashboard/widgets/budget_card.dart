@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/icon_badge.dart';
 import '../../budgets/controllers/budget_controller.dart';
 import '../../budgets/models/budget_model.dart';
 import '../../budgets/screens/budget_screen.dart';
@@ -47,13 +48,13 @@ class BudgetCard extends StatelessWidget {
 
       return Card(
         child: InkWell(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(12),
           onTap: () => Get.to(() => BudgetScreen()),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                Icon(Icons.savings_outlined, color: colorScheme.primary),
+                IconBadge(Icons.savings_outlined, color: AppColors.brandGreen),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(

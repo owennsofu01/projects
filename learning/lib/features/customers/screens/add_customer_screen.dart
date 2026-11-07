@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_snackbars.dart';
-import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/app_text_field.dart';
+import '../../../core/widgets/form_page.dart';
 import '../controllers/customer_controller.dart';
 import '../models/customer_model.dart';
 
@@ -57,38 +57,27 @@ class AddCustomerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(isEditing ? 'Edit Customer' : 'Add Customer')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: formKey,
-          child: ListView(
-            children: [
-              AppTextField(
-                controller: nameCtrl,
-                label: 'Name',
-                icon: Icons.person_outline,
-              ),
-              AppTextField(
-                controller: phoneCtrl,
-                label: 'Phone (optional, include country code)',
-                icon: Icons.phone_outlined,
-                keyboardType: TextInputType.phone,
-                validator: (_) => null,
-              ),
-              const SizedBox(height: 24),
-              Obx(
-                () => AppPrimaryButton(
-                  label: isEditing ? 'SAVE CHANGES' : 'SAVE CUSTOMER',
-                  isLoading: controller.isSaving.value,
-                  onPressed: _save,
-                ),
-              ),
-            ],
-          ),
+    return FormPage(
+      title: isEditing ? 'Edit customer' : 'New customer',
+      formKey: formKey,
+      submitLabel: isEditing ? 'Save changes' : 'Save customer',
+      isSaving: controller.isSaving,
+      onSubmit: _save,
+      children: [
+        AppTextField(
+          controller: nameCtrl,
+          label: 'Name',
+          icon: Icons.person_outline,
         ),
-      ),
+        AppTextField(
+          controller: phoneCtrl,
+          label: 'Phone (optional)',
+          helperText: 'Include the country code to send WhatsApp reminders',
+          icon: Icons.phone_outlined,
+          keyboardType: TextInputType.phone,
+          validator: (_) => null,
+        ),
+      ],
     );
   }
 }

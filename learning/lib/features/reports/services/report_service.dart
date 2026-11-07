@@ -8,7 +8,8 @@ import '../../sales/models/sale_model.dart';
 /// range — reports are a point-in-time pull rather than a live view, so an
 /// export always matches exactly what was on screen when it was generated.
 class ReportService {
-  ReportService({FirebaseFirestore? db}) : _db = db ?? FirebaseFirestore.instance;
+  ReportService({FirebaseFirestore? db})
+    : _db = db ?? FirebaseFirestore.instance;
 
   final FirebaseFirestore _db;
 

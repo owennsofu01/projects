@@ -4,8 +4,11 @@ import 'package:get/get.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/formatters.dart';
+import '../../../core/widgets/add_fab.dart';
 import '../../../core/widgets/confirm_dialog.dart';
 import '../../../core/widgets/empty_state.dart';
+import '../../../core/widgets/grouped_list.dart';
+import '../../../core/widgets/list_row.dart';
 import '../controllers/service_controller.dart';
 import '../models/service_model.dart';
 import 'add_service_screen.dart';
@@ -15,6 +18,8 @@ class ServiceListScreen extends StatelessWidget {
   ServiceListScreen({super.key});
 
   final ServiceController controller = Get.find<ServiceController>();
+
+  void _add() => Get.to(() => AddServiceScreen());
 
   Future<void> _delete(BuildContext context, ServiceModel service) async {
     final confirmed = await showConfirmDialog(
@@ -32,120 +37,97 @@ class ServiceListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: AddFab(
         heroTag: 'services-fab',
-        tooltip: 'Add service',
-        onPressed: () => Get.to(() => AddServiceScreen()),
-        child: const Icon(Icons.add),
+        label: 'Add service',
+        onPressed: _add,
       ),
       body: Obx(() {
         final services = controller.services;
         if (services.isEmpty) {
-          return const EmptyState(
-            icon: Icons.content_cut,
-            message:
-                'No services yet. Add what you charge for, like a haircut '
-                'or braids.',
+          return EmptyState(
+            icon: Icons.handyman_outlined,
+            title: 'No services yet',
+            message: 'Add what you charge for, like a haircut or a repair.',
+            actionLabel: 'Add service',
+            onAction: _add,
           );
         }
 
-        return Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
-            child: ListView.separated(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 88),
-              itemCount: services.length,
-              separatorBuilder: (_, _) => const SizedBox(height: 8),
-              itemBuilder: (context, index) =>
-                  _serviceCard(context, services[index]),
+        return GroupedListView(
+          sections: [
+            ListSection(
+              title:
+                  '${services.length} '
+                  '${services.length == 1 ? 'service' : 'services'}',
+              rows: [for (final s in services) _row(context, s)],
             ),
-          ),
+          ],
         );
       }),
     );
   }
 
-  Widget _serviceCard(BuildContext context, ServiceModel service) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Card(
-      margin: EdgeInsets.zero,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(12),
-        onTap: () => Get.to(() => AddServiceScreen(service: service)),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 12, 4, 12),
-          child: Row(
-            children: [
-              Expanded(
-                child: Obx(
-                  () => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        service.name,
-                        style: textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        service.materialsCost > 0
-                            ? 'Materials ${AppFormatter.currency(service.materialsCost)} · '
-                                  'profit ${AppFormatter.currency(service.profitPerJob)} per job'
-                            : 'No materials cost',
-                        style: textTheme.bodySmall?.copyWith(
-                          color: service.profitPerJob < 0
-                              ? AppColors.expense
-                              : colorScheme.onSurfaceVariant,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Obx(
-                () => Text(
-                  AppFormatter.currency(service.price),
-                  style: textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              PopupMenuButton<_ServiceAction>(
-                tooltip: 'More',
-                onSelected: (action) {
-                  switch (action) {
-                    case _ServiceAction.edit:
-                      Get.to(() => AddServiceScreen(service: service));
-                    case _ServiceAction.delete:
-                      _delete(context, service);
-                  }
-                },
-                itemBuilder: (context) => const [
-                  PopupMenuItem(
-                    value: _ServiceAction.edit,
-                    child: ListTile(
-                      leading: Icon(Icons.edit_outlined),
-                      title: Text('Edit'),
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: _ServiceAction.delete,
-                    child: ListTile(
-                      leading: Icon(Icons.delete_outline),
-                      title: Text('Delete'),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+  Widget _row(BuildContext context, ServiceModel service) {
+    final losing = service.profitPerJob < 0;
+    return ListRow(
+      onTap: () => Get.to(() => AddServiceScreen(service: service)),
+      leading: RowAvatar(service.name),
+      title: service.name,
+      subtitle: Obx(
+        () => Text(
+          service.materialsCost > 0
+              ? 'Materials ${AppFormatter.currency(service.materialsCost)}'
+              : 'No materials cost',
         ),
+      ),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          RowAmount(
+            service.price,
+            caption: () =>
+                '${AppFormatter.currency(service.profitPerJob)} profit',
+            captionColor: losing ? AppColors.expense : AppColors.income,
+          ),
+          _RowMenu(
+            onEdit: () => Get.to(() => AddServiceScreen(service: service)),
+            onDelete: () => _delete(context, service),
+          ),
+        ],
       ),
     );
   }
 }
 
-enum _ServiceAction { edit, delete }
+class _RowMenu extends StatelessWidget {
+  const _RowMenu({required this.onEdit, required this.onDelete});
+
+  final VoidCallback onEdit;
+  final VoidCallback onDelete;
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<VoidCallback>(
+      tooltip: 'More',
+      icon: const Icon(Icons.more_vert, size: 20),
+      onSelected: (action) => action(),
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          value: onEdit,
+          child: const ListTile(
+            leading: Icon(Icons.edit_outlined),
+            title: Text('Edit'),
+          ),
+        ),
+        PopupMenuItem(
+          value: onDelete,
+          child: const ListTile(
+            leading: Icon(Icons.delete_outline),
+            title: Text('Delete'),
+          ),
+        ),
+      ],
+    );
+  }
+}

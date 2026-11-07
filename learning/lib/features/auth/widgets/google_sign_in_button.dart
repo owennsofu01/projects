@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/theme/app_theme.dart';
+
 /// Styled per Google's branding guidelines for the "light" button variant:
 /// fixed white background and dark grey text/border, not theme-adaptive —
 /// matching how [SignInWithAppleButton] is used elsewhere in this app.
@@ -14,7 +16,7 @@ class GoogleSignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 44,
+      height: 52,
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
@@ -22,27 +24,26 @@ class GoogleSignInButton extends StatelessWidget {
           disabledBackgroundColor: Colors.white.withValues(alpha: 0.6),
           side: const BorderSide(color: _borderColor),
           shape: RoundedRectangleBorder(
-            // Matches the app's 14px corner radius (buttons/cards/inputs)
-            // rather than Google's default 8px, so it doesn't look like a
-            // mismatched third-party widget dropped into the form.
-            borderRadius: BorderRadius.circular(14),
+            // Matches the app's corner radius (buttons/cards/inputs) rather
+            // than Google's default 8px, so it sits naturally in the form.
+            borderRadius: BorderRadius.circular(AppTheme.radius),
           ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/icon/google_logo.png',
-              height: 18,
-              width: 18,
-            ),
+            Image.asset('assets/icon/google_logo.png', height: 18, width: 18),
             const SizedBox(width: 10),
-            const Text(
-              'Sign in with Google',
-              style: TextStyle(
-                color: _textColor,
-                fontWeight: FontWeight.w600,
-                fontSize: 15,
+            const Flexible(
+              child: Text(
+                'Continue with Google',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: _textColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15,
+                ),
               ),
             ),
           ],

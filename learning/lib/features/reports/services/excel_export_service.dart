@@ -72,16 +72,10 @@ class ExcelExportService {
 
     final totalSales = sales.fold<double>(0, (sum, s) => sum + s.totalAmount);
     final totalProfit = sales.fold<double>(0, (sum, s) => sum + s.profit);
-    final totalExpenses = expenses.fold<double>(
-      0,
-      (sum, e) => sum + e.amount,
-    );
+    final totalExpenses = expenses.fold<double>(0, (sum, e) => sum + e.amount);
 
     sheet.appendRow([TextCellValue('ProfitPulse Report')]);
-    sheet.appendRow([
-      TextCellValue('Period'),
-      TextCellValue(range.label),
-    ]);
+    sheet.appendRow([TextCellValue('Period'), TextCellValue(range.label)]);
     sheet.appendRow([
       TextCellValue('From'),
       TextCellValue(_formatDate(range.start)),

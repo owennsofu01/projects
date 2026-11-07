@@ -11,9 +11,11 @@ extension StockRecommendationLabel on StockRecommendation {
   };
 
   String get description => switch (this) {
-    StockRecommendation.restock => 'Selling fast and running low — reorder soon',
+    StockRecommendation.restock =>
+      'Selling fast and running low — reorder soon',
     StockRecommendation.promote => 'A top performer — lean into it',
-    StockRecommendation.reduce => 'Moving slowly — capital is tied up in this stock',
+    StockRecommendation.reduce =>
+      'Moving slowly — capital is tied up in this stock',
     StockRecommendation.maintain => 'Performing steadily — no action needed',
   };
 }

@@ -107,7 +107,7 @@ class ImportScreen extends StatelessWidget {
                 ],
                 const SizedBox(height: 24),
                 AppPrimaryButton(
-                  label: 'IMPORT',
+                  label: 'Import',
                   isLoading: busy,
                   onPressed: preview.isEmpty ? null : _import,
                 ),

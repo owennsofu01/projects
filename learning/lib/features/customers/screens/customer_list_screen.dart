@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/formatters.dart';
+import '../../../core/widgets/add_fab.dart';
 import '../../../core/widgets/empty_state.dart';
+import '../../../core/widgets/grouped_list.dart';
+import '../../../core/widgets/list_row.dart';
+import '../../../core/widgets/money_text.dart';
 import '../controllers/customer_controller.dart';
 import '../models/customer_model.dart';
 import 'add_customer_screen.dart';
@@ -40,37 +43,46 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
         .toList();
   }
 
+  void _add() => Get.to(() => AddCustomerScreen());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Customers')),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: AddFab(
         heroTag: 'customers-fab',
-        tooltip: 'Add customer',
-        onPressed: () => Get.to(() => AddCustomerScreen()),
-        child: const Icon(Icons.person_add_alt_1),
+        label: 'Add customer',
+        icon: Icons.person_add_alt_1_outlined,
+        onPressed: _add,
       ),
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 720),
-          child: Obx(() {
-            final customers = _visible();
+      body: Obx(() {
+        if (controller.customers.isEmpty) {
+          return EmptyState(
+            icon: Icons.people_outline,
+            title: 'No customers yet',
+            message:
+                'Save regular customers to sell on credit and track '
+                'what they owe.',
+            actionLabel: 'Add customer',
+            onAction: _add,
+          );
+        }
 
-            return ListView(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 96),
+        final customers = _visible();
+        return GroupedListView(
+          header: [
+            _OwedSummary(controller: controller),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _OwedSummary(controller: controller),
-                const SizedBox(height: 16),
                 TextField(
                   onChanged: (value) => setState(() => _query = value),
                   decoration: const InputDecoration(
                     hintText: 'Search by name or phone',
                     prefixIcon: Icon(Icons.search),
-                    isDense: true,
-                    border: OutlineInputBorder(),
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 Wrap(
                   spacing: 8,
                   children: [
@@ -86,27 +98,25 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 12),
-                if (customers.isEmpty)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 48),
-                    child: EmptyState(
-                      icon: Icons.people_outline,
-                      message: controller.customers.isEmpty
-                          ? 'No customers yet'
-                          : 'No matching customers',
-                    ),
-                  )
-                else
-                  for (final customer in customers) ...[
-                    _CustomerTile(customer: customer),
-                    const SizedBox(height: 8),
-                  ],
               ],
-            );
-          }),
-        ),
-      ),
+            ),
+            if (customers.isEmpty)
+              const Padding(
+                padding: EdgeInsets.only(top: 24),
+                child: EmptyState(
+                  icon: Icons.search_off,
+                  message: 'No customers match your search.',
+                ),
+              ),
+          ],
+          sections: [
+            if (customers.isNotEmpty)
+              ListSection(
+                rows: [for (final c in customers) _CustomerTile(customer: c)],
+              ),
+          ],
+        );
+      }),
     );
   }
 }
@@ -139,10 +149,9 @@ class _OwedSummary extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    AppFormatter.currency(controller.totalOwed),
+                  MoneyText(
+                    controller.totalOwed,
                     style: textTheme.headlineSmall?.copyWith(
-                      fontWeight: FontWeight.w800,
                       color: debtorCount > 0 ? AppColors.expense : null,
                     ),
                   ),
@@ -171,31 +180,18 @@ class _CustomerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Card(
-      margin: EdgeInsets.zero,
-      child: ListTile(
-        onTap: () =>
-            Get.to(() => CustomerDetailScreen(customerId: customer.id)),
-        leading: CircleAvatar(
-          child: Text(customer.name.characters.first.toUpperCase()),
-        ),
-        title: Text(customer.name),
-        subtitle: customer.phone.isEmpty ? null : Text(customer.phone),
-        trailing: customer.owesMoney
-            ? Text(
-                AppFormatter.currency(customer.balance),
-                style: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.expense,
-                ),
-              )
-            : Text(
-                'Settled',
-                style: TextStyle(color: colorScheme.onSurfaceVariant),
-              ),
-      ),
+    return ListRow(
+      onTap: () => Get.to(() => CustomerDetailScreen(customerId: customer.id)),
+      leading: RowAvatar(customer.name),
+      title: customer.name,
+      subtitle: customer.phone.isEmpty ? null : customer.phone,
+      trailing: customer.owesMoney
+          ? RowAmount(
+              customer.balance,
+              color: AppColors.expense,
+              caption: () => 'owes',
+            )
+          : const StatusPill('Settled', color: AppColors.income),
     );
   }
 }

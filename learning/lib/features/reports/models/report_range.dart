@@ -10,7 +10,11 @@ class ReportRange {
   /// still includes that day's records.
   final DateTime end;
 
-  const ReportRange({required this.preset, required this.start, required this.end});
+  const ReportRange({
+    required this.preset,
+    required this.start,
+    required this.end,
+  });
 
   factory ReportRange.today() {
     final now = DateTime.now();

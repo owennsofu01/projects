@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/utils/app_snackbars.dart';
-import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/app_text_field.dart';
+import '../../../core/widgets/form_page.dart';
 import '../controllers/business_profile_controller.dart';
 import '../models/business_profile.dart';
 
@@ -51,57 +51,40 @@ class BusinessProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Business Details')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: formKey,
-          child: ListView(
-            children: [
-              Text(
-                'Shown on the receipts you share with customers.',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                ),
-              ),
-              const SizedBox(height: 16),
-              AppTextField(
-                controller: nameCtrl,
-                label: 'Shop / business name',
-                icon: Icons.storefront_outlined,
-              ),
-              AppTextField(
-                controller: phoneCtrl,
-                label: 'Phone (optional)',
-                icon: Icons.phone_outlined,
-                keyboardType: TextInputType.phone,
-                validator: _optional,
-              ),
-              AppTextField(
-                controller: addressCtrl,
-                label: 'Address (optional)',
-                icon: Icons.place_outlined,
-                validator: _optional,
-              ),
-              AppTextField(
-                controller: footerCtrl,
-                label: 'Receipt message (optional, e.g. "Thank you!")',
-                icon: Icons.chat_bubble_outline,
-                validator: _optional,
-              ),
-              const SizedBox(height: 24),
-              Obx(
-                () => AppPrimaryButton(
-                  label: 'SAVE',
-                  isLoading: controller.isSaving.value,
-                  onPressed: _save,
-                ),
-              ),
-            ],
-          ),
+    return FormPage(
+      title: 'Business details',
+      intro: 'Shown on the receipts you share with customers.',
+      formKey: formKey,
+      submitLabel: 'Save',
+      isSaving: controller.isSaving,
+      onSubmit: _save,
+      children: [
+        AppTextField(
+          controller: nameCtrl,
+          label: 'Business name',
+          icon: Icons.storefront_outlined,
         ),
-      ),
+        AppTextField(
+          controller: phoneCtrl,
+          label: 'Phone (optional)',
+          icon: Icons.phone_outlined,
+          keyboardType: TextInputType.phone,
+          validator: _optional,
+        ),
+        AppTextField(
+          controller: addressCtrl,
+          label: 'Address (optional)',
+          icon: Icons.place_outlined,
+          validator: _optional,
+        ),
+        AppTextField(
+          controller: footerCtrl,
+          label: 'Receipt message (optional)',
+          helperText: 'e.g. "Thank you for shopping with us!"',
+          icon: Icons.chat_bubble_outline,
+          validator: _optional,
+        ),
+      ],
     );
   }
 }

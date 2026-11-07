@@ -20,7 +20,7 @@ class ProductProfitabilityScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Product Profitability')),
+      appBar: AppBar(title: const Text('Product profitability')),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());

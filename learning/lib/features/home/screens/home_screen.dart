@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../ads/ads_manager.dart';
 import '../../../core/sync/sync_status_bar.dart';
+import '../../../core/widgets/notched_nav_bar.dart';
 import '../../catalog/screens/catalog_screen.dart';
 import '../../dashboard/screens/dashboard_screen.dart';
 import '../../expenses/screens/expense_list_screen.dart';
@@ -35,33 +36,34 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           const SyncStatusBar(),
           const AnchoredBannerAd(),
-          NavigationBar(
+          NotchedNavBar(
             selectedIndex: _index,
-            onDestinationSelected: (index) => setState(() => _index = index),
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(Icons.dashboard_outlined),
-                selectedIcon: Icon(Icons.dashboard),
+            onSelected: (index) => setState(() => _index = index),
+            items: const [
+              NotchedNavItem(
+                icon: Icons.dashboard_outlined,
+                selectedIcon: Icons.dashboard,
                 label: 'Dashboard',
               ),
-              NavigationDestination(
-                icon: Icon(Icons.inventory_2_outlined),
-                selectedIcon: Icon(Icons.inventory_2),
+              NotchedNavItem(
+                icon: Icons.inventory_2_outlined,
+                selectedIcon: Icons.inventory_2,
                 label: 'Catalog',
               ),
-              NavigationDestination(
-                icon: Icon(Icons.point_of_sale_outlined),
-                selectedIcon: Icon(Icons.point_of_sale),
+              // Middle item: the raised center button.
+              NotchedNavItem(
+                icon: Icons.point_of_sale_outlined,
+                selectedIcon: Icons.point_of_sale,
                 label: 'Sales',
               ),
-              NavigationDestination(
-                icon: Icon(Icons.receipt_long_outlined),
-                selectedIcon: Icon(Icons.receipt_long),
+              NotchedNavItem(
+                icon: Icons.receipt_long_outlined,
+                selectedIcon: Icons.receipt_long,
                 label: 'Expenses',
               ),
-              NavigationDestination(
-                icon: Icon(Icons.bar_chart_outlined),
-                selectedIcon: Icon(Icons.bar_chart),
+              NotchedNavItem(
+                icon: Icons.bar_chart_outlined,
+                selectedIcon: Icons.bar_chart,
                 label: 'Reports',
               ),
             ],

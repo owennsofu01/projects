@@ -13,6 +13,7 @@ class AppTextField extends StatefulWidget {
     this.readOnly = false,
     this.validator,
     this.suffixIcon,
+    this.helperText,
   });
 
   final TextEditingController controller;
@@ -26,6 +27,9 @@ class AppTextField extends StatefulWidget {
   /// Trailing widget (e.g. a scan button). Ignored for [obscureText]
   /// fields, which use that slot for the show/hide toggle.
   final Widget? suffixIcon;
+
+  /// A hint shown under the field, e.g. "Include the country code".
+  final String? helperText;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -56,6 +60,8 @@ class _AppTextFieldState extends State<AppTextField> {
         ),
         decoration: InputDecoration(
           labelText: widget.label,
+          helperText: widget.helperText,
+          helperMaxLines: 2,
           prefixIcon: widget.icon != null ? Icon(widget.icon, size: 20) : null,
           suffixIcon: widget.obscureText
               ? IconButton(

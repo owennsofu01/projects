@@ -123,7 +123,7 @@ class _BudgetTile extends StatelessWidget {
 
     return Card(
       child: InkWell(
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(12),
         onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 4, 16),
@@ -296,7 +296,7 @@ class _BudgetEditorState extends State<_BudgetEditor> {
             const SizedBox(height: 8),
             Obx(
               () => AppPrimaryButton(
-                label: 'SAVE BUDGET',
+                label: 'Save budget',
                 isLoading: widget.controller.isSaving.value,
                 onPressed: _save,
               ),

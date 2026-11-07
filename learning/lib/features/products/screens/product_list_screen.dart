@@ -5,8 +5,11 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/utils/validators.dart';
+import '../../../core/widgets/add_fab.dart';
 import '../../../core/widgets/confirm_dialog.dart';
 import '../../../core/widgets/empty_state.dart';
+import '../../../core/widgets/grouped_list.dart';
+import '../../../core/widgets/list_row.dart';
 import '../controllers/product_controller.dart';
 import '../models/product_model.dart';
 import '../widgets/purchase_history_sheet.dart';
@@ -18,77 +21,48 @@ class ProductListScreen extends StatelessWidget {
 
   final ProductController controller = Get.find<ProductController>();
 
+  void _add() => Get.to(() => AddProductScreen());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: AddFab(
         heroTag: 'products-fab',
-        tooltip: 'Add product',
-        onPressed: () => Get.to(() => AddProductScreen()),
-        child: const Icon(Icons.add),
+        label: 'Add product',
+        onPressed: _add,
       ),
       body: Obx(() {
-        if (controller.products.isEmpty) {
-          return const EmptyState(
+        final products = controller.products;
+        if (products.isEmpty) {
+          return EmptyState(
             icon: Icons.inventory_2_outlined,
-            message: 'No products added yet',
+            title: 'No products yet',
+            message:
+                'Add what you sell with its cost and price to start '
+                'tracking stock and profit.',
+            actionLabel: 'Add product',
+            onAction: _add,
           );
         }
 
-        return LayoutBuilder(
-          builder: (context, constraints) {
-            // A catalog of self-contained cards makes good use of extra
-            // width, unlike a chronological list — so widen into columns
-            // on tablet/desktop instead of just capping the line length.
-            final columns = constraints.maxWidth >= 1100
-                ? 3
-                : (constraints.maxWidth >= 700 ? 2 : 1);
-            final horizontalPadding = constraints.maxWidth >= 600 ? 24.0 : 16.0;
+        final attention = products.where((p) => p.needsAttention).toList();
+        final rest = products.where((p) => !p.needsAttention).toList();
 
-            final products = controller.products;
-            final rowCount = (products.length / columns).ceil();
-
-            return Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 1200),
-                child: ListView.separated(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: horizontalPadding,
-                    vertical: 16,
-                  ),
-                  itemCount: rowCount,
-                  separatorBuilder: (_, _) => const SizedBox(height: 12),
-                  itemBuilder: (context, rowIndex) {
-                    final start = rowIndex * columns;
-                    final rowProducts = products.skip(start).take(columns);
-
-                    if (columns == 1) {
-                      return _productCard(context, rowProducts.first);
-                    }
-
-                    // IntrinsicHeight + stretch so every card in the row
-                    // shares the tallest card's height (e.g. one with a
-                    // low-stock chip and one without), matching how a
-                    // real grid lays out unevenly-tall cells.
-                    return IntrinsicHeight(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          for (final product in rowProducts) ...[
-                            if (product != rowProducts.first)
-                              const SizedBox(width: 12),
-                            Expanded(child: _productCard(context, product)),
-                          ],
-                          for (var i = rowProducts.length; i < columns; i++)
-                            const Expanded(child: SizedBox.shrink()),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+        return GroupedListView(
+          sections: [
+            if (attention.isNotEmpty)
+              ListSection(
+                title: 'Needs restocking',
+                trailing: Text('${attention.length}'),
+                rows: [for (final p in attention) _row(context, p)],
               ),
-            );
-          },
+            if (rest.isNotEmpty)
+              ListSection(
+                title: attention.isEmpty ? 'All products' : 'In stock',
+                trailing: Text('${rest.length}'),
+                rows: [for (final p in rest) _row(context, p)],
+              ),
+          ],
         );
       }),
     );
@@ -154,7 +128,7 @@ class ProductListScreen extends StatelessWidget {
                 ));
               }
             },
-            child: const Text('Add Stock'),
+            child: const Text('Add stock'),
           ),
         ],
       ),
@@ -191,135 +165,92 @@ class ProductListScreen extends StatelessWidget {
     }
   }
 
-  Widget _productCard(BuildContext context, ProductModel product) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    product.name,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+  Widget _row(BuildContext context, ProductModel product) {
+    final stockColor = product.isOutOfStock
+        ? AppColors.expense
+        : product.isLowStock
+        ? AppColors.warning
+        : null;
+
+    return ListRow(
+      onTap: () => Get.to(() => AddProductScreen(product: product)),
+      leading: RowAvatar(product.name),
+      title: product.name,
+      subtitle: Obx(
+        () => Text(
+          'Sells ${AppFormatter.currency(product.sellingPrice)}'
+          '  ·  Cost ${AppFormatter.currency(product.costPrice)}',
+        ),
+      ),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          product.needsAttention
+              ? StatusPill(
+                  product.isOutOfStock ? 'Out' : '${product.stock} left',
+                  color: stockColor!,
+                  icon: Icons.warning_amber_rounded,
+                )
+              : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      '${product.stock}',
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
-                  ),
-                ),
-                IconButton(
-                  onPressed: () =>
-                      showPurchaseHistorySheet(context, controller, product),
-                  icon: const Icon(Icons.history),
-                  tooltip: 'Purchase history',
-                  visualDensity: VisualDensity.compact,
-                ),
-                IconButton.filledTonal(
-                  onPressed: () =>
-                      _showRestockDialog(context, controller, product),
-                  icon: const Icon(Icons.add_box_outlined),
-                  tooltip: 'Restock',
-                  visualDensity: VisualDensity.compact,
-                ),
-                PopupMenuButton<_ProductAction>(
-                  tooltip: 'More',
-                  onSelected: (action) {
-                    switch (action) {
-                      case _ProductAction.edit:
-                        Get.to(() => AddProductScreen(product: product));
-                      case _ProductAction.delete:
-                        _deleteProduct(context, product);
-                    }
-                  },
-                  itemBuilder: (context) => const [
-                    PopupMenuItem(
-                      value: _ProductAction.edit,
-                      child: ListTile(
-                        leading: Icon(Icons.edit_outlined),
-                        title: Text('Edit'),
-                      ),
-                    ),
-                    PopupMenuItem(
-                      value: _ProductAction.delete,
-                      child: ListTile(
-                        leading: Icon(Icons.delete_outline),
-                        title: Text('Delete'),
-                      ),
+                    Text(
+                      'in stock',
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
                 ),
-              ],
-            ),
-            if (product.needsAttention) ...[
-              const SizedBox(height: 4),
-              _StockStatusChip(product: product),
-            ],
-            const SizedBox(height: 8),
-            Obx(
-              () => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _info(
-                    'Latest Cost',
-                    AppFormatter.currency(product.costPrice),
-                  ),
-                  _info('Selling', AppFormatter.currency(product.sellingPrice)),
-                  _info('Stock', product.stock.toString()),
-                ],
+          PopupMenuButton<_ProductAction>(
+            tooltip: 'More',
+            icon: const Icon(Icons.more_vert, size: 20),
+            onSelected: (action) {
+              switch (action) {
+                case _ProductAction.restock:
+                  _showRestockDialog(context, controller, product);
+                case _ProductAction.history:
+                  showPurchaseHistorySheet(context, controller, product);
+                case _ProductAction.edit:
+                  Get.to(() => AddProductScreen(product: product));
+                case _ProductAction.delete:
+                  _deleteProduct(context, product);
+              }
+            },
+            itemBuilder: (context) => const [
+              PopupMenuItem(
+                value: _ProductAction.restock,
+                child: ListTile(
+                  leading: Icon(Icons.add_box_outlined),
+                  title: Text('Restock'),
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _info(String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: const TextStyle(fontSize: 12, color: Colors.grey)),
-        const SizedBox(height: 4),
-        Text(
-          value,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-        ),
-      ],
-    );
-  }
-}
-
-class _StockStatusChip extends StatelessWidget {
-  const _StockStatusChip({required this.product});
-
-  final ProductModel product;
-
-  @override
-  Widget build(BuildContext context) {
-    final isOut = product.isOutOfStock;
-    final color = isOut ? AppColors.expense : AppColors.warning;
-    final label = isOut ? 'Out of stock' : '${product.stock} left — low stock';
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.12),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.warning_amber_rounded, size: 14, color: color),
-          const SizedBox(width: 4),
-          Text(
-            label,
-            style: TextStyle(
-              color: color,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-            ),
+              PopupMenuItem(
+                value: _ProductAction.history,
+                child: ListTile(
+                  leading: Icon(Icons.history),
+                  title: Text('Purchase history'),
+                ),
+              ),
+              PopupMenuDivider(),
+              PopupMenuItem(
+                value: _ProductAction.edit,
+                child: ListTile(
+                  leading: Icon(Icons.edit_outlined),
+                  title: Text('Edit'),
+                ),
+              ),
+              PopupMenuItem(
+                value: _ProductAction.delete,
+                child: ListTile(
+                  leading: Icon(Icons.delete_outline),
+                  title: Text('Delete'),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -327,4 +258,4 @@ class _StockStatusChip extends StatelessWidget {
   }
 }
 
-enum _ProductAction { edit, delete }
+enum _ProductAction { restock, history, edit, delete }

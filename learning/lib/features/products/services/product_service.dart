@@ -5,7 +5,8 @@ import '../models/product_model.dart';
 import '../models/stock_batch_model.dart';
 
 class ProductService {
-  ProductService({FirebaseFirestore? db}) : _db = db ?? FirebaseFirestore.instance;
+  ProductService({FirebaseFirestore? db})
+    : _db = db ?? FirebaseFirestore.instance;
 
   final FirebaseFirestore _db;
 

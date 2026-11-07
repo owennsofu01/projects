@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constants/app_routes.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/brand_mark.dart';
 import '../../auth/controllers/auth_controller.dart';
+import '../../onboarding/onboarding_storage.dart';
 
+/// Brand splash on solid teal, then routes to home, onboarding (first run)
+/// or login.
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -16,16 +21,18 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     vsync: this,
-    duration: const Duration(milliseconds: 500),
+    duration: const Duration(milliseconds: 900),
   );
-  late final Animation<double> _fade = CurvedAnimation(
+
+  // Logo pops in first, then the name and tagline follow.
+  late final Animation<double> _logo = CurvedAnimation(
     parent: _controller,
-    curve: Curves.easeOut,
+    curve: const Interval(0, 0.6, curve: Curves.easeOutBack),
   );
-  late final Animation<double> _scale = Tween(
-    begin: 0.92,
-    end: 1.0,
-  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
+  late final Animation<double> _text = CurvedAnimation(
+    parent: _controller,
+    curve: const Interval(0.35, 1, curve: Curves.easeOutCubic),
+  );
 
   @override
   void initState() {
@@ -41,50 +48,68 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future<void> _redirect() async {
-    // A short, deliberate pause so the brand mark is actually perceptible
-    // rather than flashing past instantly.
-    await Future.delayed(const Duration(milliseconds: 1100));
+    // Long enough for the brand to register, short enough not to annoy.
+    final results = await Future.wait([
+      Future.delayed(const Duration(milliseconds: 1400)),
+      OnboardingStorage.isSeen(),
+    ]);
     if (!mounted) return;
 
-    final isLoggedIn = Get.find<AuthController>().isLoggedIn;
-    Get.offAllNamed(isLoggedIn ? AppRoutes.home : AppRoutes.login);
+    final seenOnboarding = results[1] as bool;
+    if (Get.find<AuthController>().isLoggedIn) {
+      Get.offAllNamed(AppRoutes.home);
+    } else {
+      Get.offAllNamed(seenOnboarding ? AppRoutes.login : AppRoutes.onboarding);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
-      body: Container(
-        color: colorScheme.surface,
-        child: Center(
-          child: FadeTransition(
-            opacity: _fade,
-            child: ScaleTransition(
-              scale: _scale,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const BrandMark(),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Track profit. Grow with clarity.',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2.5,
-                      color: colorScheme.primary,
-                    ),
-                  ),
-                ],
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: Scaffold(
+        backgroundColor: AppColors.brandTeal,
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ScaleTransition(
+                scale: Tween(begin: 0.6, end: 1.0).animate(_logo),
+                child: FadeTransition(
+                  opacity: _controller,
+                  child: const LogoTile(size: 88),
+                ),
               ),
-            ),
+              const SizedBox(height: 24),
+              FadeTransition(
+                opacity: _text,
+                child: SlideTransition(
+                  position: Tween(
+                    begin: const Offset(0, 0.3),
+                    end: Offset.zero,
+                  ).animate(_text),
+                  child: Column(
+                    children: [
+                      Text(
+                        'ProfitPulse',
+                        style: textTheme.headlineMedium?.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        'Track profit. Grow with clarity.',
+                        style: textTheme.bodyMedium?.copyWith(
+                          color: Colors.white.withValues(alpha: 0.8),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

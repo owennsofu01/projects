@@ -44,6 +44,30 @@ void main() {
     await shop.addExpense(amount: 999, date: DateTime(2026, 8, 31, 23));
   });
 
+  test('statement figures: cost of sales, margins and averages', () async {
+    await controller.setRange(
+      ReportRange.custom(DateTime(2026, 9, 1), DateTime(2026, 9, 15)),
+    );
+
+    expect(controller.costOfSales, 125);
+    expect(controller.grossMargin, closeTo(16.67, 0.01));
+    expect(controller.netMargin, 10);
+    expect(controller.transactionCount, 2);
+    expect(controller.averageSale, 75);
+    expect(controller.expensesByCategory.single.key, 'Rent');
+    expect(controller.topItems.map((i) => i.name), ['Product a', 'Product b']);
+  });
+
+  test('margins are empty when nothing was sold', () async {
+    await controller.setRange(
+      ReportRange.custom(DateTime(2026, 1, 1), DateTime(2026, 1, 2)),
+    );
+
+    expect(controller.grossMargin, isNull);
+    expect(controller.netMargin, isNull);
+    expect(controller.averageSale, 0);
+  });
+
   test(
     'totals cover every record in the range, including its last day',
     () async {

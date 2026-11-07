@@ -159,12 +159,10 @@ class _Chart extends StatelessWidget {
                 _line(
                   values: sales.map((d) => d.amount).toList(),
                   color: AppColors.income,
-                  withArea: true,
                 ),
                 _line(
                   values: expenses.map((d) => d.amount).toList(),
                   color: AppColors.expense,
-                  withArea: false,
                 ),
               ],
             ),
@@ -174,11 +172,7 @@ class _Chart extends StatelessWidget {
     );
   }
 
-  LineChartBarData _line({
-    required List<double> values,
-    required Color color,
-    required bool withArea,
-  }) {
+  LineChartBarData _line({required List<double> values, required Color color}) {
     return LineChartBarData(
       spots: [
         for (var i = 0; i < values.length; i++) FlSpot(i.toDouble(), values[i]),
@@ -188,12 +182,7 @@ class _Chart extends StatelessWidget {
       color: color,
       barWidth: 3,
       dotData: const FlDotData(show: false),
-      belowBarData: withArea
-          ? BarAreaData(
-              show: true,
-              color: color.withValues(alpha: 0.12),
-            )
-          : BarAreaData(show: false),
+      belowBarData: BarAreaData(show: false),
     );
   }
 }

@@ -7,6 +7,7 @@ import 'features/auth/screens/login_screen.dart';
 import 'features/auth/screens/register_screen.dart';
 import 'features/home/home_binding.dart';
 import 'features/home/screens/home_screen.dart';
+import 'features/onboarding/screens/onboarding_screen.dart';
 import 'features/splash/screens/splash_screen.dart';
 
 class App extends StatelessWidget {
@@ -24,6 +25,10 @@ class App extends StatelessWidget {
 
       getPages: [
         GetPage(name: AppRoutes.splash, page: () => const SplashScreen()),
+        GetPage(
+          name: AppRoutes.onboarding,
+          page: () => const OnboardingScreen(),
+        ),
         GetPage(name: AppRoutes.login, page: () => LoginScreen()),
         GetPage(name: AppRoutes.register, page: () => RegisterScreen()),
         GetPage(

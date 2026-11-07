@@ -33,6 +33,10 @@ class DashboardController extends GetxController {
   Stream<List<DailySales>> get weekSalesSeries =>
       _service.dailySalesSeries(userId);
 
+  /// The last 14 days, so a card can compare this week against last week.
+  Stream<List<DailySales>> get twoWeekSalesSeries =>
+      _service.dailySalesSeries(userId, days: 14);
+
   Stream<List<DailyExpense>> get weekExpenseSeries =>
       _service.dailyExpenseSeries(userId);
 

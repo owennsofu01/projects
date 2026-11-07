@@ -399,7 +399,7 @@ class _RecordSaleScreenState extends State<RecordSaleScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Sale'),
+        title: const Text('New sale'),
         actions: [
           IconButton(
             tooltip: 'Scan barcodes',

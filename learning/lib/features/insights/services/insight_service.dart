@@ -30,7 +30,8 @@ class ProductSalesAggregate {
 }
 
 class InsightService {
-  InsightService({FirebaseFirestore? db}) : _db = db ?? FirebaseFirestore.instance;
+  InsightService({FirebaseFirestore? db})
+    : _db = db ?? FirebaseFirestore.instance;
 
   final FirebaseFirestore _db;
 

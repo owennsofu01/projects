@@ -20,6 +20,8 @@ class ExchangeRateService {
     }
 
     final rates = body['rates'] as Map<String, dynamic>;
-    return rates.map((code, value) => MapEntry(code, (value as num).toDouble()));
+    return rates.map(
+      (code, value) => MapEntry(code, (value as num).toDouble()),
+    );
   }
 }

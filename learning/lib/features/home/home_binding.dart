@@ -24,32 +24,63 @@ class HomeBinding extends Bindings {
   void dependencies() {
     final userId = Get.find<AuthController>().userId;
 
-    Get.lazyPut<CurrencyController>(() => CurrencyController(userId));
+    // fenix: GetX deletes a lazily created controller when the route that
+    // first used it closes (e.g. Settings). fenix lets it be recreated the
+    // next time it's needed instead of throwing "not found".
+
+    Get.lazyPut<CurrencyController>(
+      () => CurrencyController(userId),
+      fenix: true,
+    );
     // Eager, not lazy: the theme must apply the moment home loads, not
     // whenever the user happens to first open Settings.
     Get.put(ThemeModeController(userId));
     // Eager so the first interstitial is preloaded before it's needed.
     Get.put(InterstitialAdController());
-    Get.lazyPut<ProductController>(() => ProductController(userId));
+    Get.lazyPut<ProductController>(
+      () => ProductController(userId),
+      fenix: true,
+    );
     Get.lazyPut<ProductProfitabilityController>(
       () => ProductProfitabilityController(userId),
+      fenix: true,
     );
-    Get.lazyPut<ServiceController>(() => ServiceController(userId));
+    Get.lazyPut<ServiceController>(
+      () => ServiceController(userId),
+      fenix: true,
+    );
     Get.lazyPut<ServicePerformanceController>(
       () => ServicePerformanceController(userId),
+      fenix: true,
     );
-    Get.lazyPut<CustomerController>(() => CustomerController(userId));
+    Get.lazyPut<CustomerController>(
+      () => CustomerController(userId),
+      fenix: true,
+    );
     Get.lazyPut<BusinessProfileController>(
       () => BusinessProfileController(userId),
+      fenix: true,
     );
-    Get.lazyPut<SaleController>(() => SaleController(userId));
-    Get.lazyPut<ExpenseController>(() => ExpenseController(userId));
-    Get.lazyPut<BudgetController>(() => BudgetController(userId));
-    Get.lazyPut<DataTransferController>(() => DataTransferController(userId));
+    Get.lazyPut<SaleController>(() => SaleController(userId), fenix: true);
+    Get.lazyPut<ExpenseController>(
+      () => ExpenseController(userId),
+      fenix: true,
+    );
+    Get.lazyPut<BudgetController>(() => BudgetController(userId), fenix: true);
+    Get.lazyPut<DataTransferController>(
+      () => DataTransferController(userId),
+      fenix: true,
+    );
     // Eager so the summary notifications are refreshed on every launch.
     Get.put(DailySummaryController(userId));
-    Get.lazyPut<DashboardController>(() => DashboardController(userId));
-    Get.lazyPut<InsightController>(() => InsightController(userId));
-    Get.lazyPut<ReportController>(() => ReportController(userId));
+    Get.lazyPut<DashboardController>(
+      () => DashboardController(userId),
+      fenix: true,
+    );
+    Get.lazyPut<InsightController>(
+      () => InsightController(userId),
+      fenix: true,
+    );
+    Get.lazyPut<ReportController>(() => ReportController(userId), fenix: true);
   }
 }

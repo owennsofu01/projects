@@ -31,7 +31,7 @@ void showWarningSnackbar(
     title,
     message,
     mainButton: _actionButton(action),
-    backgroundColor: Colors.orange.shade800,
+    backgroundColor: AppColors.warning,
     colorText: Colors.white,
     icon: const Icon(Icons.warning_amber_rounded, color: Colors.white),
     snackPosition: SnackPosition.BOTTOM,

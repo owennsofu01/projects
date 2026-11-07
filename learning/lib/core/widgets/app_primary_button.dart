@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
+import '../theme/app_theme.dart';
 
 class AppPrimaryButton extends StatefulWidget {
   const AppPrimaryButton({
@@ -31,14 +31,14 @@ class _AppPrimaryButtonState extends State<AppPrimaryButton> {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
-    const radius = 14.0;
+    const radius = AppTheme.radius;
 
     return GestureDetector(
       onTapDown: (_) => _setPressed(true),
       onTapUp: (_) => _setPressed(false),
       onTapCancel: () => _setPressed(false),
       child: AnimatedScale(
-        scale: _pressed ? 0.97 : 1.0,
+        scale: _pressed ? 0.98 : 1.0,
         duration: const Duration(milliseconds: 120),
         curve: Curves.easeOut,
         child: AnimatedOpacity(
@@ -48,19 +48,8 @@ class _AppPrimaryButtonState extends State<AppPrimaryButton> {
             color: Colors.transparent,
             child: Ink(
               decoration: BoxDecoration(
-                color: AppColors.brand,
+                color: colorScheme.primary,
                 borderRadius: BorderRadius.circular(radius),
-                boxShadow: _enabled
-                    ? [
-                        BoxShadow(
-                          color: AppColors.brand.withValues(
-                            alpha: 0.35,
-                          ),
-                          blurRadius: 16,
-                          offset: const Offset(0, 6),
-                        ),
-                      ]
-                    : null,
               ),
               child: InkWell(
                 borderRadius: BorderRadius.circular(radius),
@@ -80,10 +69,7 @@ class _AppPrimaryButtonState extends State<AppPrimaryButton> {
                         : Text(
                             widget.label,
                             style: Theme.of(context).textTheme.titleMedium
-                                ?.copyWith(
-                                  color: colorScheme.onPrimary,
-                                  letterSpacing: 0.3,
-                                ),
+                                ?.copyWith(color: colorScheme.onPrimary),
                           ),
                   ),
                 ),

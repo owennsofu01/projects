@@ -3,7 +3,11 @@ import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
+import '../../../core/widgets/add_fab.dart';
 import '../../../core/widgets/empty_state.dart';
+import '../../../core/widgets/grouped_list.dart';
+import '../../../core/widgets/list_row.dart';
+import '../../../core/widgets/money_text.dart';
 import '../../customers/screens/customer_list_screen.dart';
 import '../../receipts/models/receipt.dart';
 import '../../receipts/screens/receipt_screen.dart';
@@ -11,10 +15,19 @@ import '../controllers/sale_controller.dart';
 import '../models/sale_model.dart';
 import 'record_sale_screen.dart';
 
-class SaleListScreen extends StatelessWidget {
-  SaleListScreen({super.key});
+class SaleListScreen extends StatefulWidget {
+  const SaleListScreen({super.key});
 
+  @override
+  State<SaleListScreen> createState() => _SaleListScreenState();
+}
+
+class _SaleListScreenState extends State<SaleListScreen> {
   final SaleController controller = Get.find<SaleController>();
+
+  late final Stream<List<SaleModel>> _sales = controller.salesStream;
+
+  void _add() => Get.to(() => const RecordSaleScreen());
 
   @override
   Widget build(BuildContext context) {
@@ -27,207 +40,133 @@ class SaleListScreen extends StatelessWidget {
             icon: const Icon(Icons.people_outline),
             onPressed: () => Get.to(() => const CustomerListScreen()),
           ),
+          const SizedBox(width: 4),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: AddFab(
         heroTag: 'sales-fab',
-        onPressed: () => Get.to(() => const RecordSaleScreen()),
-        child: const Icon(Icons.add),
+        label: 'New sale',
+        onPressed: _add,
       ),
       body: StreamBuilder<List<SaleModel>>(
-        stream: controller.salesStream,
+        stream: _sales,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());
           }
 
           final receipts = _groupByReceipt(snapshot.data!);
-
           if (receipts.isEmpty) {
-            return const EmptyState(
+            return EmptyState(
               icon: Icons.point_of_sale_outlined,
-              message: 'No sales recorded yet',
+              title: 'No sales yet',
+              message:
+                  'Record your first sale to start tracking revenue '
+                  'and profit.',
+              actionLabel: 'New sale',
+              onAction: _add,
             );
           }
 
-          return LayoutBuilder(
-            builder: (context, constraints) {
-              final horizontalPadding = constraints.maxWidth >= 600
-                  ? 24.0
-                  : 16.0;
-
-              return Center(
-                child: ConstrainedBox(
-                  // A transaction log reads best as one column even on
-                  // wide screens — cap the width instead of turning it
-                  // into a grid, and just give it more breathing room.
-                  constraints: const BoxConstraints(maxWidth: 720),
-                  child: ListView.separated(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: horizontalPadding,
-                      vertical: 16,
-                    ),
-                    itemCount: receipts.length,
-                    separatorBuilder: (_, _) => const SizedBox(height: 12),
-                    itemBuilder: (context, index) =>
-                        _ReceiptCard(lines: receipts[index]),
+          return GroupedListView(
+            sections: [
+              for (final (day, items) in groupByDay(
+                receipts,
+                (r) => r.first.date,
+              ))
+                ListSection(
+                  title: dayLabel(day),
+                  trailing: MoneyText(
+                    items.fold(0.0, (sum, r) => sum + _total(r)),
                   ),
+                  rows: [for (final r in items) _ReceiptRow(lines: r)],
                 ),
-              );
-            },
+            ],
           );
         },
       ),
     );
   }
 
+  static double _total(List<SaleModel> lines) =>
+      lines.fold(0, (sum, s) => sum + s.totalAmount);
+
   /// Groups line items into receipts, keeping the newest-first order of
   /// [sales] (lines of one receipt share a timestamp, so stay adjacent).
   List<List<SaleModel>> _groupByReceipt(List<SaleModel> sales) {
     final byReceipt = <String, List<SaleModel>>{};
     for (final sale in sales) {
-      byReceipt.putIfAbsent(sale.receiptId, () => []).add(sale);
+      final key = sale.receiptId.isEmpty ? sale.id : sale.receiptId;
+      byReceipt.putIfAbsent(key, () => []).add(sale);
     }
     return byReceipt.values.toList();
   }
 }
 
-class _ReceiptCard extends StatelessWidget {
-  const _ReceiptCard({required this.lines});
+/// One checkout: a single item, or several items on one receipt. Tapping
+/// opens the receipt.
+class _ReceiptRow extends StatelessWidget {
+  const _ReceiptRow({required this.lines});
 
   final List<SaleModel> lines;
 
-  void _openReceipt() =>
-      Get.to(() => ReceiptScreen(receipt: Receipt.fromSales(lines)));
-
-  bool get _isPendingSync => lines.any((s) => s.isPendingSync);
-
-  /// Shown next to the amounts while the sale is only on this device.
-  Widget? get _pendingIcon => _isPendingSync
-      ? const Tooltip(
-          message: 'Waiting to sync',
-          child: Icon(Icons.cloud_upload_outlined, size: 18),
-        )
-      : null;
-
-  String get _customerSuffix {
-    final name = lines.first.customerName;
-    return name == null ? '' : '  •  $name';
-  }
-
   @override
   Widget build(BuildContext context) {
+    final first = lines.first;
     final total = lines.fold<double>(0, (sum, s) => sum + s.totalAmount);
     final profit = lines.fold<double>(0, (sum, s) => sum + s.profit);
-    final date = lines.first.date;
+    final single = lines.length == 1;
+    final pending = lines.any((s) => s.isPendingSync);
+    final customer = first.customerName;
 
-    if (lines.length == 1) {
-      final sale = lines.first;
-      return Card(
-        child: ListTile(
-          onTap: _openReceipt,
-          leading: const Icon(Icons.point_of_sale),
-          title: Text(sale.productName),
-          subtitle: Obx(
-            () => Text(
-              '${sale.quantity} × ${AppFormatter.currency(sale.sellingPrice)}'
-              '  •  ${AppFormatter.date(date)}$_customerSuffix',
-            ),
-          ),
-          trailing: _Amounts(
-            total: total,
-            profit: profit,
-            leading: _pendingIcon,
-          ),
-        ),
-      );
-    }
+    final title = single
+        ? first.productName
+        : '${lines.length} items · ${lines.map((s) => s.productName).join(', ')}';
 
-    final units = lines.fold<int>(0, (sum, s) => sum + s.quantity);
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: ExpansionTile(
-        leading: const Icon(Icons.receipt_long),
-        shape: const Border(),
-        collapsedShape: const Border(),
-        title: Text(
-          '${lines.length} products · $units units',
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        subtitle: Text(
-          '${lines.map((s) => s.productName).join(', ')}\n'
-          '${AppFormatter.date(date)}$_customerSuffix',
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-        ),
-        trailing: _Amounts(total: total, profit: profit, leading: _pendingIcon),
-        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-        children: [
-          for (final sale in lines)
-            Obx(
-              () => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        '${sale.productName}  ·  ${sale.quantity} × '
-                        '${AppFormatter.currency(sale.sellingPrice)}',
-                      ),
-                    ),
-                    Text(
-                      AppFormatter.currency(sale.totalAmount),
-                      style: const TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                  ],
-                ),
+    return ListRow(
+      onTap: () =>
+          Get.to(() => ReceiptScreen(receipt: Receipt.fromSales(lines))),
+      leading: RowIcon(
+        single
+            ? (first.isService
+                  ? Icons.handyman_outlined
+                  : Icons.shopping_bag_outlined)
+            : Icons.receipt_long_outlined,
+      ),
+      title: title,
+      subtitle: Obx(() {
+        final parts = [
+          if (single)
+            '${first.quantity} × ${AppFormatter.currency(first.sellingPrice)}'
+          else
+            '${lines.fold<int>(0, (sum, s) => sum + s.quantity)} units',
+          if (customer != null) customer,
+        ];
+        return Row(
+          children: [
+            Flexible(
+              child: Text(
+                parts.join('  ·  '),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton.icon(
-              onPressed: _openReceipt,
-              icon: const Icon(Icons.receipt_outlined),
-              label: const Text('View receipt'),
-            ),
-          ),
-        ],
+            if (pending) ...[
+              const SizedBox(width: 6),
+              const Tooltip(
+                message: 'Waiting to sync',
+                child: Icon(Icons.cloud_upload_outlined, size: 14),
+              ),
+            ],
+          ],
+        );
+      }),
+      trailing: RowAmount(
+        total,
+        caption: () =>
+            '${profit >= 0 ? '+' : ''}${AppFormatter.currency(profit)} profit',
+        captionColor: profit >= 0 ? AppColors.income : AppColors.expense,
       ),
-    );
-  }
-}
-
-class _Amounts extends StatelessWidget {
-  const _Amounts({required this.total, required this.profit, this.leading});
-
-  final double total;
-  final double profit;
-  final Widget? leading;
-
-  @override
-  Widget build(BuildContext context) {
-    final amounts = Obx(
-      () => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            AppFormatter.currency(total),
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          Text(
-            '+${AppFormatter.currency(profit)}',
-            style: const TextStyle(fontSize: 12, color: AppColors.income),
-          ),
-        ],
-      ),
-    );
-    final leading = this.leading;
-    if (leading == null) return amounts;
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [leading, const SizedBox(width: 8), amounts],
     );
   }
 }

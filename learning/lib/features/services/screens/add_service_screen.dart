@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/validators.dart';
-import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/app_text_field.dart';
+import '../../../core/widgets/form_page.dart';
 import '../controllers/service_controller.dart';
 import '../models/service_model.dart';
 
@@ -82,60 +82,37 @@ class AddServiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(isEditing ? 'Edit Service' : 'Add Service')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: formKey,
-          child: ListView(
-            children: [
-              AppTextField(
-                controller: nameCtrl,
-                label: 'Service name',
-                icon: Icons.content_cut,
-              ),
-              AppTextField(
-                controller: priceCtrl,
-                label: 'Usual price',
-                icon: Icons.price_check,
-                keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                validator: FormValidators.positiveNumber,
-              ),
-              AppTextField(
-                controller: materialsCtrl,
-                label: 'Materials cost per job (optional)',
-                icon: Icons.shopping_basket_outlined,
-                keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true,
-                ),
-                validator: _optionalAmount,
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(4, 0, 4, 8),
-                child: Text(
-                  'What each job uses up, like extensions, relaxer or '
-                  'blades. Profit per job is the price minus this. You can '
-                  'change the price on each sale.',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              Obx(
-                () => AppPrimaryButton(
-                  label: isEditing ? 'SAVE CHANGES' : 'SAVE SERVICE',
-                  isLoading: controller.isSaving.value,
-                  onPressed: _save,
-                ),
-              ),
-            ],
-          ),
+    return FormPage(
+      title: isEditing ? 'Edit service' : 'New service',
+      formKey: formKey,
+      submitLabel: isEditing ? 'Save changes' : 'Save service',
+      isSaving: controller.isSaving,
+      onSubmit: _save,
+      children: [
+        AppTextField(
+          controller: nameCtrl,
+          label: 'Service name',
+          icon: Icons.handyman_outlined,
         ),
-      ),
+        AppTextField(
+          controller: priceCtrl,
+          label: 'Usual price',
+          helperText: 'You can change the price on each sale',
+          icon: Icons.sell_outlined,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          validator: FormValidators.positiveNumber,
+        ),
+        AppTextField(
+          controller: materialsCtrl,
+          label: 'Materials cost per job (optional)',
+          helperText:
+              'What each job uses up, like extensions or blades. '
+              'Profit per job is the price minus this.',
+          icon: Icons.shopping_basket_outlined,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          validator: _optionalAmount,
+        ),
+      ],
     );
   }
 }

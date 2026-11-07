@@ -15,7 +15,7 @@ class StockIntelligenceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Stock Intelligence')),
+      appBar: AppBar(title: const Text('Stock intelligence')),
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/icon_badge.dart';
 import '../../../core/utils/formatters.dart';
 import '../../products/controllers/product_profitability_controller.dart';
 import '../../products/screens/product_profitability_screen.dart';
@@ -45,7 +46,7 @@ class ProductProfitabilityCard extends StatelessWidget {
 
       return Card(
         child: InkWell(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(12),
           onTap: () => Get.to(() => ProductProfitabilityScreen()),
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -54,10 +55,9 @@ class ProductProfitabilityCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(
+                    IconBadge(
                       Icons.table_chart_outlined,
-                      color: colorScheme.primary,
-                      size: 20,
+                      color: AppColors.brandTeal,
                     ),
                     const SizedBox(width: 8),
                     Expanded(

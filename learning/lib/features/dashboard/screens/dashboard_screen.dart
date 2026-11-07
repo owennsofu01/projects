@@ -2,30 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/motion.dart';
 import '../../../core/widgets/section_header.dart';
 import '../../../core/widgets/stat_card.dart';
-import '../../auth/controllers/auth_controller.dart';
 import '../../budgets/controllers/budget_controller.dart';
 import '../../customers/controllers/customer_controller.dart';
 import '../../insights/controllers/insight_controller.dart';
-import '../../insights/screens/stock_intelligence_screen.dart';
 import '../../products/controllers/product_profitability_controller.dart';
-import '../../settings/screens/settings_screen.dart';
 import '../controllers/dashboard_controller.dart';
 import '../services/dashboard_service.dart';
 import '../widgets/budget_card.dart';
 import '../widgets/customer_credit_card.dart';
+import '../widgets/dashboard_header.dart';
 import '../widgets/expense_breakdown_chart.dart';
+import '../widgets/insight_highlight_card.dart';
 import '../widgets/monthly_profit_chart.dart';
 import '../widgets/product_profitability_card.dart';
 import '../widgets/sales_trend_chart.dart';
 import '../widgets/stock_intelligence_card.dart';
+import '../widgets/today_hero_card.dart';
+import '../widgets/week_trend_cards.dart';
+import '../widgets/weekly_overview_card.dart';
 
 class DashboardScreen extends StatelessWidget {
   DashboardScreen({super.key});
 
   final DashboardController controller = Get.find<DashboardController>();
-  final AuthController auth = Get.find<AuthController>();
   final InsightController insightController = Get.find<InsightController>();
   final CustomerController customerController = Get.find<CustomerController>();
   final BudgetController budgetController = Get.find<BudgetController>();
@@ -35,33 +37,6 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dashboard'),
-        actions: [
-          Obx(() {
-            final count = insightController.restockCount;
-            return IconButton(
-              onPressed: () => Get.to(() => StockIntelligenceScreen()),
-              tooltip: 'Stock alerts',
-              icon: Badge(
-                label: Text('$count'),
-                isLabelVisible: count > 0,
-                child: const Icon(Icons.notifications_outlined),
-              ),
-            );
-          }),
-          IconButton(
-            onPressed: () => Get.to(() => SettingsScreen()),
-            icon: const Icon(Icons.settings_outlined),
-            tooltip: 'Settings',
-          ),
-          IconButton(
-            onPressed: auth.logout,
-            icon: const Icon(Icons.logout),
-            tooltip: 'Log out',
-          ),
-        ],
-      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           // Material's compact/medium/expanded breakpoints: below 600 is a
@@ -77,15 +52,40 @@ class DashboardScreen extends StatelessWidget {
               // content doesn't stretch edge-to-edge and become hard to scan.
               constraints: const BoxConstraints(maxWidth: 900),
               child: ListView(
-                padding: EdgeInsets.symmetric(
-                  horizontal: horizontalPadding,
-                  vertical: 16,
+                padding: EdgeInsets.fromLTRB(
+                  horizontalPadding,
+                  MediaQuery.paddingOf(context).top + 16,
+                  horizontalPadding,
+                  24,
                 ),
                 children: [
-                  const SectionHeader('Today'),
+                  FadeSlideIn(
+                    delay: const Duration(milliseconds: 0),
+                    child: DashboardHeader(
+                      insightController: insightController,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  FadeSlideIn(
+                    delay: const Duration(milliseconds: 70),
+                    child: TodayHeroCard(controller: controller),
+                  ),
                   const SizedBox(height: 12),
-                  _summaryRow(controller.todaySales, controller.todayExpenses),
-                  const SizedBox(height: 24),
+                  FadeSlideIn(
+                    delay: const Duration(milliseconds: 140),
+                    child: WeekTrendCards(controller: controller),
+                  ),
+                  const SizedBox(height: 12),
+                  FadeSlideIn(
+                    delay: const Duration(milliseconds: 210),
+                    child: InsightHighlightCard(controller: insightController),
+                  ),
+                  const SizedBox(height: 12),
+                  FadeSlideIn(
+                    delay: const Duration(milliseconds: 280),
+                    child: WeeklyOverviewCard(controller: controller),
+                  ),
+                  const SizedBox(height: 28),
                   const SectionHeader('This Month'),
                   const SizedBox(height: 12),
                   _summaryRow(controller.monthSales, controller.monthExpenses),
@@ -153,6 +153,7 @@ class DashboardScreen extends StatelessWidget {
                 Expanded(
                   child: StatCard(
                     label: 'Sales',
+                    icon: Icons.trending_up_rounded,
                     value: summary.totalAmount,
                     color: AppColors.income,
                   ),
@@ -161,6 +162,7 @@ class DashboardScreen extends StatelessWidget {
                 Expanded(
                   child: StatCard(
                     label: 'Expenses',
+                    icon: Icons.receipt_long_outlined,
                     value: expenseTotal,
                     color: AppColors.expense,
                   ),
@@ -169,6 +171,7 @@ class DashboardScreen extends StatelessWidget {
                 Expanded(
                   child: StatCard(
                     label: 'Profit',
+                    icon: Icons.account_balance_wallet_outlined,
                     value: summary.totalProfit,
                     color: AppColors.profit,
                   ),

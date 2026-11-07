@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../theme/app_colors.dart';
+
 /// The outcome of handling one scan in continuous mode, shown as feedback
 /// over the camera.
 class ScanFeedback {
@@ -180,9 +182,7 @@ class _FeedbackBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = feedback.isError
-        ? Colors.red.shade700
-        : Colors.green.shade700;
+    final color = feedback.isError ? AppColors.expense : AppColors.income;
 
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 200),

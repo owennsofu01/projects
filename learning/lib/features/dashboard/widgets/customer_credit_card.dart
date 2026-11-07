@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../core/widgets/icon_badge.dart';
 import '../../../core/utils/formatters.dart';
 import '../../customers/controllers/customer_controller.dart';
 import '../../customers/screens/customer_list_screen.dart';
@@ -24,14 +25,14 @@ class CustomerCreditCard extends StatelessWidget {
 
       return Card(
         child: InkWell(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(12),
           onTap: () =>
               Get.to(() => CustomerListScreen(onlyDebtors: debtors.isNotEmpty)),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                Icon(Icons.people_outline, color: colorScheme.primary),
+                IconBadge(Icons.people_outline, color: AppColors.brandCyan),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(

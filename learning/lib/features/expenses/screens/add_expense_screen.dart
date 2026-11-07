@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../core/utils/app_snackbars.dart';
 import '../../../core/utils/validators.dart';
-import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/app_text_field.dart';
+import '../../../core/widgets/form_page.dart';
 import '../../budgets/controllers/budget_controller.dart';
 import '../../budgets/widgets/category_field.dart';
 import '../controllers/expense_controller.dart';
@@ -77,39 +77,27 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Add Expense')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Form(
-          key: formKey,
-          child: ListView(
-            children: [
-              AppTextField(
-                controller: titleCtrl,
-                label: 'Expense Title',
-                icon: Icons.receipt_long,
-              ),
-              AppTextField(
-                controller: amountCtrl,
-                label: 'Amount',
-                icon: Icons.attach_money,
-                keyboardType: TextInputType.number,
-                validator: FormValidators.positiveNumber,
-              ),
-              CategoryField(controller: categoryCtrl, suggestions: _categories),
-              const SizedBox(height: 24),
-              Obx(
-                () => AppPrimaryButton(
-                  label: 'SAVE EXPENSE',
-                  isLoading: controller.isSaving.value,
-                  onPressed: _saveExpense,
-                ),
-              ),
-            ],
-          ),
+    return FormPage(
+      title: 'New expense',
+      formKey: formKey,
+      submitLabel: 'Save expense',
+      isSaving: controller.isSaving,
+      onSubmit: _saveExpense,
+      children: [
+        AppTextField(
+          controller: titleCtrl,
+          label: 'What was it for?',
+          icon: Icons.receipt_long_outlined,
         ),
-      ),
+        AppTextField(
+          controller: amountCtrl,
+          label: 'Amount',
+          icon: Icons.payments_outlined,
+          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          validator: FormValidators.positiveNumber,
+        ),
+        CategoryField(controller: categoryCtrl, suggestions: _categories),
+      ],
     );
   }
 }

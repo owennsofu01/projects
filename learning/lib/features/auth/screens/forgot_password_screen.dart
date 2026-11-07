@@ -5,7 +5,7 @@ import '../../../core/utils/validators.dart';
 import '../../../core/widgets/app_primary_button.dart';
 import '../../../core/widgets/app_text_field.dart';
 import '../controllers/auth_controller.dart';
-import '../widgets/auth_header.dart';
+import '../widgets/auth_scaffold.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   ForgotPasswordScreen({super.key});
@@ -23,76 +23,35 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Scaffold(
-      body: Container(
-        color: colorScheme.surface,
-        child: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 24,
-                vertical: 32,
-              ),
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 420),
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const AuthHeader(
-                        title: 'Reset your password',
-                        subtitle:
-                            "Enter your account email and we'll send you a "
-                            'link to reset it',
-                      ),
-                      AppTextField(
-                        controller: emailCtrl,
-                        label: 'Email',
-                        icon: Icons.email_outlined,
-                        keyboardType: TextInputType.emailAddress,
-                        validator: FormValidators.email,
-                      ),
-                      const SizedBox(height: 8),
-                      Obx(
-                        () => AppPrimaryButton(
-                          label: 'SEND RESET LINK',
-                          isLoading: auth.isLoading.value,
-                          onPressed: _submit,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () => Get.back(),
-                        child: RichText(
-                          text: TextSpan(
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  color: colorScheme.onSurfaceVariant,
-                                ),
-                            children: [
-                              const TextSpan(text: 'Remembered it? '),
-                              TextSpan(
-                                text: 'Back to login',
-                                style: TextStyle(
-                                  color: colorScheme.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+    return AuthScaffold(
+      title: 'Reset your password',
+      subtitle:
+          "Enter your account email and we'll send you a link to reset it.",
+      footer: AuthFooterLink(
+        question: 'Remembered it?',
+        action: 'Back to login',
+        onTap: Get.back,
+      ),
+      children: [
+        Form(
+          key: formKey,
+          child: AppTextField(
+            controller: emailCtrl,
+            label: 'Email',
+            icon: Icons.mail_outline,
+            keyboardType: TextInputType.emailAddress,
+            validator: FormValidators.email,
           ),
         ),
-      ),
+        const SizedBox(height: 4),
+        Obx(
+          () => AppPrimaryButton(
+            label: 'Send reset link',
+            isLoading: auth.isLoading.value,
+            onPressed: _submit,
+          ),
+        ),
+      ],
     );
   }
 }

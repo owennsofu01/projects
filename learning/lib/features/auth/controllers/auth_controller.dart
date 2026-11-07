@@ -109,7 +109,9 @@ class AuthController extends GetxController {
       final userCredential = await _auth.signInWithCredential(oauthCredential);
       final user = userCredential.user!;
 
-      final userDocRef = _db.collection(FirestoreCollections.users).doc(user.uid);
+      final userDocRef = _db
+          .collection(FirestoreCollections.users)
+          .doc(user.uid);
       if (!(await userDocRef.get()).exists) {
         final name = [
           appleCredential.givenName,
@@ -156,12 +158,15 @@ class AuthController extends GetxController {
       final userCredential = await _auth.signInWithCredential(oauthCredential);
       final user = userCredential.user!;
 
-      final userDocRef = _db.collection(FirestoreCollections.users).doc(user.uid);
+      final userDocRef = _db
+          .collection(FirestoreCollections.users)
+          .doc(user.uid);
       if (!(await userDocRef.get()).exists) {
         await userDocRef.set(
           UserModel(
             uid: user.uid,
-            name: user.displayName ?? googleAccount.displayName ?? 'Google User',
+            name:
+                user.displayName ?? googleAccount.displayName ?? 'Google User',
             email: user.email ?? googleAccount.email,
             createdAt: DateTime.now(),
           ).toFirestore(),

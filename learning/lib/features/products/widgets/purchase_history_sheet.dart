@@ -14,15 +14,16 @@ Future<void> showPurchaseHistorySheet(
   return showModalBottomSheet(
     context: context,
     isScrollControlled: true,
-    builder: (context) => _PurchaseHistorySheet(
-      controller: controller,
-      product: product,
-    ),
+    builder: (context) =>
+        _PurchaseHistorySheet(controller: controller, product: product),
   );
 }
 
 class _PurchaseHistorySheet extends StatelessWidget {
-  const _PurchaseHistorySheet({required this.controller, required this.product});
+  const _PurchaseHistorySheet({
+    required this.controller,
+    required this.product,
+  });
 
   final ProductController controller;
   final ProductModel product;

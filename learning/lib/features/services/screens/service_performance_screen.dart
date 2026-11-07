@@ -17,7 +17,7 @@ class ServicePerformanceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Service Performance')),
+      appBar: AppBar(title: const Text('Service performance')),
       body: Column(
         children: [
           MonthPeriodBar(
